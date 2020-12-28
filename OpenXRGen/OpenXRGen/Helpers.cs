@@ -143,6 +143,7 @@ namespace OpenXRGen
                 case "uint32_t*":
                     return "uint*";
                 case "uint64_t":
+                case "XR_DEFINE_ATOM":
                     return "ulong";
                 case "uint64_t*":
                     return "ulong*";
@@ -166,14 +167,10 @@ namespace OpenXRGen
                     return "double*";
                 case "void":
                     return "void";
-                case "VkBool32":
-                    return "VkBool32";
-                case "VkExtent2D":
-                    return "VkExtent2D";
-                case "VkOffset2D":
-                    return "VkOffset2D";
-                case "VkRect2D":
-                    return "VkRect2D";
+                case "XrBool32":
+                    return "XrBool32";
+                case "D3D_FEATURE_LEVEL":
+                    return "uint";
                 default:
                     return string.Empty;
             }
@@ -205,27 +202,46 @@ namespace OpenXRGen
         {
             switch (type)
             {
-                case "HINSTANCE":
-                case "HWND":
-                case "Window":
-                case "xcb_connection_t":
-                case "xcb_window_t":
-                case "xcb_visualid_t":
-                case "zx_handle_t":
-                case "GgpStreamDescriptor":
-                case "HANDLE":
-                case "LPCWSTR":
-                case "HMONITOR":
-                case "GgpFrameToken":
-                case "CAMetalLayer":
-                case "AHardwareBuffer":
                 case "ANativeWindow":
-                case "RROutput":
-                case "SECURITY_ATTRIBUTES":
-                case "VisualID":
+                case "jobject":
+                case "ID3D11Device":
+                case "ID3D11Texture2D":
+                case "ID3D12CommandQueue":
+                case "ID3D12Device":
+                case "ID3D12Resource":
+                case "EGLDisplay":
+                case "EGLConfig":
+                case "EGLContext":
+                case "PFNEGLGETPROCADDRESSPROC":
+                case "GLXFBConfig":
+                case "GLXDrawable":
+                case "GLXContext":
+                case "HGLRC":
+                case "IUnknown":
                 case "wl_display":
-                case "wl_surface":
+                case "HDC":
+                case "LUID":
+                case "LARGE_INTEGER":
                 case "Display":
+                case "VisualID":
+                case "Window":
+                case "xcb_glx_fbconfig_t":
+                case "xcb_glx_drawable_t":
+                case "xcb_glx_context_t":
+                case "xcb_connection_t":
+                case "xcb_visualid_t":
+                case "xcb_window_t":
+                case "PFN_vkGetInstanceProcAddr":
+                case "VkAllocationCallbacks":
+                case "VkDevice":
+                case "VkDeviceCreateInfo":
+                case "VkFormat":
+                case "VkImage":
+                case "VkInstance":
+                case "VkInstanceCreateInfo":
+                case "VkPhysicalDevice":
+                case "VkResult":
+                case "timespec":
                     return true;
                 default:
                     return false;

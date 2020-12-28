@@ -5,13 +5,13 @@ using System.Runtime.InteropServices;
 
 namespace WaveEngine.Bindings.OpenXR
 {
-    public static unsafe partial class VulkanNative
+    public static unsafe partial class OpenXRNative
     {
         private const CallingConvention CallConv = CallingConvention.StdCall;
 
         private static NativeLibrary nativeLib;
 
-        static VulkanNative()
+        static OpenXRNative()
         {
             nativeLib = LoadNativeLibrary();
             LoadFuncionPointers();
@@ -19,31 +19,27 @@ namespace WaveEngine.Bindings.OpenXR
 
         private static NativeLibrary LoadNativeLibrary()
         {
-            return NativeLibrary.Load(GetVulkanName());
+            return NativeLibrary.Load(GetOpenXRName());
         }
 
-        private static string GetVulkanName()
+        private static string GetOpenXRName()
         {
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
-                return "vulkan-1.dll";
+                return "openxr_loader.dll";
             }
             else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
             {
                 if (RuntimeInformation.OSDescription.Contains("Unix"))
                 {
                     // Android
-                    return "libvulkan.so";
+                    return "libopenxr_loader.so.1";
                 }
                 else
                 {
                     // Desktop Linux
-                    return "libvulkan.so.1";
+                    return "libopenxr_loader.so.1";
                 }
-            }
-            else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-            {
-                return "libvulkan.dylib";
             }
             else
             {

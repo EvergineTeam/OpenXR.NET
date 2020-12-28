@@ -149,13 +149,8 @@ namespace OpenXRGen
                     case "double*":
                     case "void":
                         return 8;
-                    case "VkBool32":
+                    case "XrBool32":
                         return 4;
-                    case "VkExtent2D":
-                    case "VkOffset2D":
-                        return 8;
-                    case "VkRect2D":
-                        return 16;
                     default:
                         var @struct = openXRVersion.Structs.Find(s => s.Name == m.Type);
 

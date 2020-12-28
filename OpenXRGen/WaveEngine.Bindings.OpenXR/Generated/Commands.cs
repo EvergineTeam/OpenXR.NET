@@ -60,21 +60,21 @@ namespace WaveEngine.Bindings.OpenXR
 			=> xrStructureTypeToString_ptr(instance, value, buffer);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrGetSystemDelegate(XrInstance instance, XrSystemGetInfo* getInfo, * systemId);
+		private delegate XrResult xrGetSystemDelegate(XrInstance instance, XrSystemGetInfo* getInfo, ulong* systemId);
 		private static xrGetSystemDelegate xrGetSystem_ptr;
-		public static XrResult xrGetSystem(XrInstance instance, XrSystemGetInfo* getInfo, * systemId)
+		public static XrResult xrGetSystem(XrInstance instance, XrSystemGetInfo* getInfo, ulong* systemId)
 			=> xrGetSystem_ptr(instance, getInfo, systemId);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrGetSystemPropertiesDelegate(XrInstance instance,  systemId, XrSystemProperties* properties);
+		private delegate XrResult xrGetSystemPropertiesDelegate(XrInstance instance, ulong systemId, XrSystemProperties* properties);
 		private static xrGetSystemPropertiesDelegate xrGetSystemProperties_ptr;
-		public static XrResult xrGetSystemProperties(XrInstance instance,  systemId, XrSystemProperties* properties)
+		public static XrResult xrGetSystemProperties(XrInstance instance, ulong systemId, XrSystemProperties* properties)
 			=> xrGetSystemProperties_ptr(instance, systemId, properties);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrEnumerateEnvironmentBlendModesDelegate(XrInstance instance,  systemId, XrViewConfigurationType viewConfigurationType, uint environmentBlendModeCapacityInput, uint* environmentBlendModeCountOutput, XrEnvironmentBlendMode* environmentBlendModes);
+		private delegate XrResult xrEnumerateEnvironmentBlendModesDelegate(XrInstance instance, ulong systemId, XrViewConfigurationType viewConfigurationType, uint environmentBlendModeCapacityInput, uint* environmentBlendModeCountOutput, XrEnvironmentBlendMode* environmentBlendModes);
 		private static xrEnumerateEnvironmentBlendModesDelegate xrEnumerateEnvironmentBlendModes_ptr;
-		public static XrResult xrEnumerateEnvironmentBlendModes(XrInstance instance,  systemId, XrViewConfigurationType viewConfigurationType, uint environmentBlendModeCapacityInput, uint* environmentBlendModeCountOutput, XrEnvironmentBlendMode* environmentBlendModes)
+		public static XrResult xrEnumerateEnvironmentBlendModes(XrInstance instance, ulong systemId, XrViewConfigurationType viewConfigurationType, uint environmentBlendModeCapacityInput, uint* environmentBlendModeCountOutput, XrEnvironmentBlendMode* environmentBlendModes)
 			=> xrEnumerateEnvironmentBlendModes_ptr(instance, systemId, viewConfigurationType, environmentBlendModeCapacityInput, environmentBlendModeCountOutput, environmentBlendModes);
 
 		[UnmanagedFunctionPointer(CallConv)]
@@ -126,21 +126,21 @@ namespace WaveEngine.Bindings.OpenXR
 			=> xrDestroySpace_ptr(space);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrEnumerateViewConfigurationsDelegate(XrInstance instance,  systemId, uint viewConfigurationTypeCapacityInput, uint* viewConfigurationTypeCountOutput, XrViewConfigurationType* viewConfigurationTypes);
+		private delegate XrResult xrEnumerateViewConfigurationsDelegate(XrInstance instance, ulong systemId, uint viewConfigurationTypeCapacityInput, uint* viewConfigurationTypeCountOutput, XrViewConfigurationType* viewConfigurationTypes);
 		private static xrEnumerateViewConfigurationsDelegate xrEnumerateViewConfigurations_ptr;
-		public static XrResult xrEnumerateViewConfigurations(XrInstance instance,  systemId, uint viewConfigurationTypeCapacityInput, uint* viewConfigurationTypeCountOutput, XrViewConfigurationType* viewConfigurationTypes)
+		public static XrResult xrEnumerateViewConfigurations(XrInstance instance, ulong systemId, uint viewConfigurationTypeCapacityInput, uint* viewConfigurationTypeCountOutput, XrViewConfigurationType* viewConfigurationTypes)
 			=> xrEnumerateViewConfigurations_ptr(instance, systemId, viewConfigurationTypeCapacityInput, viewConfigurationTypeCountOutput, viewConfigurationTypes);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrGetViewConfigurationPropertiesDelegate(XrInstance instance,  systemId, XrViewConfigurationType viewConfigurationType, XrViewConfigurationProperties* configurationProperties);
+		private delegate XrResult xrGetViewConfigurationPropertiesDelegate(XrInstance instance, ulong systemId, XrViewConfigurationType viewConfigurationType, XrViewConfigurationProperties* configurationProperties);
 		private static xrGetViewConfigurationPropertiesDelegate xrGetViewConfigurationProperties_ptr;
-		public static XrResult xrGetViewConfigurationProperties(XrInstance instance,  systemId, XrViewConfigurationType viewConfigurationType, XrViewConfigurationProperties* configurationProperties)
+		public static XrResult xrGetViewConfigurationProperties(XrInstance instance, ulong systemId, XrViewConfigurationType viewConfigurationType, XrViewConfigurationProperties* configurationProperties)
 			=> xrGetViewConfigurationProperties_ptr(instance, systemId, viewConfigurationType, configurationProperties);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrEnumerateViewConfigurationViewsDelegate(XrInstance instance,  systemId, XrViewConfigurationType viewConfigurationType, uint viewCapacityInput, uint* viewCountOutput, XrViewConfigurationView* views);
+		private delegate XrResult xrEnumerateViewConfigurationViewsDelegate(XrInstance instance, ulong systemId, XrViewConfigurationType viewConfigurationType, uint viewCapacityInput, uint* viewCountOutput, XrViewConfigurationView* views);
 		private static xrEnumerateViewConfigurationViewsDelegate xrEnumerateViewConfigurationViews_ptr;
-		public static XrResult xrEnumerateViewConfigurationViews(XrInstance instance,  systemId, XrViewConfigurationType viewConfigurationType, uint viewCapacityInput, uint* viewCountOutput, XrViewConfigurationView* views)
+		public static XrResult xrEnumerateViewConfigurationViews(XrInstance instance, ulong systemId, XrViewConfigurationType viewConfigurationType, uint viewCapacityInput, uint* viewCountOutput, XrViewConfigurationView* views)
 			=> xrEnumerateViewConfigurationViews_ptr(instance, systemId, viewConfigurationType, viewCapacityInput, viewCountOutput, views);
 
 		[UnmanagedFunctionPointer(CallConv)]
@@ -228,15 +228,15 @@ namespace WaveEngine.Bindings.OpenXR
 			=> xrLocateViews_ptr(session, viewLocateInfo, viewState, viewCapacityInput, viewCountOutput, views);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrStringToPathDelegate(XrInstance instance, byte* pathString, * path);
+		private delegate XrResult xrStringToPathDelegate(XrInstance instance, byte* pathString, ulong* path);
 		private static xrStringToPathDelegate xrStringToPath_ptr;
-		public static XrResult xrStringToPath(XrInstance instance, byte* pathString, * path)
+		public static XrResult xrStringToPath(XrInstance instance, byte* pathString, ulong* path)
 			=> xrStringToPath_ptr(instance, pathString, path);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrPathToStringDelegate(XrInstance instance,  path, uint bufferCapacityInput, uint* bufferCountOutput, byte* buffer);
+		private delegate XrResult xrPathToStringDelegate(XrInstance instance, ulong path, uint bufferCapacityInput, uint* bufferCountOutput, byte* buffer);
 		private static xrPathToStringDelegate xrPathToString_ptr;
-		public static XrResult xrPathToString(XrInstance instance,  path, uint bufferCapacityInput, uint* bufferCountOutput, byte* buffer)
+		public static XrResult xrPathToString(XrInstance instance, ulong path, uint bufferCapacityInput, uint* bufferCountOutput, byte* buffer)
 			=> xrPathToString_ptr(instance, path, bufferCapacityInput, bufferCountOutput, buffer);
 
 		[UnmanagedFunctionPointer(CallConv)]
@@ -276,9 +276,9 @@ namespace WaveEngine.Bindings.OpenXR
 			=> xrAttachSessionActionSets_ptr(session, attachInfo);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrGetCurrentInteractionProfileDelegate(XrSession session,  topLevelUserPath, XrInteractionProfileState* interactionProfile);
+		private delegate XrResult xrGetCurrentInteractionProfileDelegate(XrSession session, ulong topLevelUserPath, XrInteractionProfileState* interactionProfile);
 		private static xrGetCurrentInteractionProfileDelegate xrGetCurrentInteractionProfile_ptr;
-		public static XrResult xrGetCurrentInteractionProfile(XrSession session,  topLevelUserPath, XrInteractionProfileState* interactionProfile)
+		public static XrResult xrGetCurrentInteractionProfile(XrSession session, ulong topLevelUserPath, XrInteractionProfileState* interactionProfile)
 			=> xrGetCurrentInteractionProfile_ptr(session, topLevelUserPath, interactionProfile);
 
 		[UnmanagedFunctionPointer(CallConv)]
@@ -312,9 +312,9 @@ namespace WaveEngine.Bindings.OpenXR
 			=> xrSyncActions_ptr(session, syncInfo);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrEnumerateBoundSourcesForActionDelegate(XrSession session, XrBoundSourcesForActionEnumerateInfo* enumerateInfo, uint sourceCapacityInput, uint* sourceCountOutput, * sources);
+		private delegate XrResult xrEnumerateBoundSourcesForActionDelegate(XrSession session, XrBoundSourcesForActionEnumerateInfo* enumerateInfo, uint sourceCapacityInput, uint* sourceCountOutput, ulong* sources);
 		private static xrEnumerateBoundSourcesForActionDelegate xrEnumerateBoundSourcesForAction_ptr;
-		public static XrResult xrEnumerateBoundSourcesForAction(XrSession session, XrBoundSourcesForActionEnumerateInfo* enumerateInfo, uint sourceCapacityInput, uint* sourceCountOutput, * sources)
+		public static XrResult xrEnumerateBoundSourcesForAction(XrSession session, XrBoundSourcesForActionEnumerateInfo* enumerateInfo, uint sourceCapacityInput, uint* sourceCountOutput, ulong* sources)
 			=> xrEnumerateBoundSourcesForAction_ptr(session, enumerateInfo, sourceCapacityInput, sourceCountOutput, sources);
 
 		[UnmanagedFunctionPointer(CallConv)]
@@ -342,9 +342,9 @@ namespace WaveEngine.Bindings.OpenXR
 			=> xrSetAndroidApplicationThreadKHR_ptr(session, threadType, threadId);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrCreateSwapchainAndroidSurfaceKHRDelegate(XrSession session, XrSwapchainCreateInfo* info, XrSwapchain* swapchain, jobject* surface);
+		private delegate XrResult xrCreateSwapchainAndroidSurfaceKHRDelegate(XrSession session, XrSwapchainCreateInfo* info, XrSwapchain* swapchain, IntPtr surface);
 		private static xrCreateSwapchainAndroidSurfaceKHRDelegate xrCreateSwapchainAndroidSurfaceKHR_ptr;
-		public static XrResult xrCreateSwapchainAndroidSurfaceKHR(XrSession session, XrSwapchainCreateInfo* info, XrSwapchain* swapchain, jobject* surface)
+		public static XrResult xrCreateSwapchainAndroidSurfaceKHR(XrSession session, XrSwapchainCreateInfo* info, XrSwapchain* swapchain, IntPtr surface)
 			=> xrCreateSwapchainAndroidSurfaceKHR_ptr(session, info, swapchain, surface);
 
 		[UnmanagedFunctionPointer(CallConv)]
@@ -402,51 +402,51 @@ namespace WaveEngine.Bindings.OpenXR
 			=> xrSessionInsertDebugUtilsLabelEXT_ptr(session, labelInfo);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrGetOpenGLGraphicsRequirementsKHRDelegate(XrInstance instance,  systemId, XrGraphicsRequirementsOpenGLKHR* graphicsRequirements);
+		private delegate XrResult xrGetOpenGLGraphicsRequirementsKHRDelegate(XrInstance instance, ulong systemId, XrGraphicsRequirementsOpenGLKHR* graphicsRequirements);
 		private static xrGetOpenGLGraphicsRequirementsKHRDelegate xrGetOpenGLGraphicsRequirementsKHR_ptr;
-		public static XrResult xrGetOpenGLGraphicsRequirementsKHR(XrInstance instance,  systemId, XrGraphicsRequirementsOpenGLKHR* graphicsRequirements)
+		public static XrResult xrGetOpenGLGraphicsRequirementsKHR(XrInstance instance, ulong systemId, XrGraphicsRequirementsOpenGLKHR* graphicsRequirements)
 			=> xrGetOpenGLGraphicsRequirementsKHR_ptr(instance, systemId, graphicsRequirements);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrGetOpenGLESGraphicsRequirementsKHRDelegate(XrInstance instance,  systemId, XrGraphicsRequirementsOpenGLESKHR* graphicsRequirements);
+		private delegate XrResult xrGetOpenGLESGraphicsRequirementsKHRDelegate(XrInstance instance, ulong systemId, XrGraphicsRequirementsOpenGLESKHR* graphicsRequirements);
 		private static xrGetOpenGLESGraphicsRequirementsKHRDelegate xrGetOpenGLESGraphicsRequirementsKHR_ptr;
-		public static XrResult xrGetOpenGLESGraphicsRequirementsKHR(XrInstance instance,  systemId, XrGraphicsRequirementsOpenGLESKHR* graphicsRequirements)
+		public static XrResult xrGetOpenGLESGraphicsRequirementsKHR(XrInstance instance, ulong systemId, XrGraphicsRequirementsOpenGLESKHR* graphicsRequirements)
 			=> xrGetOpenGLESGraphicsRequirementsKHR_ptr(instance, systemId, graphicsRequirements);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrGetVulkanInstanceExtensionsKHRDelegate(XrInstance instance,  systemId, uint bufferCapacityInput, uint* bufferCountOutput, byte* buffer);
+		private delegate XrResult xrGetVulkanInstanceExtensionsKHRDelegate(XrInstance instance, ulong systemId, uint bufferCapacityInput, uint* bufferCountOutput, byte* buffer);
 		private static xrGetVulkanInstanceExtensionsKHRDelegate xrGetVulkanInstanceExtensionsKHR_ptr;
-		public static XrResult xrGetVulkanInstanceExtensionsKHR(XrInstance instance,  systemId, uint bufferCapacityInput, uint* bufferCountOutput, byte* buffer)
+		public static XrResult xrGetVulkanInstanceExtensionsKHR(XrInstance instance, ulong systemId, uint bufferCapacityInput, uint* bufferCountOutput, byte* buffer)
 			=> xrGetVulkanInstanceExtensionsKHR_ptr(instance, systemId, bufferCapacityInput, bufferCountOutput, buffer);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrGetVulkanDeviceExtensionsKHRDelegate(XrInstance instance,  systemId, uint bufferCapacityInput, uint* bufferCountOutput, byte* buffer);
+		private delegate XrResult xrGetVulkanDeviceExtensionsKHRDelegate(XrInstance instance, ulong systemId, uint bufferCapacityInput, uint* bufferCountOutput, byte* buffer);
 		private static xrGetVulkanDeviceExtensionsKHRDelegate xrGetVulkanDeviceExtensionsKHR_ptr;
-		public static XrResult xrGetVulkanDeviceExtensionsKHR(XrInstance instance,  systemId, uint bufferCapacityInput, uint* bufferCountOutput, byte* buffer)
+		public static XrResult xrGetVulkanDeviceExtensionsKHR(XrInstance instance, ulong systemId, uint bufferCapacityInput, uint* bufferCountOutput, byte* buffer)
 			=> xrGetVulkanDeviceExtensionsKHR_ptr(instance, systemId, bufferCapacityInput, bufferCountOutput, buffer);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrGetVulkanGraphicsDeviceKHRDelegate(XrInstance instance,  systemId, VkInstance vkInstance, VkPhysicalDevice* vkPhysicalDevice);
+		private delegate XrResult xrGetVulkanGraphicsDeviceKHRDelegate(XrInstance instance, ulong systemId, IntPtr vkInstance, IntPtr vkPhysicalDevice);
 		private static xrGetVulkanGraphicsDeviceKHRDelegate xrGetVulkanGraphicsDeviceKHR_ptr;
-		public static XrResult xrGetVulkanGraphicsDeviceKHR(XrInstance instance,  systemId, VkInstance vkInstance, VkPhysicalDevice* vkPhysicalDevice)
+		public static XrResult xrGetVulkanGraphicsDeviceKHR(XrInstance instance, ulong systemId, IntPtr vkInstance, IntPtr vkPhysicalDevice)
 			=> xrGetVulkanGraphicsDeviceKHR_ptr(instance, systemId, vkInstance, vkPhysicalDevice);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrGetVulkanGraphicsRequirementsKHRDelegate(XrInstance instance,  systemId, XrGraphicsRequirementsVulkanKHR* graphicsRequirements);
+		private delegate XrResult xrGetVulkanGraphicsRequirementsKHRDelegate(XrInstance instance, ulong systemId, XrGraphicsRequirementsVulkanKHR* graphicsRequirements);
 		private static xrGetVulkanGraphicsRequirementsKHRDelegate xrGetVulkanGraphicsRequirementsKHR_ptr;
-		public static XrResult xrGetVulkanGraphicsRequirementsKHR(XrInstance instance,  systemId, XrGraphicsRequirementsVulkanKHR* graphicsRequirements)
+		public static XrResult xrGetVulkanGraphicsRequirementsKHR(XrInstance instance, ulong systemId, XrGraphicsRequirementsVulkanKHR* graphicsRequirements)
 			=> xrGetVulkanGraphicsRequirementsKHR_ptr(instance, systemId, graphicsRequirements);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrGetD3D11GraphicsRequirementsKHRDelegate(XrInstance instance,  systemId, XrGraphicsRequirementsD3D11KHR* graphicsRequirements);
+		private delegate XrResult xrGetD3D11GraphicsRequirementsKHRDelegate(XrInstance instance, ulong systemId, XrGraphicsRequirementsD3D11KHR* graphicsRequirements);
 		private static xrGetD3D11GraphicsRequirementsKHRDelegate xrGetD3D11GraphicsRequirementsKHR_ptr;
-		public static XrResult xrGetD3D11GraphicsRequirementsKHR(XrInstance instance,  systemId, XrGraphicsRequirementsD3D11KHR* graphicsRequirements)
+		public static XrResult xrGetD3D11GraphicsRequirementsKHR(XrInstance instance, ulong systemId, XrGraphicsRequirementsD3D11KHR* graphicsRequirements)
 			=> xrGetD3D11GraphicsRequirementsKHR_ptr(instance, systemId, graphicsRequirements);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrGetD3D12GraphicsRequirementsKHRDelegate(XrInstance instance,  systemId, XrGraphicsRequirementsD3D12KHR* graphicsRequirements);
+		private delegate XrResult xrGetD3D12GraphicsRequirementsKHRDelegate(XrInstance instance, ulong systemId, XrGraphicsRequirementsD3D12KHR* graphicsRequirements);
 		private static xrGetD3D12GraphicsRequirementsKHRDelegate xrGetD3D12GraphicsRequirementsKHR_ptr;
-		public static XrResult xrGetD3D12GraphicsRequirementsKHR(XrInstance instance,  systemId, XrGraphicsRequirementsD3D12KHR* graphicsRequirements)
+		public static XrResult xrGetD3D12GraphicsRequirementsKHR(XrInstance instance, ulong systemId, XrGraphicsRequirementsD3D12KHR* graphicsRequirements)
 			=> xrGetD3D12GraphicsRequirementsKHR_ptr(instance, systemId, graphicsRequirements);
 
 		[UnmanagedFunctionPointer(CallConv)]
@@ -456,27 +456,27 @@ namespace WaveEngine.Bindings.OpenXR
 			=> xrGetVisibilityMaskKHR_ptr(session, viewConfigurationType, viewIndex, visibilityMaskType, visibilityMask);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrConvertWin32PerformanceCounterToTimeKHRDelegate(XrInstance instance, LARGE_INTEGER* performanceCounter, long* time);
+		private delegate XrResult xrConvertWin32PerformanceCounterToTimeKHRDelegate(XrInstance instance, IntPtr performanceCounter, long* time);
 		private static xrConvertWin32PerformanceCounterToTimeKHRDelegate xrConvertWin32PerformanceCounterToTimeKHR_ptr;
-		public static XrResult xrConvertWin32PerformanceCounterToTimeKHR(XrInstance instance, LARGE_INTEGER* performanceCounter, long* time)
+		public static XrResult xrConvertWin32PerformanceCounterToTimeKHR(XrInstance instance, IntPtr performanceCounter, long* time)
 			=> xrConvertWin32PerformanceCounterToTimeKHR_ptr(instance, performanceCounter, time);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrConvertTimeToWin32PerformanceCounterKHRDelegate(XrInstance instance, long time, LARGE_INTEGER* performanceCounter);
+		private delegate XrResult xrConvertTimeToWin32PerformanceCounterKHRDelegate(XrInstance instance, long time, IntPtr performanceCounter);
 		private static xrConvertTimeToWin32PerformanceCounterKHRDelegate xrConvertTimeToWin32PerformanceCounterKHR_ptr;
-		public static XrResult xrConvertTimeToWin32PerformanceCounterKHR(XrInstance instance, long time, LARGE_INTEGER* performanceCounter)
+		public static XrResult xrConvertTimeToWin32PerformanceCounterKHR(XrInstance instance, long time, IntPtr performanceCounter)
 			=> xrConvertTimeToWin32PerformanceCounterKHR_ptr(instance, time, performanceCounter);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrConvertTimespecTimeToTimeKHRDelegate(XrInstance instance, timespec* timespecTime, long* time);
+		private delegate XrResult xrConvertTimespecTimeToTimeKHRDelegate(XrInstance instance, IntPtr timespecTime, long* time);
 		private static xrConvertTimespecTimeToTimeKHRDelegate xrConvertTimespecTimeToTimeKHR_ptr;
-		public static XrResult xrConvertTimespecTimeToTimeKHR(XrInstance instance, timespec* timespecTime, long* time)
+		public static XrResult xrConvertTimespecTimeToTimeKHR(XrInstance instance, IntPtr timespecTime, long* time)
 			=> xrConvertTimespecTimeToTimeKHR_ptr(instance, timespecTime, time);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrConvertTimeToTimespecTimeKHRDelegate(XrInstance instance, long time, timespec* timespecTime);
+		private delegate XrResult xrConvertTimeToTimespecTimeKHRDelegate(XrInstance instance, long time, IntPtr timespecTime);
 		private static xrConvertTimeToTimespecTimeKHRDelegate xrConvertTimeToTimespecTimeKHR_ptr;
-		public static XrResult xrConvertTimeToTimespecTimeKHR(XrInstance instance, long time, timespec* timespecTime)
+		public static XrResult xrConvertTimeToTimespecTimeKHR(XrInstance instance, long time, IntPtr timespecTime)
 			=> xrConvertTimeToTimespecTimeKHR_ptr(instance, time, timespecTime);
 
 		[UnmanagedFunctionPointer(CallConv)]
@@ -498,33 +498,33 @@ namespace WaveEngine.Bindings.OpenXR
 			=> xrDestroySpatialAnchorMSFT_ptr(anchor);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrSetInputDeviceActiveEXTDelegate(XrSession session,  interactionProfile,  topLevelPath, uint isActive);
+		private delegate XrResult xrSetInputDeviceActiveEXTDelegate(XrSession session, ulong interactionProfile, ulong topLevelPath, XrBool32 isActive);
 		private static xrSetInputDeviceActiveEXTDelegate xrSetInputDeviceActiveEXT_ptr;
-		public static XrResult xrSetInputDeviceActiveEXT(XrSession session,  interactionProfile,  topLevelPath, uint isActive)
+		public static XrResult xrSetInputDeviceActiveEXT(XrSession session, ulong interactionProfile, ulong topLevelPath, XrBool32 isActive)
 			=> xrSetInputDeviceActiveEXT_ptr(session, interactionProfile, topLevelPath, isActive);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrSetInputDeviceStateBoolEXTDelegate(XrSession session,  topLevelPath,  inputSourcePath, uint state);
+		private delegate XrResult xrSetInputDeviceStateBoolEXTDelegate(XrSession session, ulong topLevelPath, ulong inputSourcePath, XrBool32 state);
 		private static xrSetInputDeviceStateBoolEXTDelegate xrSetInputDeviceStateBoolEXT_ptr;
-		public static XrResult xrSetInputDeviceStateBoolEXT(XrSession session,  topLevelPath,  inputSourcePath, uint state)
+		public static XrResult xrSetInputDeviceStateBoolEXT(XrSession session, ulong topLevelPath, ulong inputSourcePath, XrBool32 state)
 			=> xrSetInputDeviceStateBoolEXT_ptr(session, topLevelPath, inputSourcePath, state);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrSetInputDeviceStateFloatEXTDelegate(XrSession session,  topLevelPath,  inputSourcePath, float state);
+		private delegate XrResult xrSetInputDeviceStateFloatEXTDelegate(XrSession session, ulong topLevelPath, ulong inputSourcePath, float state);
 		private static xrSetInputDeviceStateFloatEXTDelegate xrSetInputDeviceStateFloatEXT_ptr;
-		public static XrResult xrSetInputDeviceStateFloatEXT(XrSession session,  topLevelPath,  inputSourcePath, float state)
+		public static XrResult xrSetInputDeviceStateFloatEXT(XrSession session, ulong topLevelPath, ulong inputSourcePath, float state)
 			=> xrSetInputDeviceStateFloatEXT_ptr(session, topLevelPath, inputSourcePath, state);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrSetInputDeviceStateVector2fEXTDelegate(XrSession session,  topLevelPath,  inputSourcePath, XrVector2f state);
+		private delegate XrResult xrSetInputDeviceStateVector2fEXTDelegate(XrSession session, ulong topLevelPath, ulong inputSourcePath, XrVector2f state);
 		private static xrSetInputDeviceStateVector2fEXTDelegate xrSetInputDeviceStateVector2fEXT_ptr;
-		public static XrResult xrSetInputDeviceStateVector2fEXT(XrSession session,  topLevelPath,  inputSourcePath, XrVector2f state)
+		public static XrResult xrSetInputDeviceStateVector2fEXT(XrSession session, ulong topLevelPath, ulong inputSourcePath, XrVector2f state)
 			=> xrSetInputDeviceStateVector2fEXT_ptr(session, topLevelPath, inputSourcePath, state);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrSetInputDeviceLocationEXTDelegate(XrSession session,  topLevelPath,  inputSourcePath, XrSpace space, XrPosef pose);
+		private delegate XrResult xrSetInputDeviceLocationEXTDelegate(XrSession session, ulong topLevelPath, ulong inputSourcePath, XrSpace space, XrPosef pose);
 		private static xrSetInputDeviceLocationEXTDelegate xrSetInputDeviceLocationEXT_ptr;
-		public static XrResult xrSetInputDeviceLocationEXT(XrSession session,  topLevelPath,  inputSourcePath, XrSpace space, XrPosef pose)
+		public static XrResult xrSetInputDeviceLocationEXT(XrSession session, ulong topLevelPath, ulong inputSourcePath, XrSpace space, XrPosef pose)
 			=> xrSetInputDeviceLocationEXT_ptr(session, topLevelPath, inputSourcePath, space, pose);
 
 		[UnmanagedFunctionPointer(CallConv)]
@@ -564,39 +564,39 @@ namespace WaveEngine.Bindings.OpenXR
 			=> xrUpdateHandMeshMSFT_ptr(handTracker, updateInfo, handMesh);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrGetControllerModelKeyMSFTDelegate(XrSession session,  topLevelUserPath, XrControllerModelKeyStateMSFT* controllerModelKeyState);
+		private delegate XrResult xrGetControllerModelKeyMSFTDelegate(XrSession session, ulong topLevelUserPath, XrControllerModelKeyStateMSFT* controllerModelKeyState);
 		private static xrGetControllerModelKeyMSFTDelegate xrGetControllerModelKeyMSFT_ptr;
-		public static XrResult xrGetControllerModelKeyMSFT(XrSession session,  topLevelUserPath, XrControllerModelKeyStateMSFT* controllerModelKeyState)
+		public static XrResult xrGetControllerModelKeyMSFT(XrSession session, ulong topLevelUserPath, XrControllerModelKeyStateMSFT* controllerModelKeyState)
 			=> xrGetControllerModelKeyMSFT_ptr(session, topLevelUserPath, controllerModelKeyState);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrLoadControllerModelMSFTDelegate(XrSession session,  modelKey, uint bufferCapacityInput, uint* bufferCountOutput, byte* buffer);
+		private delegate XrResult xrLoadControllerModelMSFTDelegate(XrSession session, ulong modelKey, uint bufferCapacityInput, uint* bufferCountOutput, byte* buffer);
 		private static xrLoadControllerModelMSFTDelegate xrLoadControllerModelMSFT_ptr;
-		public static XrResult xrLoadControllerModelMSFT(XrSession session,  modelKey, uint bufferCapacityInput, uint* bufferCountOutput, byte* buffer)
+		public static XrResult xrLoadControllerModelMSFT(XrSession session, ulong modelKey, uint bufferCapacityInput, uint* bufferCountOutput, byte* buffer)
 			=> xrLoadControllerModelMSFT_ptr(session, modelKey, bufferCapacityInput, bufferCountOutput, buffer);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrGetControllerModelPropertiesMSFTDelegate(XrSession session,  modelKey, XrControllerModelPropertiesMSFT* properties);
+		private delegate XrResult xrGetControllerModelPropertiesMSFTDelegate(XrSession session, ulong modelKey, XrControllerModelPropertiesMSFT* properties);
 		private static xrGetControllerModelPropertiesMSFTDelegate xrGetControllerModelPropertiesMSFT_ptr;
-		public static XrResult xrGetControllerModelPropertiesMSFT(XrSession session,  modelKey, XrControllerModelPropertiesMSFT* properties)
+		public static XrResult xrGetControllerModelPropertiesMSFT(XrSession session, ulong modelKey, XrControllerModelPropertiesMSFT* properties)
 			=> xrGetControllerModelPropertiesMSFT_ptr(session, modelKey, properties);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrGetControllerModelStateMSFTDelegate(XrSession session,  modelKey, XrControllerModelStateMSFT* state);
+		private delegate XrResult xrGetControllerModelStateMSFTDelegate(XrSession session, ulong modelKey, XrControllerModelStateMSFT* state);
 		private static xrGetControllerModelStateMSFTDelegate xrGetControllerModelStateMSFT_ptr;
-		public static XrResult xrGetControllerModelStateMSFT(XrSession session,  modelKey, XrControllerModelStateMSFT* state)
+		public static XrResult xrGetControllerModelStateMSFT(XrSession session, ulong modelKey, XrControllerModelStateMSFT* state)
 			=> xrGetControllerModelStateMSFT_ptr(session, modelKey, state);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrCreateSpatialAnchorFromPerceptionAnchorMSFTDelegate(XrSession session, IUnknown* perceptionAnchor, XrSpatialAnchorMSFT* anchor);
+		private delegate XrResult xrCreateSpatialAnchorFromPerceptionAnchorMSFTDelegate(XrSession session, IntPtr perceptionAnchor, XrSpatialAnchorMSFT* anchor);
 		private static xrCreateSpatialAnchorFromPerceptionAnchorMSFTDelegate xrCreateSpatialAnchorFromPerceptionAnchorMSFT_ptr;
-		public static XrResult xrCreateSpatialAnchorFromPerceptionAnchorMSFT(XrSession session, IUnknown* perceptionAnchor, XrSpatialAnchorMSFT* anchor)
+		public static XrResult xrCreateSpatialAnchorFromPerceptionAnchorMSFT(XrSession session, IntPtr perceptionAnchor, XrSpatialAnchorMSFT* anchor)
 			=> xrCreateSpatialAnchorFromPerceptionAnchorMSFT_ptr(session, perceptionAnchor, anchor);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrTryGetPerceptionAnchorFromSpatialAnchorMSFTDelegate(XrSession session, XrSpatialAnchorMSFT anchor, IUnknown** perceptionAnchor);
+		private delegate XrResult xrTryGetPerceptionAnchorFromSpatialAnchorMSFTDelegate(XrSession session, XrSpatialAnchorMSFT anchor, IntPtr perceptionAnchor);
 		private static xrTryGetPerceptionAnchorFromSpatialAnchorMSFTDelegate xrTryGetPerceptionAnchorFromSpatialAnchorMSFT_ptr;
-		public static XrResult xrTryGetPerceptionAnchorFromSpatialAnchorMSFT(XrSession session, XrSpatialAnchorMSFT anchor, IUnknown** perceptionAnchor)
+		public static XrResult xrTryGetPerceptionAnchorFromSpatialAnchorMSFT(XrSession session, XrSpatialAnchorMSFT anchor, IntPtr perceptionAnchor)
 			=> xrTryGetPerceptionAnchorFromSpatialAnchorMSFT_ptr(session, anchor, perceptionAnchor);
 
 		[UnmanagedFunctionPointer(CallConv)]
@@ -606,21 +606,21 @@ namespace WaveEngine.Bindings.OpenXR
 			=> xrInitializeLoaderKHR_ptr(loaderInitInfo);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrCreateVulkanInstanceKHRDelegate(XrInstance instance, XrVulkanInstanceCreateInfoKHR* createInfo, VkInstance* vulkanInstance, VkResult* vulkanResult);
+		private delegate XrResult xrCreateVulkanInstanceKHRDelegate(XrInstance instance, XrVulkanInstanceCreateInfoKHR* createInfo, IntPtr vulkanInstance, IntPtr vulkanResult);
 		private static xrCreateVulkanInstanceKHRDelegate xrCreateVulkanInstanceKHR_ptr;
-		public static XrResult xrCreateVulkanInstanceKHR(XrInstance instance, XrVulkanInstanceCreateInfoKHR* createInfo, VkInstance* vulkanInstance, VkResult* vulkanResult)
+		public static XrResult xrCreateVulkanInstanceKHR(XrInstance instance, XrVulkanInstanceCreateInfoKHR* createInfo, IntPtr vulkanInstance, IntPtr vulkanResult)
 			=> xrCreateVulkanInstanceKHR_ptr(instance, createInfo, vulkanInstance, vulkanResult);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrCreateVulkanDeviceKHRDelegate(XrInstance instance, XrVulkanDeviceCreateInfoKHR* createInfo, VkDevice* vulkanDevice, VkResult* vulkanResult);
+		private delegate XrResult xrCreateVulkanDeviceKHRDelegate(XrInstance instance, XrVulkanDeviceCreateInfoKHR* createInfo, IntPtr vulkanDevice, IntPtr vulkanResult);
 		private static xrCreateVulkanDeviceKHRDelegate xrCreateVulkanDeviceKHR_ptr;
-		public static XrResult xrCreateVulkanDeviceKHR(XrInstance instance, XrVulkanDeviceCreateInfoKHR* createInfo, VkDevice* vulkanDevice, VkResult* vulkanResult)
+		public static XrResult xrCreateVulkanDeviceKHR(XrInstance instance, XrVulkanDeviceCreateInfoKHR* createInfo, IntPtr vulkanDevice, IntPtr vulkanResult)
 			=> xrCreateVulkanDeviceKHR_ptr(instance, createInfo, vulkanDevice, vulkanResult);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrGetVulkanGraphicsDevice2KHRDelegate(XrInstance instance, XrVulkanGraphicsDeviceGetInfoKHR* getInfo, VkPhysicalDevice* vulkanPhysicalDevice);
+		private delegate XrResult xrGetVulkanGraphicsDevice2KHRDelegate(XrInstance instance, XrVulkanGraphicsDeviceGetInfoKHR* getInfo, IntPtr vulkanPhysicalDevice);
 		private static xrGetVulkanGraphicsDevice2KHRDelegate xrGetVulkanGraphicsDevice2KHR_ptr;
-		public static XrResult xrGetVulkanGraphicsDevice2KHR(XrInstance instance, XrVulkanGraphicsDeviceGetInfoKHR* getInfo, VkPhysicalDevice* vulkanPhysicalDevice)
+		public static XrResult xrGetVulkanGraphicsDevice2KHR(XrInstance instance, XrVulkanGraphicsDeviceGetInfoKHR* getInfo, IntPtr vulkanPhysicalDevice)
 			=> xrGetVulkanGraphicsDevice2KHR_ptr(instance, getInfo, vulkanPhysicalDevice);
 
 		[UnmanagedFunctionPointer(CallConv)]

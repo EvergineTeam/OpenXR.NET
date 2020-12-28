@@ -173,7 +173,7 @@ namespace WaveEngine.Bindings.OpenXR
 	{
 		public XrStructureType type;
 		public void* next;
-		public  systemId;
+		public ulong systemId;
 		public uint vendorId;
 		public fixed byte systemName[(int)OpenXRNative.XR_MAX_SYSTEM_NAME_SIZE];
 		public XrSystemGraphicsProperties graphicsProperties;
@@ -191,8 +191,8 @@ namespace WaveEngine.Bindings.OpenXR
 	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct XrSystemTrackingProperties
 	{
-		public uint orientationTracking;
-		public uint positionTracking;
+		public XrBool32 orientationTracking;
+		public XrBool32 positionTracking;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -200,8 +200,8 @@ namespace WaveEngine.Bindings.OpenXR
 	{
 		public XrStructureType type;
 		public void* next;
-		public HDC hDC;
-		public HGLRC hGLRC;
+		public IntPtr hDC;
+		public IntPtr hGLRC;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -211,9 +211,9 @@ namespace WaveEngine.Bindings.OpenXR
 		public void* next;
 		public IntPtr xDisplay;
 		public uint visualid;
-		public GLXFBConfig glxFBConfig;
-		public GLXDrawable glxDrawable;
-		public GLXContext glxContext;
+		public IntPtr glxFBConfig;
+		public IntPtr glxDrawable;
+		public IntPtr glxContext;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -223,10 +223,10 @@ namespace WaveEngine.Bindings.OpenXR
 		public void* next;
 		public IntPtr connection;
 		public uint screenNumber;
-		public xcb_glx_fbconfig_t fbconfigid;
+		public IntPtr fbconfigid;
 		public IntPtr visualid;
-		public xcb_glx_drawable_t glxDrawable;
-		public xcb_glx_context_t glxContext;
+		public IntPtr glxDrawable;
+		public IntPtr glxContext;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -242,7 +242,7 @@ namespace WaveEngine.Bindings.OpenXR
 	{
 		public XrStructureType type;
 		public void* next;
-		public ID3D11Device* device;
+		public IntPtr device;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -250,8 +250,8 @@ namespace WaveEngine.Bindings.OpenXR
 	{
 		public XrStructureType type;
 		public void* next;
-		public ID3D12Device* device;
-		public ID3D12CommandQueue* queue;
+		public IntPtr device;
+		public IntPtr queue;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -259,9 +259,9 @@ namespace WaveEngine.Bindings.OpenXR
 	{
 		public XrStructureType type;
 		public void* next;
-		public EGLDisplay display;
-		public EGLConfig config;
-		public EGLContext context;
+		public IntPtr display;
+		public IntPtr config;
+		public IntPtr context;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -269,9 +269,9 @@ namespace WaveEngine.Bindings.OpenXR
 	{
 		public XrStructureType type;
 		public void* next;
-		public VkInstance instance;
-		public VkPhysicalDevice physicalDevice;
-		public VkDevice device;
+		public IntPtr instance;
+		public IntPtr physicalDevice;
+		public IntPtr device;
 		public uint queueFamilyIndex;
 		public uint queueIndex;
 	}
@@ -282,7 +282,7 @@ namespace WaveEngine.Bindings.OpenXR
 		public XrStructureType type;
 		public void* next;
 		public ulong createFlags;
-		public  systemId;
+		public ulong systemId;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -337,7 +337,7 @@ namespace WaveEngine.Bindings.OpenXR
 	{
 		public XrStructureType type;
 		public void* next;
-		public VkImage image;
+		public IntPtr image;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -345,7 +345,7 @@ namespace WaveEngine.Bindings.OpenXR
 	{
 		public XrStructureType type;
 		public void* next;
-		public ID3D11Texture2D* texture;
+		public IntPtr texture;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -353,7 +353,7 @@ namespace WaveEngine.Bindings.OpenXR
 	{
 		public XrStructureType type;
 		public void* next;
-		public ID3D12Resource* texture;
+		public IntPtr texture;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -393,7 +393,7 @@ namespace WaveEngine.Bindings.OpenXR
 		public XrStructureType type;
 		public void* next;
 		public XrAction action;
-		public  subactionPath;
+		public ulong subactionPath;
 		public XrPosef poseInActionSpace;
 	}
 
@@ -603,7 +603,7 @@ namespace WaveEngine.Bindings.OpenXR
 		public void* next;
 		public long predictedDisplayTime;
 		public long predictedDisplayPeriod;
-		public uint shouldRender;
+		public XrBool32 shouldRender;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -4671,7 +4671,7 @@ namespace WaveEngine.Bindings.OpenXR
 		public XrSession session;
 		public XrReferenceSpaceType referenceSpaceType;
 		public long changeTime;
-		public uint poseValid;
+		public XrBool32 poseValid;
 		public XrPosef poseInPreviousSpace;
 	}
 
@@ -4702,7 +4702,7 @@ namespace WaveEngine.Bindings.OpenXR
 		public XrStructureType type;
 		public void* next;
 		public XrViewConfigurationType viewConfigurationType;
-		public uint fovMutable;
+		public XrBool32 fovMutable;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -4710,10 +4710,10 @@ namespace WaveEngine.Bindings.OpenXR
 	{
 		public XrStructureType type;
 		public void* next;
-		public uint currentState;
-		public uint changedSinceLastSync;
+		public XrBool32 currentState;
+		public XrBool32 changedSinceLastSync;
 		public long lastChangeTime;
-		public uint isActive;
+		public XrBool32 isActive;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -4722,9 +4722,9 @@ namespace WaveEngine.Bindings.OpenXR
 		public XrStructureType type;
 		public void* next;
 		public float currentState;
-		public uint changedSinceLastSync;
+		public XrBool32 changedSinceLastSync;
 		public long lastChangeTime;
-		public uint isActive;
+		public XrBool32 isActive;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -4733,9 +4733,9 @@ namespace WaveEngine.Bindings.OpenXR
 		public XrStructureType type;
 		public void* next;
 		public XrVector2f currentState;
-		public uint changedSinceLastSync;
+		public XrBool32 changedSinceLastSync;
 		public long lastChangeTime;
-		public uint isActive;
+		public XrBool32 isActive;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -4743,7 +4743,7 @@ namespace WaveEngine.Bindings.OpenXR
 	{
 		public XrStructureType type;
 		public void* next;
-		public uint isActive;
+		public XrBool32 isActive;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -4752,7 +4752,7 @@ namespace WaveEngine.Bindings.OpenXR
 		public XrStructureType type;
 		public void* next;
 		public XrAction action;
-		public  subactionPath;
+		public ulong subactionPath;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -4761,7 +4761,7 @@ namespace WaveEngine.Bindings.OpenXR
 		public XrStructureType type;
 		public void* next;
 		public XrAction action;
-		public  subactionPath;
+		public ulong subactionPath;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -4778,7 +4778,7 @@ namespace WaveEngine.Bindings.OpenXR
 	public unsafe partial struct XrActionSuggestedBinding
 	{
 		public XrAction action;
-		public  binding;
+		public ulong binding;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -4786,7 +4786,7 @@ namespace WaveEngine.Bindings.OpenXR
 	{
 		public XrStructureType type;
 		public void* next;
-		public  interactionProfile;
+		public ulong interactionProfile;
 		public uint countSuggestedBindings;
 		public XrActionSuggestedBinding* suggestedBindings;
 	}
@@ -4795,7 +4795,7 @@ namespace WaveEngine.Bindings.OpenXR
 	public unsafe partial struct XrActiveActionSet
 	{
 		public XrActionSet actionSet;
-		public  subactionPath;
+		public ulong subactionPath;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -4829,7 +4829,7 @@ namespace WaveEngine.Bindings.OpenXR
 	{
 		public XrStructureType type;
 		public void* next;
-		public  sourcePath;
+		public ulong sourcePath;
 		public ulong whichComponents;
 	}
 
@@ -4846,7 +4846,7 @@ namespace WaveEngine.Bindings.OpenXR
 	{
 		public XrStructureType type;
 		public void* next;
-		public  interactionProfile;
+		public ulong interactionProfile;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -4857,7 +4857,7 @@ namespace WaveEngine.Bindings.OpenXR
 		public fixed byte actionName[(int)OpenXRNative.XR_MAX_ACTION_NAME_SIZE];
 		public XrActionType actionType;
 		public uint countSubactionPaths;
-		public * subactionPaths;
+		public ulong* subactionPaths;
 		public fixed byte localizedActionName[(int)OpenXRNative.XR_MAX_LOCALIZED_ACTION_NAME_SIZE];
 	}
 
@@ -4876,7 +4876,7 @@ namespace WaveEngine.Bindings.OpenXR
 		public XrStructureType type;
 		public void* next;
 		public uint viewFormatCount;
-		public VkFormat* viewFormats;
+		public IntPtr viewFormats;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -4967,8 +4967,8 @@ namespace WaveEngine.Bindings.OpenXR
 	{
 		public XrStructureType type;
 		public void* next;
-		public LUID adapterLuid;
-		public D3D_FEATURE_LEVEL minFeatureLevel;
+		public IntPtr adapterLuid;
+		public uint minFeatureLevel;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -4976,8 +4976,8 @@ namespace WaveEngine.Bindings.OpenXR
 	{
 		public XrStructureType type;
 		public void* next;
-		public LUID adapterLuid;
-		public D3D_FEATURE_LEVEL minFeatureLevel;
+		public IntPtr adapterLuid;
+		public uint minFeatureLevel;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -4985,11 +4985,11 @@ namespace WaveEngine.Bindings.OpenXR
 	{
 		public XrStructureType type;
 		public void* next;
-		public  systemId;
+		public ulong systemId;
 		public ulong createFlags;
 		public IntPtr pfnGetInstanceProcAddr;
-		public VkInstanceCreateInfo* vulkanCreateInfo;
-		public VkAllocationCallbacks* vulkanAllocator;
+		public IntPtr vulkanCreateInfo;
+		public IntPtr vulkanAllocator;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -4997,12 +4997,12 @@ namespace WaveEngine.Bindings.OpenXR
 	{
 		public XrStructureType type;
 		public void* next;
-		public  systemId;
+		public ulong systemId;
 		public ulong createFlags;
 		public IntPtr pfnGetInstanceProcAddr;
-		public VkPhysicalDevice vulkanPhysicalDevice;
-		public VkDeviceCreateInfo* vulkanCreateInfo;
-		public VkAllocationCallbacks* vulkanAllocator;
+		public IntPtr vulkanPhysicalDevice;
+		public IntPtr vulkanCreateInfo;
+		public IntPtr vulkanAllocator;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5010,8 +5010,8 @@ namespace WaveEngine.Bindings.OpenXR
 	{
 		public XrStructureType type;
 		public void* next;
-		public  systemId;
-		public VkInstance vulkanInstance;
+		public ulong systemId;
+		public IntPtr vulkanInstance;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5028,7 +5028,7 @@ namespace WaveEngine.Bindings.OpenXR
 	{
 		public XrStructureType type;
 		public void* next;
-		public uint visible;
+		public XrBool32 visible;
 		public ulong flags;
 	}
 
@@ -5067,7 +5067,7 @@ namespace WaveEngine.Bindings.OpenXR
 		public XrStructureType type;
 		public void* next;
 		public XrAction action;
-		public  binding;
+		public ulong binding;
 		public float onThreshold;
 		public float offThreshold;
 		public XrHapticBaseHeader* onHaptic;
@@ -5095,7 +5095,7 @@ namespace WaveEngine.Bindings.OpenXR
 	{
 		public XrStructureType type;
 		public void* next;
-		public uint supportsEyeGazeInteraction;
+		public XrBool32 supportsEyeGazeInteraction;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5131,9 +5131,9 @@ namespace WaveEngine.Bindings.OpenXR
 		public XrStructureType type;
 		public void* next;
 		public IntPtr getProcAddress;
-		public EGLDisplay display;
-		public EGLConfig config;
-		public EGLContext context;
+		public IntPtr display;
+		public IntPtr config;
+		public IntPtr context;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5166,7 +5166,7 @@ namespace WaveEngine.Bindings.OpenXR
 	{
 		public XrStructureType type;
 		public void* next;
-		public uint supportsHandTracking;
+		public XrBool32 supportsHandTracking;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5208,7 +5208,7 @@ namespace WaveEngine.Bindings.OpenXR
 	{
 		public XrStructureType type;
 		public void* next;
-		public uint isActive;
+		public XrBool32 isActive;
 		public uint jointCount;
 		public XrHandJointLocationEXT* jointLocations;
 	}
@@ -5245,9 +5245,9 @@ namespace WaveEngine.Bindings.OpenXR
 	{
 		public XrStructureType type;
 		public void* next;
-		public uint isActive;
-		public uint indexBufferChanged;
-		public uint vertexBufferChanged;
+		public XrBool32 isActive;
+		public XrBool32 indexBufferChanged;
+		public XrBool32 vertexBufferChanged;
 		public XrHandMeshIndexBufferMSFT indexBuffer;
 		public XrHandMeshVertexBufferMSFT vertexBuffer;
 	}
@@ -5282,7 +5282,7 @@ namespace WaveEngine.Bindings.OpenXR
 	{
 		public XrStructureType type;
 		public void* next;
-		public uint supportsHandTrackingMesh;
+		public XrBool32 supportsHandTrackingMesh;
 		public uint maxHandMeshIndexCount;
 		public uint maxHandMeshVertexCount;
 	}
@@ -5310,7 +5310,7 @@ namespace WaveEngine.Bindings.OpenXR
 		public XrStructureType type;
 		public void* next;
 		public XrViewConfigurationType viewConfigurationType;
-		public uint active;
+		public XrBool32 active;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5355,8 +5355,8 @@ namespace WaveEngine.Bindings.OpenXR
 	{
 		public XrStructureType type;
 		public void* next;
-		public IUnknown* holographicSpace;
-		public IUnknown* coreWindow;
+		public IntPtr holographicSpace;
+		public IntPtr coreWindow;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5405,7 +5405,7 @@ namespace WaveEngine.Bindings.OpenXR
 	{
 		public XrStructureType type;
 		public void* next;
-		public  modelKey;
+		public ulong modelKey;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
