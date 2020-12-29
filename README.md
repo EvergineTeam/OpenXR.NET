@@ -9,7 +9,7 @@ This binding is generated from xr.xml file included in the KhronosRegistry folde
 
 - OpenXR 1.0
 - All OpenXR Extensions
-- Raw low level binding using usafe c# code.
+- Raw low level binding using unsafe c# code.
 
 ## Nuget Packages
 
