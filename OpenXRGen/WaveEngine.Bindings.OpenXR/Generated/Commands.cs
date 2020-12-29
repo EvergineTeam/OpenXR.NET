@@ -653,8 +653,13 @@ namespace WaveEngine.Bindings.OpenXR
 		public static XrResult xrSetColorSpaceFB(XrSession session, XrColorSpaceFB colorspace)
 			=> xrSetColorSpaceFB_ptr(session, colorspace);
 
-		public static void LoadFuncionPointers()
+		public static void LoadFuncionPointers(XrInstance instance = default)
 		{
+			if (instance != default)
+			{
+				nativeLib.instance = instance;
+			}
+
 			nativeLib.LoadFunction("xrGetInstanceProcAddr",  out xrGetInstanceProcAddr_ptr);
 			nativeLib.LoadFunction("xrEnumerateApiLayerProperties",  out xrEnumerateApiLayerProperties_ptr);
 			nativeLib.LoadFunction("xrEnumerateInstanceExtensionProperties",  out xrEnumerateInstanceExtensionProperties_ptr);

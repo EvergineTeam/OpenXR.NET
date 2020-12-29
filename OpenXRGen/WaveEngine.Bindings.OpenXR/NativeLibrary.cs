@@ -9,6 +9,7 @@ namespace WaveEngine.Bindings.OpenXR
     {
         private readonly string libraryName;
         private readonly IntPtr libraryHandle;
+        internal XrInstance instance;
 
         public IntPtr NativeHandle => libraryHandle;
 
@@ -29,6 +30,13 @@ namespace WaveEngine.Bindings.OpenXR
         public unsafe void LoadFunction<T>(string name, out T field)
         {
             IntPtr funcPtr = LoadFunction(name);
+            if (funcPtr == IntPtr.Zero)
+            {
+                if (instance != XrInstance.Null)
+                {
+                    OpenXRNative.xrGetInstanceProcAddr(instance, (byte*)Marshal.StringToHGlobalAnsi(name), funcPtr);
+                }
+            }
 
             if (funcPtr != IntPtr.Zero)
             {
