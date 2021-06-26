@@ -34,7 +34,7 @@ namespace WaveEngine.Bindings.OpenXR
             {
                 if (instance != XrInstance.Null)
                 {
-                    OpenXRNative.xrGetInstanceProcAddr(instance, (byte*)Marshal.StringToHGlobalAnsi(name), funcPtr);
+                    OpenXRNative.xrGetInstanceProcAddr(instance, (byte*)Marshal.StringToHGlobalAnsi(name), new IntPtr(&funcPtr));
                 }
             }
 
