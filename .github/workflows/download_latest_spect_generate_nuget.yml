@@ -6,9 +6,8 @@ jobs:
   build:
     runs-on: windows-latest
     env:
-      nugetConfigPath: OpenXRGen/WaveEngine.Bindings.OpenXR/NuGet.config
-      nugetOutputPath: nupkgs
-      appversion: 3.2.0${{  github.run_number  }}-preview
+      nugetConfigPath: ${{ 'OpenXRGen/WaveEngine.Bindings.OpenXR/NuGet.config'  }}
+      nugetOutputPath: ${{  'nupkgs'  }}
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-dotnet@v1
@@ -22,4 +21,4 @@ jobs:
       - name: Add WaveNightlyFeed
         run: sources add -Name "WaveNightlyFeed" -Source "https://waveengineteam.pkgs.visualstudio.com/_packaging/WaveEngine-nightly/nuget/v3/index.json" -Username "vsts" -Password "$(WaveNightlyToken)" -StorePasswordInClearText -ConfigFile $(nugetConfigPath)'
       - name: Generate NuGet packages
-        run: powershell ./Generate-NuGets.ps1 -Version ${{  appversion  }} -outputfolder ${{  nugetOutputPath  }}
+        run: powershell ./Generate-NuGets.ps1 -Version  3.2.0${{  github.run_number  }}-preview -outputfolder ${{  nugetOutputPath  }}
