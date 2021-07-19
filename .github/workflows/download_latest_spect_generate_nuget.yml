@@ -21,4 +21,4 @@ jobs:
       - name: Add WaveNightlyFeed
         run: sources add -Name "WaveNightlyFeed" -Source "https://waveengineteam.pkgs.visualstudio.com/_packaging/WaveEngine-nightly/nuget/v3/index.json" -Username "vsts" -Password "$(WaveNightlyToken)" -StorePasswordInClearText -ConfigFile $(nugetConfigPath)'
       - name: Generate NuGet packages
-        run: powershell ./Generate-NuGets.ps1 -Version  3.2.0${{  github.run_number  }}-preview -outputfolder ${{  nugetOutputPath  }}
+        run: powershell ./Generate-NuGets.ps1 -Version  3.2.0${{  github.run_number  }}-preview -outputfolder ${{  env.nugetOutputPath  }}
