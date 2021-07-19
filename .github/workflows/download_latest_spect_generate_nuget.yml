@@ -8,6 +8,8 @@ jobs:
     env:
       nugetConfigPath: ${{ 'OpenXRGen/WaveEngine.Bindings.OpenXR/NuGet.config'  }}
       nugetOutputPath: ${{  'nupkgs'  }}
+      xrFile: ${{  'xr.xml'  }}
+      xrPath: ${{  'KhronosRegistry'  }}
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-dotnet@v1
@@ -21,14 +23,14 @@ jobs:
       #- name: Add WaveNightlyFeed
       #  run: sources add -Name "WaveNightlyFeed" -Source "https://waveengineteam.pkgs.visualstudio.com/_packaging/WaveEngine-nightly/nuget/v3/index.json" -Username "vsts" -Password "$(WaveNightlyToken)" -StorePasswordInClearText -ConfigFile $(nugetConfigPath)'
       - name: remove vk xml
-        run: rm OpenXR.NET/KhronosRegistry/xr.xml
+        run: rm ${{ xrPath  }}/${{  xrFile  }}
       - name: download xr file
         uses: carlosperate/download-file-action@v1.0.3
         with:
           # URL of the file to download
           file-url: https://raw.githubusercontent.com/KhronosGroup/OpenXR-Docs/master/specification/registry/xr.xml
           # Path to download the file
-          location: OpenXR.NET/KhronosRegistry/
+          location: ${{ xrPath  }}/
       - name: Generate NuGet packages
         run: powershell ./Generate-NuGets.ps1 -Version  3.2.0${{  github.run_number  }}-preview -outputfolder ${{  env.nugetOutputPath  }}
       - uses: actions/upload-artifact@v2
