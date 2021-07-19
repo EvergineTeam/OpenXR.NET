@@ -1,7 +1,7 @@
 name: Update_and_Generate_NuGet
-on:
-  schedule:
-  - cron: '0 0 1 * *'
+on: [push]
+  #schedule:
+  #- cron: '0 0 1 * *'
 jobs:
   check-bats-version:
     runs-on: windows-latest
