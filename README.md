@@ -5,6 +5,7 @@ This binding is generated from xr.xml file included in the KhronosRegistry folde
 
 [![Build Status](https://waveengineteam.visualstudio.com/Wave.Engine/_apis/build/status/Releases/WaveEngine.Bindings.OpenXR?branchName=master)](https://waveengineteam.visualstudio.com/Wave.Engine/_build?definitionId=58)
 [![Nuget](https://img.shields.io/nuget/v/WaveEngine.Bindings.OpenXR?logo=nuget)](https://www.nuget.org/packages/WaveEngine.Bindings.OpenXR)
+[![Update and Generate](https://github.com/WaveEngine/OpenXR.NET/actions/workflows/download_latest_spect_generate_nuget.yml/badge.svg?event=check_run)](https://github.com/WaveEngine/OpenXR.NET/actions/workflows/download_latest_spect_generate_nuget.yml)
 
 ## Features
 
