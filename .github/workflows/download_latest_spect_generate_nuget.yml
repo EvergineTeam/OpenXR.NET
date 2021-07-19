@@ -9,13 +9,14 @@ jobs:
       nugetConfigPath: OpenXRGen/WaveEngine.Bindings.OpenXR/NuGet.config
       nugetOutputPath: nupkgs
       appversion: 3.2.0${{  github.run_number  }}-preview
-      netcoreVersion: 5.0.x
-      nugetVersion: 5.8.x
-      dotnetVersion: 3.1.x
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-dotnet@v${{  dotnetVersion  }}
-      - uses: NuGet/setup-nuget@v${{  nugetVersion  }}
+      - uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '3.1.x' # SDK Version to use; x will use the latest version of the 3.1 channel
+      - uses: nuget/setup-nuget@v1
+        with:
+          nuget-version: '5.8.x'
       - name: Copy config path
         run: '"<configuration></configuration>" > ${{ nugetConfigPath  }}'
       - name: Add WaveNightlyFeed
