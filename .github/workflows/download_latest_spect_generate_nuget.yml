@@ -6,8 +6,8 @@ jobs:
   build:
     runs-on: windows-latest
     env:
-      nugetConfigPath: ${{  runner.temp  }}/OpenXRGen/WaveEngine.Bindings.OpenXR/NuGet.config
-      nugetOutputPath: ${{  runner.temp  }}/nupkgs
+      nugetConfigPath: OpenXRGen/WaveEngine.Bindings.OpenXR/NuGet.config
+      nugetOutputPath: nupkgs
       appversion: 3.2.0${{  github.run_number  }}-preview
       netcoreVersion: 5.0.x
       nugetVersion: 5.8.x
