@@ -3,15 +3,16 @@ on:
   [push]
   #schedule:
   #- cron: '0 0 1 * *'
- 
-jobs:
+
+env:
+  xrFile: ${{  'xr.xml'  }}
+  xrTmpFile: ${{  'xr.xml_tmp'  }}
+  xrPath: ${{  'KhronosRegistry'  }}
+  xrUrl: ${{  'https://raw.githubusercontent.com/KhronosGroup/OpenXR-Docs/master/specification/registry/xr.xml'  }}
+      
+jobs:   
   download:
-    runs-on: windows-latest
-    env:
-      xrFile: ${{  'xr.xml'  }}
-      xrTmpFile: ${{  'xr.xml_tmp'  }}
-      xrPath: ${{  'KhronosRegistry'  }}
-      xrUrl: ${{  'https://raw.githubusercontent.com/KhronosGroup/OpenXR-Docs/master/specification/registry/xr.xml'  }}
+    runs-on: windows-latest 
     outputs:
       hash1: ${{ steps.xr.outputs.hash }}
       hash2: ${{ steps.xrNEW.outputs.hash }}
