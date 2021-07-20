@@ -1,16 +1,19 @@
 name: Update_and_Commit
 on:
-  #[push]
-  schedule:
-  - cron: '0 0 1 * *'
+  [push]
+  #schedule:
+  #- cron: '0 0 1 * *'
+
+env:
+  xrFile: ${{  'xr.xml'  }}
+  xrTmpFile: ${{  'xr.xml_tmp'  }}
+  xrPath: ${{  'KhronosRegistry'  }}
+  xrUrl: ${{  'https://raw.githubusercontent.com/KhronosGroup/OpenXR-Docs/master/specification/registry/xr.xml'  }}
+  nugetConfigPath: ${{ 'OpenXRGen/WaveEngine.Bindings.OpenXR/NuGet.config'  }}
+  nugetOutputPath: ${{  'nupkgs'  }}
 
 jobs:   
   download:
-    env:
-      xrFile: ${{  'xr.xml'  }}
-      xrTmpFile: ${{  'xr.xml_tmp'  }}
-      xrPath: ${{  'KhronosRegistry'  }}
-      xrUrl: ${{  'https://raw.githubusercontent.com/KhronosGroup/OpenXR-Docs/master/specification/registry/xr.xml'  }}
     runs-on: ubuntu-latest 
     steps:
       - uses: actions/checkout@v2      
@@ -38,3 +41,24 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v4.11.0
         with:
           commit_message: Updating new xr file
+
+  build:
+    needs: [download]
+    if: ${{ needs.download.xr.outputs.hash1 != needs.download.xr.outputs.hash2  }}
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '3.1.x' # SDK Version to use; x will use the latest version of the 3.1 channel
+      - uses: nuget/setup-nuget@v1
+        with:
+          nuget-version: '5.8.x'
+      - name: Copy config path
+        run: '"<configuration></configuration>" > ${{ env.nugetConfigPath  }}'      
+      - name: Generate NuGet packages
+        run: powershell ./Generate-NuGets.ps1 -Version  3.2.0${{  github.run_number  }}-preview -outputfolder ${{  env.nugetOutputPath  }}
+      - uses: actions/upload-artifact@v2
+        with:
+          name: nuget
+          path: ${{  env.nugetOutputPath  }}/
