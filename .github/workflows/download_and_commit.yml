@@ -29,10 +29,11 @@ jobs:
         id: xrNEW
         run: echo "::set-output name=hash::${{ hashFiles('./KhronosRegistry/xr.xml_tmp')  }}"
       - name: Compare files
-        if: ${{steps.xr.hash}} != ${{steps.xrNEW.hash}}
+        if: ${{ steps.xr.hash != steps.xrNEW.hash  }}
         run: |
-            echo ${{steps.xr.hash}} ${{steps.xrNEW.hash}}
+            echo "${{  steps.xr.hash  }} ${{  steps.xrNEW.hash  }}"
             cd ${{  env.xrPath  }}
             rm ${{  env.xrFile  }} 
             mv ${{  env.xrTmpFile  }}  ${{  env.xrFile  }}
+            ls
           
