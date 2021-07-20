@@ -36,6 +36,7 @@ jobs:
             ls
       - name: Commit if update
         if: ${{ steps.xr.outputs.hash1 != steps.xr.outputs.hash2  }}
-        uses: zwaldowski/git-commit-action@v1        
+        uses: github-actions-x/commit@v2.8       
         with:
+          github-token: ${{ github.token }}
           commit_message: Updating new xr file
