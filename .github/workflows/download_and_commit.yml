@@ -24,16 +24,13 @@ jobs:
       - name: Compare files
         shell: bash
         run: |
-          md5sum ${{  env.xrPath  }}/${{  env.xrFile  }} > xr.txt          
-          md5sum ${{  env.xrPath  }}/${{  env.xrTmpFile  }} > xr2.txt
-          cat xr.txt
-          cat xr2.txt
-      - name: Replace if Different
-        if: ${{ env.DIFF  }}
-        run: |
-          cd ${{  env.xrPath  }}
-          ls
-          rm ${{  env.xrFile  }} 
-          mv ${{  env.xrTmpFile  }}  ${{  env.xrFile  }}
-          ls
-        
+          XRA=${{ hashFiles('${{  env.xrPath  }}/${{  env.xrFile  }}')
+          XRB=${{ hashFiles('${{  env.xrPath  }}/${{  env.xrTmpFile  }}')
+          echo $XRA $XRB
+          if [[ "$XRA" == "$XRB" ]]; then
+            cd ${{  env.xrPath  }}
+            ls
+            rm ${{  env.xrFile  }} 
+            mv ${{  env.xrTmpFile  }}  ${{  env.xrFile  }}
+            ls
+          fi
