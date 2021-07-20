@@ -39,3 +39,4 @@ jobs:
         with:
           github-token: ${{ github.token }}
           commit-message: Updating new xr file
+          files: ./KhronosRegistry/xr.xml
