@@ -24,9 +24,10 @@ jobs:
           location: ${{ env.xrPath  }}/
       - name: Compare files
         if: ${{  hashFiles('./${{  env.xrPath  }}/${{  env.xrFile  }}')  }} != ${{  hashFiles('./${{  env.xrPath  }}/${{  env.xrTmpFile  }}')  }}
-        run:  ${{ env.diff }} = 'true'
+        env:  
+          diff: 'true'
       - name: Replace if Different
-        if: ${{ env.UPDATE_VR  }}
+        if: ${{ env.diff  }}
         run: |
           cd ${{  env.xrPath  }}
           ls
