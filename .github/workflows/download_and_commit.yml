@@ -1,9 +1,9 @@
 name: Update_and_Commit
 on:
-  [push]
-  #schedule:
-  #- cron: '0 0 1 * *'
-      
+  #[push]
+  schedule:
+  - cron: '0 0 1 * *'
+
 jobs:   
   download:
     env:
