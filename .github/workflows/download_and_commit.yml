@@ -22,8 +22,8 @@ jobs:
           file-name: ${{  env.xrTmpFile  }}
           location: ${{ env.xrPath  }}/
       - name: Compare files
-        if: ${{  hashFiles('./${{  env.xrPath  }}/${{  env.xrFile  }}')  }} != ${{  hashFiles('./${{  env.xrPath  }}/${{  env.xrTmpFile  }}')  }}
-        run: echo "DIFF=true" >> "$GITHUB_ENV"
+        if: ${{  hashFiles('./${{  env.xrPath  }}/${{  env.xrFile  }}')  }} == ${{  hashFiles('./${{  env.xrPath  }}/${{  env.xrTmpFile  }}')  }}
+        run: echo "DIFF=true" >> $GITHUB_ENV
       - name: Replace if Different
         if: ${{ env.DIFF  }}
         run: |
