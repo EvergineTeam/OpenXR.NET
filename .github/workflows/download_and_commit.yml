@@ -31,11 +31,6 @@ jobs:
       - id: xrNEW
         name: Get hash from current xr
         run: echo "::set-output name=hash::${{ hashFiles('${{  env.xrPath  }}/${{  env.xrTmpFile  }}')  }}"
-        
-  compare:
-    runs-on: windows-latest
-    needs: download
-    steps:
       - name: Compare files
         if: ${{needs.download.outputs.hash1}} == ${{needs.download.outputs.hash2}}
         run: |
