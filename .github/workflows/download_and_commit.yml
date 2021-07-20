@@ -5,13 +5,16 @@ on:
   #- cron: '0 0 1 * *'
  
 jobs:
-  build:
+  download:
     runs-on: windows-latest
     env:
       xrFile: ${{  'xr.xml'  }}
       xrTmpFile: ${{  'xr.xml_tmp'  }}
       xrPath: ${{  'KhronosRegistry'  }}
       xrUrl: ${{  'https://raw.githubusercontent.com/KhronosGroup/OpenXR-Docs/master/specification/registry/xr.xml'  }}
+    outputs:
+      hash1: ${{ steps.xr.outputs.hash }}
+      hash2: ${{ steps.xrNEW.outputs.hash }}
     steps:
       - uses: actions/checkout@v2      
       - name: download xr file
@@ -21,16 +24,22 @@ jobs:
           file-url: ${{  env.xrUrl  }}
           file-name: ${{  env.xrTmpFile  }}
           location: ${{ env.xrPath  }}/
+      - id: xr
+        name: Get hash from saved xr
+        run: echo "::set-output name=hash::${{ hashFiles('${{  env.xrPath  }}/${{  env.xrFile  }}')"
+      - id: xrNEW
+        name: Get hash from current xr
+        run: echo "::set-output name=hash::${{ hashFiles('${{  env.xrPath  }}/${{  env.xrTmpFile  }}')"
+        
+  compare:
+    runs-on: windows-latest
+    needs: download
+    steps:
       - name: Compare files
-        shell: bash
+        if: ${{needs.download.outputs.hash1}} == ${{needs.download.outputs.hash2}}
         run: |
-          export XRA=${{ hashFiles('${{  env.xrPath  }}/${{  env.xrFile  }}')
-          export XRB=${{ hashFiles('${{  env.xrPath  }}/${{  env.xrTmpFile  }}')
-          echo $XRA $XRB
-          if [[ "$XRA" == "$XRB" ]]; then
             cd ${{  env.xrPath  }}
             ls
             rm ${{  env.xrFile  }} 
             mv ${{  env.xrTmpFile  }}  ${{  env.xrFile  }}
             ls
-          fi
