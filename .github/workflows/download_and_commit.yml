@@ -24,7 +24,7 @@ jobs:
           location: ${{ env.xrPath  }}/
       - name: Compare files
         if: ${{  hashFiles('./${{  env.xrPath  }}/${{  env.xrFile  }}')  }} != ${{  hashFiles('./${{  env.xrPath  }}/${{  env.xrTmpFile  }}')  }}
-        run: echo "UPDATE_VR=true" >> $GITHUB_ENV
+        run:  ${{ env.diff }} = 'true'
       - name: Replace if Different
         if: ${{ env.UPDATE_VR  }}
         run: |
