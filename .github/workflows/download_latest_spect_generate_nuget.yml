@@ -10,6 +10,7 @@ jobs:
       nugetOutputPath: ${{  'nupkgs'  }}
       xrFile: ${{  'xr.xml'  }}
       xrPath: ${{  'KhronosRegistry'  }}
+      xrUrl: ${{  'https://raw.githubusercontent.com/KhronosGroup/OpenXR-Docs/master/specification/registry/xr.xml'  }}
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-dotnet@v1
@@ -28,7 +29,7 @@ jobs:
         uses: carlosperate/download-file-action@v1.0.3
         with:
           # URL of the file to download
-          file-url: https://raw.githubusercontent.com/KhronosGroup/OpenXR-Docs/master/specification/registry/xr.xml
+          file-url: ${{  env.xrUrl  }}
           # Path to download the file
           location: ${{ env.xrPath  }}/
       - name: Generate NuGet packages
