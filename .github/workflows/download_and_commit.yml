@@ -24,14 +24,16 @@ jobs:
           location: ${{ env.xrPath  }}/
       - name: Get hash from saved xr
         id: xr        
-        run: echo "::set-output name=hash::${{ hashFiles('./KhronosRegistry/xr.xml')  }}"
+        run: echo "::set-output name=hash1::${{ hashFiles('./KhronosRegistry/xr.xml')  }}"
       - name: Get hash from current xr
         id: xrNEW
-        run: echo "::set-output name=hash::${{ hashFiles('./KhronosRegistry/xr.xml_tmp')  }}"
+        run: echo "::set-output name=hash2::${{ hashFiles('./KhronosRegistry/xr.xml_tmp')  }}"
+      - name: Compare hash
+        run: echo "${{  steps.xr.hash1  }} ${{  steps.xrNEW.hash2  }}"
       - name: Compare files
-        if: ${{ steps.xr.hash != steps.xrNEW.hash  }}
+        if: ${{ steps.xr.hash1 != steps.xrNEW.hash2  }}
         run: |
-            echo "${{  steps.xr.hash  }} ${{  steps.xrNEW.hash  }}"
+            echo "${{  steps.xr.hash1  }} ${{  steps.xrNEW.hash2  }}"
             cd ${{  env.xrPath  }}
             rm ${{  env.xrFile  }} 
             mv ${{  env.xrTmpFile  }}  ${{  env.xrFile  }}
