@@ -57,7 +57,7 @@ jobs:
         with:
           # URL of the file to download
           file-url: ${{  env.xrUrl  }}
-          file-name: ${{  env.xrFile  }}          
+          file-name: ${{  env.xrTmpFile  }}          
           location: ${{ env.xrPath  }}/
       - name: Override files
         run: |
@@ -74,10 +74,13 @@ jobs:
         with:
           name: nuget
           path: ${{  env.nugetOutputPath  }}/
-
+          
   test:
     needs: [download]
     runs-on: windows-latest
     steps:
       - name: test
-        run: echo "${{ needs.download.outputs.output1 }} ${{ needs.download.outputs.output1  }}"
+        run: echo "${{ needs.download.outputs.output1 }} ${{ needs.download.outputs.output2  }}"
+      - name: test 2
+        if: ${{ needs.download.outputs.output1 != needs.download.outputs.output2  }}
+        run: echo "hi there"
