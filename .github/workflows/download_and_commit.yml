@@ -1,8 +1,11 @@
-name: Update_and_Generate_NuGet
+name: Update_and_Commit
 on:
   [push]
   #schedule:
   #- cron: '0 0 1 * *'
+env:
+  UPDATE_VR: false
+  
 jobs:
   build:
     runs-on: windows-latest
@@ -22,15 +25,10 @@ jobs:
           file-name: ${{  env.xrTmpFile  }}
           location: ${{ env.xrPath  }}/
       - name: Compare files
-        uses: tianhaoz95-actions/file-diff@v1.0.0
-        with:
-          # The LHS file to compare
-          lhs: ${{ env.xrPath  }}/${{  env.xrTmpFile  }}
-          # The RHS file to compare
-          rhs: ${{ env.xrPath  }}/${{  env.xrFile  }}
-          compare: ${{ env.diff  }}
+        if: hashFiles(${{ env.xrPath  }}/${{  env.xrPath  }}) != hashFiles(${{ env.xrPath  }}/${{  env.xrTmpFile  }})
+        run: echo "::set-env name=UPDATE_VR::true"    
       - name: Replace if Different
-        if: ${{ env.diff  }}
+        if: ${{ env.UPDATE_VR  }}
         run: |
           cd ${{ env.xrPath  }}
           rm ${{  env.xrFile  }} 
