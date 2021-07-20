@@ -3,11 +3,7 @@ on:
   [push]
   #schedule:
   #- cron: '0 0 1 * *'
-env:
-  UPDATE_VR: false
-  CURRENT_HASH: 0
-  NEW_HASH: 0
-  
+ 
 jobs:
   build:
     runs-on: windows-latest
@@ -27,7 +23,7 @@ jobs:
           file-name: ${{  env.xrTmpFile  }}
           location: ${{ env.xrPath  }}/
       - name: Compare files
-        if: hashFiles(${{ env.xrPath  }}/${{  env.xrPath  }}) == hashFiles(${{ env.xrPath  }}/${{  env.xrTmpFile  }})
+        if: ${{  hashFiles( env.xrPath/env.xrPath) == hashFiles(env.xrPath/env.xrTmpFile)  }}
         run: echo "UPDATE_VR=true" >> $GITHUB_ENV
       - name: Replace if Different
         if: ${{ env.UPDATE_VR  }}
