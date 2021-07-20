@@ -56,10 +56,17 @@ jobs:
       - name: Copy config path
         run: '"<configuration></configuration>" > ${{ env.nugetConfigPath  }}'      
       - name: Generate NuGet packages      
-        if: ${{ needs.download.xr.outputs.hash1 != needs.download.xr.outputs.hash2  }}
+        if: ${{ needs.download.outputs.hash1 != needs.download.outputs.hash2  }}
         run: powershell ./Generate-NuGets.ps1 -Version  3.2.0${{  github.run_number  }}-preview -outputfolder ${{  env.nugetOutputPath  }}
       - uses: actions/upload-artifact@v2
-        if: ${{ needs.download.xr.outputs.hash1 != needs.download.xr.outputs.hash2  }}
+        if: ${{ needs.download.outputs.hash1 != needs.download.outputs.hash2  }}
         with:
           name: nuget
           path: ${{  env.nugetOutputPath  }}/
+
+  test:
+    needs: [download]
+    runs-on: windows-latest
+    steps:
+      - name: test
+        run: echo ${{ needs.download.outputs.hash1 }} ${{ needs.download.outputs.hash2  }}
