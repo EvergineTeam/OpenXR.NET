@@ -27,10 +27,10 @@ jobs:
           location: ${{ env.xrPath  }}/
       - id: xr
         name: Get hash from saved xr
-        run: echo "::set-output name=hash::${{ hashFiles('./KhronosRegistry/xr.xml')"
+        run: echo "::set-output name=hash::${{ hashFiles('./KhronosRegistry/xr.xml')  }}"
       - id: xrNEW
         name: Get hash from current xr
-        run: echo "::set-output name=hash::${{ hashFiles('./KhronosRegistry/xr.xml_tmp')"
+        run: echo "::set-output name=hash::${{ hashFiles('${{  env.xrPath  }}/${{  env.xrTmpFile  }}')  }}"
         
   compare:
     runs-on: windows-latest
