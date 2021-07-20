@@ -24,8 +24,8 @@ jobs:
       - name: Compare files
         shell: bash
         run: |
-          XRA=${{ hashFiles('${{  env.xrPath  }}/${{  env.xrFile  }}')
-          XRB=${{ hashFiles('${{  env.xrPath  }}/${{  env.xrTmpFile  }}')
+          export XRA=${{ hashFiles('${{  env.xrPath  }}/${{  env.xrFile  }}')
+          export XRB=${{ hashFiles('${{  env.xrPath  }}/${{  env.xrTmpFile  }}')
           echo $XRA $XRB
           if [[ "$XRA" == "$XRB" ]]; then
             cd ${{  env.xrPath  }}
