@@ -3,7 +3,6 @@ on:
   [push]
   #schedule:
   #- cron: '0 0 1 * *'
-
       
 jobs:   
   download:
@@ -26,10 +25,8 @@ jobs:
         id: xr        
         run: |
           echo "::set-output name=hash1::${{ hashFiles('./KhronosRegistry/xr.xml')  }}"
-          echo "::set-output name=hash2::${{ hashFiles('./KhronosRegistry/xr.xml_tmp')  }}"
-      - name: Compare hash
-        run: echo "${{  steps.xr.outputs.hash1  }} ${{  steps.xr.outputs.hash2  }}"
-      - name: Compare files
+          echo "::set-output name=hash2::${{ hashFiles('./KhronosRegistry/xr.xml_tmp')  }}"      
+      - name: Compare and update files
         if: ${{ steps.xr.outputs.hash1 != steps.xr.outputs.hash2  }}
         run: |
             echo "${{  steps.xr.outputs.hash1  }} ${{  steps.xr.outputs.hash2  }}"
@@ -37,4 +34,8 @@ jobs:
             rm ${{  env.xrFile  }} 
             mv ${{  env.xrTmpFile  }}  ${{  env.xrFile  }}
             ls
-          
+      - name: Commit if update
+        if: ${{ steps.xr.outputs.hash1 != steps.xr.outputs.hash2  }}
+        uses: zwaldowski/git-commit-action@v1        
+        with:
+          commit_message: Updating new xr file
