@@ -12,7 +12,6 @@ jobs:
       xrTmpFile: ${{  'xr.xml_tmp'  }}
       xrPath: ${{  'KhronosRegistry'  }}
       xrUrl: ${{  'https://raw.githubusercontent.com/KhronosGroup/OpenXR-Docs/master/specification/registry/xr.xml'  }}
-      diff: ${{  'false'  }}
     steps:
       - uses: actions/checkout@v2      
       - name: download xr file
@@ -24,10 +23,9 @@ jobs:
           location: ${{ env.xrPath  }}/
       - name: Compare files
         if: ${{  hashFiles('./${{  env.xrPath  }}/${{  env.xrFile  }}')  }} != ${{  hashFiles('./${{  env.xrPath  }}/${{  env.xrTmpFile  }}')  }}
-        env:  
-          diff: 'true'
+        run: echo "DIFF=true" >> "$GITHUB_ENV"
       - name: Replace if Different
-        if: ${{ env.diff  }}
+        if: ${{ env.DIFF  }}
         run: |
           cd ${{  env.xrPath  }}
           ls
