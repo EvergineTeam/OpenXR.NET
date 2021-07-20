@@ -13,9 +13,6 @@ jobs:
       xrPath: ${{  'KhronosRegistry'  }}
       xrUrl: ${{  'https://raw.githubusercontent.com/KhronosGroup/OpenXR-Docs/master/specification/registry/xr.xml'  }}
     runs-on: windows-latest 
-    outputs:
-      hash1: ${{ steps.xr.outputs.hash }}
-      hash2: ${{ steps.xrNEW.outputs.hash }}
     steps:
       - uses: actions/checkout@v2      
       - name: download xr file
@@ -25,14 +22,14 @@ jobs:
           file-url: ${{  env.xrUrl  }}
           file-name: ${{  env.xrTmpFile  }}
           location: ${{ env.xrPath  }}/
-      - id: xr
-        name: Get hash from saved xr
-        run: echo "::set-output name=hash::${{ hashFiles('./KhronosRegistry/xr.xml')  }}"
-      - id: xrNEW
-        name: Get hash from current xr
-        run: echo "::set-output name=hash::${{ hashFiles('${{  env.xrPath  }}/${{  env.xrTmpFile  }}')  }}"
+      - name: Get hash from saved xr
+        id: xr        
+        run: echo "::set-output name=hash1::${{ hashFiles('./KhronosRegistry/xr.xml')  }}"
+      - name: Get hash from current xr
+        id: xrNEW
+        run: echo "::set-output name=hash2::${{ hashFiles('${{  env.xrPath  }}/${{  env.xrTmpFile  }}')  }}"
       - name: Compare files
-        if: ${{jobs.download.outputs.hash1}} == ${{jobs.download.outputs.hash2}}
+        if: ${{steps.xr.hash}} == ${{steps.xrNEW.hash}}
         run: |
             cd ${{  env.xrPath  }}
             ls
