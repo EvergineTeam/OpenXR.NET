@@ -35,8 +35,6 @@ jobs:
             mv ${{  env.xrTmpFile  }}  ${{  env.xrFile  }}
       - name: Commit if update
         if: ${{ steps.xr.outputs.hash1 != steps.xr.outputs.hash2  }}
-        uses: github-actions-x/commit@v2.8       
+        uses: stefanzweifel/git-auto-commit-action@v4.11.0
         with:
-          github-token: ${{ github.token }}
-          commit-message: Updating new xr file
-          files: ./KhronosRegistry/xr.xml
+          commit_message: Updating new xr file
