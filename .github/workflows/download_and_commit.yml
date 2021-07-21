@@ -84,3 +84,23 @@ jobs:
       - name: test 2
         if: ${{ needs.download.outputs.output1 != needs.download.outputs.output2  }}
         run: echo "hi there"
+        
+  sendMail:
+    runs-on: windows-latest
+    if: ${{ failure() }}
+    steps:
+      - name: SendGrid Mail Action
+        uses: mmichailidis/sendgrid-mail-action@v1.1
+        with:
+          # The token for sendgrid
+          sendgrid-token: sdgsdfgdfgsdfgsdfg
+          # The emails ( can be only one ) that the email will go
+          mail: mgomar@plainconcepts.com
+          # The email that will be shown as sender
+          from: waveengineteam@gmail.com
+          # The subject of the email
+          subject: Open XR has failed
+          # Defines if it should be one email with multiple address or multiple emails with a single address
+          individual: false
+          # The body of the mail. The placeholders that can be used are $EVENT$, $ISSUE$, $ACTION$
+          text: something when wrong          
