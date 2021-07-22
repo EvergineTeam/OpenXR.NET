@@ -75,7 +75,8 @@ jobs:
         with:
           # Filepath of the project to be packaged, relative to root of repository
           PROJECT_FILE_PATH: ${{  env.slnPath  }}
-          VERSION_STATIC: ${{  needs.download.outputs.output3  }}.${{  github.run_number  }}    
+          VERSION_STATIC: ${{  needs.download.outputs.output3  }}.${{  github.run_number  }} 
+          NUGET_KEY:  ${{ secrets.WAVE_NUGETORG_TOKEN }}
       - name: Commit if update
         if: ${{ success() }}
         uses: stefanzweifel/git-auto-commit-action@v4.11.0
