@@ -19,6 +19,7 @@ jobs:
     outputs:
       output1: ${{ steps.xr.outputs.hash1 }}
       output2: ${{ steps.xr.outputs.hash2 }}
+      output3: ${{ steps.xr.outputs.date }}
     steps:
       - name: download target file
         uses: carlosperate/download-file-action@v1.0.3
@@ -36,16 +37,8 @@ jobs:
         id: xr        
         run: |
           echo "::set-output name=hash1::${{ hashFiles('xr.xml')  }}"
-          echo "::set-output name=hash2::${{ hashFiles('xr.xml_tmp')  }}"       
-      - name: File Diff
-        uses: GuillaumeFalourd/diff-action@v1
-        with:
-          # repo/path/file.txt
-          first_file_path: ${{  env.xrTmpFile  }}
-          # repo/path/file.txt
-          second_file_path: ${{  env.xrFile  }}
-          # PASSED or FAILED
-          expected_result: FAILED
+          echo "::set-output name=hash2::${{ hashFiles('xr.xml_tmp')  }}" 
+          echo "::set-output name=date::$(date +'%Y.%m.%d')"
           
   build:
     needs: [download]    
@@ -64,7 +57,8 @@ jobs:
       - name: remove old file
         run: |
             cd ${{  env.xrPath  }}
-            rm ${{  env.xrFile  }}     
+            rm ${{  env.xrFile  }}
+            ls
       - name: download target file
         uses: carlosperate/download-file-action@v1.0.3
         with:
@@ -73,18 +67,20 @@ jobs:
           file-name: ${{  env.xrFile  }}          
           location: ${{ env.xrPath  }}/
       - name: Generate NuGet packages      
-        run: powershell ./Generate-NuGets.ps1 -Version  3.2.0${{  github.run_number  }}-preview -outputfolder ${{  env.nugetOutputPath  }}  
+        run: powershell ./Generate-NuGets.ps1 -Version  ${{  needs.download.outputs.output3  }}.${{  github.run_number  }} -outputfolder ${{  env.nugetOutputPath  }}  
+      - name: Publish NuGet      
+        if: ${{ success() }}
+        uses: brandedoutcast/publish-nuget@v2.5.5
+        with:
+          # Filepath of the project to be packaged, relative to root of repository
+          PROJECT_FILE_PATH: ${{  env.nugetOutputPath  }}
+          # API key to authenticate with NuGet server         
       - name: Commit if update
         if: ${{ success() }}
         uses: stefanzweifel/git-auto-commit-action@v4.11.0
         with:
           commit_message: Updating new xr file
-          add_options: '-u'
-      - uses: actions/upload-artifact@v2
-        if: ${{ success() }}
-        with:
-          name: nuget
-          path: ${{  env.nugetOutputPath  }}/
+          add_options: '-u'      
       - name: SendGrid Mail Action
         if: ${{ failure() }}
         uses: mmichailidis/sendgrid-mail-action@v1.1
@@ -92,8 +88,7 @@ jobs:
           # The token for sendgrid
           sendgrid-token: ${{ secrets.WAVE_SENDGRID_TOKEN }}
           # The emails ( can be only one ) that the email will go
-          #mail: mgomar@plainconcepts.com,davila@plainconcepts.com,jcanton@plainconcepts.com
-          mail: mgomar@plainconcepts.com
+          mail: mgomar@plainconcepts.com,davila@plainconcepts.com,jcanton@plainconcepts.com
           # The email that will be shown as sender
           from: waveengineteam@gmail.com
           # The subject of the email
