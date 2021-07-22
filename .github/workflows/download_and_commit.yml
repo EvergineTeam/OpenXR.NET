@@ -38,16 +38,14 @@ jobs:
           echo "::set-output name=hash1::${{ hashFiles('xr.xml')  }}"
           echo "::set-output name=hash2::${{ hashFiles('xr.xml_tmp')  }}"       
       - name: File Diff
-        uses: tianhaoz95-actions/file-diff@v1.0.0
+        uses: GuillaumeFalourd/diff-action@v1
         with:
-          # The LHS file to compare
-          lhs:  ${{  env.xrFile  }}
-          # The RHS file to compare
-          rhs: ${{  env.xrTmpFile  }}
-          # If file diff should fail the action
-          fail: false
-          # If diff compare should show
-          compare: true
+          # repo/path/file.txt
+          first_file_path: ${{  env.xrTmpFile  }}
+          # repo/path/file.txt
+          second_file_path: ${{  env.xrFile  }}
+          # PASSED or FAILED
+          #expected_result: # optional, default is PASSED
           
   build:
     needs: [download]    
@@ -94,7 +92,8 @@ jobs:
           # The token for sendgrid
           sendgrid-token: ${{ secrets.WAVE_SENDGRID_TOKEN }}
           # The emails ( can be only one ) that the email will go
-          mail: mgomar@plainconcepts.com,davila@plainconcepts.com,jcanton@plainconcepts.com
+          #mail: mgomar@plainconcepts.com,davila@plainconcepts.com,jcanton@plainconcepts.com
+          mail: mgomar@plainconcepts.com
           # The email that will be shown as sender
           from: waveengineteam@gmail.com
           # The subject of the email
