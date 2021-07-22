@@ -6,8 +6,9 @@ on:
 
 env:
   xrFile: ${{  'xr.xml'  }}
-  xrTmpFile: ${{  'xr.xml_tmp'  }}
+  xrTmpFile: ${{  'xr.xml_tmp'  }}  
   xrPath: ${{  'KhronosRegistry'  }}
+  slnPath: ${{  'OpenXRGen/OpenXRGen.sln'  }}
   xrUrl: ${{  'https://raw.githubusercontent.com/KhronosGroup/OpenXR-Docs/master/specification/registry/xr.xml'  }}
   xrSelfUrl: ${{  'https://raw.githubusercontent.com/WaveEngine/OpenXR.NET/main/KhronosRegistry/xr.xml'  }}
   nugetConfigPath: ${{ 'OpenXRGen/WaveEngine.Bindings.OpenXR/NuGet.config'  }}
@@ -73,8 +74,8 @@ jobs:
         uses: brandedoutcast/publish-nuget@v2.5.5
         with:
           # Filepath of the project to be packaged, relative to root of repository
-          PROJECT_FILE_PATH: ${{  env.nugetOutputPath  }}
-          # API key to authenticate with NuGet server         
+          PROJECT_FILE_PATH: ${{  env.slnPath  }}
+          VERSION_STATIC: ${{  needs.download.outputs.output3  }}.${{  github.run_number  }}    
       - name: Commit if update
         if: ${{ success() }}
         uses: stefanzweifel/git-auto-commit-action@v4.11.0
