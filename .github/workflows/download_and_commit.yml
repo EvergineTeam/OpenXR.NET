@@ -49,9 +49,6 @@ jobs:
       - uses: actions/setup-dotnet@v1
         with:
           dotnet-version: '3.1.x' # SDK Version to use; x will use the latest version of the 3.1 channel
-          source-url: https://api.nuget.org/v3/index.json
-        env:
-          NUGET_AUTH_TOKEN: ${{secrets.WAVE_NUGETORG_TOKEN}} 
       - uses: nuget/setup-nuget@v1
         with:
           nuget-version: '5.8.x'
@@ -76,7 +73,7 @@ jobs:
         run: |
           cd ${{  env.nugetOutputPath  }}
           ls *.nupkg
-          dotnet nuget push "**/*.nupkg" --skip-duplicate --no-symbols true
+          dotnet nuget push "**/*.nupkg" --skip-duplicate --no-symbols true -k ${{secrets.WAVE_NUGETORG_TOKEN}} -s https://api.nuget.org/v3/index.json
       - name: Commit if update
         if: ${{ success() }}
         uses: stefanzweifel/git-auto-commit-action@v4.11.0
