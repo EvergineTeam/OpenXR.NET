@@ -52,19 +52,24 @@ jobs:
           nuget-version: '5.8.x'
       - name: Copy config path
         run: '"<configuration></configuration>" > ${{ env.nugetConfigPath  }}'     
+      - name: remove old file
+        run: |
+            cd ${{  env.xrPath  }}
+            rm ${{  env.xrFile  }} 
+      - name: Commit delte file
+        uses: matheusalbino/git-commit@v1.0.1
+        with:
+          # Github Token
+          github-token: ${{ github.token }}
+          # Git message
+          message: remove old xml
       - name: download target file
         uses: carlosperate/download-file-action@v1.0.3
         with:
           # URL of the file to download
           file-url: ${{  env.xrUrl  }}
-          file-name: ${{  env.xrTmpFile  }}          
+          file-name: ${{  env.xrFile  }}          
           location: ${{ env.xrPath  }}/
-      - name: Override files
-        run: |
-            cd ${{  env.xrPath  }}
-            rm ${{  env.xrFile  }} 
-            mv ${{  env.xrTmpFile  }}  ${{  env.xrFile  }}
-            cat ${{  env.xrFile  }}
       - name: Generate NuGet packages      
         run: powershell ./Generate-NuGets.ps1 -Version  3.2.0${{  github.run_number  }}-preview -outputfolder ${{  env.nugetOutputPath  }}  
       - name: Commit if update
@@ -89,8 +94,8 @@ jobs:
           # The email that will be shown as sender
           from: waveengineteam@gmail.com
           # The subject of the email
-          subject: Open XR has failed
+          subject: Open XR Update NuGet has failed
           # Defines if it should be one email with multiple address or multiple emails with a single address
           individual: false
           # The body of the mail. The placeholders that can be used are $EVENT$, $ISSUE$, $ACTION$
-          text: something when wrong
+          text: something when wrong when updating new xr.xml file from KhronosRegistry
