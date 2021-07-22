@@ -74,8 +74,9 @@ jobs:
       - name: Publish NuGet      
         if: ${{ success() }}
         run: |
-          ls ./${{  env.nugetOutputPath  }}
-          dotnet nuget push ${{  env.nugetOutputPath  }}/*.nupkg --skip-duplicate --no-symbols true
+          cd ${{  env.nugetOutputPath  }}
+          ls 
+          dotnet nuget push WaveEngine.Bindings.OpenXR.${{  needs.download.outputs.output3  }}.${{  github.run_number  }}.nupkg --skip-duplicate --no-symbols true
       - name: Commit if update
         if: ${{ success() }}
         uses: stefanzweifel/git-auto-commit-action@v4.11.0
