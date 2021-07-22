@@ -71,6 +71,7 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v4.11.0
         with:
           commit_message: Updating new xr file
+          add_options: '-u'
       - uses: actions/upload-artifact@v2
         if: ${{ success() }}
         with:
