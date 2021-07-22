@@ -64,32 +64,22 @@ jobs:
             cd ${{  env.xrPath  }}
             rm ${{  env.xrFile  }} 
             mv ${{  env.xrTmpFile  }}  ${{  env.xrFile  }}
+            cat ${{  env.xrFile  }}
       - name: Generate NuGet packages      
-        run: powershell ./Generate-NuGets.ps1 -Version  3.2.0${{  github.run_number  }}-preview -outputfolder ${{  env.nugetOutputPath  }}        
+        run: powershell ./Generate-NuGets.ps1 -Version  3.2.0${{  github.run_number  }}-preview -outputfolder ${{  env.nugetOutputPath  }}  
       - name: Commit if update
+        if: ${{ success() }}
         uses: stefanzweifel/git-auto-commit-action@v4.11.0
         with:
           commit_message: Updating new xr file
+          add_options: '-u'
       - uses: actions/upload-artifact@v2
+        if: ${{ success() }}
         with:
           name: nuget
           path: ${{  env.nugetOutputPath  }}/
-          
-  test:
-    needs: [download]
-    runs-on: windows-latest
-    steps:
-      - name: test
-        run: echo "${{ needs.download.outputs.output1 }} ${{ needs.download.outputs.output2  }}"
-      - name: test 2
-        if: ${{ needs.download.outputs.output1 != needs.download.outputs.output2  }}
-        run: echo "hi there"
-        
-  sendMail:
-    runs-on: windows-latest
-    if: ${{ failure() }}
-    steps:
       - name: SendGrid Mail Action
+        if: ${{ failure() }}
         uses: mmichailidis/sendgrid-mail-action@v1.1
         with:
           # The token for sendgrid
@@ -103,4 +93,4 @@ jobs:
           # Defines if it should be one email with multiple address or multiple emails with a single address
           individual: false
           # The body of the mail. The placeholders that can be used are $EVENT$, $ISSUE$, $ACTION$
-          text: something when wrong          
+          text: something when wrong
