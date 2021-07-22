@@ -62,8 +62,10 @@ jobs:
       - name: Override files
         run: |
             cd ${{  env.xrPath  }}
+            ls
             rm ${{  env.xrFile  }} 
             mv ${{  env.xrTmpFile  }}  ${{  env.xrFile  }}
+            ls
       - name: Generate NuGet packages      
         run: powershell ./Generate-NuGets.ps1 -Version  3.2.0${{  github.run_number  }}-preview -outputfolder ${{  env.nugetOutputPath  }}        
       - name: Commit if update
