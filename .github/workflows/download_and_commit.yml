@@ -37,6 +37,17 @@ jobs:
         run: |
           echo "::set-output name=hash1::${{ hashFiles('xr.xml')  }}"
           echo "::set-output name=hash2::${{ hashFiles('xr.xml_tmp')  }}"       
+      - name: File Diff
+        uses: tianhaoz95-actions/file-diff@v1.0.0
+        with:
+          # The LHS file to compare
+          lhs:  ${{  env.xrFile  }}
+          # The RHS file to compare
+          rhs: ${{  env.xrTmpFile  }}
+          # If file diff should fail the action
+          fail: false
+          # If diff compare should show
+          compare: true
           
   build:
     needs: [download]    
