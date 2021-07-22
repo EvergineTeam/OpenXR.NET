@@ -75,7 +75,7 @@ jobs:
         if: ${{ success() }}
         run: |
           ls ./${{  env.nugetOutputPath  }}
-          dotnet nuget push ./${{  env.nugetOutputPath  }}/*.nupkg --skip-duplicate --no-symbols true
+          dotnet nuget push ${{  env.nugetOutputPath  }}/*.nupkg --skip-duplicate --no-symbols true
       - name: Commit if update
         if: ${{ success() }}
         uses: stefanzweifel/git-auto-commit-action@v4.11.0
