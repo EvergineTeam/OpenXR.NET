@@ -76,7 +76,7 @@ jobs:
         run: |
           cd ${{  env.nugetOutputPath  }}
           ls *.nupkg
-          dotnet nuget push "**/*.nupkg" --skip-duplicate --no-symbols true -k ${{secrets.WAVE_NUGETORG_TOKEN}} -s https://api.nuget.org/v3/index.json
+          dotnet nuget push "**/*.nupkg" --skip-duplicate --no-symbols
       - name: Commit if update
         if: ${{ success() }}
         uses: stefanzweifel/git-auto-commit-action@v4.11.0
