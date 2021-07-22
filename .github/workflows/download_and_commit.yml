@@ -8,7 +8,6 @@ env:
   xrFile: ${{  'xr.xml'  }}
   xrTmpFile: ${{  'xr.xml_tmp'  }}  
   xrPath: ${{  'KhronosRegistry'  }}
-  slnPath: ${{  'OpenXRGen/OpenXRGen.sln'  }}
   xrUrl: ${{  'https://raw.githubusercontent.com/KhronosGroup/OpenXR-Docs/master/specification/registry/xr.xml'  }}
   xrSelfUrl: ${{  'https://raw.githubusercontent.com/WaveEngine/OpenXR.NET/main/KhronosRegistry/xr.xml'  }}
   nugetConfigPath: ${{ 'OpenXRGen/WaveEngine.Bindings.OpenXR/NuGet.config'  }}
@@ -50,6 +49,9 @@ jobs:
       - uses: actions/setup-dotnet@v1
         with:
           dotnet-version: '3.1.x' # SDK Version to use; x will use the latest version of the 3.1 channel
+          source-url: https://nuget.pkg.github.com/waveengineteam/index.json
+        env:
+          NUGET_AUTH_TOKEN: ${{secrets.WAVE_NUGETORG_TOKEN}} 
       - uses: nuget/setup-nuget@v1
         with:
           nuget-version: '5.8.x'
@@ -71,12 +73,9 @@ jobs:
         run: powershell ./Generate-NuGets.ps1 -Version  ${{  needs.download.outputs.output3  }}.${{  github.run_number  }} -outputfolder ${{  env.nugetOutputPath  }}  
       - name: Publish NuGet      
         if: ${{ success() }}
-        uses: brandedoutcast/publish-nuget@v2.5.5
-        with:
-          # Filepath of the project to be packaged, relative to root of repository
-          PROJECT_FILE_PATH: ${{  env.slnPath  }}
-          VERSION_STATIC: ${{  needs.download.outputs.output3  }}.${{  github.run_number  }} 
-          NUGET_KEY:  ${{ secrets.WAVE_NUGETORG_TOKEN }}
+        run: |
+          ls
+          dotnet nuget push ./${{  env.nugetOutputPath  }}*.nupkg --skip-duplicate --no-symbols true
       - name: Commit if update
         if: ${{ success() }}
         uses: stefanzweifel/git-auto-commit-action@v4.11.0
@@ -90,7 +89,8 @@ jobs:
           # The token for sendgrid
           sendgrid-token: ${{ secrets.WAVE_SENDGRID_TOKEN }}
           # The emails ( can be only one ) that the email will go
-          mail: mgomar@plainconcepts.com,davila@plainconcepts.com,jcanton@plainconcepts.com
+          #mail: mgomar@plainconcepts.com,davila@plainconcepts.com,jcanton@plainconcepts.com
+          mail: mgomar@plainconcepts.com
           # The email that will be shown as sender
           from: waveengineteam@gmail.com
           # The subject of the email
