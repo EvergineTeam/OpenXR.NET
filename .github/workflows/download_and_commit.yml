@@ -83,7 +83,7 @@ jobs:
           # The token for sendgrid
           sendgrid-token: ${{ secrets.WAVE_SENDGRID_TOKEN }}
           # The emails ( can be only one ) that the email will go
-          mail: mgomar@plainconcepts.com
+          mail: mgomar@plainconcepts.com,davila@plainconcepts.com,jcanton@plainconcepts.com
           # The email that will be shown as sender
           from: waveengineteam@gmail.com
           # The subject of the email
