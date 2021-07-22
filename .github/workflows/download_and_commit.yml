@@ -55,14 +55,7 @@ jobs:
       - name: remove old file
         run: |
             cd ${{  env.xrPath  }}
-            rm ${{  env.xrFile  }} 
-      - name: Commit delte file
-        uses: matheusalbino/git-commit@v1.0.1
-        with:
-          # Github Token
-          github-token: ${{ github.token }}
-          # Git message
-          message: remove old xml
+            rm ${{  env.xrFile  }}     
       - name: download target file
         uses: carlosperate/download-file-action@v1.0.3
         with:
