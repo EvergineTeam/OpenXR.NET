@@ -83,7 +83,7 @@ jobs:
         uses: mmichailidis/sendgrid-mail-action@v1.1
         with:
           # The token for sendgrid
-          sendgrid-token: sdgsdfgdfgsdfgsdfg
+          sendgrid-token: ${{ secrets.WAVE_SENDGRID_TOKEN }}
           # The emails ( can be only one ) that the email will go
           mail: mgomar@plainconcepts.com
           # The email that will be shown as sender
