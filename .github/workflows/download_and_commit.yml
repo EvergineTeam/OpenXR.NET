@@ -45,7 +45,7 @@ jobs:
           # repo/path/file.txt
           second_file_path: ${{  env.xrFile  }}
           # PASSED or FAILED
-          #expected_result: # optional, default is PASSED
+          expected_result: FAILED
           
   build:
     needs: [download]    
