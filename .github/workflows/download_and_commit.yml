@@ -75,8 +75,8 @@ jobs:
         if: ${{ success() }}
         run: |
           cd ${{  env.nugetOutputPath  }}
-          ls 
-          dotnet nuget push WaveEngine.Bindings.OpenXR.${{  needs.download.outputs.output3  }}.${{  github.run_number  }}.nupkg --skip-duplicate --no-symbols true -k ${{secrets.WAVE_NUGETORG_TOKEN}} 
+          ls *.nupkg
+          dotnet nuget push ./*.nupkg --skip-duplicate --no-symbols true -k ${{secrets.WAVE_NUGETORG_TOKEN}} -s https://api.nuget.org/v3/index.json
       - name: Commit if update
         if: ${{ success() }}
         uses: stefanzweifel/git-auto-commit-action@v4.11.0
