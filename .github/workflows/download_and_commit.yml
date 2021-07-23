@@ -5,11 +5,11 @@ on:
   - cron: '0 0 1 * *'
 
 env:
-  xrFile: ${{  'xr.xml'  }}
-  xrTmpFile: ${{  'xr.xml_tmp'  }}  
-  xrPath: ${{  'KhronosRegistry'  }}
-  xrUrl: ${{  'https://raw.githubusercontent.com/KhronosGroup/OpenXR-Docs/master/specification/registry/xr.xml'  }}
-  xrSelfUrl: ${{  'https://raw.githubusercontent.com/WaveEngine/OpenXR.NET/main/KhronosRegistry/xr.xml'  }}
+  filePath: ${{  'xr.xml'  }}
+  fileTmpPath: ${{  'xr.xml_tmp'  }}  
+  basePath: ${{  'KhronosRegistry'  }}
+  sourceUrl: ${{  'https://raw.githubusercontent.com/KhronosGroup/OpenXR-Docs/master/specification/registry/xr.xml'  }}
+  selfUrl: ${{  'https://raw.githubusercontent.com/WaveEngine/OpenXR.NET/main/KhronosRegistry/xr.xml'  }}
   nugetConfigPath: ${{ 'OpenXRGen/WaveEngine.Bindings.OpenXR/NuGet.config'  }}
   nugetOutputPath: ${{  'nupkgs'  }}
 
@@ -25,14 +25,14 @@ jobs:
         uses: carlosperate/download-file-action@v1.0.3
         with:
           # URL of the file to download
-          file-url: ${{  env.xrUrl  }}
-          file-name: ${{  env.xrFile  }}
+          file-url: ${{  env.sourceUrl  }}
+          file-name: ${{  env.filePath  }}
       - name: download our file
         uses: carlosperate/download-file-action@v1.0.3
         with:
           # URL of the file to download
-          file-url: ${{  env.xrSelfUrl  }}
-          file-name: ${{  env.xrTmpFile  }}
+          file-url: ${{  env.selfUrl  }}
+          file-name: ${{  env.fileTmpPath  }}
       - name: Get hash from saved xr
         id: xr        
         run: |
@@ -56,16 +56,16 @@ jobs:
         run: '"<configuration></configuration>" > ${{ env.nugetConfigPath  }}'     
       - name: remove old file
         run: |
-            cd ${{  env.xrPath  }}
-            rm ${{  env.xrFile  }}
+            cd ${{  env.basePath  }}
+            rm ${{  env.filePath  }}
             ls
       - name: download target file
         uses: carlosperate/download-file-action@v1.0.3
         with:
           # URL of the file to download
-          file-url: ${{  env.xrUrl  }}
-          file-name: ${{  env.xrFile  }}          
-          location: ${{ env.xrPath  }}/
+          file-url: ${{  env.sourceUrl  }}
+          file-name: ${{  env.filePath  }}          
+          location: ${{ env.basePath  }}/
       - name: Generate NuGet packages      
         run: powershell ./Generate-NuGets.ps1 -Version  ${{  needs.download.outputs.output3  }}.${{  github.run_number  }} -outputfolder ${{  env.nugetOutputPath  }}  
       - name: Publish NuGet      
