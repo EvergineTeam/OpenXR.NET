@@ -5,3 +5,5 @@
 bin
 obj
 packages
+nupkgs
+NuGet.config
