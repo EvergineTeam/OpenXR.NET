@@ -1,4 +1,4 @@
-name: Update_and_Commit
+name: Manual Generate NuGet
 on:
   workflow_dispatch:
 
