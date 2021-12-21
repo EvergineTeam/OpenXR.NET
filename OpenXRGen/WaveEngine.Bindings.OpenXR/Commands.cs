@@ -33,7 +33,7 @@ namespace WaveEngine.Bindings.OpenXR
                 if (RuntimeInformation.OSDescription.Contains("Unix"))
                 {
                     // Android
-                    return "libopenxr_loader.so.1";
+                    return "libopenxr_loader.so";
                 }
                 else
                 {
