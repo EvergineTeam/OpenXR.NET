@@ -31,11 +31,8 @@ namespace WaveEngine.Bindings.OpenXR
         {
             IntPtr funcPtr = LoadFunction(name);
             if (funcPtr == IntPtr.Zero)
-            {
-                if (instance != XrInstance.Null)
-                {
-                    OpenXRNative.xrGetInstanceProcAddr(instance, (byte*)Marshal.StringToHGlobalAnsi(name), new IntPtr(&funcPtr));
-                }
+            {                
+                OpenXRNative.xrGetInstanceProcAddr(instance, (byte*)Marshal.StringToHGlobalAnsi(name), new IntPtr(&funcPtr));
             }
 
             if (funcPtr != IntPtr.Zero)
