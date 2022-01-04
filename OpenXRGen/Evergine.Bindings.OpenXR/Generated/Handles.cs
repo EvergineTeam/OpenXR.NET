@@ -1,6 +1,6 @@
 using System;
 
-namespace WaveEngine.Bindings.OpenXR
+namespace Evergine.Bindings.OpenXR
 {
 	public partial struct XrInstance : IEquatable<XrInstance>
 {

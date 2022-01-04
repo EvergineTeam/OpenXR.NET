@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace WaveEngine.Bindings.OpenXR
+namespace Evergine.Bindings.OpenXR
 {
 	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct XrVector2f
@@ -5126,6 +5126,25 @@ namespace WaveEngine.Bindings.OpenXR
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrCompositionLayerImageLayoutFB
+	{
+		public XrStructureType type;
+		public void* next;
+		public ulong flags;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrCompositionLayerAlphaBlendFB
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrBlendFactorFB srcFactorColor;
+		public XrBlendFactorFB dstFactorColor;
+		public XrBlendFactorFB srcFactorAlpha;
+		public XrBlendFactorFB dstFactorAlpha;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct XrGraphicsBindingEGLMNDX
 	{
 		public XrStructureType type;
@@ -5220,6 +5239,14 @@ namespace WaveEngine.Bindings.OpenXR
 		public void* next;
 		public uint jointCount;
 		public XrHandJointVelocityEXT* jointVelocities;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrHandJointsMotionRangeInfoEXT
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrHandJointsMotionRangeEXT handJointsMotionRange;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5360,6 +5387,73 @@ namespace WaveEngine.Bindings.OpenXR
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrAndroidSurfaceSwapchainCreateInfoFB
+	{
+		public XrStructureType type;
+		public void* next;
+		public ulong createFlags;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSwapchainStateBaseHeaderFB
+	{
+		public XrStructureType type;
+		public void* next;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSwapchainStateAndroidSurfaceDimensionsFB
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint width;
+		public uint height;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSwapchainStateSamplerOpenGLESFB
+	{
+		public XrStructureType type;
+		public void* next;
+		public EGLenum minFilter;
+		public EGLenum magFilter;
+		public EGLenum wrapModeS;
+		public EGLenum wrapModeT;
+		public EGLenum swizzleRed;
+		public EGLenum swizzleGreen;
+		public EGLenum swizzleBlue;
+		public EGLenum swizzleAlpha;
+		public float maxAnisotropy;
+		public XrColor4f borderColor;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSwapchainStateSamplerVulkanFB
+	{
+		public XrStructureType type;
+		public void* next;
+		public VkFilter minFilter;
+		public VkFilter magFilter;
+		public VkSamplerMipmapMode mipmapMode;
+		public VkSamplerAddressMode wrapModeS;
+		public VkSamplerAddressMode wrapModeT;
+		public VkComponentSwizzle swizzleRed;
+		public VkComponentSwizzle swizzleGreen;
+		public VkComponentSwizzle swizzleBlue;
+		public VkComponentSwizzle swizzleAlpha;
+		public float maxAnisotropy;
+		public XrColor4f borderColor;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrCompositionLayerSecureContentFB
+	{
+		public XrStructureType type;
+		public void* next;
+		public ulong flags;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct XrLoaderInitInfoBaseHeaderKHR
 	{
 		public XrStructureType type;
@@ -5446,6 +5540,293 @@ namespace WaveEngine.Bindings.OpenXR
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrUuidMSFT
+	{
+		public byte bytes_0;
+		public byte bytes_1;
+		public byte bytes_2;
+		public byte bytes_3;
+		public byte bytes_4;
+		public byte bytes_5;
+		public byte bytes_6;
+		public byte bytes_7;
+		public byte bytes_8;
+		public byte bytes_9;
+		public byte bytes_10;
+		public byte bytes_11;
+		public byte bytes_12;
+		public byte bytes_13;
+		public byte bytes_14;
+		public byte bytes_15;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSceneObserverCreateInfoMSFT
+	{
+		public XrStructureType type;
+		public void* next;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSceneCreateInfoMSFT
+	{
+		public XrStructureType type;
+		public void* next;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrNewSceneComputeInfoMSFT
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint requestedFeatureCount;
+		public XrSceneComputeFeatureMSFT* requestedFeatures;
+		public XrSceneComputeConsistencyMSFT consistency;
+		public XrSceneBoundsMSFT bounds;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrVisualMeshComputeLodInfoMSFT
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrMeshComputeLodMSFT lod;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSceneSphereBoundMSFT
+	{
+		public XrVector3f center;
+		public float radius;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSceneOrientedBoxBoundMSFT
+	{
+		public XrPosef pose;
+		public XrVector3f extents;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSceneFrustumBoundMSFT
+	{
+		public XrPosef pose;
+		public XrFovf fov;
+		public float farDistance;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSceneBoundsMSFT
+	{
+		public XrSpace space;
+		public long time;
+		public uint sphereCount;
+		public XrSceneSphereBoundMSFT* spheres;
+		public uint boxCount;
+		public XrSceneOrientedBoxBoundMSFT* boxes;
+		public uint frustumCount;
+		public XrSceneFrustumBoundMSFT* frustums;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSceneComponentMSFT
+	{
+		public XrSceneComponentTypeMSFT componentType;
+		public XrUuidMSFT id;
+		public XrUuidMSFT parentId;
+		public long updateTime;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSceneComponentsMSFT
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint componentCapacityInput;
+		public uint componentCountOutput;
+		public XrSceneComponentMSFT* components;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSceneComponentsGetInfoMSFT
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrSceneComponentTypeMSFT componentType;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSceneComponentLocationMSFT
+	{
+		public ulong flags;
+		public XrPosef pose;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSceneComponentLocationsMSFT
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint locationCount;
+		public XrSceneComponentLocationMSFT* locations;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSceneComponentsLocateInfoMSFT
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrSpace baseSpace;
+		public long time;
+		public uint componentIdCount;
+		public XrUuidMSFT* componentIds;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSceneObjectMSFT
+	{
+		public XrSceneObjectTypeMSFT objectType;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSceneObjectsMSFT
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint sceneObjectCount;
+		public XrSceneObjectMSFT* sceneObjects;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSceneComponentParentFilterInfoMSFT
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrUuidMSFT parentId;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSceneObjectTypesFilterInfoMSFT
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint objectTypeCount;
+		public XrSceneObjectTypeMSFT* objectTypes;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrScenePlaneMSFT
+	{
+		public XrScenePlaneAlignmentTypeMSFT alignment;
+		public XrExtent2Df size;
+		public ulong meshBufferId;
+		public XrBool32 supportsIndicesUint16;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrScenePlanesMSFT
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint scenePlaneCount;
+		public XrScenePlaneMSFT* scenePlanes;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrScenePlaneAlignmentFilterInfoMSFT
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint alignmentCount;
+		public XrScenePlaneAlignmentTypeMSFT* alignments;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSceneMeshMSFT
+	{
+		public ulong meshBufferId;
+		public XrBool32 supportsIndicesUint16;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSceneMeshesMSFT
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint sceneMeshCount;
+		public XrSceneMeshMSFT* sceneMeshes;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSceneMeshBuffersGetInfoMSFT
+	{
+		public XrStructureType type;
+		public void* next;
+		public ulong meshBufferId;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSceneMeshBuffersMSFT
+	{
+		public XrStructureType type;
+		public void* next;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSceneMeshVertexBufferMSFT
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint vertexCapacityInput;
+		public uint vertexCountOutput;
+		public XrVector3f* vertices;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSceneMeshIndicesUint32MSFT
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint indexCapacityInput;
+		public uint indexCountOutput;
+		public uint* indices;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSceneMeshIndicesUint16MSFT
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint indexCapacityInput;
+		public uint indexCountOutput;
+		public ushort* indices;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSerializedSceneFragmentDataGetInfoMSFT
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrUuidMSFT sceneFragmentId;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrDeserializeSceneFragmentMSFT
+	{
+		public uint bufferSize;
+		public byte* buffer;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSceneDeserializeInfoMSFT
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint fragmentCount;
+		public XrDeserializeSceneFragmentMSFT* fragments;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct XrSystemColorSpacePropertiesFB
 	{
 		public XrStructureType type;
@@ -5453,5 +5834,63 @@ namespace WaveEngine.Bindings.OpenXR
 		public XrColorSpaceFB colorSpace;
 	}
 
-}
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrFoveationProfileCreateInfoFB
+	{
+		public XrStructureType type;
+		public void* next;
+	}
 
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSwapchainCreateInfoFoveationFB
+	{
+		public XrStructureType type;
+		public void* next;
+		public ulong flags;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSwapchainStateFoveationFB
+	{
+		public XrStructureType type;
+		public void* next;
+		public ulong flags;
+		public XrFoveationProfileFB profile;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSwapchainImageFoveationVulkanFB
+	{
+		public XrStructureType type;
+		public void* next;
+		public IntPtr image;
+		public uint width;
+		public uint height;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrFoveationLevelProfileCreateInfoFB
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrFoveationLevelFB level;
+		public float verticalOffset;
+		public XrFoveationDynamicFB dynamic;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrVector4sFB
+	{
+		public short x;
+		public short y;
+		public short z;
+		public short w;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrHandTrackingMeshFB
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint jointCapacityInput;
+		p

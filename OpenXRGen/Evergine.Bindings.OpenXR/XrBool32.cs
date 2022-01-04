@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace WaveEngine.Bindings.OpenXR
+namespace Evergine.Bindings.OpenXR
 {
     /// <summary>
     /// A boolean value stored in a 4-byte unsigned integer.

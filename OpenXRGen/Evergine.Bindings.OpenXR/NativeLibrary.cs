@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Runtime.InteropServices;
 
-namespace WaveEngine.Bindings.OpenXR
+namespace Evergine.Bindings.OpenXR
 {
     public abstract class NativeLibrary : IDisposable
     {

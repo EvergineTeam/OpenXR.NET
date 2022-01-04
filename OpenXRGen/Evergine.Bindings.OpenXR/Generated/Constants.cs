@@ -1,4 +1,4 @@
-namespace WaveEngine.Bindings.OpenXR
+namespace Evergine.Bindings.OpenXR
 {
 	public static partial class OpenXRNative
 	{

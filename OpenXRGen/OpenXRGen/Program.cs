@@ -10,7 +10,7 @@ namespace OpenXRGen
         static void Main(string[] args)
         {
             string vkFile = "..\\..\\..\\..\\..\\KhronosRegistry\\xr.xml";
-            string outputPath = "..\\..\\..\\..\\WaveEngine.Bindings.OpenXR\\Generated";
+            string outputPath = "..\\..\\..\\..\\Evergine.Bindings.OpenXR\\Generated";
 
             var openXRSpec = OpenXRSpecification.FromFile(vkFile);
             var openXRVersion = OpenXRVersion.FromSpec(openXRSpec, "AllVersions", openXRSpec.Extensions.ToImmutableList());
@@ -18,7 +18,7 @@ namespace OpenXRGen
             // Write Constants
             using (StreamWriter file = File.CreateText(Path.Combine(outputPath, "Constants.cs")))
             {
-                file.WriteLine("namespace WaveEngine.Bindings.OpenXR");
+                file.WriteLine("namespace Evergine.Bindings.OpenXR");
                 file.WriteLine("{");
                 file.WriteLine("\tpublic static partial class OpenXRNative");
                 file.WriteLine("\t{");
@@ -44,7 +44,7 @@ namespace OpenXRGen
             using (StreamWriter file = File.CreateText(Path.Combine(outputPath, "Delegates.cs")))
             {
                 file.WriteLine("using System;\n");
-                file.WriteLine("namespace WaveEngine.Bindings.OpenXR");
+                file.WriteLine("namespace Evergine.Bindings.OpenXR");
                 file.WriteLine("{");
 
                 foreach (var func in openXRVersion.FuncPointers)
@@ -86,7 +86,7 @@ namespace OpenXRGen
             using (StreamWriter file = File.CreateText(Path.Combine(outputPath, "Enums.cs")))
             {
                 file.WriteLine("using System;\n");
-                file.WriteLine("namespace WaveEngine.Bindings.OpenXR");
+                file.WriteLine("namespace Evergine.Bindings.OpenXR");
                 file.WriteLine("{");
 
                 foreach (var e in openXRVersion.Enums)
@@ -119,7 +119,7 @@ namespace OpenXRGen
             {
                 file.WriteLine("using System;");
                 file.WriteLine("using System.Runtime.InteropServices;\n");
-                file.WriteLine("namespace WaveEngine.Bindings.OpenXR");
+                file.WriteLine("namespace Evergine.Bindings.OpenXR");
                 file.WriteLine("{");
 
                 foreach (var structure in openXRVersion.Structs)
@@ -188,7 +188,7 @@ namespace OpenXRGen
             using (StreamWriter file = File.CreateText(Path.Combine(outputPath, "Handles.cs")))
             {
                 file.WriteLine("using System;\n");
-                file.WriteLine("namespace WaveEngine.Bindings.OpenXR");
+                file.WriteLine("namespace Evergine.Bindings.OpenXR");
                 file.WriteLine("{");
 
                 foreach (var handle in openXRVersion.Handles)
@@ -221,7 +221,7 @@ namespace OpenXRGen
             {
                 file.WriteLine("using System;");
                 file.WriteLine("using System.Runtime.InteropServices;\n");
-                file.WriteLine("namespace WaveEngine.Bindings.OpenXR");
+                file.WriteLine("namespace Evergine.Bindings.OpenXR");
                 file.WriteLine("{");
                 file.WriteLine("\tpublic static unsafe partial class OpenXRNative");
                 file.WriteLine("\t{");

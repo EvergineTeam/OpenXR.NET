@@ -12,8 +12,4 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="Generated\" />
-  </ItemGroup>
-
 </Project>
