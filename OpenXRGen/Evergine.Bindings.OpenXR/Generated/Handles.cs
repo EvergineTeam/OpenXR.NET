@@ -137,4 +137,124 @@ namespace Evergine.Bindings.OpenXR
 		public override int GetHashCode() => Handle.GetHashCode();
 }
 
+	public partial struct XrFoveationProfileFB : IEquatable<XrFoveationProfileFB>
+{
+		public readonly ulong Handle;
+		public XrFoveationProfileFB(ulong existingHandle) { Handle = existingHandle; }
+		public static XrFoveationProfileFB Null => new XrFoveationProfileFB(0);
+		public static implicit operator XrFoveationProfileFB(ulong handle) => new XrFoveationProfileFB(handle);
+		public static bool operator ==(XrFoveationProfileFB left, XrFoveationProfileFB right) => left.Handle == right.Handle;
+		public static bool operator !=(XrFoveationProfileFB left, XrFoveationProfileFB right) => left.Handle != right.Handle;
+		public static bool operator ==(XrFoveationProfileFB left, ulong right) => left.Handle == right;
+		public static bool operator !=(XrFoveationProfileFB left, ulong right) => left.Handle != right;
+		public bool Equals(XrFoveationProfileFB h) => Handle == h.Handle;
+		public override bool Equals(object o) => o is XrFoveationProfileFB h && Equals(h);
+		public override int GetHashCode() => Handle.GetHashCode();
+}
+
+	public partial struct XrTriangleMeshFB : IEquatable<XrTriangleMeshFB>
+{
+		public readonly ulong Handle;
+		public XrTriangleMeshFB(ulong existingHandle) { Handle = existingHandle; }
+		public static XrTriangleMeshFB Null => new XrTriangleMeshFB(0);
+		public static implicit operator XrTriangleMeshFB(ulong handle) => new XrTriangleMeshFB(handle);
+		public static bool operator ==(XrTriangleMeshFB left, XrTriangleMeshFB right) => left.Handle == right.Handle;
+		public static bool operator !=(XrTriangleMeshFB left, XrTriangleMeshFB right) => left.Handle != right.Handle;
+		public static bool operator ==(XrTriangleMeshFB left, ulong right) => left.Handle == right;
+		public static bool operator !=(XrTriangleMeshFB left, ulong right) => left.Handle != right;
+		public bool Equals(XrTriangleMeshFB h) => Handle == h.Handle;
+		public override bool Equals(object o) => o is XrTriangleMeshFB h && Equals(h);
+		public override int GetHashCode() => Handle.GetHashCode();
+}
+
+	public partial struct XrPassthroughFB : IEquatable<XrPassthroughFB>
+{
+		public readonly ulong Handle;
+		public XrPassthroughFB(ulong existingHandle) { Handle = existingHandle; }
+		public static XrPassthroughFB Null => new XrPassthroughFB(0);
+		public static implicit operator XrPassthroughFB(ulong handle) => new XrPassthroughFB(handle);
+		public static bool operator ==(XrPassthroughFB left, XrPassthroughFB right) => left.Handle == right.Handle;
+		public static bool operator !=(XrPassthroughFB left, XrPassthroughFB right) => left.Handle != right.Handle;
+		public static bool operator ==(XrPassthroughFB left, ulong right) => left.Handle == right;
+		public static bool operator !=(XrPassthroughFB left, ulong right) => left.Handle != right;
+		public bool Equals(XrPassthroughFB h) => Handle == h.Handle;
+		public override bool Equals(object o) => o is XrPassthroughFB h && Equals(h);
+		public override int GetHashCode() => Handle.GetHashCode();
+}
+
+	public partial struct XrPassthroughLayerFB : IEquatable<XrPassthroughLayerFB>
+{
+		public readonly ulong Handle;
+		public XrPassthroughLayerFB(ulong existingHandle) { Handle = existingHandle; }
+		public static XrPassthroughLayerFB Null => new XrPassthroughLayerFB(0);
+		public static implicit operator XrPassthroughLayerFB(ulong handle) => new XrPassthroughLayerFB(handle);
+		public static bool operator ==(XrPassthroughLayerFB left, XrPassthroughLayerFB right) => left.Handle == right.Handle;
+		public static bool operator !=(XrPassthroughLayerFB left, XrPassthroughLayerFB right) => left.Handle != right.Handle;
+		public static bool operator ==(XrPassthroughLayerFB left, ulong right) => left.Handle == right;
+		public static bool operator !=(XrPassthroughLayerFB left, ulong right) => left.Handle != right;
+		public bool Equals(XrPassthroughLayerFB h) => Handle == h.Handle;
+		public override bool Equals(object o) => o is XrPassthroughLayerFB h && Equals(h);
+		public override int GetHashCode() => Handle.GetHashCode();
+}
+
+	public partial struct XrGeometryInstanceFB : IEquatable<XrGeometryInstanceFB>
+{
+		public readonly ulong Handle;
+		public XrGeometryInstanceFB(ulong existingHandle) { Handle = existingHandle; }
+		public static XrGeometryInstanceFB Null => new XrGeometryInstanceFB(0);
+		public static implicit operator XrGeometryInstanceFB(ulong handle) => new XrGeometryInstanceFB(handle);
+		public static bool operator ==(XrGeometryInstanceFB left, XrGeometryInstanceFB right) => left.Handle == right.Handle;
+		public static bool operator !=(XrGeometryInstanceFB left, XrGeometryInstanceFB right) => left.Handle != right.Handle;
+		public static bool operator ==(XrGeometryInstanceFB left, ulong right) => left.Handle == right;
+		public static bool operator !=(XrGeometryInstanceFB left, ulong right) => left.Handle != right;
+		public bool Equals(XrGeometryInstanceFB h) => Handle == h.Handle;
+		public override bool Equals(object o) => o is XrGeometryInstanceFB h && Equals(h);
+		public override int GetHashCode() => Handle.GetHashCode();
+}
+
+	public partial struct XrSceneObserverMSFT : IEquatable<XrSceneObserverMSFT>
+{
+		public readonly ulong Handle;
+		public XrSceneObserverMSFT(ulong existingHandle) { Handle = existingHandle; }
+		public static XrSceneObserverMSFT Null => new XrSceneObserverMSFT(0);
+		public static implicit operator XrSceneObserverMSFT(ulong handle) => new XrSceneObserverMSFT(handle);
+		public static bool operator ==(XrSceneObserverMSFT left, XrSceneObserverMSFT right) => left.Handle == right.Handle;
+		public static bool operator !=(XrSceneObserverMSFT left, XrSceneObserverMSFT right) => left.Handle != right.Handle;
+		public static bool operator ==(XrSceneObserverMSFT left, ulong right) => left.Handle == right;
+		public static bool operator !=(XrSceneObserverMSFT left, ulong right) => left.Handle != right;
+		public bool Equals(XrSceneObserverMSFT h) => Handle == h.Handle;
+		public override bool Equals(object o) => o is XrSceneObserverMSFT h && Equals(h);
+		public override int GetHashCode() => Handle.GetHashCode();
+}
+
+	public partial struct XrSceneMSFT : IEquatable<XrSceneMSFT>
+{
+		public readonly ulong Handle;
+		public XrSceneMSFT(ulong existingHandle) { Handle = existingHandle; }
+		public static XrSceneMSFT Null => new XrSceneMSFT(0);
+		public static implicit operator XrSceneMSFT(ulong handle) => new XrSceneMSFT(handle);
+		public static bool operator ==(XrSceneMSFT left, XrSceneMSFT right) => left.Handle == right.Handle;
+		public static bool operator !=(XrSceneMSFT left, XrSceneMSFT right) => left.Handle != right.Handle;
+		public static bool operator ==(XrSceneMSFT left, ulong right) => left.Handle == right;
+		public static bool operator !=(XrSceneMSFT left, ulong right) => left.Handle != right;
+		public bool Equals(XrSceneMSFT h) => Handle == h.Handle;
+		public override bool Equals(object o) => o is XrSceneMSFT h && Equals(h);
+		public override int GetHashCode() => Handle.GetHashCode();
+}
+
+	public partial struct XrSpatialAnchorStoreConnectionMSFT : IEquatable<XrSpatialAnchorStoreConnectionMSFT>
+{
+		public readonly ulong Handle;
+		public XrSpatialAnchorStoreConnectionMSFT(ulong existingHandle) { Handle = existingHandle; }
+		public static XrSpatialAnchorStoreConnectionMSFT Null => new XrSpatialAnchorStoreConnectionMSFT(0);
+		public static implicit operator XrSpatialAnchorStoreConnectionMSFT(ulong handle) => new XrSpatialAnchorStoreConnectionMSFT(handle);
+		public static bool operator ==(XrSpatialAnchorStoreConnectionMSFT left, XrSpatialAnchorStoreConnectionMSFT right) => left.Handle == right.Handle;
+		public static bool operator !=(XrSpatialAnchorStoreConnectionMSFT left, XrSpatialAnchorStoreConnectionMSFT right) => left.Handle != right.Handle;
+		public static bool operator ==(XrSpatialAnchorStoreConnectionMSFT left, ulong right) => left.Handle == right;
+		public static bool operator !=(XrSpatialAnchorStoreConnectionMSFT left, ulong right) => left.Handle != right;
+		public bool Equals(XrSpatialAnchorStoreConnectionMSFT h) => Handle == h.Handle;
+		public override bool Equals(object o) => o is XrSpatialAnchorStoreConnectionMSFT h && Equals(h);
+		public override int GetHashCode() => Handle.GetHashCode();
+}
+
 }

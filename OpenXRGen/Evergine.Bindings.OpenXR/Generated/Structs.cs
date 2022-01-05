@@ -5415,14 +5415,14 @@ namespace Evergine.Bindings.OpenXR
 	{
 		public XrStructureType type;
 		public void* next;
-		public EGLenum minFilter;
-		public EGLenum magFilter;
-		public EGLenum wrapModeS;
-		public EGLenum wrapModeT;
-		public EGLenum swizzleRed;
-		public EGLenum swizzleGreen;
-		public EGLenum swizzleBlue;
-		public EGLenum swizzleAlpha;
+		public IntPtr minFilter;
+		public IntPtr magFilter;
+		public IntPtr wrapModeS;
+		public IntPtr wrapModeT;
+		public IntPtr swizzleRed;
+		public IntPtr swizzleGreen;
+		public IntPtr swizzleBlue;
+		public IntPtr swizzleAlpha;
 		public float maxAnisotropy;
 		public XrColor4f borderColor;
 	}
@@ -5432,15 +5432,15 @@ namespace Evergine.Bindings.OpenXR
 	{
 		public XrStructureType type;
 		public void* next;
-		public VkFilter minFilter;
-		public VkFilter magFilter;
-		public VkSamplerMipmapMode mipmapMode;
-		public VkSamplerAddressMode wrapModeS;
-		public VkSamplerAddressMode wrapModeT;
-		public VkComponentSwizzle swizzleRed;
-		public VkComponentSwizzle swizzleGreen;
-		public VkComponentSwizzle swizzleBlue;
-		public VkComponentSwizzle swizzleAlpha;
+		public IntPtr minFilter;
+		public IntPtr magFilter;
+		public IntPtr mipmapMode;
+		public IntPtr wrapModeS;
+		public IntPtr wrapModeT;
+		public IntPtr swizzleRed;
+		public IntPtr swizzleGreen;
+		public IntPtr swizzleBlue;
+		public IntPtr swizzleAlpha;
 		public float maxAnisotropy;
 		public XrColor4f borderColor;
 	}
@@ -5893,4 +5893,329 @@ namespace Evergine.Bindings.OpenXR
 		public XrStructureType type;
 		public void* next;
 		public uint jointCapacityInput;
-		p
+		public uint jointCountOutput;
+		public XrPosef* jointBindPoses;
+		public float* jointRadii;
+		public XrHandJointEXT* jointParents;
+		public uint vertexCapacityInput;
+		public uint vertexCountOutput;
+		public XrVector3f* vertexPositions;
+		public XrVector3f* vertexNormals;
+		public XrVector2f* vertexUVs;
+		public XrVector4sFB* vertexBlendIndices;
+		public XrVector4f* vertexBlendWeights;
+		public uint indexCapacityInput;
+		public uint indexCountOutput;
+		public short* indices;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrHandTrackingScaleFB
+	{
+		public XrStructureType type;
+		public void* next;
+		public float sensorOutput;
+		public float currentOutput;
+		public XrBool32 overrideHandScale;
+		public float overrideValueInput;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrHandTrackingAimStateFB
+	{
+		public XrStructureType type;
+		public void* next;
+		public ulong status;
+		public XrPosef aimPose;
+		public float pinchStrengthIndex;
+		public float pinchStrengthMiddle;
+		public float pinchStrengthRing;
+		public float pinchStrengthLittle;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrHandCapsuleFB
+	{
+		public XrVector3f points_0;
+		public XrVector3f points_1;
+		public float radius;
+		public XrHandJointEXT joint;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrHandTrackingCapsulesStateFB
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrHandCapsuleFB capsules_0;
+		public XrHandCapsuleFB capsules_1;
+		public XrHandCapsuleFB capsules_2;
+		public XrHandCapsuleFB capsules_3;
+		public XrHandCapsuleFB capsules_4;
+		public XrHandCapsuleFB capsules_5;
+		public XrHandCapsuleFB capsules_6;
+		public XrHandCapsuleFB capsules_7;
+		public XrHandCapsuleFB capsules_8;
+		public XrHandCapsuleFB capsules_9;
+		public XrHandCapsuleFB capsules_10;
+		public XrHandCapsuleFB capsules_11;
+		public XrHandCapsuleFB capsules_12;
+		public XrHandCapsuleFB capsules_13;
+		public XrHandCapsuleFB capsules_14;
+		public XrHandCapsuleFB capsules_15;
+		public XrHandCapsuleFB capsules_16;
+		public XrHandCapsuleFB capsules_17;
+		public XrHandCapsuleFB capsules_18;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrCompositionLayerDepthTestVARJO
+	{
+		public XrStructureType type;
+		public void* next;
+		public float depthTestRangeNearZ;
+		public float depthTestRangeFarZ;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrViewLocateFoveatedRenderingVARJO
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrBool32 foveatedRenderingActive;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrFoveatedViewConfigurationViewVARJO
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrBool32 foveatedRenderingActive;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSystemFoveatedRenderingPropertiesVARJO
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrBool32 supportsFoveatedRendering;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrCompositionLayerReprojectionInfoMSFT
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrReprojectionModeMSFT reprojectionMode;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrCompositionLayerReprojectionPlaneOverrideMSFT
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrVector3f position;
+		public XrVector3f normal;
+		public XrVector3f velocity;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrTriangleMeshCreateInfoFB
+	{
+		public XrStructureType type;
+		public void* next;
+		public ulong flags;
+		public XrWindingOrderFB windingOrder;
+		public uint vertexCount;
+		public XrVector3f* vertexBuffer;
+		public uint triangleCount;
+		public uint* indexBuffer;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSystemPassthroughPropertiesFB
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrBool32 supportsPassthrough;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrPassthroughCreateInfoFB
+	{
+		public XrStructureType type;
+		public void* next;
+		public ulong flags;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrPassthroughLayerCreateInfoFB
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrPassthroughFB passthrough;
+		public ulong flags;
+		public XrPassthroughLayerPurposeFB purpose;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrCompositionLayerPassthroughFB
+	{
+		public XrStructureType type;
+		public void* next;
+		public ulong flags;
+		public XrSpace space;
+		public XrPassthroughLayerFB layerHandle;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrGeometryInstanceCreateInfoFB
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrPassthroughLayerFB layer;
+		public XrTriangleMeshFB mesh;
+		public XrSpace baseSpace;
+		public XrPosef pose;
+		public XrVector3f scale;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrGeometryInstanceTransformFB
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrSpace baseSpace;
+		public long time;
+		public XrPosef pose;
+		public XrVector3f scale;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrPassthroughStyleFB
+	{
+		public XrStructureType type;
+		public void* next;
+		public float textureOpacityFactor;
+		public XrColor4f edgeColor;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrPassthroughColorMapMonoToRgbaFB
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrColor4f textureColorMap;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrPassthroughColorMapMonoToMonoFB
+	{
+		public XrStructureType type;
+		public void* next;
+		public byte textureColorMap;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrEventDataPassthroughStateChangedFB
+	{
+		public XrStructureType type;
+		public void* next;
+		public ulong flags;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialAnchorPersistenceNameMSFT
+	{
+		public fixed byte name[(int)OpenXRNative.XR_MAX_SPATIAL_ANCHOR_NAME_SIZE_MSFT];
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialAnchorPersistenceInfoMSFT
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrSpatialAnchorPersistenceNameMSFT spatialAnchorPersistenceName;
+		public XrSpatialAnchorMSFT spatialAnchor;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialAnchorFromPersistedAnchorCreateInfoMSFT
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrSpatialAnchorStoreConnectionMSFT spatialAnchorStore;
+		public XrSpatialAnchorPersistenceNameMSFT spatialAnchorPersistenceName;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrViveTrackerPathsHTCX
+	{
+		public XrStructureType type;
+		public void* next;
+		public ulong persistentPath;
+		public ulong rolePath;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrEventDataViveTrackerConnectedHTCX
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrViveTrackerPathsHTCX* paths;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrCompositionLayerSpaceWarpInfoFB
+	{
+		public XrStructureType type;
+		public void* next;
+		public ulong layerFlags;
+		public XrSwapchainSubImage motionVectorSubImage;
+		public XrPosef appSpaceDeltaPose;
+		public XrSwapchainSubImage depthSubImage;
+		public float minDepth;
+		public float maxDepth;
+		public float nearZ;
+		public float farZ;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSystemSpaceWarpPropertiesFB
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint recommendedMotionVectorImageRectWidth;
+		public uint recommendedMotionVectorImageRectHeight;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSystemMarkerTrackingPropertiesVARJO
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrBool32 supportsMarkerTracking;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrEventDataMarkerTrackingUpdateVARJO
+	{
+		public XrStructureType type;
+		public void* next;
+		public ulong markerId;
+		public XrBool32 isActive;
+		public XrBool32 isPredicted;
+		public long time;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrMarkerSpaceCreateInfoVARJO
+	{
+		public XrStructureType type;
+		public void* next;
+		public ulong markerId;
+		public XrPosef poseInMarkerSpace;
+	}
+
+}
+

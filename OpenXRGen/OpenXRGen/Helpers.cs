@@ -18,6 +18,8 @@ namespace OpenXRGen
                     return "ulong";
                 case ConstantType.Float32:
                     return "float";
+                case ConstantType.String:
+                    return "string";
                 default:
                     throw new InvalidOperationException("Invalid value");
             }
@@ -126,6 +128,8 @@ namespace OpenXRGen
                 case "uint8_t":
                 case "char":
                     return "byte";
+                case "wchar_t":
+                    return "string";
                 case "uint8_t*":
                 case "char*":
                     return "byte*";
@@ -242,6 +246,11 @@ namespace OpenXRGen
                 case "VkPhysicalDevice":
                 case "VkResult":
                 case "timespec":
+                case "EGLenum":
+                case "VkFilter":
+                case "VkSamplerMipmapMode":
+                case "VkSamplerAddressMode":
+                case "VkComponentSwizzle":
                     return true;
                 default:
                     return false;

@@ -13,6 +13,7 @@ namespace OpenXRGen
         UInt32,
         UInt64,
         Float32,
+        String
     }
 
     public class ConstantDefinition
@@ -25,8 +26,14 @@ namespace OpenXRGen
 
         public static ConstantType ParseType(string value)
         {
-            if (value.EndsWith("f"))
+            if (value.StartsWith('"'))
+            {
+                return ConstantType.String;
+            }
+            else if (value.EndsWith("f") || value.EndsWith("F"))
+            {
                 return ConstantType.Float32;
+            }
             else if (value.EndsWith("ULL)"))
             {
                 return ConstantType.UInt64;

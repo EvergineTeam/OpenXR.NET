@@ -66,7 +66,25 @@ namespace OpenXRGen
 
             foreach (var extension in extensions)
             {
-                // Extend Enums
+                if (extension.Supported == "disabled")
+                {
+                    continue;
+                }
+
+                // Add Constant
+                foreach (var constantType in extension.Constants)
+                {
+                    if (!version.Constants.Exists(c => c.Name == constantType.Name))
+                    {
+                        ConstantDefinition newConstant = new ConstantDefinition();
+                        newConstant.Name = constantType.Name;
+                        newConstant.Value = constantType.Value;
+                        newConstant.Type = ConstantDefinition.ParseType(constantType.Value);
+                        version.Constants.Add(newConstant);
+                    }
+                }
+
+                // Add Enums
                 foreach (var enumType in extension.Enums)
                 {
                     if (enumType.Extends != null & enumType.Alias == null)

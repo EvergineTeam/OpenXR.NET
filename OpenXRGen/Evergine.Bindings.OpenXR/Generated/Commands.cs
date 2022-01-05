@@ -600,6 +600,24 @@ namespace Evergine.Bindings.OpenXR
 			=> xrTryGetPerceptionAnchorFromSpatialAnchorMSFT_ptr(session, anchor, perceptionAnchor);
 
 		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrEnumerateReprojectionModesMSFTDelegate(XrInstance instance, ulong systemId, XrViewConfigurationType viewConfigurationType, uint modeCapacityInput, uint* modeCountOutput, XrReprojectionModeMSFT* modes);
+		private static xrEnumerateReprojectionModesMSFTDelegate xrEnumerateReprojectionModesMSFT_ptr;
+		public static XrResult xrEnumerateReprojectionModesMSFT(XrInstance instance, ulong systemId, XrViewConfigurationType viewConfigurationType, uint modeCapacityInput, uint* modeCountOutput, XrReprojectionModeMSFT* modes)
+			=> xrEnumerateReprojectionModesMSFT_ptr(instance, systemId, viewConfigurationType, modeCapacityInput, modeCountOutput, modes);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrUpdateSwapchainFBDelegate(XrSwapchain swapchain, XrSwapchainStateBaseHeaderFB* state);
+		private static xrUpdateSwapchainFBDelegate xrUpdateSwapchainFB_ptr;
+		public static XrResult xrUpdateSwapchainFB(XrSwapchain swapchain, XrSwapchainStateBaseHeaderFB* state)
+			=> xrUpdateSwapchainFB_ptr(swapchain, state);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrGetSwapchainStateFBDelegate(XrSwapchain swapchain, XrSwapchainStateBaseHeaderFB* state);
+		private static xrGetSwapchainStateFBDelegate xrGetSwapchainStateFB_ptr;
+		public static XrResult xrGetSwapchainStateFB(XrSwapchain swapchain, XrSwapchainStateBaseHeaderFB* state)
+			=> xrGetSwapchainStateFB_ptr(swapchain, state);
+
+		[UnmanagedFunctionPointer(CallConv)]
 		private delegate XrResult xrInitializeLoaderKHRDelegate(XrLoaderInitInfoBaseHeaderKHR* loaderInitInfo);
 		private static xrInitializeLoaderKHRDelegate xrInitializeLoaderKHR_ptr;
 		public static XrResult xrInitializeLoaderKHR(XrLoaderInitInfoBaseHeaderKHR* loaderInitInfo)
@@ -624,6 +642,78 @@ namespace Evergine.Bindings.OpenXR
 			=> xrGetVulkanGraphicsDevice2KHR_ptr(instance, getInfo, vulkanPhysicalDevice);
 
 		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrEnumerateSceneComputeFeaturesMSFTDelegate(XrInstance instance, ulong systemId, uint featureCapacityInput, uint* featureCountOutput, XrSceneComputeFeatureMSFT* features);
+		private static xrEnumerateSceneComputeFeaturesMSFTDelegate xrEnumerateSceneComputeFeaturesMSFT_ptr;
+		public static XrResult xrEnumerateSceneComputeFeaturesMSFT(XrInstance instance, ulong systemId, uint featureCapacityInput, uint* featureCountOutput, XrSceneComputeFeatureMSFT* features)
+			=> xrEnumerateSceneComputeFeaturesMSFT_ptr(instance, systemId, featureCapacityInput, featureCountOutput, features);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrCreateSceneObserverMSFTDelegate(XrSession session, XrSceneObserverCreateInfoMSFT* createInfo, XrSceneObserverMSFT* sceneObserver);
+		private static xrCreateSceneObserverMSFTDelegate xrCreateSceneObserverMSFT_ptr;
+		public static XrResult xrCreateSceneObserverMSFT(XrSession session, XrSceneObserverCreateInfoMSFT* createInfo, XrSceneObserverMSFT* sceneObserver)
+			=> xrCreateSceneObserverMSFT_ptr(session, createInfo, sceneObserver);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrDestroySceneObserverMSFTDelegate(XrSceneObserverMSFT sceneObserver);
+		private static xrDestroySceneObserverMSFTDelegate xrDestroySceneObserverMSFT_ptr;
+		public static XrResult xrDestroySceneObserverMSFT(XrSceneObserverMSFT sceneObserver)
+			=> xrDestroySceneObserverMSFT_ptr(sceneObserver);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrCreateSceneMSFTDelegate(XrSceneObserverMSFT sceneObserver, XrSceneCreateInfoMSFT* createInfo, XrSceneMSFT* scene);
+		private static xrCreateSceneMSFTDelegate xrCreateSceneMSFT_ptr;
+		public static XrResult xrCreateSceneMSFT(XrSceneObserverMSFT sceneObserver, XrSceneCreateInfoMSFT* createInfo, XrSceneMSFT* scene)
+			=> xrCreateSceneMSFT_ptr(sceneObserver, createInfo, scene);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrDestroySceneMSFTDelegate(XrSceneMSFT scene);
+		private static xrDestroySceneMSFTDelegate xrDestroySceneMSFT_ptr;
+		public static XrResult xrDestroySceneMSFT(XrSceneMSFT scene)
+			=> xrDestroySceneMSFT_ptr(scene);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrComputeNewSceneMSFTDelegate(XrSceneObserverMSFT sceneObserver, XrNewSceneComputeInfoMSFT* computeInfo);
+		private static xrComputeNewSceneMSFTDelegate xrComputeNewSceneMSFT_ptr;
+		public static XrResult xrComputeNewSceneMSFT(XrSceneObserverMSFT sceneObserver, XrNewSceneComputeInfoMSFT* computeInfo)
+			=> xrComputeNewSceneMSFT_ptr(sceneObserver, computeInfo);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrGetSceneComputeStateMSFTDelegate(XrSceneObserverMSFT sceneObserver, XrSceneComputeStateMSFT* state);
+		private static xrGetSceneComputeStateMSFTDelegate xrGetSceneComputeStateMSFT_ptr;
+		public static XrResult xrGetSceneComputeStateMSFT(XrSceneObserverMSFT sceneObserver, XrSceneComputeStateMSFT* state)
+			=> xrGetSceneComputeStateMSFT_ptr(sceneObserver, state);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrGetSceneComponentsMSFTDelegate(XrSceneMSFT scene, XrSceneComponentsGetInfoMSFT* getInfo, XrSceneComponentsMSFT* components);
+		private static xrGetSceneComponentsMSFTDelegate xrGetSceneComponentsMSFT_ptr;
+		public static XrResult xrGetSceneComponentsMSFT(XrSceneMSFT scene, XrSceneComponentsGetInfoMSFT* getInfo, XrSceneComponentsMSFT* components)
+			=> xrGetSceneComponentsMSFT_ptr(scene, getInfo, components);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrLocateSceneComponentsMSFTDelegate(XrSceneMSFT scene, XrSceneComponentsLocateInfoMSFT* locateInfo, XrSceneComponentLocationsMSFT* locations);
+		private static xrLocateSceneComponentsMSFTDelegate xrLocateSceneComponentsMSFT_ptr;
+		public static XrResult xrLocateSceneComponentsMSFT(XrSceneMSFT scene, XrSceneComponentsLocateInfoMSFT* locateInfo, XrSceneComponentLocationsMSFT* locations)
+			=> xrLocateSceneComponentsMSFT_ptr(scene, locateInfo, locations);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrGetSceneMeshBuffersMSFTDelegate(XrSceneMSFT scene, XrSceneMeshBuffersGetInfoMSFT* getInfo, XrSceneMeshBuffersMSFT* buffers);
+		private static xrGetSceneMeshBuffersMSFTDelegate xrGetSceneMeshBuffersMSFT_ptr;
+		public static XrResult xrGetSceneMeshBuffersMSFT(XrSceneMSFT scene, XrSceneMeshBuffersGetInfoMSFT* getInfo, XrSceneMeshBuffersMSFT* buffers)
+			=> xrGetSceneMeshBuffersMSFT_ptr(scene, getInfo, buffers);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrDeserializeSceneMSFTDelegate(XrSceneObserverMSFT sceneObserver, XrSceneDeserializeInfoMSFT* deserializeInfo);
+		private static xrDeserializeSceneMSFTDelegate xrDeserializeSceneMSFT_ptr;
+		public static XrResult xrDeserializeSceneMSFT(XrSceneObserverMSFT sceneObserver, XrSceneDeserializeInfoMSFT* deserializeInfo)
+			=> xrDeserializeSceneMSFT_ptr(sceneObserver, deserializeInfo);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrGetSerializedSceneFragmentDataMSFTDelegate(XrSceneMSFT scene, XrSerializedSceneFragmentDataGetInfoMSFT* getInfo, uint countInput, uint* readOutput, byte* buffer);
+		private static xrGetSerializedSceneFragmentDataMSFTDelegate xrGetSerializedSceneFragmentDataMSFT_ptr;
+		public static XrResult xrGetSerializedSceneFragmentDataMSFT(XrSceneMSFT scene, XrSerializedSceneFragmentDataGetInfoMSFT* getInfo, uint countInput, uint* readOutput, byte* buffer)
+			=> xrGetSerializedSceneFragmentDataMSFT_ptr(scene, getInfo, countInput, readOutput, buffer);
+
+		[UnmanagedFunctionPointer(CallConv)]
 		private delegate XrResult xrEnumerateDisplayRefreshRatesFBDelegate(XrSession session, uint displayRefreshRateCapacityInput, uint* displayRefreshRateCountOutput, float* displayRefreshRates);
 		private static xrEnumerateDisplayRefreshRatesFBDelegate xrEnumerateDisplayRefreshRatesFB_ptr;
 		public static XrResult xrEnumerateDisplayRefreshRatesFB(XrSession session, uint displayRefreshRateCapacityInput, uint* displayRefreshRateCountOutput, float* displayRefreshRates)
@@ -642,6 +732,12 @@ namespace Evergine.Bindings.OpenXR
 			=> xrRequestDisplayRefreshRateFB_ptr(session, displayRefreshRate);
 
 		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrEnumerateViveTrackerPathsHTCXDelegate(XrInstance instance, uint pathCapacityInput, uint* pathCountOutput, XrViveTrackerPathsHTCX* paths);
+		private static xrEnumerateViveTrackerPathsHTCXDelegate xrEnumerateViveTrackerPathsHTCX_ptr;
+		public static XrResult xrEnumerateViveTrackerPathsHTCX(XrInstance instance, uint pathCapacityInput, uint* pathCountOutput, XrViveTrackerPathsHTCX* paths)
+			=> xrEnumerateViveTrackerPathsHTCX_ptr(instance, pathCapacityInput, pathCountOutput, paths);
+
+		[UnmanagedFunctionPointer(CallConv)]
 		private delegate XrResult xrEnumerateColorSpacesFBDelegate(XrSession session, uint colorSpaceCapacityInput, uint* colorSpaceCountOutput, XrColorSpaceFB* colorSpaces);
 		private static xrEnumerateColorSpacesFBDelegate xrEnumerateColorSpacesFB_ptr;
 		public static XrResult xrEnumerateColorSpacesFB(XrSession session, uint colorSpaceCapacityInput, uint* colorSpaceCountOutput, XrColorSpaceFB* colorSpaces)
@@ -652,6 +748,234 @@ namespace Evergine.Bindings.OpenXR
 		private static xrSetColorSpaceFBDelegate xrSetColorSpaceFB_ptr;
 		public static XrResult xrSetColorSpaceFB(XrSession session, XrColorSpaceFB colorspace)
 			=> xrSetColorSpaceFB_ptr(session, colorspace);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrGetHandMeshFBDelegate(XrHandTrackerEXT handTracker, XrHandTrackingMeshFB* mesh);
+		private static xrGetHandMeshFBDelegate xrGetHandMeshFB_ptr;
+		public static XrResult xrGetHandMeshFB(XrHandTrackerEXT handTracker, XrHandTrackingMeshFB* mesh)
+			=> xrGetHandMeshFB_ptr(handTracker, mesh);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrCreateFoveationProfileFBDelegate(XrSession session, XrFoveationProfileCreateInfoFB* createInfo, XrFoveationProfileFB* profile);
+		private static xrCreateFoveationProfileFBDelegate xrCreateFoveationProfileFB_ptr;
+		public static XrResult xrCreateFoveationProfileFB(XrSession session, XrFoveationProfileCreateInfoFB* createInfo, XrFoveationProfileFB* profile)
+			=> xrCreateFoveationProfileFB_ptr(session, createInfo, profile);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrDestroyFoveationProfileFBDelegate(XrFoveationProfileFB profile);
+		private static xrDestroyFoveationProfileFBDelegate xrDestroyFoveationProfileFB_ptr;
+		public static XrResult xrDestroyFoveationProfileFB(XrFoveationProfileFB profile)
+			=> xrDestroyFoveationProfileFB_ptr(profile);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrCreateTriangleMeshFBDelegate(XrSession session, XrTriangleMeshCreateInfoFB* createInfo, XrTriangleMeshFB* outTriangleMesh);
+		private static xrCreateTriangleMeshFBDelegate xrCreateTriangleMeshFB_ptr;
+		public static XrResult xrCreateTriangleMeshFB(XrSession session, XrTriangleMeshCreateInfoFB* createInfo, XrTriangleMeshFB* outTriangleMesh)
+			=> xrCreateTriangleMeshFB_ptr(session, createInfo, outTriangleMesh);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrDestroyTriangleMeshFBDelegate(XrTriangleMeshFB mesh);
+		private static xrDestroyTriangleMeshFBDelegate xrDestroyTriangleMeshFB_ptr;
+		public static XrResult xrDestroyTriangleMeshFB(XrTriangleMeshFB mesh)
+			=> xrDestroyTriangleMeshFB_ptr(mesh);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrTriangleMeshGetVertexBufferFBDelegate(XrTriangleMeshFB mesh, XrVector3f** outVertexBuffer);
+		private static xrTriangleMeshGetVertexBufferFBDelegate xrTriangleMeshGetVertexBufferFB_ptr;
+		public static XrResult xrTriangleMeshGetVertexBufferFB(XrTriangleMeshFB mesh, XrVector3f** outVertexBuffer)
+			=> xrTriangleMeshGetVertexBufferFB_ptr(mesh, outVertexBuffer);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrTriangleMeshGetIndexBufferFBDelegate(XrTriangleMeshFB mesh, uint** outIndexBuffer);
+		private static xrTriangleMeshGetIndexBufferFBDelegate xrTriangleMeshGetIndexBufferFB_ptr;
+		public static XrResult xrTriangleMeshGetIndexBufferFB(XrTriangleMeshFB mesh, uint** outIndexBuffer)
+			=> xrTriangleMeshGetIndexBufferFB_ptr(mesh, outIndexBuffer);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrTriangleMeshBeginUpdateFBDelegate(XrTriangleMeshFB mesh);
+		private static xrTriangleMeshBeginUpdateFBDelegate xrTriangleMeshBeginUpdateFB_ptr;
+		public static XrResult xrTriangleMeshBeginUpdateFB(XrTriangleMeshFB mesh)
+			=> xrTriangleMeshBeginUpdateFB_ptr(mesh);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrTriangleMeshEndUpdateFBDelegate(XrTriangleMeshFB mesh, uint vertexCount, uint triangleCount);
+		private static xrTriangleMeshEndUpdateFBDelegate xrTriangleMeshEndUpdateFB_ptr;
+		public static XrResult xrTriangleMeshEndUpdateFB(XrTriangleMeshFB mesh, uint vertexCount, uint triangleCount)
+			=> xrTriangleMeshEndUpdateFB_ptr(mesh, vertexCount, triangleCount);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrTriangleMeshBeginVertexBufferUpdateFBDelegate(XrTriangleMeshFB mesh, uint* outVertexCount);
+		private static xrTriangleMeshBeginVertexBufferUpdateFBDelegate xrTriangleMeshBeginVertexBufferUpdateFB_ptr;
+		public static XrResult xrTriangleMeshBeginVertexBufferUpdateFB(XrTriangleMeshFB mesh, uint* outVertexCount)
+			=> xrTriangleMeshBeginVertexBufferUpdateFB_ptr(mesh, outVertexCount);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrTriangleMeshEndVertexBufferUpdateFBDelegate(XrTriangleMeshFB mesh);
+		private static xrTriangleMeshEndVertexBufferUpdateFBDelegate xrTriangleMeshEndVertexBufferUpdateFB_ptr;
+		public static XrResult xrTriangleMeshEndVertexBufferUpdateFB(XrTriangleMeshFB mesh)
+			=> xrTriangleMeshEndVertexBufferUpdateFB_ptr(mesh);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrCreatePassthroughFBDelegate(XrSession session, XrPassthroughCreateInfoFB* createInfo, XrPassthroughFB* outPassthrough);
+		private static xrCreatePassthroughFBDelegate xrCreatePassthroughFB_ptr;
+		public static XrResult xrCreatePassthroughFB(XrSession session, XrPassthroughCreateInfoFB* createInfo, XrPassthroughFB* outPassthrough)
+			=> xrCreatePassthroughFB_ptr(session, createInfo, outPassthrough);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrDestroyPassthroughFBDelegate(XrPassthroughFB passthrough);
+		private static xrDestroyPassthroughFBDelegate xrDestroyPassthroughFB_ptr;
+		public static XrResult xrDestroyPassthroughFB(XrPassthroughFB passthrough)
+			=> xrDestroyPassthroughFB_ptr(passthrough);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrPassthroughStartFBDelegate(XrPassthroughFB passthrough);
+		private static xrPassthroughStartFBDelegate xrPassthroughStartFB_ptr;
+		public static XrResult xrPassthroughStartFB(XrPassthroughFB passthrough)
+			=> xrPassthroughStartFB_ptr(passthrough);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrPassthroughPauseFBDelegate(XrPassthroughFB passthrough);
+		private static xrPassthroughPauseFBDelegate xrPassthroughPauseFB_ptr;
+		public static XrResult xrPassthroughPauseFB(XrPassthroughFB passthrough)
+			=> xrPassthroughPauseFB_ptr(passthrough);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrCreatePassthroughLayerFBDelegate(XrSession session, XrPassthroughLayerCreateInfoFB* createInfo, XrPassthroughLayerFB* outLayer);
+		private static xrCreatePassthroughLayerFBDelegate xrCreatePassthroughLayerFB_ptr;
+		public static XrResult xrCreatePassthroughLayerFB(XrSession session, XrPassthroughLayerCreateInfoFB* createInfo, XrPassthroughLayerFB* outLayer)
+			=> xrCreatePassthroughLayerFB_ptr(session, createInfo, outLayer);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrDestroyPassthroughLayerFBDelegate(XrPassthroughLayerFB layer);
+		private static xrDestroyPassthroughLayerFBDelegate xrDestroyPassthroughLayerFB_ptr;
+		public static XrResult xrDestroyPassthroughLayerFB(XrPassthroughLayerFB layer)
+			=> xrDestroyPassthroughLayerFB_ptr(layer);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrPassthroughLayerPauseFBDelegate(XrPassthroughLayerFB layer);
+		private static xrPassthroughLayerPauseFBDelegate xrPassthroughLayerPauseFB_ptr;
+		public static XrResult xrPassthroughLayerPauseFB(XrPassthroughLayerFB layer)
+			=> xrPassthroughLayerPauseFB_ptr(layer);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrPassthroughLayerResumeFBDelegate(XrPassthroughLayerFB layer);
+		private static xrPassthroughLayerResumeFBDelegate xrPassthroughLayerResumeFB_ptr;
+		public static XrResult xrPassthroughLayerResumeFB(XrPassthroughLayerFB layer)
+			=> xrPassthroughLayerResumeFB_ptr(layer);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrPassthroughLayerSetStyleFBDelegate(XrPassthroughLayerFB layer, XrPassthroughStyleFB* style);
+		private static xrPassthroughLayerSetStyleFBDelegate xrPassthroughLayerSetStyleFB_ptr;
+		public static XrResult xrPassthroughLayerSetStyleFB(XrPassthroughLayerFB layer, XrPassthroughStyleFB* style)
+			=> xrPassthroughLayerSetStyleFB_ptr(layer, style);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrCreateGeometryInstanceFBDelegate(XrSession session, XrGeometryInstanceCreateInfoFB* createInfo, XrGeometryInstanceFB* outGeometryInstance);
+		private static xrCreateGeometryInstanceFBDelegate xrCreateGeometryInstanceFB_ptr;
+		public static XrResult xrCreateGeometryInstanceFB(XrSession session, XrGeometryInstanceCreateInfoFB* createInfo, XrGeometryInstanceFB* outGeometryInstance)
+			=> xrCreateGeometryInstanceFB_ptr(session, createInfo, outGeometryInstance);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrDestroyGeometryInstanceFBDelegate(XrGeometryInstanceFB instance);
+		private static xrDestroyGeometryInstanceFBDelegate xrDestroyGeometryInstanceFB_ptr;
+		public static XrResult xrDestroyGeometryInstanceFB(XrGeometryInstanceFB instance)
+			=> xrDestroyGeometryInstanceFB_ptr(instance);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrGeometryInstanceSetTransformFBDelegate(XrGeometryInstanceFB instance, XrGeometryInstanceTransformFB* transformation);
+		private static xrGeometryInstanceSetTransformFBDelegate xrGeometryInstanceSetTransformFB_ptr;
+		public static XrResult xrGeometryInstanceSetTransformFB(XrGeometryInstanceFB instance, XrGeometryInstanceTransformFB* transformation)
+			=> xrGeometryInstanceSetTransformFB_ptr(instance, transformation);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrSetEnvironmentDepthEstimationVARJODelegate(XrSession session, XrBool32 enabled);
+		private static xrSetEnvironmentDepthEstimationVARJODelegate xrSetEnvironmentDepthEstimationVARJO_ptr;
+		public static XrResult xrSetEnvironmentDepthEstimationVARJO(XrSession session, XrBool32 enabled)
+			=> xrSetEnvironmentDepthEstimationVARJO_ptr(session, enabled);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrSetMarkerTrackingVARJODelegate(XrSession session, XrBool32 enabled);
+		private static xrSetMarkerTrackingVARJODelegate xrSetMarkerTrackingVARJO_ptr;
+		public static XrResult xrSetMarkerTrackingVARJO(XrSession session, XrBool32 enabled)
+			=> xrSetMarkerTrackingVARJO_ptr(session, enabled);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrSetMarkerTrackingTimeoutVARJODelegate(XrSession session, ulong markerId, long timeout);
+		private static xrSetMarkerTrackingTimeoutVARJODelegate xrSetMarkerTrackingTimeoutVARJO_ptr;
+		public static XrResult xrSetMarkerTrackingTimeoutVARJO(XrSession session, ulong markerId, long timeout)
+			=> xrSetMarkerTrackingTimeoutVARJO_ptr(session, markerId, timeout);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrSetMarkerTrackingPredictionVARJODelegate(XrSession session, ulong markerId, XrBool32 enabled);
+		private static xrSetMarkerTrackingPredictionVARJODelegate xrSetMarkerTrackingPredictionVARJO_ptr;
+		public static XrResult xrSetMarkerTrackingPredictionVARJO(XrSession session, ulong markerId, XrBool32 enabled)
+			=> xrSetMarkerTrackingPredictionVARJO_ptr(session, markerId, enabled);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrGetMarkerSizeVARJODelegate(XrSession session, ulong markerId, XrExtent2Df* size);
+		private static xrGetMarkerSizeVARJODelegate xrGetMarkerSizeVARJO_ptr;
+		public static XrResult xrGetMarkerSizeVARJO(XrSession session, ulong markerId, XrExtent2Df* size)
+			=> xrGetMarkerSizeVARJO_ptr(session, markerId, size);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrCreateMarkerSpaceVARJODelegate(XrSession session, XrMarkerSpaceCreateInfoVARJO* createInfo, XrSpace* space);
+		private static xrCreateMarkerSpaceVARJODelegate xrCreateMarkerSpaceVARJO_ptr;
+		public static XrResult xrCreateMarkerSpaceVARJO(XrSession session, XrMarkerSpaceCreateInfoVARJO* createInfo, XrSpace* space)
+			=> xrCreateMarkerSpaceVARJO_ptr(session, createInfo, space);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrCreateSpatialAnchorStoreConnectionMSFTDelegate(XrSession session, XrSpatialAnchorStoreConnectionMSFT* spatialAnchorStore);
+		private static xrCreateSpatialAnchorStoreConnectionMSFTDelegate xrCreateSpatialAnchorStoreConnectionMSFT_ptr;
+		public static XrResult xrCreateSpatialAnchorStoreConnectionMSFT(XrSession session, XrSpatialAnchorStoreConnectionMSFT* spatialAnchorStore)
+			=> xrCreateSpatialAnchorStoreConnectionMSFT_ptr(session, spatialAnchorStore);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrDestroySpatialAnchorStoreConnectionMSFTDelegate(XrSpatialAnchorStoreConnectionMSFT spatialAnchorStore);
+		private static xrDestroySpatialAnchorStoreConnectionMSFTDelegate xrDestroySpatialAnchorStoreConnectionMSFT_ptr;
+		public static XrResult xrDestroySpatialAnchorStoreConnectionMSFT(XrSpatialAnchorStoreConnectionMSFT spatialAnchorStore)
+			=> xrDestroySpatialAnchorStoreConnectionMSFT_ptr(spatialAnchorStore);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrPersistSpatialAnchorMSFTDelegate(XrSpatialAnchorStoreConnectionMSFT spatialAnchorStore, XrSpatialAnchorPersistenceInfoMSFT* spatialAnchorPersistenceInfo);
+		private static xrPersistSpatialAnchorMSFTDelegate xrPersistSpatialAnchorMSFT_ptr;
+		public static XrResult xrPersistSpatialAnchorMSFT(XrSpatialAnchorStoreConnectionMSFT spatialAnchorStore, XrSpatialAnchorPersistenceInfoMSFT* spatialAnchorPersistenceInfo)
+			=> xrPersistSpatialAnchorMSFT_ptr(spatialAnchorStore, spatialAnchorPersistenceInfo);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrEnumeratePersistedSpatialAnchorNamesMSFTDelegate(XrSpatialAnchorStoreConnectionMSFT spatialAnchorStore, uint spatialAnchorNamesCapacityInput, uint* spatialAnchorNamesCountOutput, XrSpatialAnchorPersistenceNameMSFT* persistedAnchorNames);
+		private static xrEnumeratePersistedSpatialAnchorNamesMSFTDelegate xrEnumeratePersistedSpatialAnchorNamesMSFT_ptr;
+		public static XrResult xrEnumeratePersistedSpatialAnchorNamesMSFT(XrSpatialAnchorStoreConnectionMSFT spatialAnchorStore, uint spatialAnchorNamesCapacityInput, uint* spatialAnchorNamesCountOutput, XrSpatialAnchorPersistenceNameMSFT* persistedAnchorNames)
+			=> xrEnumeratePersistedSpatialAnchorNamesMSFT_ptr(spatialAnchorStore, spatialAnchorNamesCapacityInput, spatialAnchorNamesCountOutput, persistedAnchorNames);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrCreateSpatialAnchorFromPersistedNameMSFTDelegate(XrSession session, XrSpatialAnchorFromPersistedAnchorCreateInfoMSFT* spatialAnchorCreateInfo, XrSpatialAnchorMSFT* spatialAnchor);
+		private static xrCreateSpatialAnchorFromPersistedNameMSFTDelegate xrCreateSpatialAnchorFromPersistedNameMSFT_ptr;
+		public static XrResult xrCreateSpatialAnchorFromPersistedNameMSFT(XrSession session, XrSpatialAnchorFromPersistedAnchorCreateInfoMSFT* spatialAnchorCreateInfo, XrSpatialAnchorMSFT* spatialAnchor)
+			=> xrCreateSpatialAnchorFromPersistedNameMSFT_ptr(session, spatialAnchorCreateInfo, spatialAnchor);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrUnpersistSpatialAnchorMSFTDelegate(XrSpatialAnchorStoreConnectionMSFT spatialAnchorStore, XrSpatialAnchorPersistenceNameMSFT* spatialAnchorPersistenceName);
+		private static xrUnpersistSpatialAnchorMSFTDelegate xrUnpersistSpatialAnchorMSFT_ptr;
+		public static XrResult xrUnpersistSpatialAnchorMSFT(XrSpatialAnchorStoreConnectionMSFT spatialAnchorStore, XrSpatialAnchorPersistenceNameMSFT* spatialAnchorPersistenceName)
+			=> xrUnpersistSpatialAnchorMSFT_ptr(spatialAnchorStore, spatialAnchorPersistenceName);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrClearSpatialAnchorStoreMSFTDelegate(XrSpatialAnchorStoreConnectionMSFT spatialAnchorStore);
+		private static xrClearSpatialAnchorStoreMSFTDelegate xrClearSpatialAnchorStoreMSFT_ptr;
+		public static XrResult xrClearSpatialAnchorStoreMSFT(XrSpatialAnchorStoreConnectionMSFT spatialAnchorStore)
+			=> xrClearSpatialAnchorStoreMSFT_ptr(spatialAnchorStore);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrGetAudioOutputDeviceGuidOculusDelegate(XrInstance instance, string buffer);
+		private static xrGetAudioOutputDeviceGuidOculusDelegate xrGetAudioOutputDeviceGuidOculus_ptr;
+		public static XrResult xrGetAudioOutputDeviceGuidOculus(XrInstance instance, string buffer)
+			=> xrGetAudioOutputDeviceGuidOculus_ptr(instance, buffer);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrGetAudioInputDeviceGuidOculusDelegate(XrInstance instance, string buffer);
+		private static xrGetAudioInputDeviceGuidOculusDelegate xrGetAudioInputDeviceGuidOculus_ptr;
+		public static XrResult xrGetAudioInputDeviceGuidOculus(XrInstance instance, string buffer)
+			=> xrGetAudioInputDeviceGuidOculus_ptr(instance, buffer);
 
 		public static void LoadFuncionPointers(XrInstance instance = default)
 		{
@@ -759,15 +1083,69 @@ namespace Evergine.Bindings.OpenXR
 			nativeLib.LoadFunction("xrGetControllerModelStateMSFT",  out xrGetControllerModelStateMSFT_ptr);
 			nativeLib.LoadFunction("xrCreateSpatialAnchorFromPerceptionAnchorMSFT",  out xrCreateSpatialAnchorFromPerceptionAnchorMSFT_ptr);
 			nativeLib.LoadFunction("xrTryGetPerceptionAnchorFromSpatialAnchorMSFT",  out xrTryGetPerceptionAnchorFromSpatialAnchorMSFT_ptr);
+			nativeLib.LoadFunction("xrEnumerateReprojectionModesMSFT",  out xrEnumerateReprojectionModesMSFT_ptr);
+			nativeLib.LoadFunction("xrUpdateSwapchainFB",  out xrUpdateSwapchainFB_ptr);
+			nativeLib.LoadFunction("xrGetSwapchainStateFB",  out xrGetSwapchainStateFB_ptr);
 			nativeLib.LoadFunction("xrInitializeLoaderKHR",  out xrInitializeLoaderKHR_ptr);
 			nativeLib.LoadFunction("xrCreateVulkanInstanceKHR",  out xrCreateVulkanInstanceKHR_ptr);
 			nativeLib.LoadFunction("xrCreateVulkanDeviceKHR",  out xrCreateVulkanDeviceKHR_ptr);
 			nativeLib.LoadFunction("xrGetVulkanGraphicsDevice2KHR",  out xrGetVulkanGraphicsDevice2KHR_ptr);
+			nativeLib.LoadFunction("xrEnumerateSceneComputeFeaturesMSFT",  out xrEnumerateSceneComputeFeaturesMSFT_ptr);
+			nativeLib.LoadFunction("xrCreateSceneObserverMSFT",  out xrCreateSceneObserverMSFT_ptr);
+			nativeLib.LoadFunction("xrDestroySceneObserverMSFT",  out xrDestroySceneObserverMSFT_ptr);
+			nativeLib.LoadFunction("xrCreateSceneMSFT",  out xrCreateSceneMSFT_ptr);
+			nativeLib.LoadFunction("xrDestroySceneMSFT",  out xrDestroySceneMSFT_ptr);
+			nativeLib.LoadFunction("xrComputeNewSceneMSFT",  out xrComputeNewSceneMSFT_ptr);
+			nativeLib.LoadFunction("xrGetSceneComputeStateMSFT",  out xrGetSceneComputeStateMSFT_ptr);
+			nativeLib.LoadFunction("xrGetSceneComponentsMSFT",  out xrGetSceneComponentsMSFT_ptr);
+			nativeLib.LoadFunction("xrLocateSceneComponentsMSFT",  out xrLocateSceneComponentsMSFT_ptr);
+			nativeLib.LoadFunction("xrGetSceneMeshBuffersMSFT",  out xrGetSceneMeshBuffersMSFT_ptr);
+			nativeLib.LoadFunction("xrDeserializeSceneMSFT",  out xrDeserializeSceneMSFT_ptr);
+			nativeLib.LoadFunction("xrGetSerializedSceneFragmentDataMSFT",  out xrGetSerializedSceneFragmentDataMSFT_ptr);
 			nativeLib.LoadFunction("xrEnumerateDisplayRefreshRatesFB",  out xrEnumerateDisplayRefreshRatesFB_ptr);
 			nativeLib.LoadFunction("xrGetDisplayRefreshRateFB",  out xrGetDisplayRefreshRateFB_ptr);
 			nativeLib.LoadFunction("xrRequestDisplayRefreshRateFB",  out xrRequestDisplayRefreshRateFB_ptr);
+			nativeLib.LoadFunction("xrEnumerateViveTrackerPathsHTCX",  out xrEnumerateViveTrackerPathsHTCX_ptr);
 			nativeLib.LoadFunction("xrEnumerateColorSpacesFB",  out xrEnumerateColorSpacesFB_ptr);
 			nativeLib.LoadFunction("xrSetColorSpaceFB",  out xrSetColorSpaceFB_ptr);
+			nativeLib.LoadFunction("xrGetHandMeshFB",  out xrGetHandMeshFB_ptr);
+			nativeLib.LoadFunction("xrCreateFoveationProfileFB",  out xrCreateFoveationProfileFB_ptr);
+			nativeLib.LoadFunction("xrDestroyFoveationProfileFB",  out xrDestroyFoveationProfileFB_ptr);
+			nativeLib.LoadFunction("xrCreateTriangleMeshFB",  out xrCreateTriangleMeshFB_ptr);
+			nativeLib.LoadFunction("xrDestroyTriangleMeshFB",  out xrDestroyTriangleMeshFB_ptr);
+			nativeLib.LoadFunction("xrTriangleMeshGetVertexBufferFB",  out xrTriangleMeshGetVertexBufferFB_ptr);
+			nativeLib.LoadFunction("xrTriangleMeshGetIndexBufferFB",  out xrTriangleMeshGetIndexBufferFB_ptr);
+			nativeLib.LoadFunction("xrTriangleMeshBeginUpdateFB",  out xrTriangleMeshBeginUpdateFB_ptr);
+			nativeLib.LoadFunction("xrTriangleMeshEndUpdateFB",  out xrTriangleMeshEndUpdateFB_ptr);
+			nativeLib.LoadFunction("xrTriangleMeshBeginVertexBufferUpdateFB",  out xrTriangleMeshBeginVertexBufferUpdateFB_ptr);
+			nativeLib.LoadFunction("xrTriangleMeshEndVertexBufferUpdateFB",  out xrTriangleMeshEndVertexBufferUpdateFB_ptr);
+			nativeLib.LoadFunction("xrCreatePassthroughFB",  out xrCreatePassthroughFB_ptr);
+			nativeLib.LoadFunction("xrDestroyPassthroughFB",  out xrDestroyPassthroughFB_ptr);
+			nativeLib.LoadFunction("xrPassthroughStartFB",  out xrPassthroughStartFB_ptr);
+			nativeLib.LoadFunction("xrPassthroughPauseFB",  out xrPassthroughPauseFB_ptr);
+			nativeLib.LoadFunction("xrCreatePassthroughLayerFB",  out xrCreatePassthroughLayerFB_ptr);
+			nativeLib.LoadFunction("xrDestroyPassthroughLayerFB",  out xrDestroyPassthroughLayerFB_ptr);
+			nativeLib.LoadFunction("xrPassthroughLayerPauseFB",  out xrPassthroughLayerPauseFB_ptr);
+			nativeLib.LoadFunction("xrPassthroughLayerResumeFB",  out xrPassthroughLayerResumeFB_ptr);
+			nativeLib.LoadFunction("xrPassthroughLayerSetStyleFB",  out xrPassthroughLayerSetStyleFB_ptr);
+			nativeLib.LoadFunction("xrCreateGeometryInstanceFB",  out xrCreateGeometryInstanceFB_ptr);
+			nativeLib.LoadFunction("xrDestroyGeometryInstanceFB",  out xrDestroyGeometryInstanceFB_ptr);
+			nativeLib.LoadFunction("xrGeometryInstanceSetTransformFB",  out xrGeometryInstanceSetTransformFB_ptr);
+			nativeLib.LoadFunction("xrSetEnvironmentDepthEstimationVARJO",  out xrSetEnvironmentDepthEstimationVARJO_ptr);
+			nativeLib.LoadFunction("xrSetMarkerTrackingVARJO",  out xrSetMarkerTrackingVARJO_ptr);
+			nativeLib.LoadFunction("xrSetMarkerTrackingTimeoutVARJO",  out xrSetMarkerTrackingTimeoutVARJO_ptr);
+			nativeLib.LoadFunction("xrSetMarkerTrackingPredictionVARJO",  out xrSetMarkerTrackingPredictionVARJO_ptr);
+			nativeLib.LoadFunction("xrGetMarkerSizeVARJO",  out xrGetMarkerSizeVARJO_ptr);
+			nativeLib.LoadFunction("xrCreateMarkerSpaceVARJO",  out xrCreateMarkerSpaceVARJO_ptr);
+			nativeLib.LoadFunction("xrCreateSpatialAnchorStoreConnectionMSFT",  out xrCreateSpatialAnchorStoreConnectionMSFT_ptr);
+			nativeLib.LoadFunction("xrDestroySpatialAnchorStoreConnectionMSFT",  out xrDestroySpatialAnchorStoreConnectionMSFT_ptr);
+			nativeLib.LoadFunction("xrPersistSpatialAnchorMSFT",  out xrPersistSpatialAnchorMSFT_ptr);
+			nativeLib.LoadFunction("xrEnumeratePersistedSpatialAnchorNamesMSFT",  out xrEnumeratePersistedSpatialAnchorNamesMSFT_ptr);
+			nativeLib.LoadFunction("xrCreateSpatialAnchorFromPersistedNameMSFT",  out xrCreateSpatialAnchorFromPersistedNameMSFT_ptr);
+			nativeLib.LoadFunction("xrUnpersistSpatialAnchorMSFT",  out xrUnpersistSpatialAnchorMSFT_ptr);
+			nativeLib.LoadFunction("xrClearSpatialAnchorStoreMSFT",  out xrClearSpatialAnchorStoreMSFT_ptr);
+			nativeLib.LoadFunction("xrGetAudioOutputDeviceGuidOculus",  out xrGetAudioOutputDeviceGuidOculus_ptr);
+			nativeLib.LoadFunction("xrGetAudioInputDeviceGuidOculus",  out xrGetAudioInputDeviceGuidOculus_ptr);
 		}
 	}
 }
