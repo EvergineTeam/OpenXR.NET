@@ -1,4 +1,4 @@
-name: Update_and_Commit
+name: Monthly update check
 on:
   #[push]
   schedule:
