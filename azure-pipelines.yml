@@ -1,61 +1,60 @@
-trigger:
-- master
+# CI pipeline. Publish is done in GitHub Actions
 
-pool:
-  name: WaveEngine
+name: $(Date:yyyy)$(Date:.M)$(Date:.d)$(Rev:.r)-rolling
 
 variables:
-  - group: Versions
-  - name: 'nugetConfigPath'
-    value: '$(Build.SourcesDirectory)/OpenXRGen/WaveEngine.Bindings.OpenXR/NuGet.config'
-  - name: 'nugetOutputPath'
-    value: '$(Build.StagingDirectory)/nupkgs'
-  - name: 'appversion'
-    value: '$(version.major).$(version.minor).$(version.patch).$(Build.BuildID)-$(version.previewSuffix)'
+  - name: buildConfiguration
+    value: Release
+  - name: NetCoreSDKVersion
+    value: 5.0.x
+  - name: NuGetVersion
+    value: 5.8.x
+  - name: nugetOutputPath
+    value: $(Build.StagingDirectory)/nupkgs
 
-workspace:
-  clean: all
+trigger:
+  batch: true
+  branches:
+    include:
+      - main
+pr:
+  autoCancel: true
+  branches:
+    include:
+      - main
 
-steps:
+pool:
+  vmImage: windows-2019
 
-- task: UseDotNet@2
-  displayName: 'Check .NETCore SDK'
-  inputs:
-    version: '$(NetCoreSDKVersion)'
+jobs:
+  - job: "BuildNuGets"
+    displayName: "Build NuGet packages"
+    workspace:
+      clean: outputs
+    variables:
+      nugetOutputPath: "$(Build.StagingDirectory)/nupkgs"
 
-- task: NuGetToolInstaller@1
-  displayName: 'Check NuGet client'
-  inputs:
-    versionSpec: '$(NuGetVersion)'
-    checkLatest: true
+    steps:
+      - task: UseDotNet@2
+        displayName: "Check .NETCore SDK"
+        inputs:
+          version: "$(NetCoreSDKVersion)"
 
-- task: PowerShell@2
-  inputs:
-    targetType: 'inline'
-    script: '"<configuration></configuration>" > $(nugetConfigPath)'
+      - task: NuGetToolInstaller@1
+        displayName: "Check NuGet client"
+        inputs:
+          versionSpec: "$(NuGetVersion)"
+          checkLatest: true
 
-- task: NuGetCommand@2
-  inputs:
-    command: 'custom'
-    arguments: 'sources add -Name "WaveNightlyFeed" -Source "https://waveengineteam.pkgs.visualstudio.com/_packaging/WaveEngine-nightly/nuget/v3/index.json" -Username "vsts" -Password "$(WaveNightlyToken)" -StorePasswordInClearText -ConfigFile $(nugetConfigPath)'
+      - task: PowerShell@2
+        displayName: "Generate NuGet packages"
+        inputs:
+          filePath: "./Generate-NuGets.ps1"
+          arguments: "-Version $(Build.BuildNumber) -Outputfolder $(nugetOutputPath) -BuildConfiguration $(buildConfiguration)"
 
-- task: PowerShell@2
-  displayName: 'Generate NuGet packages'
-  inputs:
-    filePath: './Generate-NuGets.ps1'
-    arguments: '-Version $(appversion) -outputfolder $(nugetOutputPath)'
-
-- task: PublishBuildArtifacts@1
-  displayName: "Publish Artifact: NuGets"
-  inputs:
-    PathtoPublish: '$(nugetOutputPath)'
-    ArtifactName: 'NuGets'
-    publishLocation: 'Container'
-
-- task: NuGetCommand@2
-  displayName: 'Push NuGets to NuGet.org'
-  inputs:
-    command: 'push'
-    packagesToPush: '$(nugetOutputPath)/**/*.nupkg;!$(nugetOutputPath)/**/*.symbols.nupkg'
-    nuGetFeedType: 'external'
-    publishFeedCredentials: 'WaveEngine Nuget.org'
+      - task: PublishBuildArtifacts@1
+        displayName: "Publish Artifact: NuGets"
+        inputs:
+          PathtoPublish: "$(nugetOutputPath)"
+          ArtifactName: "NuGets"
+          publishLocation: "Container"
