@@ -5969,6 +5969,85 @@ namespace Evergine.Bindings.OpenXR
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrRenderModelPathInfoFB
+	{
+		public XrStructureType type;
+		public void* next;
+		public ulong path;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrRenderModelPropertiesFB
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint vendorId;
+		public byte modelName;
+		public ulong modelKey;
+		public uint modelVersion;
+		public ulong flags;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrRenderModelBufferFB
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint bufferCapacityInput;
+		public uint bufferCountOutput;
+		public byte* buffer;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrRenderModelLoadInfoFB
+	{
+		public XrStructureType type;
+		public void* next;
+		public ulong modelKey;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSystemRenderModelPropertiesFB
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrBool32 supportsRenderModelLoading;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSystemKeyboardTrackingPropertiesFB
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrBool32 supportsKeyboardTracking;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrKeyboardTrackingDescriptionFB
+	{
+		public ulong trackedKeyboardId;
+		public XrVector3f size;
+		public ulong flags;
+		public byte name;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrKeyboardSpaceCreateInfoFB
+	{
+		public XrStructureType type;
+		public void* next;
+		public ulong trackedKeyboardId;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrKeyboardTrackingQueryFB
+	{
+		public XrStructureType type;
+		public void* next;
+		public ulong flags;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct XrCompositionLayerDepthTestVARJO
 	{
 		public XrStructureType type;
@@ -6125,6 +6204,15 @@ namespace Evergine.Bindings.OpenXR
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrPassthroughKeyboardHandsIntensityFB
+	{
+		public XrStructureType type;
+		public void* next;
+		public float leftHandIntensity;
+		public float rightHandIntensity;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct XrSpatialAnchorPersistenceNameMSFT
 	{
 		public fixed byte name[(int)OpenXRNative.XR_MAX_SPATIAL_ANCHOR_NAME_SIZE_MSFT];
@@ -6146,6 +6234,34 @@ namespace Evergine.Bindings.OpenXR
 		public void* next;
 		public XrSpatialAnchorStoreConnectionMSFT spatialAnchorStore;
 		public XrSpatialAnchorPersistenceNameMSFT spatialAnchorPersistenceName;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrFacialTrackerCreateInfoHTC
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrFacialTrackingTypeHTC facialTrackingType;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSystemFacialTrackingPropertiesHTC
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrBool32 supportEyeFacialTracking;
+		public XrBool32 supportLipFacialTracking;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrFacialExpressionsHTC
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrBool32 isActive;
+		public long sampleTime;
+		public uint expressionCount;
+		public float* expressionWeightings;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -6215,6 +6331,20 @@ namespace Evergine.Bindings.OpenXR
 		public void* next;
 		public ulong markerId;
 		public XrPosef poseInMarkerSpace;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrUuidEXT
+	{
+		public byte data;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrDigitalLensControlALMALENCE
+	{
+		public XrStructureType type;
+		public void* next;
+		public ulong flags;
 	}
 
 }

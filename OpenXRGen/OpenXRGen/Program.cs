@@ -165,7 +165,18 @@ namespace OpenXRGen
                             }
                             else
                             {
-                                int count = int.Parse(validConstant.Value);
+                                int count = 0;
+
+                                if (validConstant.Value == null)
+                                {
+                                    var alias = openXRVersion.Constants.FirstOrDefault(c => c.Name == validConstant.Alias);
+                                    count = int.Parse(alias.Value);
+                                }
+                                else
+                                {
+                                    count = int.Parse(validConstant.Value);
+                                }
+
                                 for (int i = 0; i < count; i++)
                                 {
                                     file.WriteLine($"\t\tpublic {csType} {member.Name}_{i};");

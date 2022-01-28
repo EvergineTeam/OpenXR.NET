@@ -738,6 +738,24 @@ namespace Evergine.Bindings.OpenXR
 			=> xrEnumerateViveTrackerPathsHTCX_ptr(instance, pathCapacityInput, pathCountOutput, paths);
 
 		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrCreateFacialTrackerHTCDelegate(XrSession session, XrFacialTrackerCreateInfoHTC* createInfo, XrFacialTrackerHTC* facialTracker);
+		private static xrCreateFacialTrackerHTCDelegate xrCreateFacialTrackerHTC_ptr;
+		public static XrResult xrCreateFacialTrackerHTC(XrSession session, XrFacialTrackerCreateInfoHTC* createInfo, XrFacialTrackerHTC* facialTracker)
+			=> xrCreateFacialTrackerHTC_ptr(session, createInfo, facialTracker);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrDestroyFacialTrackerHTCDelegate(XrFacialTrackerHTC facialTracker);
+		private static xrDestroyFacialTrackerHTCDelegate xrDestroyFacialTrackerHTC_ptr;
+		public static XrResult xrDestroyFacialTrackerHTC(XrFacialTrackerHTC facialTracker)
+			=> xrDestroyFacialTrackerHTC_ptr(facialTracker);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrGetFacialExpressionsHTCDelegate(XrFacialTrackerHTC facialTracker, XrFacialExpressionsHTC* facialExpressions);
+		private static xrGetFacialExpressionsHTCDelegate xrGetFacialExpressionsHTC_ptr;
+		public static XrResult xrGetFacialExpressionsHTC(XrFacialTrackerHTC facialTracker, XrFacialExpressionsHTC* facialExpressions)
+			=> xrGetFacialExpressionsHTC_ptr(facialTracker, facialExpressions);
+
+		[UnmanagedFunctionPointer(CallConv)]
 		private delegate XrResult xrEnumerateColorSpacesFBDelegate(XrSession session, uint colorSpaceCapacityInput, uint* colorSpaceCountOutput, XrColorSpaceFB* colorSpaces);
 		private static xrEnumerateColorSpacesFBDelegate xrEnumerateColorSpacesFB_ptr;
 		public static XrResult xrEnumerateColorSpacesFB(XrSession session, uint colorSpaceCapacityInput, uint* colorSpaceCountOutput, XrColorSpaceFB* colorSpaces)
@@ -766,6 +784,18 @@ namespace Evergine.Bindings.OpenXR
 		private static xrDestroyFoveationProfileFBDelegate xrDestroyFoveationProfileFB_ptr;
 		public static XrResult xrDestroyFoveationProfileFB(XrFoveationProfileFB profile)
 			=> xrDestroyFoveationProfileFB_ptr(profile);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrQuerySystemTrackedKeyboardFBDelegate(XrSession session, XrKeyboardTrackingQueryFB* queryInfo, XrKeyboardTrackingDescriptionFB* keyboard);
+		private static xrQuerySystemTrackedKeyboardFBDelegate xrQuerySystemTrackedKeyboardFB_ptr;
+		public static XrResult xrQuerySystemTrackedKeyboardFB(XrSession session, XrKeyboardTrackingQueryFB* queryInfo, XrKeyboardTrackingDescriptionFB* keyboard)
+			=> xrQuerySystemTrackedKeyboardFB_ptr(session, queryInfo, keyboard);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrCreateKeyboardSpaceFBDelegate(XrSession session, XrKeyboardSpaceCreateInfoFB* createInfo, XrSpace* keyboardSpace);
+		private static xrCreateKeyboardSpaceFBDelegate xrCreateKeyboardSpaceFB_ptr;
+		public static XrResult xrCreateKeyboardSpaceFB(XrSession session, XrKeyboardSpaceCreateInfoFB* createInfo, XrSpace* keyboardSpace)
+			=> xrCreateKeyboardSpaceFB_ptr(session, createInfo, keyboardSpace);
 
 		[UnmanagedFunctionPointer(CallConv)]
 		private delegate XrResult xrCreateTriangleMeshFBDelegate(XrSession session, XrTriangleMeshCreateInfoFB* createInfo, XrTriangleMeshFB* outTriangleMesh);
@@ -888,6 +918,24 @@ namespace Evergine.Bindings.OpenXR
 			=> xrGeometryInstanceSetTransformFB_ptr(instance, transformation);
 
 		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrEnumerateRenderModelPathsFBDelegate(XrSession session, uint pathCapacityInput, uint* pathCountOutput, XrRenderModelPathInfoFB* paths);
+		private static xrEnumerateRenderModelPathsFBDelegate xrEnumerateRenderModelPathsFB_ptr;
+		public static XrResult xrEnumerateRenderModelPathsFB(XrSession session, uint pathCapacityInput, uint* pathCountOutput, XrRenderModelPathInfoFB* paths)
+			=> xrEnumerateRenderModelPathsFB_ptr(session, pathCapacityInput, pathCountOutput, paths);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrGetRenderModelPropertiesFBDelegate(XrSession session, ulong path, XrRenderModelPropertiesFB* properties);
+		private static xrGetRenderModelPropertiesFBDelegate xrGetRenderModelPropertiesFB_ptr;
+		public static XrResult xrGetRenderModelPropertiesFB(XrSession session, ulong path, XrRenderModelPropertiesFB* properties)
+			=> xrGetRenderModelPropertiesFB_ptr(session, path, properties);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrLoadRenderModelFBDelegate(XrSession session, XrRenderModelLoadInfoFB* info, XrRenderModelBufferFB* buffer);
+		private static xrLoadRenderModelFBDelegate xrLoadRenderModelFB_ptr;
+		public static XrResult xrLoadRenderModelFB(XrSession session, XrRenderModelLoadInfoFB* info, XrRenderModelBufferFB* buffer)
+			=> xrLoadRenderModelFB_ptr(session, info, buffer);
+
+		[UnmanagedFunctionPointer(CallConv)]
 		private delegate XrResult xrSetEnvironmentDepthEstimationVARJODelegate(XrSession session, XrBool32 enabled);
 		private static xrSetEnvironmentDepthEstimationVARJODelegate xrSetEnvironmentDepthEstimationVARJO_ptr;
 		public static XrResult xrSetEnvironmentDepthEstimationVARJO(XrSession session, XrBool32 enabled)
@@ -976,6 +1024,18 @@ namespace Evergine.Bindings.OpenXR
 		private static xrGetAudioInputDeviceGuidOculusDelegate xrGetAudioInputDeviceGuidOculus_ptr;
 		public static XrResult xrGetAudioInputDeviceGuidOculus(XrInstance instance, string buffer)
 			=> xrGetAudioInputDeviceGuidOculus_ptr(instance, buffer);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrSetDigitalLensControlALMALENCEDelegate(XrSession session, XrDigitalLensControlALMALENCE* digitalLensControl);
+		private static xrSetDigitalLensControlALMALENCEDelegate xrSetDigitalLensControlALMALENCE_ptr;
+		public static XrResult xrSetDigitalLensControlALMALENCE(XrSession session, XrDigitalLensControlALMALENCE* digitalLensControl)
+			=> xrSetDigitalLensControlALMALENCE_ptr(session, digitalLensControl);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrPassthroughLayerSetKeyboardHandsIntensityFBDelegate(XrPassthroughLayerFB layer, XrPassthroughKeyboardHandsIntensityFB* intensity);
+		private static xrPassthroughLayerSetKeyboardHandsIntensityFBDelegate xrPassthroughLayerSetKeyboardHandsIntensityFB_ptr;
+		public static XrResult xrPassthroughLayerSetKeyboardHandsIntensityFB(XrPassthroughLayerFB layer, XrPassthroughKeyboardHandsIntensityFB* intensity)
+			=> xrPassthroughLayerSetKeyboardHandsIntensityFB_ptr(layer, intensity);
 
 		public static void LoadFuncionPointers(XrInstance instance = default)
 		{
@@ -1106,11 +1166,16 @@ namespace Evergine.Bindings.OpenXR
 			nativeLib.LoadFunction("xrGetDisplayRefreshRateFB",  out xrGetDisplayRefreshRateFB_ptr);
 			nativeLib.LoadFunction("xrRequestDisplayRefreshRateFB",  out xrRequestDisplayRefreshRateFB_ptr);
 			nativeLib.LoadFunction("xrEnumerateViveTrackerPathsHTCX",  out xrEnumerateViveTrackerPathsHTCX_ptr);
+			nativeLib.LoadFunction("xrCreateFacialTrackerHTC",  out xrCreateFacialTrackerHTC_ptr);
+			nativeLib.LoadFunction("xrDestroyFacialTrackerHTC",  out xrDestroyFacialTrackerHTC_ptr);
+			nativeLib.LoadFunction("xrGetFacialExpressionsHTC",  out xrGetFacialExpressionsHTC_ptr);
 			nativeLib.LoadFunction("xrEnumerateColorSpacesFB",  out xrEnumerateColorSpacesFB_ptr);
 			nativeLib.LoadFunction("xrSetColorSpaceFB",  out xrSetColorSpaceFB_ptr);
 			nativeLib.LoadFunction("xrGetHandMeshFB",  out xrGetHandMeshFB_ptr);
 			nativeLib.LoadFunction("xrCreateFoveationProfileFB",  out xrCreateFoveationProfileFB_ptr);
 			nativeLib.LoadFunction("xrDestroyFoveationProfileFB",  out xrDestroyFoveationProfileFB_ptr);
+			nativeLib.LoadFunction("xrQuerySystemTrackedKeyboardFB",  out xrQuerySystemTrackedKeyboardFB_ptr);
+			nativeLib.LoadFunction("xrCreateKeyboardSpaceFB",  out xrCreateKeyboardSpaceFB_ptr);
 			nativeLib.LoadFunction("xrCreateTriangleMeshFB",  out xrCreateTriangleMeshFB_ptr);
 			nativeLib.LoadFunction("xrDestroyTriangleMeshFB",  out xrDestroyTriangleMeshFB_ptr);
 			nativeLib.LoadFunction("xrTriangleMeshGetVertexBufferFB",  out xrTriangleMeshGetVertexBufferFB_ptr);
@@ -1131,6 +1196,9 @@ namespace Evergine.Bindings.OpenXR
 			nativeLib.LoadFunction("xrCreateGeometryInstanceFB",  out xrCreateGeometryInstanceFB_ptr);
 			nativeLib.LoadFunction("xrDestroyGeometryInstanceFB",  out xrDestroyGeometryInstanceFB_ptr);
 			nativeLib.LoadFunction("xrGeometryInstanceSetTransformFB",  out xrGeometryInstanceSetTransformFB_ptr);
+			nativeLib.LoadFunction("xrEnumerateRenderModelPathsFB",  out xrEnumerateRenderModelPathsFB_ptr);
+			nativeLib.LoadFunction("xrGetRenderModelPropertiesFB",  out xrGetRenderModelPropertiesFB_ptr);
+			nativeLib.LoadFunction("xrLoadRenderModelFB",  out xrLoadRenderModelFB_ptr);
 			nativeLib.LoadFunction("xrSetEnvironmentDepthEstimationVARJO",  out xrSetEnvironmentDepthEstimationVARJO_ptr);
 			nativeLib.LoadFunction("xrSetMarkerTrackingVARJO",  out xrSetMarkerTrackingVARJO_ptr);
 			nativeLib.LoadFunction("xrSetMarkerTrackingTimeoutVARJO",  out xrSetMarkerTrackingTimeoutVARJO_ptr);
@@ -1146,6 +1214,8 @@ namespace Evergine.Bindings.OpenXR
 			nativeLib.LoadFunction("xrClearSpatialAnchorStoreMSFT",  out xrClearSpatialAnchorStoreMSFT_ptr);
 			nativeLib.LoadFunction("xrGetAudioOutputDeviceGuidOculus",  out xrGetAudioOutputDeviceGuidOculus_ptr);
 			nativeLib.LoadFunction("xrGetAudioInputDeviceGuidOculus",  out xrGetAudioInputDeviceGuidOculus_ptr);
+			nativeLib.LoadFunction("xrSetDigitalLensControlALMALENCE",  out xrSetDigitalLensControlALMALENCE_ptr);
+			nativeLib.LoadFunction("xrPassthroughLayerSetKeyboardHandsIntensityFB",  out xrPassthroughLayerSetKeyboardHandsIntensityFB_ptr);
 		}
 	}
 }
