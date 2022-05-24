@@ -53,12 +53,13 @@ namespace Evergine.Bindings.OpenXR
 
         public static NativeLibrary Load(string libraryName)
         {
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            if (OperatingSystemHelper.IsOSPlatform(OperatingSystemHelper.PlatformType.Windows))
             {
                 return new WindowsNativeLibrary(libraryName);
             }
-            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux)
-                || RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            else if (OperatingSystemHelper.IsOSPlatform(OperatingSystemHelper.PlatformType.Android)
+                || OperatingSystemHelper.IsOSPlatform(OperatingSystemHelper.PlatformType.Linux)
+                || OperatingSystemHelper.IsOSPlatform(OperatingSystemHelper.PlatformType.MacOS))
             {
                 return new UnixNativeLibrary(libraryName);
             }

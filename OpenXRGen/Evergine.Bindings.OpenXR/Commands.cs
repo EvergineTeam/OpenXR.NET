@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Diagnostics;
-using System.IO;
 using System.Runtime.InteropServices;
+using static Evergine.Bindings.OpenXR.OperatingSystemHelper;
 
 namespace Evergine.Bindings.OpenXR
 {
@@ -24,22 +23,19 @@ namespace Evergine.Bindings.OpenXR
 
         private static string GetOpenXRName()
         {
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            if (IsOSPlatform(PlatformType.Windows))
             {
                 return "openxr_loader.dll";
             }
-            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            else if (IsOSPlatform(PlatformType.Android))
             {
-                if (RuntimeInformation.OSDescription.Contains("Unix"))
-                {
-                    // Android
-                    return "libopenxr_loader.so";
-                }
-                else
-                {
-                    // Desktop Linux
-                    return "libopenxr_loader.so.1";
-                }
+                // Android
+                return "libopenxr_loader.so";
+            }
+            else if (IsOSPlatform(PlatformType.Linux))
+            {
+                // Desktop Linux
+                return "libopenxr_loader.so.1";
             }
             else
             {
