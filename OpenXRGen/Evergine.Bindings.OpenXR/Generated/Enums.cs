@@ -826,8 +826,8 @@ namespace Evergine.Bindings.OpenXR
 	public enum XrKeyboardTrackingQueryFlagsFB
 	{
 		None = 0,
-		XR_KEYBOARD_TRACKING_QUERY_LOCAL_BIT_FB = 1,
-		XR_KEYBOARD_TRACKING_QUERY_REMOTE_BIT_FB = 2,
+		XR_KEYBOARD_TRACKING_QUERY_LOCAL_BIT_FB = 2,
+		XR_KEYBOARD_TRACKING_QUERY_REMOTE_BIT_FB = 4,
 	}
 
 	[Flags]
