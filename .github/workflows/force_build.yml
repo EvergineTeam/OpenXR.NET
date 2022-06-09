@@ -6,7 +6,7 @@ on:
         description: "Publish to Nuget.org"
         type: boolean
         required: false
-        default: "false"
+        default: false
 
 env:
   filePath: ${{  'xr.xml'  }}
@@ -50,10 +50,12 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: "3.1.x" # SDK Version to use; x will use the latest version of the 3.1 channel
+          dotnet-version: |
+            3.1.x
+            6.x
       - uses: nuget/setup-nuget@v1
         with:
-          nuget-version: "5.8.x"
+          nuget-version: "6.x"
       - name: remove old file
         run: |
           cd ${{  env.basePath  }}
@@ -80,7 +82,7 @@ jobs:
         run: |
           cd ${{  env.nugetOutputPath  }}
           ls *.nupkg
-          dotnet nuget push "**/*.nupkg" --skip-duplicate --no-symbols true -k ${{secrets.EVERGINE_NUGETORG_TOKEN}} -s https://api.nuget.org/v3/index.json
+          dotnet nuget push "**/*.nupkg" --skip-duplicate --no-symbols -k ${{secrets.EVERGINE_NUGETORG_TOKEN}} -s https://api.nuget.org/v3/index.json
       - name: SendGrid Mail Action
         if: ${{ failure() }}
         uses: mmichailidis/sendgrid-mail-action@v1.1
