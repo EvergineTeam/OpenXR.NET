@@ -212,6 +212,21 @@ namespace Evergine.Bindings.OpenXR
 		public override int GetHashCode() => Handle.GetHashCode();
 }
 
+	public partial struct XrSpatialGraphNodeBindingMSFT : IEquatable<XrSpatialGraphNodeBindingMSFT>
+{
+		public readonly ulong Handle;
+		public XrSpatialGraphNodeBindingMSFT(ulong existingHandle) { Handle = existingHandle; }
+		public static XrSpatialGraphNodeBindingMSFT Null => new XrSpatialGraphNodeBindingMSFT(0);
+		public static implicit operator XrSpatialGraphNodeBindingMSFT(ulong handle) => new XrSpatialGraphNodeBindingMSFT(handle);
+		public static bool operator ==(XrSpatialGraphNodeBindingMSFT left, XrSpatialGraphNodeBindingMSFT right) => left.Handle == right.Handle;
+		public static bool operator !=(XrSpatialGraphNodeBindingMSFT left, XrSpatialGraphNodeBindingMSFT right) => left.Handle != right.Handle;
+		public static bool operator ==(XrSpatialGraphNodeBindingMSFT left, ulong right) => left.Handle == right;
+		public static bool operator !=(XrSpatialGraphNodeBindingMSFT left, ulong right) => left.Handle != right;
+		public bool Equals(XrSpatialGraphNodeBindingMSFT h) => Handle == h.Handle;
+		public override bool Equals(object o) => o is XrSpatialGraphNodeBindingMSFT h && Equals(h);
+		public override int GetHashCode() => Handle.GetHashCode();
+}
+
 	public partial struct XrSceneObserverMSFT : IEquatable<XrSceneObserverMSFT>
 {
 		public readonly ulong Handle;

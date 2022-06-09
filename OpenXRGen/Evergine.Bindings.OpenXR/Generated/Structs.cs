@@ -5015,6 +5015,15 @@ namespace Evergine.Bindings.OpenXR
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrVulkanSwapchainCreateInfoMETA
+	{
+		public XrStructureType type;
+		public void* next;
+		public VkImageCreateFlags additionalCreateFlags;
+		public VkImageUsageFlags additionalUsageFlags;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct XrSessionCreateInfoOverlayEXTX
 	{
 		public XrStructureType type;
@@ -5059,6 +5068,22 @@ namespace Evergine.Bindings.OpenXR
 		public void* next;
 		public XrFovf recommendedFov;
 		public XrFovf maxMutableFov;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrInteractionProfileDpadBindingEXT
+	{
+		public XrStructureType type;
+		public void* next;
+		public ulong binding;
+		public XrActionSet actionSet;
+		public float forceThreshold;
+		public float forceThresholdReleased;
+		public float centerRegion;
+		public float wedgeAngle;
+		public XrBool32 isSticky;
+		public XrHapticBaseHeader* onHaptic;
+		public XrHapticBaseHeader* offHaptic;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5161,23 +5186,34 @@ namespace Evergine.Bindings.OpenXR
 		public XrStructureType type;
 		public void* next;
 		public XrSpatialGraphNodeTypeMSFT nodeType;
-		public byte nodeId_0;
-		public byte nodeId_1;
-		public byte nodeId_2;
-		public byte nodeId_3;
-		public byte nodeId_4;
-		public byte nodeId_5;
-		public byte nodeId_6;
-		public byte nodeId_7;
-		public byte nodeId_8;
-		public byte nodeId_9;
-		public byte nodeId_10;
-		public byte nodeId_11;
-		public byte nodeId_12;
-		public byte nodeId_13;
-		public byte nodeId_14;
-		public byte nodeId_15;
+		public byte nodeId;
 		public XrPosef pose;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialGraphStaticNodeBindingCreateInfoMSFT
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrSpace space;
+		public XrPosef poseInSpace;
+		public long time;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialGraphNodeBindingPropertiesGetInfoMSFT
+	{
+		public XrStructureType type;
+		public void* next;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialGraphNodeBindingPropertiesMSFT
+	{
+		public XrStructureType type;
+		public void* next;
+		public byte nodeId;
+		public XrPosef poseInNodeSpace;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5835,6 +5871,67 @@ namespace Evergine.Bindings.OpenXR
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSystemSpatialEntityPropertiesFB
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrBool32 supportsSpatialEntity;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialAnchorCreateInfoFB
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrSpace space;
+		public XrPosef poseInSpace;
+		public long time;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpaceComponentStatusSetInfoFB
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrSpaceComponentTypeFB componentType;
+		public XrBool32 enabled;
+		public long timeout;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpaceComponentStatusFB
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrBool32 enabled;
+		public XrBool32 changePending;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrEventDataSpatialAnchorCreateCompleteFB
+	{
+		public XrStructureType type;
+		public void* next;
+		public ulong requestId;
+		public XrResult result;
+		public XrSpace space;
+		public XrUuidEXT uuid;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrEventDataSpaceSetStatusCompleteFB
+	{
+		public XrStructureType type;
+		public void* next;
+		public ulong requestId;
+		public XrResult result;
+		public XrSpace space;
+		public XrUuidEXT uuid;
+		public XrSpaceComponentTypeFB componentType;
+		public XrBool32 enabled;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct XrFoveationProfileCreateInfoFB
 	{
 		public XrStructureType type;
@@ -6012,6 +6109,152 @@ namespace Evergine.Bindings.OpenXR
 		public XrStructureType type;
 		public void* next;
 		public XrBool32 supportsRenderModelLoading;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrRenderModelCapabilitiesRequestFB
+	{
+		public XrStructureType type;
+		public void* next;
+		public ulong flags;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpaceQueryInfoBaseHeaderFB
+	{
+		public XrStructureType type;
+		public void* next;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpaceFilterInfoBaseHeaderFB
+	{
+		public XrStructureType type;
+		public void* next;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpaceQueryInfoFB
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrSpaceQueryActionFB queryAction;
+		public uint maxResultCount;
+		public long timeout;
+		public XrSpaceFilterInfoBaseHeaderFB* filter;
+		public XrSpaceFilterInfoBaseHeaderFB* excludeFilter;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpaceStorageLocationFilterInfoFB
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrSpaceStorageLocationFB location;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpaceUuidFilterInfoFB
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint uuidCount;
+		public XrUuidEXT* uuids;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpaceComponentFilterInfoFB
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrSpaceComponentTypeFB componentType;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpaceQueryResultFB
+	{
+		public XrSpace space;
+		public XrUuidEXT uuid;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpaceQueryResultsFB
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint resultCapacityInput;
+		public uint resultCountOutput;
+		public XrSpaceQueryResultFB* results;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrEventDataSpaceQueryResultsAvailableFB
+	{
+		public XrStructureType type;
+		public void* next;
+		public ulong requestId;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrEventDataSpaceQueryCompleteFB
+	{
+		public XrStructureType type;
+		public void* next;
+		public ulong requestId;
+		public XrResult result;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpaceSaveInfoFB
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrSpace space;
+		public XrSpaceStorageLocationFB location;
+		public XrSpacePersistenceModeFB persistenceMode;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpaceEraseInfoFB
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrSpace space;
+		public XrSpaceStorageLocationFB location;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrEventDataSpaceSaveCompleteFB
+	{
+		public XrStructureType type;
+		public void* next;
+		public ulong requestId;
+		public XrResult result;
+		public XrSpace space;
+		public XrUuidEXT uuid;
+		public XrSpaceStorageLocationFB location;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrEventDataSpaceEraseCompleteFB
+	{
+		public XrStructureType type;
+		public void* next;
+		public ulong requestId;
+		public XrResult result;
+		public XrSpace space;
+		public XrUuidEXT uuid;
+		public XrSpaceStorageLocationFB location;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpaceContainerFB
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint uuidCapacityInput;
+		public uint* uuidCountOutput;
+		public XrUuidEXT* uuids;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -6196,6 +6439,16 @@ namespace Evergine.Bindings.OpenXR
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrPassthroughBrightnessContrastSaturationFB
+	{
+		public XrStructureType type;
+		public void* next;
+		public float brightness;
+		public float contrast;
+		public float saturation;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct XrEventDataPassthroughStateChangedFB
 	{
 		public XrStructureType type;
@@ -6336,7 +6589,7 @@ namespace Evergine.Bindings.OpenXR
 	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct XrUuidEXT
 	{
-		public byte data;
+		public fixed byte data[(int)OpenXRNative.XR_UUID_SIZE_EXT];
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -6345,6 +6598,33 @@ namespace Evergine.Bindings.OpenXR
 		public XrStructureType type;
 		public void* next;
 		public ulong flags;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrCompositionLayerSettingsFB
+	{
+		public XrStructureType type;
+		public void* next;
+		public ulong layerFlags;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrPerformanceMetricsStateMETA
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrBool32 enabled;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrPerformanceMetricsCounterMETA
+	{
+		public XrStructureType type;
+		public void* next;
+		public ulong counterFlags;
+		public XrPerformanceMetricsCounterUnitMETA counterUnit;
+		public uint uintValue;
+		public float floatValue;
 	}
 
 }

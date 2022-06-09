@@ -534,6 +534,24 @@ namespace Evergine.Bindings.OpenXR
 			=> xrCreateSpatialGraphNodeSpaceMSFT_ptr(session, createInfo, space);
 
 		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrTryCreateSpatialGraphStaticNodeBindingMSFTDelegate(XrSession session, XrSpatialGraphStaticNodeBindingCreateInfoMSFT* createInfo, XrSpatialGraphNodeBindingMSFT* nodeBinding);
+		private static xrTryCreateSpatialGraphStaticNodeBindingMSFTDelegate xrTryCreateSpatialGraphStaticNodeBindingMSFT_ptr;
+		public static XrResult xrTryCreateSpatialGraphStaticNodeBindingMSFT(XrSession session, XrSpatialGraphStaticNodeBindingCreateInfoMSFT* createInfo, XrSpatialGraphNodeBindingMSFT* nodeBinding)
+			=> xrTryCreateSpatialGraphStaticNodeBindingMSFT_ptr(session, createInfo, nodeBinding);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrDestroySpatialGraphNodeBindingMSFTDelegate(XrSpatialGraphNodeBindingMSFT nodeBinding);
+		private static xrDestroySpatialGraphNodeBindingMSFTDelegate xrDestroySpatialGraphNodeBindingMSFT_ptr;
+		public static XrResult xrDestroySpatialGraphNodeBindingMSFT(XrSpatialGraphNodeBindingMSFT nodeBinding)
+			=> xrDestroySpatialGraphNodeBindingMSFT_ptr(nodeBinding);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrGetSpatialGraphNodeBindingPropertiesMSFTDelegate(XrSpatialGraphNodeBindingMSFT nodeBinding, XrSpatialGraphNodeBindingPropertiesGetInfoMSFT* getInfo, XrSpatialGraphNodeBindingPropertiesMSFT* properties);
+		private static xrGetSpatialGraphNodeBindingPropertiesMSFTDelegate xrGetSpatialGraphNodeBindingPropertiesMSFT_ptr;
+		public static XrResult xrGetSpatialGraphNodeBindingPropertiesMSFT(XrSpatialGraphNodeBindingMSFT nodeBinding, XrSpatialGraphNodeBindingPropertiesGetInfoMSFT* getInfo, XrSpatialGraphNodeBindingPropertiesMSFT* properties)
+			=> xrGetSpatialGraphNodeBindingPropertiesMSFT_ptr(nodeBinding, getInfo, properties);
+
+		[UnmanagedFunctionPointer(CallConv)]
 		private delegate XrResult xrCreateHandTrackerEXTDelegate(XrSession session, XrHandTrackerCreateInfoEXT* createInfo, XrHandTrackerEXT* handTracker);
 		private static xrCreateHandTrackerEXTDelegate xrCreateHandTrackerEXT_ptr;
 		public static XrResult xrCreateHandTrackerEXT(XrSession session, XrHandTrackerCreateInfoEXT* createInfo, XrHandTrackerEXT* handTracker)
@@ -774,6 +792,36 @@ namespace Evergine.Bindings.OpenXR
 			=> xrGetHandMeshFB_ptr(handTracker, mesh);
 
 		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrCreateSpatialAnchorFBDelegate(XrSession session, XrSpatialAnchorCreateInfoFB* info, ulong* requestId);
+		private static xrCreateSpatialAnchorFBDelegate xrCreateSpatialAnchorFB_ptr;
+		public static XrResult xrCreateSpatialAnchorFB(XrSession session, XrSpatialAnchorCreateInfoFB* info, ulong* requestId)
+			=> xrCreateSpatialAnchorFB_ptr(session, info, requestId);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrGetSpaceUuidFBDelegate(XrSpace space, XrUuidEXT* uuid);
+		private static xrGetSpaceUuidFBDelegate xrGetSpaceUuidFB_ptr;
+		public static XrResult xrGetSpaceUuidFB(XrSpace space, XrUuidEXT* uuid)
+			=> xrGetSpaceUuidFB_ptr(space, uuid);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrEnumerateSpaceSupportedComponentsFBDelegate(XrSpace space, uint componentTypeCapacityInput, uint* componentTypeCountOutput, XrSpaceComponentTypeFB* componentTypes);
+		private static xrEnumerateSpaceSupportedComponentsFBDelegate xrEnumerateSpaceSupportedComponentsFB_ptr;
+		public static XrResult xrEnumerateSpaceSupportedComponentsFB(XrSpace space, uint componentTypeCapacityInput, uint* componentTypeCountOutput, XrSpaceComponentTypeFB* componentTypes)
+			=> xrEnumerateSpaceSupportedComponentsFB_ptr(space, componentTypeCapacityInput, componentTypeCountOutput, componentTypes);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrSetSpaceComponentStatusFBDelegate(XrSpace space, XrSpaceComponentStatusSetInfoFB* info, ulong* requestId);
+		private static xrSetSpaceComponentStatusFBDelegate xrSetSpaceComponentStatusFB_ptr;
+		public static XrResult xrSetSpaceComponentStatusFB(XrSpace space, XrSpaceComponentStatusSetInfoFB* info, ulong* requestId)
+			=> xrSetSpaceComponentStatusFB_ptr(space, info, requestId);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrGetSpaceComponentStatusFBDelegate(XrSpace space, XrSpaceComponentTypeFB componentType, XrSpaceComponentStatusFB* status);
+		private static xrGetSpaceComponentStatusFBDelegate xrGetSpaceComponentStatusFB_ptr;
+		public static XrResult xrGetSpaceComponentStatusFB(XrSpace space, XrSpaceComponentTypeFB componentType, XrSpaceComponentStatusFB* status)
+			=> xrGetSpaceComponentStatusFB_ptr(space, componentType, status);
+
+		[UnmanagedFunctionPointer(CallConv)]
 		private delegate XrResult xrCreateFoveationProfileFBDelegate(XrSession session, XrFoveationProfileCreateInfoFB* createInfo, XrFoveationProfileFB* profile);
 		private static xrCreateFoveationProfileFBDelegate xrCreateFoveationProfileFB_ptr;
 		public static XrResult xrCreateFoveationProfileFB(XrSession session, XrFoveationProfileCreateInfoFB* createInfo, XrFoveationProfileFB* profile)
@@ -972,6 +1020,12 @@ namespace Evergine.Bindings.OpenXR
 			=> xrCreateMarkerSpaceVARJO_ptr(session, createInfo, space);
 
 		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrSetViewOffsetVARJODelegate(XrSession session, float offset);
+		private static xrSetViewOffsetVARJODelegate xrSetViewOffsetVARJO_ptr;
+		public static XrResult xrSetViewOffsetVARJO(XrSession session, float offset)
+			=> xrSetViewOffsetVARJO_ptr(session, offset);
+
+		[UnmanagedFunctionPointer(CallConv)]
 		private delegate XrResult xrCreateSpatialAnchorStoreConnectionMSFTDelegate(XrSession session, XrSpatialAnchorStoreConnectionMSFT* spatialAnchorStore);
 		private static xrCreateSpatialAnchorStoreConnectionMSFTDelegate xrCreateSpatialAnchorStoreConnectionMSFT_ptr;
 		public static XrResult xrCreateSpatialAnchorStoreConnectionMSFT(XrSession session, XrSpatialAnchorStoreConnectionMSFT* spatialAnchorStore)
@@ -1014,6 +1068,30 @@ namespace Evergine.Bindings.OpenXR
 			=> xrClearSpatialAnchorStoreMSFT_ptr(spatialAnchorStore);
 
 		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrQuerySpacesFBDelegate(XrSession session, XrSpaceQueryInfoBaseHeaderFB* info, ulong* requestId);
+		private static xrQuerySpacesFBDelegate xrQuerySpacesFB_ptr;
+		public static XrResult xrQuerySpacesFB(XrSession session, XrSpaceQueryInfoBaseHeaderFB* info, ulong* requestId)
+			=> xrQuerySpacesFB_ptr(session, info, requestId);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrRetrieveSpaceQueryResultsFBDelegate(XrSession session, ulong requestId, XrSpaceQueryResultsFB* results);
+		private static xrRetrieveSpaceQueryResultsFBDelegate xrRetrieveSpaceQueryResultsFB_ptr;
+		public static XrResult xrRetrieveSpaceQueryResultsFB(XrSession session, ulong requestId, XrSpaceQueryResultsFB* results)
+			=> xrRetrieveSpaceQueryResultsFB_ptr(session, requestId, results);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrSaveSpaceFBDelegate(XrSession session, XrSpaceSaveInfoFB* info, ulong* requestId);
+		private static xrSaveSpaceFBDelegate xrSaveSpaceFB_ptr;
+		public static XrResult xrSaveSpaceFB(XrSession session, XrSpaceSaveInfoFB* info, ulong* requestId)
+			=> xrSaveSpaceFB_ptr(session, info, requestId);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrEraseSpaceFBDelegate(XrSession session, XrSpaceEraseInfoFB* info, ulong* requestId);
+		private static xrEraseSpaceFBDelegate xrEraseSpaceFB_ptr;
+		public static XrResult xrEraseSpaceFB(XrSession session, XrSpaceEraseInfoFB* info, ulong* requestId)
+			=> xrEraseSpaceFB_ptr(session, info, requestId);
+
+		[UnmanagedFunctionPointer(CallConv)]
 		private delegate XrResult xrGetAudioOutputDeviceGuidOculusDelegate(XrInstance instance, string buffer);
 		private static xrGetAudioOutputDeviceGuidOculusDelegate xrGetAudioOutputDeviceGuidOculus_ptr;
 		public static XrResult xrGetAudioOutputDeviceGuidOculus(XrInstance instance, string buffer)
@@ -1032,10 +1110,40 @@ namespace Evergine.Bindings.OpenXR
 			=> xrSetDigitalLensControlALMALENCE_ptr(session, digitalLensControl);
 
 		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrGetSpaceContainerFBDelegate(XrSession session, XrSpace space, XrSpaceContainerFB* spaceContainerOutput);
+		private static xrGetSpaceContainerFBDelegate xrGetSpaceContainerFB_ptr;
+		public static XrResult xrGetSpaceContainerFB(XrSession session, XrSpace space, XrSpaceContainerFB* spaceContainerOutput)
+			=> xrGetSpaceContainerFB_ptr(session, space, spaceContainerOutput);
+
+		[UnmanagedFunctionPointer(CallConv)]
 		private delegate XrResult xrPassthroughLayerSetKeyboardHandsIntensityFBDelegate(XrPassthroughLayerFB layer, XrPassthroughKeyboardHandsIntensityFB* intensity);
 		private static xrPassthroughLayerSetKeyboardHandsIntensityFBDelegate xrPassthroughLayerSetKeyboardHandsIntensityFB_ptr;
 		public static XrResult xrPassthroughLayerSetKeyboardHandsIntensityFB(XrPassthroughLayerFB layer, XrPassthroughKeyboardHandsIntensityFB* intensity)
 			=> xrPassthroughLayerSetKeyboardHandsIntensityFB_ptr(layer, intensity);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrEnumeratePerformanceMetricsCounterPathsMETADelegate(XrInstance instance, uint counterPathCapacityInput, uint* counterPathCountOutput, ulong* counterPaths);
+		private static xrEnumeratePerformanceMetricsCounterPathsMETADelegate xrEnumeratePerformanceMetricsCounterPathsMETA_ptr;
+		public static XrResult xrEnumeratePerformanceMetricsCounterPathsMETA(XrInstance instance, uint counterPathCapacityInput, uint* counterPathCountOutput, ulong* counterPaths)
+			=> xrEnumeratePerformanceMetricsCounterPathsMETA_ptr(instance, counterPathCapacityInput, counterPathCountOutput, counterPaths);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrSetPerformanceMetricsStateMETADelegate(XrSession session, XrPerformanceMetricsStateMETA* state);
+		private static xrSetPerformanceMetricsStateMETADelegate xrSetPerformanceMetricsStateMETA_ptr;
+		public static XrResult xrSetPerformanceMetricsStateMETA(XrSession session, XrPerformanceMetricsStateMETA* state)
+			=> xrSetPerformanceMetricsStateMETA_ptr(session, state);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrGetPerformanceMetricsStateMETADelegate(XrSession session, XrPerformanceMetricsStateMETA* state);
+		private static xrGetPerformanceMetricsStateMETADelegate xrGetPerformanceMetricsStateMETA_ptr;
+		public static XrResult xrGetPerformanceMetricsStateMETA(XrSession session, XrPerformanceMetricsStateMETA* state)
+			=> xrGetPerformanceMetricsStateMETA_ptr(session, state);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrQueryPerformanceMetricsCounterMETADelegate(XrSession session, ulong counterPath, XrPerformanceMetricsCounterMETA* counter);
+		private static xrQueryPerformanceMetricsCounterMETADelegate xrQueryPerformanceMetricsCounterMETA_ptr;
+		public static XrResult xrQueryPerformanceMetricsCounterMETA(XrSession session, ulong counterPath, XrPerformanceMetricsCounterMETA* counter)
+			=> xrQueryPerformanceMetricsCounterMETA_ptr(session, counterPath, counter);
 
 		public static void LoadFuncionPointers(XrInstance instance = default)
 		{
@@ -1132,6 +1240,9 @@ namespace Evergine.Bindings.OpenXR
 			nativeLib.LoadFunction("xrSetInputDeviceStateVector2fEXT",  out xrSetInputDeviceStateVector2fEXT_ptr);
 			nativeLib.LoadFunction("xrSetInputDeviceLocationEXT",  out xrSetInputDeviceLocationEXT_ptr);
 			nativeLib.LoadFunction("xrCreateSpatialGraphNodeSpaceMSFT",  out xrCreateSpatialGraphNodeSpaceMSFT_ptr);
+			nativeLib.LoadFunction("xrTryCreateSpatialGraphStaticNodeBindingMSFT",  out xrTryCreateSpatialGraphStaticNodeBindingMSFT_ptr);
+			nativeLib.LoadFunction("xrDestroySpatialGraphNodeBindingMSFT",  out xrDestroySpatialGraphNodeBindingMSFT_ptr);
+			nativeLib.LoadFunction("xrGetSpatialGraphNodeBindingPropertiesMSFT",  out xrGetSpatialGraphNodeBindingPropertiesMSFT_ptr);
 			nativeLib.LoadFunction("xrCreateHandTrackerEXT",  out xrCreateHandTrackerEXT_ptr);
 			nativeLib.LoadFunction("xrDestroyHandTrackerEXT",  out xrDestroyHandTrackerEXT_ptr);
 			nativeLib.LoadFunction("xrLocateHandJointsEXT",  out xrLocateHandJointsEXT_ptr);
@@ -1172,6 +1283,11 @@ namespace Evergine.Bindings.OpenXR
 			nativeLib.LoadFunction("xrEnumerateColorSpacesFB",  out xrEnumerateColorSpacesFB_ptr);
 			nativeLib.LoadFunction("xrSetColorSpaceFB",  out xrSetColorSpaceFB_ptr);
 			nativeLib.LoadFunction("xrGetHandMeshFB",  out xrGetHandMeshFB_ptr);
+			nativeLib.LoadFunction("xrCreateSpatialAnchorFB",  out xrCreateSpatialAnchorFB_ptr);
+			nativeLib.LoadFunction("xrGetSpaceUuidFB",  out xrGetSpaceUuidFB_ptr);
+			nativeLib.LoadFunction("xrEnumerateSpaceSupportedComponentsFB",  out xrEnumerateSpaceSupportedComponentsFB_ptr);
+			nativeLib.LoadFunction("xrSetSpaceComponentStatusFB",  out xrSetSpaceComponentStatusFB_ptr);
+			nativeLib.LoadFunction("xrGetSpaceComponentStatusFB",  out xrGetSpaceComponentStatusFB_ptr);
 			nativeLib.LoadFunction("xrCreateFoveationProfileFB",  out xrCreateFoveationProfileFB_ptr);
 			nativeLib.LoadFunction("xrDestroyFoveationProfileFB",  out xrDestroyFoveationProfileFB_ptr);
 			nativeLib.LoadFunction("xrQuerySystemTrackedKeyboardFB",  out xrQuerySystemTrackedKeyboardFB_ptr);
@@ -1205,6 +1321,7 @@ namespace Evergine.Bindings.OpenXR
 			nativeLib.LoadFunction("xrSetMarkerTrackingPredictionVARJO",  out xrSetMarkerTrackingPredictionVARJO_ptr);
 			nativeLib.LoadFunction("xrGetMarkerSizeVARJO",  out xrGetMarkerSizeVARJO_ptr);
 			nativeLib.LoadFunction("xrCreateMarkerSpaceVARJO",  out xrCreateMarkerSpaceVARJO_ptr);
+			nativeLib.LoadFunction("xrSetViewOffsetVARJO",  out xrSetViewOffsetVARJO_ptr);
 			nativeLib.LoadFunction("xrCreateSpatialAnchorStoreConnectionMSFT",  out xrCreateSpatialAnchorStoreConnectionMSFT_ptr);
 			nativeLib.LoadFunction("xrDestroySpatialAnchorStoreConnectionMSFT",  out xrDestroySpatialAnchorStoreConnectionMSFT_ptr);
 			nativeLib.LoadFunction("xrPersistSpatialAnchorMSFT",  out xrPersistSpatialAnchorMSFT_ptr);
@@ -1212,10 +1329,19 @@ namespace Evergine.Bindings.OpenXR
 			nativeLib.LoadFunction("xrCreateSpatialAnchorFromPersistedNameMSFT",  out xrCreateSpatialAnchorFromPersistedNameMSFT_ptr);
 			nativeLib.LoadFunction("xrUnpersistSpatialAnchorMSFT",  out xrUnpersistSpatialAnchorMSFT_ptr);
 			nativeLib.LoadFunction("xrClearSpatialAnchorStoreMSFT",  out xrClearSpatialAnchorStoreMSFT_ptr);
+			nativeLib.LoadFunction("xrQuerySpacesFB",  out xrQuerySpacesFB_ptr);
+			nativeLib.LoadFunction("xrRetrieveSpaceQueryResultsFB",  out xrRetrieveSpaceQueryResultsFB_ptr);
+			nativeLib.LoadFunction("xrSaveSpaceFB",  out xrSaveSpaceFB_ptr);
+			nativeLib.LoadFunction("xrEraseSpaceFB",  out xrEraseSpaceFB_ptr);
 			nativeLib.LoadFunction("xrGetAudioOutputDeviceGuidOculus",  out xrGetAudioOutputDeviceGuidOculus_ptr);
 			nativeLib.LoadFunction("xrGetAudioInputDeviceGuidOculus",  out xrGetAudioInputDeviceGuidOculus_ptr);
 			nativeLib.LoadFunction("xrSetDigitalLensControlALMALENCE",  out xrSetDigitalLensControlALMALENCE_ptr);
+			nativeLib.LoadFunction("xrGetSpaceContainerFB",  out xrGetSpaceContainerFB_ptr);
 			nativeLib.LoadFunction("xrPassthroughLayerSetKeyboardHandsIntensityFB",  out xrPassthroughLayerSetKeyboardHandsIntensityFB_ptr);
+			nativeLib.LoadFunction("xrEnumeratePerformanceMetricsCounterPathsMETA",  out xrEnumeratePerformanceMetricsCounterPathsMETA_ptr);
+			nativeLib.LoadFunction("xrSetPerformanceMetricsStateMETA",  out xrSetPerformanceMetricsStateMETA_ptr);
+			nativeLib.LoadFunction("xrGetPerformanceMetricsStateMETA",  out xrGetPerformanceMetricsStateMETA_ptr);
+			nativeLib.LoadFunction("xrQueryPerformanceMetricsCounterMETA",  out xrQueryPerformanceMetricsCounterMETA_ptr);
 		}
 	}
 }
