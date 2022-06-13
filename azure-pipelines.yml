@@ -47,6 +47,12 @@ jobs:
           checkLatest: true
 
       - task: PowerShell@2
+        displayName: "Generate Bindings"
+        inputs:
+          filePath: "./Generate-Bindings.ps1"
+          arguments: "-BuildConfiguration $(buildConfiguration)"
+
+      - task: PowerShell@2
         displayName: "Generate NuGet packages"
         inputs:
           filePath: "./Generate-NuGets.ps1"

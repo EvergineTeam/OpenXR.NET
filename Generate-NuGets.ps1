@@ -15,7 +15,6 @@ param (
 	[string]$outputFolderBase = "nupkgs",
 	[string]$buildVerbosity = "normal",
 	[string]$buildConfiguration = "Release",
-	[string]$openXRGenCsprojPath = "OpenXRGen\OpenXRGen\OpenXRGen.csproj",
 	[string]$openXRBindingsCsprojPath = "OpenXRGen\Evergine.Bindings.OpenXR\Evergine.Bindings.OpenXR.csproj"
 )
 
@@ -42,35 +41,6 @@ if($buildConfiguration -eq "Debug")
 {
 	$symbols = true
 }
-
-# Compile generator
-LogDebug "START generator build process"
-dotnet publish -v:$buildVerbosity -p:Configuration=$buildConfiguration $openXRGenCsprojPath
-if($?)
-{
-   LogDebug "END generator build process"
-}
-else
-{
-	LogDebug "ERROR; Generator build failed"
-   	exit -1
-}
-
-# Run generator
-LogDebug "START binding generator process"
-pushd .\OpenXRGen\OpenXRGen\bin\Release\netcoreapp3.1
-.\publish\OpenXRGen.exe
-if($?)
-{
-   LogDebug "END binding generator process"
-}
-else
-{
-	LogDebug "ERROR; Binding Generation failed"
-   	exit -1
-}
-popd
-
 
 # Generate packages
 LogDebug "START packaging process"
