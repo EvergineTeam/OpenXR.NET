@@ -6253,8 +6253,63 @@ namespace Evergine.Bindings.OpenXR
 		public XrStructureType type;
 		public void* next;
 		public uint uuidCapacityInput;
-		public uint* uuidCountOutput;
+		public uint uuidCountOutput;
 		public XrUuidEXT* uuids;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrExtent3DfFB
+	{
+		public float width;
+		public float height;
+		public float depth;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrOffset3DfFB
+	{
+		public float x;
+		public float y;
+		public float z;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrRect3DfFB
+	{
+		public XrOffset3DfFB offset;
+		public XrExtent3DfFB extent;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSemanticLabelsFB
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint bufferCapacityInput;
+		public uint bufferCountOutput;
+		public byte* buffer;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrRoomLayoutFB
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrUuidEXT floorUuid;
+		public XrUuidEXT ceilingUuid;
+		public uint wallUuidCapacityInput;
+		public uint wallUuidCountOutput;
+		public XrUuidEXT* wallUuids;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrBoundary2DFB
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint vertexCapacityInput;
+		public uint vertexCountOutput;
+		public XrVector2f* vertices;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]

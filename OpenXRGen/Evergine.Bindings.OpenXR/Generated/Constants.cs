@@ -220,9 +220,13 @@ namespace Evergine.Bindings.OpenXR
 		public const string XR_KHR_SWAPCHAIN_USAGE_INPUT_ATTACHMENT_BIT_EXTENSION_NAME = "XR_KHR_swapchain_usage_input_attachment_bit";
 		public const uint XR_FB_space_warp_SPEC_VERSION = 2;
 		public const string XR_FB_SPACE_WARP_EXTENSION_NAME = "XR_FB_space_warp";
+		public const uint XR_FB_scene_SPEC_VERSION = 1;
+		public const string XR_FB_SCENE_EXTENSION_NAME = "XR_FB_scene";
+		public const uint XR_EXT_palm_pose_SPEC_VERSION = 2;
+		public const string XR_EXT_PALM_POSE_EXTENSION_NAME = "XR_EXT_palm_pose";
 		public const uint XR_ALMALENCE_digital_lens_control_SPEC_VERSION = 1;
 		public const string XR_ALMALENCE_DIGITAL_LENS_CONTROL_EXTENSION_NAME = "XR_ALMALENCE_digital_lens_control";
-		public const uint XR_FB_spatial_entity_container_SPEC_VERSION = 1;
+		public const uint XR_FB_spatial_entity_container_SPEC_VERSION = 2;
 		public const string XR_FB_SPATIAL_ENTITY_CONTAINER_EXTENSION_NAME = "XR_FB_spatial_entity_container";
 		public const uint XR_FB_passthrough_keyboard_hands_SPEC_VERSION = 2;
 		public const string XR_FB_PASSTHROUGH_KEYBOARD_HANDS_EXTENSION_NAME = "XR_FB_passthrough_keyboard_hands";

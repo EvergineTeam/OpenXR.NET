@@ -1104,6 +1104,36 @@ namespace Evergine.Bindings.OpenXR
 			=> xrGetAudioInputDeviceGuidOculus_ptr(instance, buffer);
 
 		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrGetSpaceBoundingBox2DFBDelegate(XrSession session, XrSpace space, XrRect2Df* boundingBox2DOutput);
+		private static xrGetSpaceBoundingBox2DFBDelegate xrGetSpaceBoundingBox2DFB_ptr;
+		public static XrResult xrGetSpaceBoundingBox2DFB(XrSession session, XrSpace space, XrRect2Df* boundingBox2DOutput)
+			=> xrGetSpaceBoundingBox2DFB_ptr(session, space, boundingBox2DOutput);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrGetSpaceBoundingBox3DFBDelegate(XrSession session, XrSpace space, XrRect3DfFB* boundingBox3DOutput);
+		private static xrGetSpaceBoundingBox3DFBDelegate xrGetSpaceBoundingBox3DFB_ptr;
+		public static XrResult xrGetSpaceBoundingBox3DFB(XrSession session, XrSpace space, XrRect3DfFB* boundingBox3DOutput)
+			=> xrGetSpaceBoundingBox3DFB_ptr(session, space, boundingBox3DOutput);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrGetSpaceSemanticLabelsFBDelegate(XrSession session, XrSpace space, XrSemanticLabelsFB* semanticLabelsOutput);
+		private static xrGetSpaceSemanticLabelsFBDelegate xrGetSpaceSemanticLabelsFB_ptr;
+		public static XrResult xrGetSpaceSemanticLabelsFB(XrSession session, XrSpace space, XrSemanticLabelsFB* semanticLabelsOutput)
+			=> xrGetSpaceSemanticLabelsFB_ptr(session, space, semanticLabelsOutput);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrGetSpaceBoundary2DFBDelegate(XrSession session, XrSpace space, XrBoundary2DFB* boundary2DOutput);
+		private static xrGetSpaceBoundary2DFBDelegate xrGetSpaceBoundary2DFB_ptr;
+		public static XrResult xrGetSpaceBoundary2DFB(XrSession session, XrSpace space, XrBoundary2DFB* boundary2DOutput)
+			=> xrGetSpaceBoundary2DFB_ptr(session, space, boundary2DOutput);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrGetSpaceRoomLayoutFBDelegate(XrSession session, XrSpace space, XrRoomLayoutFB* roomLayoutOutput);
+		private static xrGetSpaceRoomLayoutFBDelegate xrGetSpaceRoomLayoutFB_ptr;
+		public static XrResult xrGetSpaceRoomLayoutFB(XrSession session, XrSpace space, XrRoomLayoutFB* roomLayoutOutput)
+			=> xrGetSpaceRoomLayoutFB_ptr(session, space, roomLayoutOutput);
+
+		[UnmanagedFunctionPointer(CallConv)]
 		private delegate XrResult xrSetDigitalLensControlALMALENCEDelegate(XrSession session, XrDigitalLensControlALMALENCE* digitalLensControl);
 		private static xrSetDigitalLensControlALMALENCEDelegate xrSetDigitalLensControlALMALENCE_ptr;
 		public static XrResult xrSetDigitalLensControlALMALENCE(XrSession session, XrDigitalLensControlALMALENCE* digitalLensControl)
@@ -1335,6 +1365,11 @@ namespace Evergine.Bindings.OpenXR
 			nativeLib.LoadFunction("xrEraseSpaceFB",  out xrEraseSpaceFB_ptr);
 			nativeLib.LoadFunction("xrGetAudioOutputDeviceGuidOculus",  out xrGetAudioOutputDeviceGuidOculus_ptr);
 			nativeLib.LoadFunction("xrGetAudioInputDeviceGuidOculus",  out xrGetAudioInputDeviceGuidOculus_ptr);
+			nativeLib.LoadFunction("xrGetSpaceBoundingBox2DFB",  out xrGetSpaceBoundingBox2DFB_ptr);
+			nativeLib.LoadFunction("xrGetSpaceBoundingBox3DFB",  out xrGetSpaceBoundingBox3DFB_ptr);
+			nativeLib.LoadFunction("xrGetSpaceSemanticLabelsFB",  out xrGetSpaceSemanticLabelsFB_ptr);
+			nativeLib.LoadFunction("xrGetSpaceBoundary2DFB",  out xrGetSpaceBoundary2DFB_ptr);
+			nativeLib.LoadFunction("xrGetSpaceRoomLayoutFB",  out xrGetSpaceRoomLayoutFB_ptr);
 			nativeLib.LoadFunction("xrSetDigitalLensControlALMALENCE",  out xrSetDigitalLensControlALMALENCE_ptr);
 			nativeLib.LoadFunction("xrGetSpaceContainerFB",  out xrGetSpaceContainerFB_ptr);
 			nativeLib.LoadFunction("xrPassthroughLayerSetKeyboardHandsIntensityFB",  out xrPassthroughLayerSetKeyboardHandsIntensityFB_ptr);
