@@ -1175,6 +1175,24 @@ namespace Evergine.Bindings.OpenXR
 		public static XrResult xrQueryPerformanceMetricsCounterMETA(XrSession session, ulong counterPath, XrPerformanceMetricsCounterMETA* counter)
 			=> xrQueryPerformanceMetricsCounterMETA_ptr(session, counterPath, counter);
 
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrCreatePassthroughHTCDelegate(XrSession session, XrPassthroughCreateInfoHTC* createInfo, XrPassthroughHTC* passthrough);
+		private static xrCreatePassthroughHTCDelegate xrCreatePassthroughHTC_ptr;
+		public static XrResult xrCreatePassthroughHTC(XrSession session, XrPassthroughCreateInfoHTC* createInfo, XrPassthroughHTC* passthrough)
+			=> xrCreatePassthroughHTC_ptr(session, createInfo, passthrough);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrDestroyPassthroughHTCDelegate(XrPassthroughHTC passthrough);
+		private static xrDestroyPassthroughHTCDelegate xrDestroyPassthroughHTC_ptr;
+		public static XrResult xrDestroyPassthroughHTC(XrPassthroughHTC passthrough)
+			=> xrDestroyPassthroughHTC_ptr(passthrough);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrApplyFoveationHTCDelegate(XrSession session, XrFoveationApplyInfoHTC* applyInfo);
+		private static xrApplyFoveationHTCDelegate xrApplyFoveationHTC_ptr;
+		public static XrResult xrApplyFoveationHTC(XrSession session, XrFoveationApplyInfoHTC* applyInfo)
+			=> xrApplyFoveationHTC_ptr(session, applyInfo);
+
 		public static void LoadFuncionPointers(XrInstance instance = default)
 		{
 			if (instance != default)
@@ -1377,6 +1395,9 @@ namespace Evergine.Bindings.OpenXR
 			nativeLib.LoadFunction("xrSetPerformanceMetricsStateMETA",  out xrSetPerformanceMetricsStateMETA_ptr);
 			nativeLib.LoadFunction("xrGetPerformanceMetricsStateMETA",  out xrGetPerformanceMetricsStateMETA_ptr);
 			nativeLib.LoadFunction("xrQueryPerformanceMetricsCounterMETA",  out xrQueryPerformanceMetricsCounterMETA_ptr);
+			nativeLib.LoadFunction("xrCreatePassthroughHTC",  out xrCreatePassthroughHTC_ptr);
+			nativeLib.LoadFunction("xrDestroyPassthroughHTC",  out xrDestroyPassthroughHTC_ptr);
+			nativeLib.LoadFunction("xrApplyFoveationHTC",  out xrApplyFoveationHTC_ptr);
 		}
 	}
 }

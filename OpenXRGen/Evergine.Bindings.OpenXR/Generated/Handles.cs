@@ -212,6 +212,36 @@ namespace Evergine.Bindings.OpenXR
 		public override int GetHashCode() => Handle.GetHashCode();
 }
 
+	public partial struct XrFacialTrackerHTC : IEquatable<XrFacialTrackerHTC>
+{
+		public readonly ulong Handle;
+		public XrFacialTrackerHTC(ulong existingHandle) { Handle = existingHandle; }
+		public static XrFacialTrackerHTC Null => new XrFacialTrackerHTC(0);
+		public static implicit operator XrFacialTrackerHTC(ulong handle) => new XrFacialTrackerHTC(handle);
+		public static bool operator ==(XrFacialTrackerHTC left, XrFacialTrackerHTC right) => left.Handle == right.Handle;
+		public static bool operator !=(XrFacialTrackerHTC left, XrFacialTrackerHTC right) => left.Handle != right.Handle;
+		public static bool operator ==(XrFacialTrackerHTC left, ulong right) => left.Handle == right;
+		public static bool operator !=(XrFacialTrackerHTC left, ulong right) => left.Handle != right;
+		public bool Equals(XrFacialTrackerHTC h) => Handle == h.Handle;
+		public override bool Equals(object o) => o is XrFacialTrackerHTC h && Equals(h);
+		public override int GetHashCode() => Handle.GetHashCode();
+}
+
+	public partial struct XrPassthroughHTC : IEquatable<XrPassthroughHTC>
+{
+		public readonly ulong Handle;
+		public XrPassthroughHTC(ulong existingHandle) { Handle = existingHandle; }
+		public static XrPassthroughHTC Null => new XrPassthroughHTC(0);
+		public static implicit operator XrPassthroughHTC(ulong handle) => new XrPassthroughHTC(handle);
+		public static bool operator ==(XrPassthroughHTC left, XrPassthroughHTC right) => left.Handle == right.Handle;
+		public static bool operator !=(XrPassthroughHTC left, XrPassthroughHTC right) => left.Handle != right.Handle;
+		public static bool operator ==(XrPassthroughHTC left, ulong right) => left.Handle == right;
+		public static bool operator !=(XrPassthroughHTC left, ulong right) => left.Handle != right;
+		public bool Equals(XrPassthroughHTC h) => Handle == h.Handle;
+		public override bool Equals(object o) => o is XrPassthroughHTC h && Equals(h);
+		public override int GetHashCode() => Handle.GetHashCode();
+}
+
 	public partial struct XrSpatialGraphNodeBindingMSFT : IEquatable<XrSpatialGraphNodeBindingMSFT>
 {
 		public readonly ulong Handle;
@@ -269,21 +299,6 @@ namespace Evergine.Bindings.OpenXR
 		public static bool operator !=(XrSpatialAnchorStoreConnectionMSFT left, ulong right) => left.Handle != right;
 		public bool Equals(XrSpatialAnchorStoreConnectionMSFT h) => Handle == h.Handle;
 		public override bool Equals(object o) => o is XrSpatialAnchorStoreConnectionMSFT h && Equals(h);
-		public override int GetHashCode() => Handle.GetHashCode();
-}
-
-	public partial struct XrFacialTrackerHTC : IEquatable<XrFacialTrackerHTC>
-{
-		public readonly ulong Handle;
-		public XrFacialTrackerHTC(ulong existingHandle) { Handle = existingHandle; }
-		public static XrFacialTrackerHTC Null => new XrFacialTrackerHTC(0);
-		public static implicit operator XrFacialTrackerHTC(ulong handle) => new XrFacialTrackerHTC(handle);
-		public static bool operator ==(XrFacialTrackerHTC left, XrFacialTrackerHTC right) => left.Handle == right.Handle;
-		public static bool operator !=(XrFacialTrackerHTC left, XrFacialTrackerHTC right) => left.Handle != right.Handle;
-		public static bool operator ==(XrFacialTrackerHTC left, ulong right) => left.Handle == right;
-		public static bool operator !=(XrFacialTrackerHTC left, ulong right) => left.Handle != right;
-		public bool Equals(XrFacialTrackerHTC h) => Handle == h.Handle;
-		public override bool Equals(object o) => o is XrFacialTrackerHTC h && Equals(h);
 		public override int GetHashCode() => Handle.GetHashCode();
 }
 

@@ -6418,6 +6418,14 @@ namespace Evergine.Bindings.OpenXR
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSystemPassthroughProperties2FB
+	{
+		public XrStructureType type;
+		public void* next;
+		public ulong capabilities;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct XrPassthroughCreateInfoFB
 	{
 		public XrStructureType type;
@@ -6573,6 +6581,48 @@ namespace Evergine.Bindings.OpenXR
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrPassthroughCreateInfoHTC
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrPassthroughFormHTC form;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrPassthroughColorHTC
+	{
+		public XrStructureType type;
+		public void* next;
+		public float alpha;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrPassthroughMeshTransformInfoHTC
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint vertexCount;
+		public XrVector3f* vertices;
+		public uint indexCount;
+		public uint* indices;
+		public XrSpace baseSpace;
+		public long time;
+		public XrPosef pose;
+		public XrVector3f scale;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrCompositionLayerPassthroughHTC
+	{
+		public XrStructureType type;
+		public void* next;
+		public ulong layerFlags;
+		public XrSpace space;
+		public XrPassthroughHTC passthrough;
+		public XrPassthroughColorHTC color;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct XrViveTrackerPathsHTCX
 	{
 		public XrStructureType type;
@@ -6680,6 +6730,65 @@ namespace Evergine.Bindings.OpenXR
 		public XrPerformanceMetricsCounterUnitMETA counterUnit;
 		public uint uintValue;
 		public float floatValue;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSystemHeadsetIdPropertiesMETA
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrUuidEXT id;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrFoveationApplyInfoHTC
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrFoveationModeHTC mode;
+		public uint subImageCount;
+		public XrSwapchainSubImage* subImages;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrFoveationConfigurationHTC
+	{
+		public XrFoveationLevelHTC level;
+		public float clearFovDegree;
+		public XrVector2f focalCenterOffset;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrFoveationDynamicModeInfoHTC
+	{
+		public XrStructureType type;
+		public void* next;
+		public ulong dynamicFlags;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrFoveationCustomModeInfoHTC
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint configCount;
+		public XrFoveationConfigurationHTC* configs;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrActiveActionSetPrioritiesEXT
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint actionSetPriorityCount;
+		public XrActiveActionSetPriorityEXT* actionSetPriorities;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrActiveActionSetPriorityEXT
+	{
+		public XrActionSet actionSet;
+		public uint priorityOverride;
 	}
 
 }
