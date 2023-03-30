@@ -242,6 +242,66 @@ namespace Evergine.Bindings.OpenXR
 		public override int GetHashCode() => Handle.GetHashCode();
 }
 
+	public partial struct XrFaceTrackerFB : IEquatable<XrFaceTrackerFB>
+{
+		public readonly ulong Handle;
+		public XrFaceTrackerFB(ulong existingHandle) { Handle = existingHandle; }
+		public static XrFaceTrackerFB Null => new XrFaceTrackerFB(0);
+		public static implicit operator XrFaceTrackerFB(ulong handle) => new XrFaceTrackerFB(handle);
+		public static bool operator ==(XrFaceTrackerFB left, XrFaceTrackerFB right) => left.Handle == right.Handle;
+		public static bool operator !=(XrFaceTrackerFB left, XrFaceTrackerFB right) => left.Handle != right.Handle;
+		public static bool operator ==(XrFaceTrackerFB left, ulong right) => left.Handle == right;
+		public static bool operator !=(XrFaceTrackerFB left, ulong right) => left.Handle != right;
+		public bool Equals(XrFaceTrackerFB h) => Handle == h.Handle;
+		public override bool Equals(object o) => o is XrFaceTrackerFB h && Equals(h);
+		public override int GetHashCode() => Handle.GetHashCode();
+}
+
+	public partial struct XrBodyTrackerFB : IEquatable<XrBodyTrackerFB>
+{
+		public readonly ulong Handle;
+		public XrBodyTrackerFB(ulong existingHandle) { Handle = existingHandle; }
+		public static XrBodyTrackerFB Null => new XrBodyTrackerFB(0);
+		public static implicit operator XrBodyTrackerFB(ulong handle) => new XrBodyTrackerFB(handle);
+		public static bool operator ==(XrBodyTrackerFB left, XrBodyTrackerFB right) => left.Handle == right.Handle;
+		public static bool operator !=(XrBodyTrackerFB left, XrBodyTrackerFB right) => left.Handle != right.Handle;
+		public static bool operator ==(XrBodyTrackerFB left, ulong right) => left.Handle == right;
+		public static bool operator !=(XrBodyTrackerFB left, ulong right) => left.Handle != right;
+		public bool Equals(XrBodyTrackerFB h) => Handle == h.Handle;
+		public override bool Equals(object o) => o is XrBodyTrackerFB h && Equals(h);
+		public override int GetHashCode() => Handle.GetHashCode();
+}
+
+	public partial struct XrEyeTrackerFB : IEquatable<XrEyeTrackerFB>
+{
+		public readonly ulong Handle;
+		public XrEyeTrackerFB(ulong existingHandle) { Handle = existingHandle; }
+		public static XrEyeTrackerFB Null => new XrEyeTrackerFB(0);
+		public static implicit operator XrEyeTrackerFB(ulong handle) => new XrEyeTrackerFB(handle);
+		public static bool operator ==(XrEyeTrackerFB left, XrEyeTrackerFB right) => left.Handle == right.Handle;
+		public static bool operator !=(XrEyeTrackerFB left, XrEyeTrackerFB right) => left.Handle != right.Handle;
+		public static bool operator ==(XrEyeTrackerFB left, ulong right) => left.Handle == right;
+		public static bool operator !=(XrEyeTrackerFB left, ulong right) => left.Handle != right;
+		public bool Equals(XrEyeTrackerFB h) => Handle == h.Handle;
+		public override bool Equals(object o) => o is XrEyeTrackerFB h && Equals(h);
+		public override int GetHashCode() => Handle.GetHashCode();
+}
+
+	public partial struct XrSpaceUserFB : IEquatable<XrSpaceUserFB>
+{
+		public readonly ulong Handle;
+		public XrSpaceUserFB(ulong existingHandle) { Handle = existingHandle; }
+		public static XrSpaceUserFB Null => new XrSpaceUserFB(0);
+		public static implicit operator XrSpaceUserFB(ulong handle) => new XrSpaceUserFB(handle);
+		public static bool operator ==(XrSpaceUserFB left, XrSpaceUserFB right) => left.Handle == right.Handle;
+		public static bool operator !=(XrSpaceUserFB left, XrSpaceUserFB right) => left.Handle != right.Handle;
+		public static bool operator ==(XrSpaceUserFB left, ulong right) => left.Handle == right;
+		public static bool operator !=(XrSpaceUserFB left, ulong right) => left.Handle != right;
+		public bool Equals(XrSpaceUserFB h) => Handle == h.Handle;
+		public override bool Equals(object o) => o is XrSpaceUserFB h && Equals(h);
+		public override int GetHashCode() => Handle.GetHashCode();
+}
+
 	public partial struct XrSpatialGraphNodeBindingMSFT : IEquatable<XrSpatialGraphNodeBindingMSFT>
 {
 		public readonly ulong Handle;

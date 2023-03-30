@@ -636,6 +636,30 @@ namespace Evergine.Bindings.OpenXR
 			=> xrGetSwapchainStateFB_ptr(swapchain, state);
 
 		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrCreateBodyTrackerFBDelegate(XrSession session, XrBodyTrackerCreateInfoFB* createInfo, XrBodyTrackerFB* bodyTracker);
+		private static xrCreateBodyTrackerFBDelegate xrCreateBodyTrackerFB_ptr;
+		public static XrResult xrCreateBodyTrackerFB(XrSession session, XrBodyTrackerCreateInfoFB* createInfo, XrBodyTrackerFB* bodyTracker)
+			=> xrCreateBodyTrackerFB_ptr(session, createInfo, bodyTracker);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrDestroyBodyTrackerFBDelegate(XrBodyTrackerFB bodyTracker);
+		private static xrDestroyBodyTrackerFBDelegate xrDestroyBodyTrackerFB_ptr;
+		public static XrResult xrDestroyBodyTrackerFB(XrBodyTrackerFB bodyTracker)
+			=> xrDestroyBodyTrackerFB_ptr(bodyTracker);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrLocateBodyJointsFBDelegate(XrBodyTrackerFB bodyTracker, XrBodyJointsLocateInfoFB* locateInfo, XrBodyJointLocationsFB* locations);
+		private static xrLocateBodyJointsFBDelegate xrLocateBodyJointsFB_ptr;
+		public static XrResult xrLocateBodyJointsFB(XrBodyTrackerFB bodyTracker, XrBodyJointsLocateInfoFB* locateInfo, XrBodyJointLocationsFB* locations)
+			=> xrLocateBodyJointsFB_ptr(bodyTracker, locateInfo, locations);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrGetBodySkeletonFBDelegate(XrBodyTrackerFB bodyTracker, XrBodySkeletonFB* skeleton);
+		private static xrGetBodySkeletonFBDelegate xrGetBodySkeletonFB_ptr;
+		public static XrResult xrGetBodySkeletonFB(XrBodyTrackerFB bodyTracker, XrBodySkeletonFB* skeleton)
+			=> xrGetBodySkeletonFB_ptr(bodyTracker, skeleton);
+
+		[UnmanagedFunctionPointer(CallConv)]
 		private delegate XrResult xrInitializeLoaderKHRDelegate(XrLoaderInitInfoBaseHeaderKHR* loaderInitInfo);
 		private static xrInitializeLoaderKHRDelegate xrInitializeLoaderKHR_ptr;
 		public static XrResult xrInitializeLoaderKHR(XrLoaderInitInfoBaseHeaderKHR* loaderInitInfo)
@@ -1026,6 +1050,12 @@ namespace Evergine.Bindings.OpenXR
 			=> xrSetViewOffsetVARJO_ptr(session, offset);
 
 		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrCreateSpaceFromCoordinateFrameUIDMLDelegate(XrSession session, XrCoordinateSpaceCreateInfoML createInfo, XrSpace* space);
+		private static xrCreateSpaceFromCoordinateFrameUIDMLDelegate xrCreateSpaceFromCoordinateFrameUIDML_ptr;
+		public static XrResult xrCreateSpaceFromCoordinateFrameUIDML(XrSession session, XrCoordinateSpaceCreateInfoML createInfo, XrSpace* space)
+			=> xrCreateSpaceFromCoordinateFrameUIDML_ptr(session, createInfo, space);
+
+		[UnmanagedFunctionPointer(CallConv)]
 		private delegate XrResult xrCreateSpatialAnchorStoreConnectionMSFTDelegate(XrSession session, XrSpatialAnchorStoreConnectionMSFT* spatialAnchorStore);
 		private static xrCreateSpatialAnchorStoreConnectionMSFTDelegate xrCreateSpatialAnchorStoreConnectionMSFT_ptr;
 		public static XrResult xrCreateSpatialAnchorStoreConnectionMSFT(XrSession session, XrSpatialAnchorStoreConnectionMSFT* spatialAnchorStore)
@@ -1104,6 +1134,12 @@ namespace Evergine.Bindings.OpenXR
 			=> xrGetAudioInputDeviceGuidOculus_ptr(instance, buffer);
 
 		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrShareSpacesFBDelegate(XrSession session, XrSpaceShareInfoFB* info, ulong* requestId);
+		private static xrShareSpacesFBDelegate xrShareSpacesFB_ptr;
+		public static XrResult xrShareSpacesFB(XrSession session, XrSpaceShareInfoFB* info, ulong* requestId)
+			=> xrShareSpacesFB_ptr(session, info, requestId);
+
+		[UnmanagedFunctionPointer(CallConv)]
 		private delegate XrResult xrGetSpaceBoundingBox2DFBDelegate(XrSession session, XrSpace space, XrRect2Df* boundingBox2DOutput);
 		private static xrGetSpaceBoundingBox2DFBDelegate xrGetSpaceBoundingBox2DFB_ptr;
 		public static XrResult xrGetSpaceBoundingBox2DFB(XrSession session, XrSpace space, XrRect2Df* boundingBox2DOutput)
@@ -1140,16 +1176,76 @@ namespace Evergine.Bindings.OpenXR
 			=> xrSetDigitalLensControlALMALENCE_ptr(session, digitalLensControl);
 
 		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrRequestSceneCaptureFBDelegate(XrSession session, XrSceneCaptureRequestInfoFB* info, ulong* requestId);
+		private static xrRequestSceneCaptureFBDelegate xrRequestSceneCaptureFB_ptr;
+		public static XrResult xrRequestSceneCaptureFB(XrSession session, XrSceneCaptureRequestInfoFB* info, ulong* requestId)
+			=> xrRequestSceneCaptureFB_ptr(session, info, requestId);
+
+		[UnmanagedFunctionPointer(CallConv)]
 		private delegate XrResult xrGetSpaceContainerFBDelegate(XrSession session, XrSpace space, XrSpaceContainerFB* spaceContainerOutput);
 		private static xrGetSpaceContainerFBDelegate xrGetSpaceContainerFB_ptr;
 		public static XrResult xrGetSpaceContainerFB(XrSession session, XrSpace space, XrSpaceContainerFB* spaceContainerOutput)
 			=> xrGetSpaceContainerFB_ptr(session, space, spaceContainerOutput);
 
 		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrGetFoveationEyeTrackedStateMETADelegate(XrSession session, XrFoveationEyeTrackedStateMETA* foveationState);
+		private static xrGetFoveationEyeTrackedStateMETADelegate xrGetFoveationEyeTrackedStateMETA_ptr;
+		public static XrResult xrGetFoveationEyeTrackedStateMETA(XrSession session, XrFoveationEyeTrackedStateMETA* foveationState)
+			=> xrGetFoveationEyeTrackedStateMETA_ptr(session, foveationState);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrCreateFaceTrackerFBDelegate(XrSession session, XrFaceTrackerCreateInfoFB* createInfo, XrFaceTrackerFB* faceTracker);
+		private static xrCreateFaceTrackerFBDelegate xrCreateFaceTrackerFB_ptr;
+		public static XrResult xrCreateFaceTrackerFB(XrSession session, XrFaceTrackerCreateInfoFB* createInfo, XrFaceTrackerFB* faceTracker)
+			=> xrCreateFaceTrackerFB_ptr(session, createInfo, faceTracker);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrDestroyFaceTrackerFBDelegate(XrFaceTrackerFB faceTracker);
+		private static xrDestroyFaceTrackerFBDelegate xrDestroyFaceTrackerFB_ptr;
+		public static XrResult xrDestroyFaceTrackerFB(XrFaceTrackerFB faceTracker)
+			=> xrDestroyFaceTrackerFB_ptr(faceTracker);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrGetFaceExpressionWeightsFBDelegate(XrFaceTrackerFB faceTracker, XrFaceExpressionInfoFB* expressionInfo, XrFaceExpressionWeightsFB* expressionWeights);
+		private static xrGetFaceExpressionWeightsFBDelegate xrGetFaceExpressionWeightsFB_ptr;
+		public static XrResult xrGetFaceExpressionWeightsFB(XrFaceTrackerFB faceTracker, XrFaceExpressionInfoFB* expressionInfo, XrFaceExpressionWeightsFB* expressionWeights)
+			=> xrGetFaceExpressionWeightsFB_ptr(faceTracker, expressionInfo, expressionWeights);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrCreateEyeTrackerFBDelegate(XrSession session, XrEyeTrackerCreateInfoFB* createInfo, XrEyeTrackerFB* eyeTracker);
+		private static xrCreateEyeTrackerFBDelegate xrCreateEyeTrackerFB_ptr;
+		public static XrResult xrCreateEyeTrackerFB(XrSession session, XrEyeTrackerCreateInfoFB* createInfo, XrEyeTrackerFB* eyeTracker)
+			=> xrCreateEyeTrackerFB_ptr(session, createInfo, eyeTracker);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrDestroyEyeTrackerFBDelegate(XrEyeTrackerFB eyeTracker);
+		private static xrDestroyEyeTrackerFBDelegate xrDestroyEyeTrackerFB_ptr;
+		public static XrResult xrDestroyEyeTrackerFB(XrEyeTrackerFB eyeTracker)
+			=> xrDestroyEyeTrackerFB_ptr(eyeTracker);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrGetEyeGazesFBDelegate(XrEyeTrackerFB eyeTracker, XrEyeGazesInfoFB* gazeInfo, XrEyeGazesFB* eyeGazes);
+		private static xrGetEyeGazesFBDelegate xrGetEyeGazesFB_ptr;
+		public static XrResult xrGetEyeGazesFB(XrEyeTrackerFB eyeTracker, XrEyeGazesInfoFB* gazeInfo, XrEyeGazesFB* eyeGazes)
+			=> xrGetEyeGazesFB_ptr(eyeTracker, gazeInfo, eyeGazes);
+
+		[UnmanagedFunctionPointer(CallConv)]
 		private delegate XrResult xrPassthroughLayerSetKeyboardHandsIntensityFBDelegate(XrPassthroughLayerFB layer, XrPassthroughKeyboardHandsIntensityFB* intensity);
 		private static xrPassthroughLayerSetKeyboardHandsIntensityFBDelegate xrPassthroughLayerSetKeyboardHandsIntensityFB_ptr;
 		public static XrResult xrPassthroughLayerSetKeyboardHandsIntensityFB(XrPassthroughLayerFB layer, XrPassthroughKeyboardHandsIntensityFB* intensity)
 			=> xrPassthroughLayerSetKeyboardHandsIntensityFB_ptr(layer, intensity);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrGetDeviceSampleRateFBDelegate(XrSession session, XrHapticActionInfo* hapticActionInfo, XrDevicePcmSampleRateStateFB* deviceSampleRate);
+		private static xrGetDeviceSampleRateFBDelegate xrGetDeviceSampleRateFB_ptr;
+		public static XrResult xrGetDeviceSampleRateFB(XrSession session, XrHapticActionInfo* hapticActionInfo, XrDevicePcmSampleRateStateFB* deviceSampleRate)
+			=> xrGetDeviceSampleRateFB_ptr(session, hapticActionInfo, deviceSampleRate);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrEnumerateExternalCamerasOCULUSDelegate(XrSession session, uint cameraCapacityInput, uint* cameraCountOutput, XrExternalCameraOCULUS* cameras);
+		private static xrEnumerateExternalCamerasOCULUSDelegate xrEnumerateExternalCamerasOCULUS_ptr;
+		public static XrResult xrEnumerateExternalCamerasOCULUS(XrSession session, uint cameraCapacityInput, uint* cameraCountOutput, XrExternalCameraOCULUS* cameras)
+			=> xrEnumerateExternalCamerasOCULUS_ptr(session, cameraCapacityInput, cameraCountOutput, cameras);
 
 		[UnmanagedFunctionPointer(CallConv)]
 		private delegate XrResult xrEnumeratePerformanceMetricsCounterPathsMETADelegate(XrInstance instance, uint counterPathCapacityInput, uint* counterPathCountOutput, ulong* counterPaths);
@@ -1176,6 +1272,36 @@ namespace Evergine.Bindings.OpenXR
 			=> xrQueryPerformanceMetricsCounterMETA_ptr(session, counterPath, counter);
 
 		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrSaveSpaceListFBDelegate(XrSession session, XrSpaceListSaveInfoFB* info, ulong* requestId);
+		private static xrSaveSpaceListFBDelegate xrSaveSpaceListFB_ptr;
+		public static XrResult xrSaveSpaceListFB(XrSession session, XrSpaceListSaveInfoFB* info, ulong* requestId)
+			=> xrSaveSpaceListFB_ptr(session, info, requestId);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrCreateSpaceUserFBDelegate(XrSession session, XrSpaceUserCreateInfoFB* info, XrSpaceUserFB* user);
+		private static xrCreateSpaceUserFBDelegate xrCreateSpaceUserFB_ptr;
+		public static XrResult xrCreateSpaceUserFB(XrSession session, XrSpaceUserCreateInfoFB* info, XrSpaceUserFB* user)
+			=> xrCreateSpaceUserFB_ptr(session, info, user);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrGetSpaceUserIdFBDelegate(XrSpaceUserFB user, ulong* userId);
+		private static xrGetSpaceUserIdFBDelegate xrGetSpaceUserIdFB_ptr;
+		public static XrResult xrGetSpaceUserIdFB(XrSpaceUserFB user, ulong* userId)
+			=> xrGetSpaceUserIdFB_ptr(user, userId);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrDestroySpaceUserFBDelegate(XrSpaceUserFB user);
+		private static xrDestroySpaceUserFBDelegate xrDestroySpaceUserFB_ptr;
+		public static XrResult xrDestroySpaceUserFB(XrSpaceUserFB user)
+			=> xrDestroySpaceUserFB_ptr(user);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrSetTrackingOptimizationSettingsHintQCOMDelegate(XrSession session, XrTrackingOptimizationSettingsDomainQCOM domain, XrTrackingOptimizationSettingsHintQCOM hint);
+		private static xrSetTrackingOptimizationSettingsHintQCOMDelegate xrSetTrackingOptimizationSettingsHintQCOM_ptr;
+		public static XrResult xrSetTrackingOptimizationSettingsHintQCOM(XrSession session, XrTrackingOptimizationSettingsDomainQCOM domain, XrTrackingOptimizationSettingsHintQCOM hint)
+			=> xrSetTrackingOptimizationSettingsHintQCOM_ptr(session, domain, hint);
+
+		[UnmanagedFunctionPointer(CallConv)]
 		private delegate XrResult xrCreatePassthroughHTCDelegate(XrSession session, XrPassthroughCreateInfoHTC* createInfo, XrPassthroughHTC* passthrough);
 		private static xrCreatePassthroughHTCDelegate xrCreatePassthroughHTC_ptr;
 		public static XrResult xrCreatePassthroughHTC(XrSession session, XrPassthroughCreateInfoHTC* createInfo, XrPassthroughHTC* passthrough)
@@ -1192,6 +1318,12 @@ namespace Evergine.Bindings.OpenXR
 		private static xrApplyFoveationHTCDelegate xrApplyFoveationHTC_ptr;
 		public static XrResult xrApplyFoveationHTC(XrSession session, XrFoveationApplyInfoHTC* applyInfo)
 			=> xrApplyFoveationHTC_ptr(session, applyInfo);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrApplyForceFeedbackCurlMNDXDelegate(XrHandTrackerEXT handTracker, XrForceFeedbackCurlApplyLocationsMNDX* locations);
+		private static xrApplyForceFeedbackCurlMNDXDelegate xrApplyForceFeedbackCurlMNDX_ptr;
+		public static XrResult xrApplyForceFeedbackCurlMNDX(XrHandTrackerEXT handTracker, XrForceFeedbackCurlApplyLocationsMNDX* locations)
+			=> xrApplyForceFeedbackCurlMNDX_ptr(handTracker, locations);
 
 		public static void LoadFuncionPointers(XrInstance instance = default)
 		{
@@ -1305,6 +1437,10 @@ namespace Evergine.Bindings.OpenXR
 			nativeLib.LoadFunction("xrEnumerateReprojectionModesMSFT",  out xrEnumerateReprojectionModesMSFT_ptr);
 			nativeLib.LoadFunction("xrUpdateSwapchainFB",  out xrUpdateSwapchainFB_ptr);
 			nativeLib.LoadFunction("xrGetSwapchainStateFB",  out xrGetSwapchainStateFB_ptr);
+			nativeLib.LoadFunction("xrCreateBodyTrackerFB",  out xrCreateBodyTrackerFB_ptr);
+			nativeLib.LoadFunction("xrDestroyBodyTrackerFB",  out xrDestroyBodyTrackerFB_ptr);
+			nativeLib.LoadFunction("xrLocateBodyJointsFB",  out xrLocateBodyJointsFB_ptr);
+			nativeLib.LoadFunction("xrGetBodySkeletonFB",  out xrGetBodySkeletonFB_ptr);
 			nativeLib.LoadFunction("xrInitializeLoaderKHR",  out xrInitializeLoaderKHR_ptr);
 			nativeLib.LoadFunction("xrCreateVulkanInstanceKHR",  out xrCreateVulkanInstanceKHR_ptr);
 			nativeLib.LoadFunction("xrCreateVulkanDeviceKHR",  out xrCreateVulkanDeviceKHR_ptr);
@@ -1370,6 +1506,7 @@ namespace Evergine.Bindings.OpenXR
 			nativeLib.LoadFunction("xrGetMarkerSizeVARJO",  out xrGetMarkerSizeVARJO_ptr);
 			nativeLib.LoadFunction("xrCreateMarkerSpaceVARJO",  out xrCreateMarkerSpaceVARJO_ptr);
 			nativeLib.LoadFunction("xrSetViewOffsetVARJO",  out xrSetViewOffsetVARJO_ptr);
+			nativeLib.LoadFunction("xrCreateSpaceFromCoordinateFrameUIDML",  out xrCreateSpaceFromCoordinateFrameUIDML_ptr);
 			nativeLib.LoadFunction("xrCreateSpatialAnchorStoreConnectionMSFT",  out xrCreateSpatialAnchorStoreConnectionMSFT_ptr);
 			nativeLib.LoadFunction("xrDestroySpatialAnchorStoreConnectionMSFT",  out xrDestroySpatialAnchorStoreConnectionMSFT_ptr);
 			nativeLib.LoadFunction("xrPersistSpatialAnchorMSFT",  out xrPersistSpatialAnchorMSFT_ptr);
@@ -1383,21 +1520,38 @@ namespace Evergine.Bindings.OpenXR
 			nativeLib.LoadFunction("xrEraseSpaceFB",  out xrEraseSpaceFB_ptr);
 			nativeLib.LoadFunction("xrGetAudioOutputDeviceGuidOculus",  out xrGetAudioOutputDeviceGuidOculus_ptr);
 			nativeLib.LoadFunction("xrGetAudioInputDeviceGuidOculus",  out xrGetAudioInputDeviceGuidOculus_ptr);
+			nativeLib.LoadFunction("xrShareSpacesFB",  out xrShareSpacesFB_ptr);
 			nativeLib.LoadFunction("xrGetSpaceBoundingBox2DFB",  out xrGetSpaceBoundingBox2DFB_ptr);
 			nativeLib.LoadFunction("xrGetSpaceBoundingBox3DFB",  out xrGetSpaceBoundingBox3DFB_ptr);
 			nativeLib.LoadFunction("xrGetSpaceSemanticLabelsFB",  out xrGetSpaceSemanticLabelsFB_ptr);
 			nativeLib.LoadFunction("xrGetSpaceBoundary2DFB",  out xrGetSpaceBoundary2DFB_ptr);
 			nativeLib.LoadFunction("xrGetSpaceRoomLayoutFB",  out xrGetSpaceRoomLayoutFB_ptr);
 			nativeLib.LoadFunction("xrSetDigitalLensControlALMALENCE",  out xrSetDigitalLensControlALMALENCE_ptr);
+			nativeLib.LoadFunction("xrRequestSceneCaptureFB",  out xrRequestSceneCaptureFB_ptr);
 			nativeLib.LoadFunction("xrGetSpaceContainerFB",  out xrGetSpaceContainerFB_ptr);
+			nativeLib.LoadFunction("xrGetFoveationEyeTrackedStateMETA",  out xrGetFoveationEyeTrackedStateMETA_ptr);
+			nativeLib.LoadFunction("xrCreateFaceTrackerFB",  out xrCreateFaceTrackerFB_ptr);
+			nativeLib.LoadFunction("xrDestroyFaceTrackerFB",  out xrDestroyFaceTrackerFB_ptr);
+			nativeLib.LoadFunction("xrGetFaceExpressionWeightsFB",  out xrGetFaceExpressionWeightsFB_ptr);
+			nativeLib.LoadFunction("xrCreateEyeTrackerFB",  out xrCreateEyeTrackerFB_ptr);
+			nativeLib.LoadFunction("xrDestroyEyeTrackerFB",  out xrDestroyEyeTrackerFB_ptr);
+			nativeLib.LoadFunction("xrGetEyeGazesFB",  out xrGetEyeGazesFB_ptr);
 			nativeLib.LoadFunction("xrPassthroughLayerSetKeyboardHandsIntensityFB",  out xrPassthroughLayerSetKeyboardHandsIntensityFB_ptr);
+			nativeLib.LoadFunction("xrGetDeviceSampleRateFB",  out xrGetDeviceSampleRateFB_ptr);
+			nativeLib.LoadFunction("xrEnumerateExternalCamerasOCULUS",  out xrEnumerateExternalCamerasOCULUS_ptr);
 			nativeLib.LoadFunction("xrEnumeratePerformanceMetricsCounterPathsMETA",  out xrEnumeratePerformanceMetricsCounterPathsMETA_ptr);
 			nativeLib.LoadFunction("xrSetPerformanceMetricsStateMETA",  out xrSetPerformanceMetricsStateMETA_ptr);
 			nativeLib.LoadFunction("xrGetPerformanceMetricsStateMETA",  out xrGetPerformanceMetricsStateMETA_ptr);
 			nativeLib.LoadFunction("xrQueryPerformanceMetricsCounterMETA",  out xrQueryPerformanceMetricsCounterMETA_ptr);
+			nativeLib.LoadFunction("xrSaveSpaceListFB",  out xrSaveSpaceListFB_ptr);
+			nativeLib.LoadFunction("xrCreateSpaceUserFB",  out xrCreateSpaceUserFB_ptr);
+			nativeLib.LoadFunction("xrGetSpaceUserIdFB",  out xrGetSpaceUserIdFB_ptr);
+			nativeLib.LoadFunction("xrDestroySpaceUserFB",  out xrDestroySpaceUserFB_ptr);
+			nativeLib.LoadFunction("xrSetTrackingOptimizationSettingsHintQCOM",  out xrSetTrackingOptimizationSettingsHintQCOM_ptr);
 			nativeLib.LoadFunction("xrCreatePassthroughHTC",  out xrCreatePassthroughHTC_ptr);
 			nativeLib.LoadFunction("xrDestroyPassthroughHTC",  out xrDestroyPassthroughHTC_ptr);
 			nativeLib.LoadFunction("xrApplyFoveationHTC",  out xrApplyFoveationHTC_ptr);
+			nativeLib.LoadFunction("xrApplyForceFeedbackCurlMNDX",  out xrApplyForceFeedbackCurlMNDX_ptr);
 		}
 	}
 }

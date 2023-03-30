@@ -5278,6 +5278,153 @@ namespace Evergine.Bindings.OpenXR
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSystemFaceTrackingPropertiesFB
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrBool32 supportsFaceTracking;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrFaceTrackerCreateInfoFB
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrFaceExpressionSetFB faceExpressionSet;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrFaceExpressionInfoFB
+	{
+		public XrStructureType type;
+		public void* next;
+		public long time;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrFaceExpressionStatusFB
+	{
+		public XrBool32 isValid;
+		public XrBool32 isEyeFollowingBlendshapesValid;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrFaceExpressionWeightsFB
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint weightCount;
+		public float* weights;
+		public uint confidenceCount;
+		public float* confidences;
+		public XrFaceExpressionStatusFB status;
+		public long time;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSystemBodyTrackingPropertiesFB
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrBool32 supportsBodyTracking;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrBodyTrackerCreateInfoFB
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrBodyJointSetFB bodyJointSet;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrBodySkeletonJointFB
+	{
+		public int joint;
+		public int parentJoint;
+		public XrPosef pose;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrBodySkeletonFB
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint jointCount;
+		public XrBodySkeletonJointFB* joints;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrBodyJointsLocateInfoFB
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrSpace baseSpace;
+		public long time;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrBodyJointLocationFB
+	{
+		public ulong locationFlags;
+		public XrPosef pose;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrBodyJointLocationsFB
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrBool32 isActive;
+		public float confidence;
+		public uint jointCount;
+		public XrBodyJointLocationFB* jointLocations;
+		public uint skeletonChangedCount;
+		public long time;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSystemEyeTrackingPropertiesFB
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrBool32 supportsEyeTracking;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrEyeTrackerCreateInfoFB
+	{
+		public XrStructureType type;
+		public void* next;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrEyeGazesInfoFB
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrSpace baseSpace;
+		public long time;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrEyeGazeFB
+	{
+		public XrBool32 isValid;
+		public XrPosef gazePose;
+		public float gazeConfidence;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrEyeGazesFB
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrEyeGazeFB gaze;
+		public long time;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct XrHandJointsMotionRangeInfoEXT
 	{
 		public XrStructureType type;
@@ -5976,6 +6123,32 @@ namespace Evergine.Bindings.OpenXR
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrFoveationEyeTrackedProfileCreateInfoMETA
+	{
+		public XrStructureType type;
+		public void* next;
+		public ulong flags;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrFoveationEyeTrackedStateMETA
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrVector2f foveationCenter_0;
+		public XrVector2f foveationCenter_1;
+		public ulong flags;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSystemFoveationEyeTrackedPropertiesMETA
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrBool32 supportsFoveationEyeTracked;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct XrVector4sFB
 	{
 		public short x;
@@ -6248,6 +6421,45 @@ namespace Evergine.Bindings.OpenXR
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpaceShareInfoFB
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint spaceCount;
+		public XrSpace* spaces;
+		public uint userCount;
+		public XrSpaceUserFB* users;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrEventDataSpaceShareCompleteFB
+	{
+		public XrStructureType type;
+		public void* next;
+		public ulong requestId;
+		public XrResult result;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpaceListSaveInfoFB
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint spaceCount;
+		public XrSpace* spaces;
+		public XrSpaceStorageLocationFB location;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrEventDataSpaceListSaveCompleteFB
+	{
+		public XrStructureType type;
+		public void* next;
+		public ulong requestId;
+		public XrResult result;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct XrSpaceContainerFB
 	{
 		public XrStructureType type;
@@ -6310,6 +6522,24 @@ namespace Evergine.Bindings.OpenXR
 		public uint vertexCapacityInput;
 		public uint vertexCountOutput;
 		public XrVector2f* vertices;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSceneCaptureRequestInfoFB
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint requestByteCount;
+		public byte* request;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrEventDataSceneCaptureCompleteFB
+	{
+		public XrStructureType type;
+		public void* next;
+		public ulong requestId;
+		public XrResult result;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -6529,6 +6759,14 @@ namespace Evergine.Bindings.OpenXR
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrLocalDimmingFrameEndInfoMETA
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrLocalDimmingModeMETA localDimmingMode;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct XrSpatialAnchorPersistenceNameMSFT
 	{
 		public fixed byte name[(int)OpenXRNative.XR_MAX_SPATIAL_ANCHOR_NAME_SIZE_MSFT];
@@ -6698,6 +6936,15 @@ namespace Evergine.Bindings.OpenXR
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrGlobalDimmerFrameEndInfoML
+	{
+		public XrStructureType type;
+		public void* next;
+		public float dimmerValue;
+		public ulong flags;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct XrDigitalLensControlALMALENCE
 	{
 		public XrStructureType type;
@@ -6711,6 +6958,35 @@ namespace Evergine.Bindings.OpenXR
 		public XrStructureType type;
 		public void* next;
 		public ulong layerFlags;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrExternalCameraIntrinsicsOCULUS
+	{
+		public long lastChangeTime;
+		public XrFovf fov;
+		public float virtualNearPlaneDistance;
+		public float virtualFarPlaneDistance;
+		public XrExtent2Di imageSensorPixelResolution;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrExternalCameraExtrinsicsOCULUS
+	{
+		public long lastChangeTime;
+		public ulong cameraStatusFlags;
+		public XrExternalCameraAttachedToDeviceOCULUS attachedToDevice;
+		public XrPosef relativePose;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrExternalCameraOCULUS
+	{
+		public XrStructureType type;
+		public void* next;
+		public fixed byte name[(int)OpenXRNative.XR_MAX_EXTERNAL_CAMERA_NAME_SIZE_OCULUS];
+		public XrExternalCameraIntrinsicsOCULUS intrinsics;
+		public XrExternalCameraExtrinsicsOCULUS extrinsics;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -6789,6 +7065,95 @@ namespace Evergine.Bindings.OpenXR
 	{
 		public XrActionSet actionSet;
 		public uint priorityOverride;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrCompositionLayerDepthTestFB
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrBool32 depthMask;
+		public XrCompareOpFB compareOp;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrCoordinateSpaceCreateInfoML
+	{
+		public XrStructureType type;
+		public void* next;
+		public MLCoordinateFrameUID cfuid;
+		public XrPosef poseInCoordinateSpace;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrFrameEndInfoML
+	{
+		public XrStructureType type;
+		public void* next;
+		public float focusDistance;
+		public ulong flags;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrHapticAmplitudeEnvelopeVibrationFB
+	{
+		public XrStructureType type;
+		public void* next;
+		public long duration;
+		public uint amplitudeCount;
+		public float* amplitudes;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrHapticPcmVibrationFB
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint bufferSize;
+		public float* buffer;
+		public float sampleRate;
+		public XrBool32 append;
+		public uint* samplesConsumed;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrDevicePcmSampleRateStateFB
+	{
+		public XrStructureType type;
+		public void* next;
+		public float sampleRate;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpaceUserCreateInfoFB
+	{
+		public XrStructureType type;
+		public void* next;
+		public ulong userId;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSystemForceFeedbackCurlPropertiesMNDX
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrBool32 supportsForceFeedbackCurl;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrForceFeedbackCurlApplyLocationsMNDX
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint locationCount;
+		public XrForceFeedbackCurlApplyLocationMNDX* locations;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrForceFeedbackCurlApplyLocationMNDX
+	{
+		public XrForceFeedbackCurlLocationMNDX location;
+		public float value;
 	}
 
 }
