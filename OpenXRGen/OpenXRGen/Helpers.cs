@@ -251,6 +251,7 @@ namespace OpenXRGen
                 case "VkSamplerMipmapMode":
                 case "VkSamplerAddressMode":
                 case "VkComponentSwizzle":
+                case "MLCoordinateFrameUID":
                     return true;
                 default:
                     return false;

@@ -7081,7 +7081,7 @@ namespace Evergine.Bindings.OpenXR
 	{
 		public XrStructureType type;
 		public void* next;
-		public MLCoordinateFrameUID cfuid;
+		public IntPtr cfuid;
 		public XrPosef poseInCoordinateSpace;
 	}
 
