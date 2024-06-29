@@ -175,6 +175,8 @@ namespace OpenXRGen
                     return "XrBool32";
                 case "D3D_FEATURE_LEVEL":
                     return "uint";
+                case "XR_DEFINE_OPAQUE_64":
+                    return "ulong";
                 default:
                     return string.Empty;
             }

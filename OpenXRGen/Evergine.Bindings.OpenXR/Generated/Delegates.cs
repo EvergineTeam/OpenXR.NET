@@ -4,10 +4,17 @@ namespace Evergine.Bindings.OpenXR
 {
 	public unsafe delegate void PFN_xrVoidFunction();
 
+	public unsafe delegate XrResult PFN_xrGetInstanceProcAddr(
+		XrInstance instance,
+		byte* name,
+		PFN_xrVoidFunction* function);
+
 	public unsafe delegate XrBool32 PFN_xrDebugUtilsMessengerCallbackEXT(
 		ulong messageSeverity,
 		ulong messageTypes,
 		XrDebugUtilsMessengerCallbackDataEXT* callbackData,
 		void* userData);
+
+	public unsafe delegate PFN_xrVoidFunction PFN_xrEglGetProcAddressMNDX();
 
 }

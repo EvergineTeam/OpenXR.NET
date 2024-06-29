@@ -257,6 +257,21 @@ namespace Evergine.Bindings.OpenXR
 		public override int GetHashCode() => Handle.GetHashCode();
 }
 
+	public partial struct XrFaceTracker2FB : IEquatable<XrFaceTracker2FB>
+{
+		public readonly ulong Handle;
+		public XrFaceTracker2FB(ulong existingHandle) { Handle = existingHandle; }
+		public static XrFaceTracker2FB Null => new XrFaceTracker2FB(0);
+		public static implicit operator XrFaceTracker2FB(ulong handle) => new XrFaceTracker2FB(handle);
+		public static bool operator ==(XrFaceTracker2FB left, XrFaceTracker2FB right) => left.Handle == right.Handle;
+		public static bool operator !=(XrFaceTracker2FB left, XrFaceTracker2FB right) => left.Handle != right.Handle;
+		public static bool operator ==(XrFaceTracker2FB left, ulong right) => left.Handle == right;
+		public static bool operator !=(XrFaceTracker2FB left, ulong right) => left.Handle != right;
+		public bool Equals(XrFaceTracker2FB h) => Handle == h.Handle;
+		public override bool Equals(object o) => o is XrFaceTracker2FB h && Equals(h);
+		public override int GetHashCode() => Handle.GetHashCode();
+}
+
 	public partial struct XrBodyTrackerFB : IEquatable<XrBodyTrackerFB>
 {
 		public readonly ulong Handle;
@@ -299,6 +314,111 @@ namespace Evergine.Bindings.OpenXR
 		public static bool operator !=(XrSpaceUserFB left, ulong right) => left.Handle != right;
 		public bool Equals(XrSpaceUserFB h) => Handle == h.Handle;
 		public override bool Equals(object o) => o is XrSpaceUserFB h && Equals(h);
+		public override int GetHashCode() => Handle.GetHashCode();
+}
+
+	public partial struct XrPassthroughColorLutMETA : IEquatable<XrPassthroughColorLutMETA>
+{
+		public readonly ulong Handle;
+		public XrPassthroughColorLutMETA(ulong existingHandle) { Handle = existingHandle; }
+		public static XrPassthroughColorLutMETA Null => new XrPassthroughColorLutMETA(0);
+		public static implicit operator XrPassthroughColorLutMETA(ulong handle) => new XrPassthroughColorLutMETA(handle);
+		public static bool operator ==(XrPassthroughColorLutMETA left, XrPassthroughColorLutMETA right) => left.Handle == right.Handle;
+		public static bool operator !=(XrPassthroughColorLutMETA left, XrPassthroughColorLutMETA right) => left.Handle != right.Handle;
+		public static bool operator ==(XrPassthroughColorLutMETA left, ulong right) => left.Handle == right;
+		public static bool operator !=(XrPassthroughColorLutMETA left, ulong right) => left.Handle != right;
+		public bool Equals(XrPassthroughColorLutMETA h) => Handle == h.Handle;
+		public override bool Equals(object o) => o is XrPassthroughColorLutMETA h && Equals(h);
+		public override int GetHashCode() => Handle.GetHashCode();
+}
+
+	public partial struct XrPlaneDetectorEXT : IEquatable<XrPlaneDetectorEXT>
+{
+		public readonly ulong Handle;
+		public XrPlaneDetectorEXT(ulong existingHandle) { Handle = existingHandle; }
+		public static XrPlaneDetectorEXT Null => new XrPlaneDetectorEXT(0);
+		public static implicit operator XrPlaneDetectorEXT(ulong handle) => new XrPlaneDetectorEXT(handle);
+		public static bool operator ==(XrPlaneDetectorEXT left, XrPlaneDetectorEXT right) => left.Handle == right.Handle;
+		public static bool operator !=(XrPlaneDetectorEXT left, XrPlaneDetectorEXT right) => left.Handle != right.Handle;
+		public static bool operator ==(XrPlaneDetectorEXT left, ulong right) => left.Handle == right;
+		public static bool operator !=(XrPlaneDetectorEXT left, ulong right) => left.Handle != right;
+		public bool Equals(XrPlaneDetectorEXT h) => Handle == h.Handle;
+		public override bool Equals(object o) => o is XrPlaneDetectorEXT h && Equals(h);
+		public override int GetHashCode() => Handle.GetHashCode();
+}
+
+	public partial struct XrVirtualKeyboardMETA : IEquatable<XrVirtualKeyboardMETA>
+{
+		public readonly ulong Handle;
+		public XrVirtualKeyboardMETA(ulong existingHandle) { Handle = existingHandle; }
+		public static XrVirtualKeyboardMETA Null => new XrVirtualKeyboardMETA(0);
+		public static implicit operator XrVirtualKeyboardMETA(ulong handle) => new XrVirtualKeyboardMETA(handle);
+		public static bool operator ==(XrVirtualKeyboardMETA left, XrVirtualKeyboardMETA right) => left.Handle == right.Handle;
+		public static bool operator !=(XrVirtualKeyboardMETA left, XrVirtualKeyboardMETA right) => left.Handle != right.Handle;
+		public static bool operator ==(XrVirtualKeyboardMETA left, ulong right) => left.Handle == right;
+		public static bool operator !=(XrVirtualKeyboardMETA left, ulong right) => left.Handle != right;
+		public bool Equals(XrVirtualKeyboardMETA h) => Handle == h.Handle;
+		public override bool Equals(object o) => o is XrVirtualKeyboardMETA h && Equals(h);
+		public override int GetHashCode() => Handle.GetHashCode();
+}
+
+	public partial struct XrExportedLocalizationMapML : IEquatable<XrExportedLocalizationMapML>
+{
+		public readonly ulong Handle;
+		public XrExportedLocalizationMapML(ulong existingHandle) { Handle = existingHandle; }
+		public static XrExportedLocalizationMapML Null => new XrExportedLocalizationMapML(0);
+		public static implicit operator XrExportedLocalizationMapML(ulong handle) => new XrExportedLocalizationMapML(handle);
+		public static bool operator ==(XrExportedLocalizationMapML left, XrExportedLocalizationMapML right) => left.Handle == right.Handle;
+		public static bool operator !=(XrExportedLocalizationMapML left, XrExportedLocalizationMapML right) => left.Handle != right.Handle;
+		public static bool operator ==(XrExportedLocalizationMapML left, ulong right) => left.Handle == right;
+		public static bool operator !=(XrExportedLocalizationMapML left, ulong right) => left.Handle != right;
+		public bool Equals(XrExportedLocalizationMapML h) => Handle == h.Handle;
+		public override bool Equals(object o) => o is XrExportedLocalizationMapML h && Equals(h);
+		public override int GetHashCode() => Handle.GetHashCode();
+}
+
+	public partial struct XrMarkerDetectorML : IEquatable<XrMarkerDetectorML>
+{
+		public readonly ulong Handle;
+		public XrMarkerDetectorML(ulong existingHandle) { Handle = existingHandle; }
+		public static XrMarkerDetectorML Null => new XrMarkerDetectorML(0);
+		public static implicit operator XrMarkerDetectorML(ulong handle) => new XrMarkerDetectorML(handle);
+		public static bool operator ==(XrMarkerDetectorML left, XrMarkerDetectorML right) => left.Handle == right.Handle;
+		public static bool operator !=(XrMarkerDetectorML left, XrMarkerDetectorML right) => left.Handle != right.Handle;
+		public static bool operator ==(XrMarkerDetectorML left, ulong right) => left.Handle == right;
+		public static bool operator !=(XrMarkerDetectorML left, ulong right) => left.Handle != right;
+		public bool Equals(XrMarkerDetectorML h) => Handle == h.Handle;
+		public override bool Equals(object o) => o is XrMarkerDetectorML h && Equals(h);
+		public override int GetHashCode() => Handle.GetHashCode();
+}
+
+	public partial struct XrEnvironmentDepthProviderMETA : IEquatable<XrEnvironmentDepthProviderMETA>
+{
+		public readonly ulong Handle;
+		public XrEnvironmentDepthProviderMETA(ulong existingHandle) { Handle = existingHandle; }
+		public static XrEnvironmentDepthProviderMETA Null => new XrEnvironmentDepthProviderMETA(0);
+		public static implicit operator XrEnvironmentDepthProviderMETA(ulong handle) => new XrEnvironmentDepthProviderMETA(handle);
+		public static bool operator ==(XrEnvironmentDepthProviderMETA left, XrEnvironmentDepthProviderMETA right) => left.Handle == right.Handle;
+		public static bool operator !=(XrEnvironmentDepthProviderMETA left, XrEnvironmentDepthProviderMETA right) => left.Handle != right.Handle;
+		public static bool operator ==(XrEnvironmentDepthProviderMETA left, ulong right) => left.Handle == right;
+		public static bool operator !=(XrEnvironmentDepthProviderMETA left, ulong right) => left.Handle != right;
+		public bool Equals(XrEnvironmentDepthProviderMETA h) => Handle == h.Handle;
+		public override bool Equals(object o) => o is XrEnvironmentDepthProviderMETA h && Equals(h);
+		public override int GetHashCode() => Handle.GetHashCode();
+}
+
+	public partial struct XrEnvironmentDepthSwapchainMETA : IEquatable<XrEnvironmentDepthSwapchainMETA>
+{
+		public readonly ulong Handle;
+		public XrEnvironmentDepthSwapchainMETA(ulong existingHandle) { Handle = existingHandle; }
+		public static XrEnvironmentDepthSwapchainMETA Null => new XrEnvironmentDepthSwapchainMETA(0);
+		public static implicit operator XrEnvironmentDepthSwapchainMETA(ulong handle) => new XrEnvironmentDepthSwapchainMETA(handle);
+		public static bool operator ==(XrEnvironmentDepthSwapchainMETA left, XrEnvironmentDepthSwapchainMETA right) => left.Handle == right.Handle;
+		public static bool operator !=(XrEnvironmentDepthSwapchainMETA left, XrEnvironmentDepthSwapchainMETA right) => left.Handle != right.Handle;
+		public static bool operator ==(XrEnvironmentDepthSwapchainMETA left, ulong right) => left.Handle == right;
+		public static bool operator !=(XrEnvironmentDepthSwapchainMETA left, ulong right) => left.Handle != right;
+		public bool Equals(XrEnvironmentDepthSwapchainMETA h) => Handle == h.Handle;
+		public override bool Equals(object o) => o is XrEnvironmentDepthSwapchainMETA h && Equals(h);
 		public override int GetHashCode() => Handle.GetHashCode();
 }
 
