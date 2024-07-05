@@ -75,7 +75,7 @@ namespace OpenXRGen
                     a => a.Attribute("alias").Value);
 
             // Command Alias
-            var commandAlias = registry.Element("commands").Elements("command").Where(c => c.Attribute("alias") != null);
+            var commandAlias = registry.Elements("commands").Elements("command").Where(c => c.Attribute("alias") != null);
             foreach (var c in commandAlias)
             {
                 spec.Alias.Add(c.Attribute("name").Value, c.Attribute("alias").Value);
@@ -116,7 +116,7 @@ namespace OpenXRGen
             }
 
             // Commands
-            var commands = registry.Element("commands").Elements("command").Where(c => c.Attribute("alias") == null);
+            var commands = registry.Elements("commands").Elements("command").Where(c => c.Attribute("alias") == null);
             foreach (var command in commands)
             {
                 spec.Commands.Add(CommandDefinition.FromXML(command));

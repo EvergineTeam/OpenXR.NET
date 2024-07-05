@@ -5076,7 +5076,7 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
 
     <!-- SECTION: OpenXR loader command definitions -->
     <!-- openxr_loader_negotiation.h -->
-<!--
+
     <commands>
         <command successcodes="XR_SUCCESS" errorcodes="XR_ERROR_INITIALIZATION_FAILED">
             <proto><type>XrResult</type> <name>xrNegotiateLoaderRuntimeInterface</name></proto>
@@ -5096,8 +5096,7 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
             <param><type>XrInstance</type>* <name>instance</name></param>
         </command>
     </commands>
--->
-
+	
     <!-- SECTION: OpenXR command definitions -->
     <commands>
         <command successcodes="XR_SUCCESS" errorcodes="XR_ERROR_FUNCTION_UNSUPPORTED,XR_ERROR_VALIDATION_FAILURE,XR_ERROR_RUNTIME_FAILURE,XR_ERROR_HANDLE_INVALID,XR_ERROR_INSTANCE_LOST,XR_ERROR_OUT_OF_MEMORY">
@@ -7839,8 +7838,8 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
         </require>
     </feature>
 
+
     <!-- SECTION: OpenXR Loader API interface definitions -->
-<!--	
     <feature api="openxr" name="XR_LOADER_VERSION_1_0" number="1.0">
         <require comment="Negotiate">
             <type    name="XR_CURRENT_LOADER_API_LAYER_VERSION"/>
@@ -7857,7 +7856,6 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
             <command name="xrNegotiateLoaderApiLayerInterface"/>
         </require>
     </feature>
- -->
 
     <feature api="openxr" name="XR_VERSION_1_1" number="1.1">
         <require comment="API version">

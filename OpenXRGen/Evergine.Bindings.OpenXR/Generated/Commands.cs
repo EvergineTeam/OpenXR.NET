@@ -336,6 +336,24 @@ namespace Evergine.Bindings.OpenXR
 			=> xrStopHapticFeedback_ptr(session, hapticActionInfo);
 
 		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrCreateApiLayerInstanceDelegate(XrInstanceCreateInfo* info, XrApiLayerCreateInfo* layerInfo, XrInstance* instance);
+		private static xrCreateApiLayerInstanceDelegate xrCreateApiLayerInstance_ptr;
+		public static XrResult xrCreateApiLayerInstance(XrInstanceCreateInfo* info, XrApiLayerCreateInfo* layerInfo, XrInstance* instance)
+			=> xrCreateApiLayerInstance_ptr(info, layerInfo, instance);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrNegotiateLoaderRuntimeInterfaceDelegate(XrNegotiateLoaderInfo* loaderInfo, XrNegotiateRuntimeRequest* runtimeRequest);
+		private static xrNegotiateLoaderRuntimeInterfaceDelegate xrNegotiateLoaderRuntimeInterface_ptr;
+		public static XrResult xrNegotiateLoaderRuntimeInterface(XrNegotiateLoaderInfo* loaderInfo, XrNegotiateRuntimeRequest* runtimeRequest)
+			=> xrNegotiateLoaderRuntimeInterface_ptr(loaderInfo, runtimeRequest);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrNegotiateLoaderApiLayerInterfaceDelegate(XrNegotiateLoaderInfo* loaderInfo, byte* layerName, XrNegotiateApiLayerRequest* apiLayerRequest);
+		private static xrNegotiateLoaderApiLayerInterfaceDelegate xrNegotiateLoaderApiLayerInterface_ptr;
+		public static XrResult xrNegotiateLoaderApiLayerInterface(XrNegotiateLoaderInfo* loaderInfo, byte* layerName, XrNegotiateApiLayerRequest* apiLayerRequest)
+			=> xrNegotiateLoaderApiLayerInterface_ptr(loaderInfo, layerName, apiLayerRequest);
+
+		[UnmanagedFunctionPointer(CallConv)]
 		private delegate XrResult xrLocateSpacesDelegate(XrSession session, XrSpacesLocateInfo* locateInfo, XrSpaceLocations* spaceLocations);
 		private static xrLocateSpacesDelegate xrLocateSpaces_ptr;
 		public static XrResult xrLocateSpaces(XrSession session, XrSpacesLocateInfo* locateInfo, XrSpaceLocations* spaceLocations)
@@ -1753,6 +1771,9 @@ namespace Evergine.Bindings.OpenXR
 			nativeLib.LoadFunction("xrGetInputSourceLocalizedName",  out xrGetInputSourceLocalizedName_ptr);
 			nativeLib.LoadFunction("xrApplyHapticFeedback",  out xrApplyHapticFeedback_ptr);
 			nativeLib.LoadFunction("xrStopHapticFeedback",  out xrStopHapticFeedback_ptr);
+			nativeLib.LoadFunction("xrCreateApiLayerInstance",  out xrCreateApiLayerInstance_ptr);
+			nativeLib.LoadFunction("xrNegotiateLoaderRuntimeInterface",  out xrNegotiateLoaderRuntimeInterface_ptr);
+			nativeLib.LoadFunction("xrNegotiateLoaderApiLayerInterface",  out xrNegotiateLoaderApiLayerInterface_ptr);
 			nativeLib.LoadFunction("xrLocateSpaces",  out xrLocateSpaces_ptr);
 			nativeLib.LoadFunction("xrSetAndroidApplicationThreadKHR",  out xrSetAndroidApplicationThreadKHR_ptr);
 			nativeLib.LoadFunction("xrCreateSwapchainAndroidSurfaceKHR",  out xrCreateSwapchainAndroidSurfaceKHR_ptr);
