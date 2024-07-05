@@ -9,6 +9,11 @@ namespace Evergine.Bindings.OpenXR
 		byte* name,
 		PFN_xrVoidFunction* function);
 
+	public unsafe delegate XrResult PFN_xrCreateApiLayerInstance(
+		XrInstanceCreateInfo* info,
+		XrApiLayerCreateInfo* apiLayerInfo,
+		XrInstance* instance);
+
 	public unsafe delegate XrBool32 PFN_xrDebugUtilsMessengerCallbackEXT(
 		ulong messageSeverity,
 		ulong messageTypes,

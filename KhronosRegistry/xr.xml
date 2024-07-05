@@ -1571,14 +1571,14 @@ maintained in the default branch of the Khronos OpenXR GitHub project.
         <!-- This function allows us to pass special API layer information to each layer during the process of creating an Instance. -->
         <!-- The typedef is embedded to work around circular dependency between XrApiLayerCreateInfo, next and PFN_xrCreateApiLayerInstance -->
 
-<!--  
+  
         <type category="funcpointer">
 typedef struct XrApiLayerCreateInfo XrApiLayerCreateInfo;
 typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
             const XrInstanceCreateInfo* info,
             const XrApiLayerCreateInfo* apiLayerInfo,
             XrInstance* instance);</type>
--->
+
         <!-- The PFN_xrDebugUtilsMessengerCallbackEXT type are used by the XR_EXT_debug_utils extension -->
         <type category="funcpointer" requires="XrDebugUtilsMessengerCallbackDataEXT">typedef XrBool32 (XRAPI_PTR *<name>PFN_xrDebugUtilsMessengerCallbackEXT</name>)(
             <type>XrDebugUtilsMessageSeverityFlagsEXT</type>              messageSeverity,

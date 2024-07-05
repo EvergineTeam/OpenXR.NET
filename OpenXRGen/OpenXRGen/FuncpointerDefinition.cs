@@ -16,15 +16,19 @@ namespace OpenXRGen
 
         public static FuncpointerDefinition FromXML(XElement elem)
         {
+            string[] filter = elem.Value.Split(';');
+            string elemText = filter.Where(s => s.TrimEnd() != string.Empty && !string.IsNullOrEmpty(s)).Last(); 
+
+            string description = Regex.Replace(elemText, @"<\/?type>", "");
             FuncpointerDefinition funcpointer = new FuncpointerDefinition();
             funcpointer.Name = elem.Element("name").Value;
-            Match pointerType = Regex.Match(elem.Value, @"typedef\s+(\w+[*]?)");
+            Match pointerType = Regex.Match(description, @"typedef\s+(\w+[*]?)");
             funcpointer.Type = pointerType.Groups[1].Value;
 
-            foreach (Match match in Regex.Matches(elem.Value, @"((\w+[*]?)\s+(\w+),|(\w+[*]?)\s+(\w+)\);)"))
+            string pattern = @"((\w+[*]?)\s+(\w+),|(\w+[*]?)\s+(\w+)\))";
+            foreach (Match match in Regex.Matches(description, pattern))
             {
                 Parameter p = new Parameter();
-
                 if (match.Groups[2].Value != string.Empty)
                 {
                     p.Type = match.Groups[2].Value;
