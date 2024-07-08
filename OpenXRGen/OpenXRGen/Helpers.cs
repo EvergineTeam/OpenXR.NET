@@ -65,15 +65,15 @@ namespace OpenXRGen
         {
             string memberType = type;
 
-            if (type.StartsWith("PFN"))
-            {
-                string fp = memberType.Replace("*", "");
-                if (spec.FuncPointers.Exists(f => f.Name == fp))
-                    return fp;
-            }
+            //if (type.StartsWith("PFN"))
+            //{
+            //    string fp = memberType.Replace("*", "");
+            //    if (spec.FuncPointers.Exists(f => f.Name == fp))
+            //        return fp;
+            //}
 
 
-            if(IsIntPtr(memberType))
+            if (memberType.StartsWith("PFN") || IsIntPtr(memberType))
                 return "IntPtr";
 
             string result = ConvertBasicTypes(memberType);

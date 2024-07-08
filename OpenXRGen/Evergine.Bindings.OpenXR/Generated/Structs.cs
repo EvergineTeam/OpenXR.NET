@@ -114,8 +114,8 @@ namespace Evergine.Bindings.OpenXR
 		public UIntPtr structSize;
 		public uint layerInterfaceVersion;
 		public ulong layerApiVersion;
-		public PFN_xrGetInstanceProcAddr getInstanceProcAddr;
-		public PFN_xrCreateApiLayerInstance createApiLayerInstance;
+		public IntPtr getInstanceProcAddr;
+		public IntPtr createApiLayerInstance;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -126,7 +126,7 @@ namespace Evergine.Bindings.OpenXR
 		public UIntPtr structSize;
 		public uint runtimeInterfaceVersion;
 		public ulong runtimeApiVersion;
-		public PFN_xrGetInstanceProcAddr getInstanceProcAddr;
+		public IntPtr getInstanceProcAddr;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -136,8 +136,8 @@ namespace Evergine.Bindings.OpenXR
 		public uint structVersion;
 		public UIntPtr structSize;
 		public fixed byte layerName[(int)OpenXRNative.XR_MAX_API_LAYER_NAME_SIZE];
-		public PFN_xrGetInstanceProcAddr nextGetInstanceProcAddr;
-		public PFN_xrCreateApiLayerInstance nextCreateApiLayerInstance;
+		public IntPtr nextGetInstanceProcAddr;
+		public IntPtr nextCreateApiLayerInstance;
 		public XrApiLayerNextInfo* next;
 	}
 
@@ -4976,7 +4976,7 @@ namespace Evergine.Bindings.OpenXR
 		public void* next;
 		public ulong messageSeverities;
 		public ulong messageTypes;
-		public PFN_xrDebugUtilsMessengerCallbackEXT userCallback;
+		public IntPtr userCallback;
 		public void* userData;
 	}
 
@@ -5232,7 +5232,7 @@ namespace Evergine.Bindings.OpenXR
 	{
 		public XrStructureType type;
 		public void* next;
-		public PFN_xrEglGetProcAddressMNDX getProcAddress;
+		public IntPtr getProcAddress;
 		public IntPtr display;
 		public IntPtr config;
 		public IntPtr context;

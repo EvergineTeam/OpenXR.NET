@@ -7,7 +7,7 @@ namespace Evergine.Bindings.OpenXR
 	public unsafe delegate XrResult PFN_xrGetInstanceProcAddr(
 		XrInstance instance,
 		byte* name,
-		PFN_xrVoidFunction* function);
+		IntPtr function);
 
 	public unsafe delegate XrResult PFN_xrCreateApiLayerInstance(
 		XrInstanceCreateInfo* info,

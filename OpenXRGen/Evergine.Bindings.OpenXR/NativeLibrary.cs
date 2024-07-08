@@ -32,8 +32,7 @@ namespace Evergine.Bindings.OpenXR
             IntPtr funcPtr = LoadFunction(name);
             if (funcPtr == IntPtr.Zero)
             {
-                PFN_xrVoidFunction delegateFromPointer = (PFN_xrVoidFunction)Marshal.GetDelegateForFunctionPointer(funcPtr, typeof(PFN_xrVoidFunction));
-                OpenXRNative.xrGetInstanceProcAddr(instance, (byte*)Marshal.StringToHGlobalAnsi(name), delegateFromPointer);
+                OpenXRNative.xrGetInstanceProcAddr(instance, (byte*)Marshal.StringToHGlobalAnsi(name), new IntPtr(&funcPtr));
             }
 
             if (funcPtr != IntPtr.Zero)

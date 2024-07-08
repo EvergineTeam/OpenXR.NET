@@ -6,9 +6,9 @@ namespace Evergine.Bindings.OpenXR
 	public static unsafe partial class OpenXRNative
 	{
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrGetInstanceProcAddrDelegate(XrInstance instance, byte* name, PFN_xrVoidFunction function);
+		private delegate XrResult xrGetInstanceProcAddrDelegate(XrInstance instance, byte* name, IntPtr function);
 		private static xrGetInstanceProcAddrDelegate xrGetInstanceProcAddr_ptr;
-		public static XrResult xrGetInstanceProcAddr(XrInstance instance, byte* name, PFN_xrVoidFunction function)
+		public static XrResult xrGetInstanceProcAddr(XrInstance instance, byte* name, IntPtr function)
 			=> xrGetInstanceProcAddr_ptr(instance, name, function);
 
 		[UnmanagedFunctionPointer(CallConv)]

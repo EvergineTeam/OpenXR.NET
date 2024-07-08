@@ -55,10 +55,7 @@ namespace OpenXRGen
                     }
 
                     var commandDefinition = spec.Commands.Find(c => c.Prototype.Name == name);
-                    if (commandDefinition != null)
-                        version.Commands.Add(commandDefinition);
-                    else
-                        ;
+                    version.Commands.Add(commandDefinition);
                 }
 
                 if (feature.Name == versionName)

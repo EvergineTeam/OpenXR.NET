@@ -2,6 +2,7 @@
 using System.Collections.Immutable;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 
 namespace OpenXRGen
 {
@@ -67,10 +68,16 @@ namespace OpenXRGen
                                 openXRSpec.BaseTypes.TryGetValue(typeDef.Type, out type);
                             }
 
-                            convertedType = Helpers.ConvertBasicTypes(type);
-                            if (convertedType == string.Empty)
+                            if (type.StartsWith("PFN") || Helpers.IsIntPtr(type))
+                                convertedType = "IntPtr";
+                            else
                             {
-                                convertedType = type;
+                                convertedType = Helpers.ConvertBasicTypes(type);
+
+                                if (convertedType == string.Empty)
+                                {
+                                    convertedType = type;
+                                }
                             }
 
                             file.Write($"\t\t{Helpers.GetPrettyEnumName(convertedType)} {Helpers.ValidatedName(func.Parameters[p].Name)}");
