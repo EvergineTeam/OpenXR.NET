@@ -42,7 +42,7 @@ else
 
 # Run generator
 LogDebug "START binding generator process"
-pushd .\OpenXRGen\OpenXRGen\bin\Release\netcoreapp3.1
+pushd .\OpenXRGen\OpenXRGen\bin\Release\net6.0
 .\publish\OpenXRGen.exe
 if($?)
 {
