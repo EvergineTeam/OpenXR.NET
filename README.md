@@ -9,6 +9,6 @@ This binding is generated from xr.xml file included in the KhronosRegistry folde
 
 ## Features
 
-- OpenXR 1.0
+- OpenXR 1.0, 1.1
 - All OpenXR Extensions
 - Raw low level binding using unsafe c# code.
