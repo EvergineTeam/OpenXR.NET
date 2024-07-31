@@ -10,6 +10,8 @@ namespace Evergine.Bindings.OpenXR
 
         private static NativeLibrary nativeLib;
 
+        public static NativeLibrary NativeLibrary => nativeLib;
+
         static OpenXRNative()
         {
             nativeLib = LoadNativeLibrary();
