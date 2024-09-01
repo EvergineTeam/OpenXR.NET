@@ -52,6 +52,8 @@ namespace Evergine.Bindings.OpenXR
 		public const string XR_KHR_D3D11_ENABLE_EXTENSION_NAME = "XR_KHR_D3D11_enable";
 		public const uint XR_KHR_D3D12_enable_SPEC_VERSION = 9;
 		public const string XR_KHR_D3D12_ENABLE_EXTENSION_NAME = "XR_KHR_D3D12_enable";
+		public const uint XR_KHR_metal_enable_SPEC_VERSION = 1;
+		public const string XR_KHR_METAL_ENABLE_EXTENSION_NAME = "XR_KHR_metal_enable";
 		public const uint XR_EXT_eye_gaze_interaction_SPEC_VERSION = 2;
 		public const string XR_EXT_EYE_GAZE_INTERACTION_EXTENSION_NAME = "XR_EXT_eye_gaze_interaction";
 		public const uint XR_KHR_visibility_mask_SPEC_VERSION = 2;
@@ -64,7 +66,7 @@ namespace Evergine.Bindings.OpenXR
 		public const string XR_KHR_WIN32_CONVERT_PERFORMANCE_COUNTER_TIME_EXTENSION_NAME = "XR_KHR_win32_convert_performance_counter_time";
 		public const uint XR_KHR_convert_timespec_time_SPEC_VERSION = 1;
 		public const string XR_KHR_CONVERT_TIMESPEC_TIME_EXTENSION_NAME = "XR_KHR_convert_timespec_time";
-		public const uint XR_VARJO_quad_views_SPEC_VERSION = 1;
+		public const uint XR_VARJO_quad_views_SPEC_VERSION = 2;
 		public const string XR_VARJO_QUAD_VIEWS_EXTENSION_NAME = "XR_VARJO_quad_views";
 		public const uint XR_MSFT_unbounded_reference_space_SPEC_VERSION = 1;
 		public const string XR_MSFT_UNBOUNDED_REFERENCE_SPACE_EXTENSION_NAME = "XR_MSFT_unbounded_reference_space";

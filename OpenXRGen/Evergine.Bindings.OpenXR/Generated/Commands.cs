@@ -474,6 +474,12 @@ namespace Evergine.Bindings.OpenXR
 			=> xrGetD3D12GraphicsRequirementsKHR_ptr(instance, systemId, graphicsRequirements);
 
 		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrGetMetalGraphicsRequirementsKHRDelegate(XrInstance instance, ulong systemId, XrGraphicsRequirementsMetalKHR* graphicsRequirements);
+		private static xrGetMetalGraphicsRequirementsKHRDelegate xrGetMetalGraphicsRequirementsKHR_ptr;
+		public static XrResult xrGetMetalGraphicsRequirementsKHR(XrInstance instance, ulong systemId, XrGraphicsRequirementsMetalKHR* graphicsRequirements)
+			=> xrGetMetalGraphicsRequirementsKHR_ptr(instance, systemId, graphicsRequirements);
+
+		[UnmanagedFunctionPointer(CallConv)]
 		private delegate XrResult xrGetVisibilityMaskKHRDelegate(XrSession session, XrViewConfigurationType viewConfigurationType, uint viewIndex, XrVisibilityMaskTypeKHR visibilityMaskType, XrVisibilityMaskKHR* visibilityMask);
 		private static xrGetVisibilityMaskKHRDelegate xrGetVisibilityMaskKHR_ptr;
 		public static XrResult xrGetVisibilityMaskKHR(XrSession session, XrViewConfigurationType viewConfigurationType, uint viewIndex, XrVisibilityMaskTypeKHR visibilityMaskType, XrVisibilityMaskKHR* visibilityMask)
@@ -1794,6 +1800,7 @@ namespace Evergine.Bindings.OpenXR
 			nativeLib.LoadFunction("xrGetVulkanGraphicsRequirementsKHR",  out xrGetVulkanGraphicsRequirementsKHR_ptr);
 			nativeLib.LoadFunction("xrGetD3D11GraphicsRequirementsKHR",  out xrGetD3D11GraphicsRequirementsKHR_ptr);
 			nativeLib.LoadFunction("xrGetD3D12GraphicsRequirementsKHR",  out xrGetD3D12GraphicsRequirementsKHR_ptr);
+			nativeLib.LoadFunction("xrGetMetalGraphicsRequirementsKHR",  out xrGetMetalGraphicsRequirementsKHR_ptr);
 			nativeLib.LoadFunction("xrGetVisibilityMaskKHR",  out xrGetVisibilityMaskKHR_ptr);
 			nativeLib.LoadFunction("xrConvertWin32PerformanceCounterToTimeKHR",  out xrConvertWin32PerformanceCounterToTimeKHR_ptr);
 			nativeLib.LoadFunction("xrConvertTimeToWin32PerformanceCounterKHR",  out xrConvertTimeToWin32PerformanceCounterKHR_ptr);

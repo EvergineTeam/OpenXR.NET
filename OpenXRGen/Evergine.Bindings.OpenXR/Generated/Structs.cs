@@ -335,6 +335,14 @@ namespace Evergine.Bindings.OpenXR
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrGraphicsBindingMetalKHR
+	{
+		public XrStructureType type;
+		public void* next;
+		public void* commandQueue;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct XrSessionCreateInfo
 	{
 		public XrStructureType type;
@@ -412,6 +420,14 @@ namespace Evergine.Bindings.OpenXR
 		public XrStructureType type;
 		public void* next;
 		public IntPtr texture;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSwapchainImageMetalKHR
+	{
+		public XrStructureType type;
+		public void* next;
+		public void* texture;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5036,6 +5052,14 @@ namespace Evergine.Bindings.OpenXR
 		public void* next;
 		public IntPtr adapterLuid;
 		public uint minFeatureLevel;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrGraphicsRequirementsMetalKHR
+	{
+		public XrStructureType type;
+		public void* next;
+		public void* metalDevice;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
