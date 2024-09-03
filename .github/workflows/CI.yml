@@ -1,8 +1,9 @@
-name: Monthly update check
+name: Force build
 on:
-  #[push]
-  schedule:
-    - cron: "0 0 1 * *"
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
 
 env:
   filePath: ${{  'xr.xml'  }}
@@ -39,9 +40,8 @@ jobs:
           echo "::set-output name=hash2::${{ hashFiles('xr.xml_tmp')  }}"
           echo "::set-output name=date::$(date +'%Y.%m.%d')"
 
-  build:
+  build_and_publish:
     needs: [download]
-    if: ${{ needs.download.outputs.output1 != needs.download.outputs.output2  }}
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
@@ -64,6 +64,7 @@ jobs:
           file-name: ${{  env.filePath  }}
           location: ${{ env.basePath  }}/
       - name: Generate Bindings
+        id: build_bindings
         run: powershell ./Generate-Bindings.ps1
       - name: Commit if update
         if: ${{ needs.download.outputs.output1 != needs.download.outputs.output2 }}
@@ -71,15 +72,8 @@ jobs:
         with:
           message: Updating new OpenXR version
       - name: Generate NuGet packages
+        id: build_nugets
         run: powershell ./Generate-NuGets.ps1 -Version  ${{  needs.download.outputs.output3  }}.${{  github.run_number  }} -outputfolder ${{  env.nugetOutputPath  }}
-      - name: Publish NuGet
-        if: ${{ success() }}
-        env:
-          token: ${{secrets.EVERGINE_NUGETORG_TOKEN}}
-        run: |
-          cd ${{  env.nugetOutputPath  }}
-          ls *.nupkg
-          dotnet nuget push "**/*.nupkg" --skip-duplicate --no-symbols -k "$env:token" -s https://api.nuget.org/v3/index.json
       - name: SendGrid Mail Action
         if: ${{ failure() }}
         uses: mmichailidis/sendgrid-mail-action@v1.1
