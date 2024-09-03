@@ -1,4 +1,4 @@
-name: Force build
+name: CI
 on:
   push:
     branches: [ "master" ]
