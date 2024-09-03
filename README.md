@@ -4,8 +4,8 @@ This repository contains low-level bindings for OpenXR used in Evergine for .NET
 This binding is generated from xr.xml file included in the KhronosRegistry folder.
 
 [![CI](https://github.com/EvergineTeam/OpenXR.NET/actions/workflows/CI.yml/badge.svg)](https://github.com/EvergineTeam/OpenXR.NET/actions/workflows/CI.yml)
-[![Nuget](https://img.shields.io/nuget/v/Evergine.Bindings.OpenXR?logo=nuget)](https://www.nuget.org/packages/Evergine.Bindings.OpenXR)
 [![Monthly update check](https://github.com/EvergineTeam/OpenXR.NET/actions/workflows/monthly_update.yml/badge.svg)](https://github.com/EvergineTeam/OpenXR.NET/actions/workflows/monthly_update.yml)
+[![Nuget](https://img.shields.io/nuget/v/Evergine.Bindings.OpenXR?logo=nuget)](https://www.nuget.org/packages/Evergine.Bindings.OpenXR)
 
 ## Features
 
