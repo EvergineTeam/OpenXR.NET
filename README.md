@@ -1,6 +1,6 @@
 # OpenXR.NET
 
-This repository contains low-level bindings for OpenXR used in Evergine for .NET Core and .NET 8.0.
+This repository contains low-level bindings for OpenXR used in Evergine for .NET 8.0.
 This binding is generated from xr.xml file included in the KhronosRegistry folder.
 
 [![CI](https://github.com/EvergineTeam/OpenXR.NET/actions/workflows/CI.yml/badge.svg)](https://github.com/EvergineTeam/OpenXR.NET/actions/workflows/CI.yml)
