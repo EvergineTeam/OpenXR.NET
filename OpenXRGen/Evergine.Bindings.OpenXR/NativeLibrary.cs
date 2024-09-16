@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Diagnostics;
-using System.IO;
 using System.Runtime.InteropServices;
+using SysNativeLibrary = System.Runtime.InteropServices.NativeLibrary;
 
 namespace Evergine.Bindings.OpenXR
 {
-    public abstract class NativeLibrary : IDisposable
+    public class NativeLibrary : IDisposable
     {
         private readonly string libraryName;
         private readonly IntPtr libraryHandle;
@@ -13,7 +13,7 @@ namespace Evergine.Bindings.OpenXR
 
         public IntPtr NativeHandle => libraryHandle;
 
-        public NativeLibrary(string libraryName)
+        protected NativeLibrary(string libraryName)
         {
             this.libraryName = libraryName;
             libraryHandle = LoadLibrary(this.libraryName);
@@ -23,13 +23,28 @@ namespace Evergine.Bindings.OpenXR
             }
         }
 
-        protected abstract IntPtr LoadLibrary(string libraryName);
-        protected abstract void FreeLibrary(IntPtr libraryHandle);
-        protected abstract IntPtr LoadFunction(string functionName);
+        protected IntPtr LoadLibrary(string libraryName)
+        {
+            if (SysNativeLibrary.TryLoad(libraryName, typeof(NativeLibrary).Assembly, null, out var lib))
+            {
+                return lib;
+            }
+
+            Debug.WriteLine($" ===> Error loading native library {libraryName}");
+            return IntPtr.Zero;
+        }
+
+        protected void FreeLibrary(IntPtr libraryHandle)
+        {
+            if (libraryHandle != IntPtr.Zero)
+            {
+                SysNativeLibrary.Free(libraryHandle);
+            }
+        }
 
         public unsafe void LoadFunction<T>(string name, out T field)
         {
-            IntPtr funcPtr = LoadFunction(name);
+            SysNativeLibrary.TryGetExport(libraryHandle, name, out IntPtr funcPtr);
             if (funcPtr == IntPtr.Zero)
             {
                 OpenXRNative.xrGetInstanceProcAddr(instance, (byte*)Marshal.StringToHGlobalAnsi(name), new IntPtr(&funcPtr));
@@ -53,77 +68,7 @@ namespace Evergine.Bindings.OpenXR
 
         public static NativeLibrary Load(string libraryName)
         {
-            if (OperatingSystemHelper.IsOSPlatform(OperatingSystemHelper.PlatformType.Windows))
-            {
-                return new WindowsNativeLibrary(libraryName);
-            }
-            else if (OperatingSystemHelper.IsOSPlatform(OperatingSystemHelper.PlatformType.Android)
-                || OperatingSystemHelper.IsOSPlatform(OperatingSystemHelper.PlatformType.Linux)
-                || OperatingSystemHelper.IsOSPlatform(OperatingSystemHelper.PlatformType.MacOS))
-            {
-                return new UnixNativeLibrary(libraryName);
-            }
-            else
-            {
-                throw new PlatformNotSupportedException("Cannot load native libraries on this platform: " + RuntimeInformation.OSDescription);
-            }
-        }
-
-        private class WindowsNativeLibrary : NativeLibrary
-        {
-            public WindowsNativeLibrary(string libraryName) : base(libraryName)
-            {
-            }
-
-            protected override IntPtr LoadLibrary(string libraryName)
-            {
-                return Kernel32.LoadLibrary(libraryName);
-            }
-
-            protected override void FreeLibrary(IntPtr libraryHandle)
-            {
-                Kernel32.FreeLibrary(libraryHandle);
-            }
-
-            protected override IntPtr LoadFunction(string functionName)
-            {
-                Debug.WriteLine("Loading " + functionName);
-                return Kernel32.GetProcAddress(NativeHandle, functionName);
-            }
-        }
-
-        private class UnixNativeLibrary : NativeLibrary
-        {
-            public UnixNativeLibrary(string libraryName) : base(libraryName)
-            {
-            }
-
-            protected override IntPtr LoadLibrary(string libraryName)
-            {
-                Libdl.dlerror();
-                IntPtr handle = Libdl.dlopen(libraryName, Libdl.RTLD_NOW);
-                if (handle == IntPtr.Zero && !Path.IsPathRooted(libraryName))
-                {
-                    string baseDir = AppContext.BaseDirectory;
-                    if (!string.IsNullOrWhiteSpace(baseDir))
-                    {
-                        string localPath = Path.Combine(baseDir, libraryName);
-                        handle = Libdl.dlopen(localPath, Libdl.RTLD_NOW);
-                    }
-                }
-
-                return handle;
-            }
-
-            protected override void FreeLibrary(IntPtr libraryHandle)
-            {
-                Libdl.dlclose(libraryHandle);
-            }
-
-            protected override IntPtr LoadFunction(string functionName)
-            {
-                return Libdl.dlsym(NativeHandle, functionName);
-            }
+            return new NativeLibrary(libraryName);
         }
     }
 }

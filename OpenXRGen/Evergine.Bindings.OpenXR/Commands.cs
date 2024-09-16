@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Runtime.InteropServices;
-using static Evergine.Bindings.OpenXR.OperatingSystemHelper;
 
 namespace Evergine.Bindings.OpenXR
 {
@@ -15,7 +14,7 @@ namespace Evergine.Bindings.OpenXR
         static OpenXRNative()
         {
             nativeLib = LoadNativeLibrary();
-            LoadFuncionPointers();
+            LoadFunctionPointers();
         }
 
         private static NativeLibrary LoadNativeLibrary()
@@ -25,16 +24,16 @@ namespace Evergine.Bindings.OpenXR
 
         private static string GetOpenXRName()
         {
-            if (IsOSPlatform(PlatformType.Windows))
+            if (OperatingSystem.IsWindows())
             {
                 return "openxr_loader.dll";
             }
-            else if (IsOSPlatform(PlatformType.Android))
+            else if (OperatingSystem.IsAndroid())
             {
                 // Android
                 return "libopenxr_loader.so";
             }
-            else if (IsOSPlatform(PlatformType.Linux))
+            else if (OperatingSystem.IsLinux())
             {
                 // Desktop Linux
                 return "libopenxr_loader.so.1";
