@@ -1715,7 +1715,7 @@ namespace Evergine.Bindings.OpenXR
 		public static XrResult xrCancelFutureEXT(XrInstance instance, XrFutureCancelInfoEXT* cancelInfo)
 			=> xrCancelFutureEXT_ptr(instance, cancelInfo);
 
-		public static void LoadFuncionPointers(XrInstance instance = default)
+		public static void LoadFunctionPointers(XrInstance instance = default)
 		{
 			if (instance != default)
 			{
