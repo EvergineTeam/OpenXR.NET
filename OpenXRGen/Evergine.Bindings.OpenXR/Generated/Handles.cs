@@ -362,6 +362,21 @@ namespace Evergine.Bindings.OpenXR
 		public override int GetHashCode() => Handle.GetHashCode();
 }
 
+	public partial struct XrSpatialAnchorsStorageML : IEquatable<XrSpatialAnchorsStorageML>
+{
+		public readonly ulong Handle;
+		public XrSpatialAnchorsStorageML(ulong existingHandle) { Handle = existingHandle; }
+		public static XrSpatialAnchorsStorageML Null => new XrSpatialAnchorsStorageML(0);
+		public static implicit operator XrSpatialAnchorsStorageML(ulong handle) => new XrSpatialAnchorsStorageML(handle);
+		public static bool operator ==(XrSpatialAnchorsStorageML left, XrSpatialAnchorsStorageML right) => left.Handle == right.Handle;
+		public static bool operator !=(XrSpatialAnchorsStorageML left, XrSpatialAnchorsStorageML right) => left.Handle != right.Handle;
+		public static bool operator ==(XrSpatialAnchorsStorageML left, ulong right) => left.Handle == right;
+		public static bool operator !=(XrSpatialAnchorsStorageML left, ulong right) => left.Handle != right;
+		public bool Equals(XrSpatialAnchorsStorageML h) => Handle == h.Handle;
+		public override bool Equals(object o) => o is XrSpatialAnchorsStorageML h && Equals(h);
+		public override int GetHashCode() => Handle.GetHashCode();
+}
+
 	public partial struct XrExportedLocalizationMapML : IEquatable<XrExportedLocalizationMapML>
 {
 		public readonly ulong Handle;
@@ -419,6 +434,36 @@ namespace Evergine.Bindings.OpenXR
 		public static bool operator !=(XrEnvironmentDepthSwapchainMETA left, ulong right) => left.Handle != right;
 		public bool Equals(XrEnvironmentDepthSwapchainMETA h) => Handle == h.Handle;
 		public override bool Equals(object o) => o is XrEnvironmentDepthSwapchainMETA h && Equals(h);
+		public override int GetHashCode() => Handle.GetHashCode();
+}
+
+	public partial struct XrBodyTrackerHTC : IEquatable<XrBodyTrackerHTC>
+{
+		public readonly ulong Handle;
+		public XrBodyTrackerHTC(ulong existingHandle) { Handle = existingHandle; }
+		public static XrBodyTrackerHTC Null => new XrBodyTrackerHTC(0);
+		public static implicit operator XrBodyTrackerHTC(ulong handle) => new XrBodyTrackerHTC(handle);
+		public static bool operator ==(XrBodyTrackerHTC left, XrBodyTrackerHTC right) => left.Handle == right.Handle;
+		public static bool operator !=(XrBodyTrackerHTC left, XrBodyTrackerHTC right) => left.Handle != right.Handle;
+		public static bool operator ==(XrBodyTrackerHTC left, ulong right) => left.Handle == right;
+		public static bool operator !=(XrBodyTrackerHTC left, ulong right) => left.Handle != right;
+		public bool Equals(XrBodyTrackerHTC h) => Handle == h.Handle;
+		public override bool Equals(object o) => o is XrBodyTrackerHTC h && Equals(h);
+		public override int GetHashCode() => Handle.GetHashCode();
+}
+
+	public partial struct XrWorldMeshDetectorML : IEquatable<XrWorldMeshDetectorML>
+{
+		public readonly ulong Handle;
+		public XrWorldMeshDetectorML(ulong existingHandle) { Handle = existingHandle; }
+		public static XrWorldMeshDetectorML Null => new XrWorldMeshDetectorML(0);
+		public static implicit operator XrWorldMeshDetectorML(ulong handle) => new XrWorldMeshDetectorML(handle);
+		public static bool operator ==(XrWorldMeshDetectorML left, XrWorldMeshDetectorML right) => left.Handle == right.Handle;
+		public static bool operator !=(XrWorldMeshDetectorML left, XrWorldMeshDetectorML right) => left.Handle != right.Handle;
+		public static bool operator ==(XrWorldMeshDetectorML left, ulong right) => left.Handle == right;
+		public static bool operator !=(XrWorldMeshDetectorML left, ulong right) => left.Handle != right;
+		public bool Equals(XrWorldMeshDetectorML h) => Handle == h.Handle;
+		public override bool Equals(object o) => o is XrWorldMeshDetectorML h && Equals(h);
 		public override int GetHashCode() => Handle.GetHashCode();
 }
 

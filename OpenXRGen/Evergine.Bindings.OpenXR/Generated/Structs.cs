@@ -7363,6 +7363,65 @@ namespace Evergine.Bindings.OpenXR
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSystemBodyTrackingPropertiesHTC
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrBool32 supportsBodyTracking;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrBodyTrackerCreateInfoHTC
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrBodyJointSetHTC bodyJointSet;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrBodySkeletonJointHTC
+	{
+		public XrPosef pose;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrBodySkeletonHTC
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint jointCount;
+		public XrBodySkeletonJointHTC* joints;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrBodyJointsLocateInfoHTC
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrSpace baseSpace;
+		public long time;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrBodyJointLocationHTC
+	{
+		public ulong locationFlags;
+		public XrPosef pose;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrBodyJointLocationsHTC
+	{
+		public XrStructureType type;
+		public void* next;
+		public ulong combinedLocationFlags;
+		public XrBodyJointConfidenceHTC confidenceLevel;
+		public uint jointLocationCount;
+		public XrBodyJointLocationHTC* jointLocations;
+		public uint skeletonGenerationId;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct XrCompositionLayerSpaceWarpInfoFB
 	{
 		public XrStructureType type;
@@ -8298,6 +8357,310 @@ namespace Evergine.Bindings.OpenXR
 		public ulong velocityFlags;
 		public XrVector3f linearVelocity;
 		public XrVector3f angularVelocity;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSystemNotificationsSetInfoML
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrBool32 suppressNotifications;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialAnchorsCreateInfoBaseHeaderML
+	{
+		public XrStructureType type;
+		public void* next;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialAnchorsCreateInfoFromPoseML
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrSpace baseSpace;
+		public XrPosef poseInBaseSpace;
+		public long time;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrCreateSpatialAnchorsCompletionML
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrResult futureResult;
+		public uint spaceCount;
+		public XrSpace* spaces;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialAnchorStateML
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrSpatialAnchorConfidenceML confidence;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialAnchorsCreateStorageInfoML
+	{
+		public XrStructureType type;
+		public void* next;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialAnchorsQueryInfoBaseHeaderML
+	{
+		public XrStructureType type;
+		public void* next;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialAnchorsQueryInfoRadiusML
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrSpace baseSpace;
+		public XrVector3f center;
+		public long time;
+		public float radius;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialAnchorsQueryCompletionML
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrResult futureResult;
+		public uint uuidCapacityInput;
+		public uint uuidCountOutput;
+		public XrUuid* uuids;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialAnchorsCreateInfoFromUuidsML
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrSpatialAnchorsStorageML storage;
+		public uint uuidCount;
+		public XrUuid* uuids;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialAnchorsPublishInfoML
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint anchorCount;
+		public XrSpace* anchors;
+		public ulong expiration;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialAnchorsPublishCompletionML
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrResult futureResult;
+		public uint uuidCount;
+		public XrUuid* uuids;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialAnchorsDeleteInfoML
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint uuidCount;
+		public XrUuid* uuids;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialAnchorsDeleteCompletionML
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrResult futureResult;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialAnchorsUpdateExpirationInfoML
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint uuidCount;
+		public XrUuid* uuids;
+		public ulong expiration;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialAnchorsUpdateExpirationCompletionML
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrResult futureResult;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialAnchorCompletionResultML
+	{
+		public XrUuid uuid;
+		public XrResult result;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialAnchorsPublishCompletionDetailsML
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint resultCount;
+		public XrSpatialAnchorCompletionResultML* results;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialAnchorsDeleteCompletionDetailsML
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint resultCount;
+		public XrSpatialAnchorCompletionResultML* results;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialAnchorsUpdateExpirationCompletionDetailsML
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint resultCount;
+		public XrSpatialAnchorCompletionResultML* results;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrWorldMeshDetectorCreateInfoML
+	{
+		public XrStructureType type;
+		public void* next;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrWorldMeshStateRequestInfoML
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrSpace baseSpace;
+		public long time;
+		public XrPosef boundingBoxCenter;
+		public XrExtent3Df boundingBoxExtents;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrWorldMeshBlockStateML
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrUuid uuid;
+		public XrPosef meshBoundingBoxCenter;
+		public XrExtent3Df meshBoundingBoxExtents;
+		public long lastUpdateTime;
+		public XrWorldMeshBlockStatusML status;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrWorldMeshStateRequestCompletionML
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrResult futureResult;
+		public long timestamp;
+		public uint meshBlockStateCapacityInput;
+		public uint meshBlockStateCountOutput;
+		public XrWorldMeshBlockStateML* meshBlockStates;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrWorldMeshBufferRecommendedSizeInfoML
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint maxBlockCount;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrWorldMeshBufferSizeML
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint size;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrWorldMeshBufferML
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint bufferSize;
+		public void* buffer;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrWorldMeshBlockRequestML
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrUuid uuid;
+		public XrWorldMeshDetectorLodML lod;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrWorldMeshGetInfoML
+	{
+		public XrStructureType type;
+		public void* next;
+		public ulong flags;
+		public float fillHoleLength;
+		public float disconnectedComponentArea;
+		public uint blockCount;
+		public XrWorldMeshBlockRequestML* blocks;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrWorldMeshBlockML
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrUuid uuid;
+		public XrWorldMeshBlockResultML blockResult;
+		public XrWorldMeshDetectorLodML lod;
+		public ulong flags;
+		public uint indexCount;
+		public ushort* indexBuffer;
+		public uint vertexCount;
+		public XrVector3f* vertexBuffer;
+		public uint normalCount;
+		public XrVector3f* normalBuffer;
+		public uint confidenceCount;
+		public float* confidenceBuffer;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrWorldMeshRequestCompletionInfoML
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrSpace meshSpace;
+		public long meshSpaceLocateTime;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrWorldMeshRequestCompletionML
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrResult futureResult;
+		public uint blockCount;
+		public XrWorldMeshBlockML* blocks;
 	}
 
 }

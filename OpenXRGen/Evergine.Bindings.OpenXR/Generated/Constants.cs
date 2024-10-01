@@ -216,6 +216,10 @@ namespace Evergine.Bindings.OpenXR
 		public const uint XR_ML_localization_map_SPEC_VERSION = 1;
 		public const string XR_ML_LOCALIZATION_MAP_EXTENSION_NAME = "XR_ML_localization_map";
 		public const uint XR_MAX_LOCALIZATION_MAP_NAME_LENGTH_ML = 64;
+		public const uint XR_ML_spatial_anchors_SPEC_VERSION = 1;
+		public const string XR_ML_SPATIAL_ANCHORS_EXTENSION_NAME = "XR_ML_spatial_anchors";
+		public const uint XR_ML_spatial_anchors_storage_SPEC_VERSION = 1;
+		public const string XR_ML_SPATIAL_ANCHORS_STORAGE_EXTENSION_NAME = "XR_ML_spatial_anchors_storage";
 		public const uint XR_ML_user_calibration_SPEC_VERSION = 1;
 		public const string XR_ML_USER_CALIBRATION_EXTENSION_NAME = "XR_ML_user_calibration";
 		public const uint XR_MSFT_spatial_anchor_persistence_SPEC_VERSION = 2;
@@ -325,6 +329,8 @@ namespace Evergine.Bindings.OpenXR
 		public const uint XR_HTC_anchor_SPEC_VERSION = 1;
 		public const string XR_HTC_ANCHOR_EXTENSION_NAME = "XR_HTC_anchor";
 		public const uint XR_MAX_SPATIAL_ANCHOR_NAME_SIZE_HTC = 256;
+		public const uint XR_HTC_body_tracking_SPEC_VERSION = 1;
+		public const string XR_HTC_BODY_TRACKING_EXTENSION_NAME = "XR_HTC_body_tracking";
 		public const uint XR_EXT_active_action_set_priority_SPEC_VERSION = 1;
 		public const string XR_EXT_ACTIVE_ACTION_SET_PRIORITY_EXTENSION_NAME = "XR_EXT_active_action_set_priority";
 		public const uint XR_MNDX_force_feedback_curl_SPEC_VERSION = 1;
@@ -346,6 +352,12 @@ namespace Evergine.Bindings.OpenXR
 		public const string XR_EXT_USER_PRESENCE_EXTENSION_NAME = "XR_EXT_user_presence";
 		public const uint XR_KHR_locate_spaces_SPEC_VERSION = 1;
 		public const string XR_KHR_LOCATE_SPACES_EXTENSION_NAME = "XR_KHR_locate_spaces";
+		public const uint XR_ML_system_notifications_SPEC_VERSION = 1;
+		public const string XR_ML_SYSTEM_NOTIFICATIONS_EXTENSION_NAME = "XR_ML_system_notifications";
+		public const uint XR_ML_world_mesh_detection_SPEC_VERSION = 1;
+		public const string XR_ML_WORLD_MESH_DETECTION_EXTENSION_NAME = "XR_ML_world_mesh_detection";
+		public const uint XR_ML_view_configuration_depth_range_change_SPEC_VERSION = 1;
+		public const string XR_ML_VIEW_CONFIGURATION_DEPTH_RANGE_CHANGE_EXTENSION_NAME = "XR_ML_view_configuration_depth_range_change";
 		public const uint XR_YVR_controller_interaction_SPEC_VERSION = 1;
 		public const string XR_YVR_CONTROLLER_INTERACTION_EXTENSION_NAME = "XR_YVR_controller_interaction";
 		public const uint XR_EXT_composition_layer_inverted_alpha_SPEC_VERSION = 1;

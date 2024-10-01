@@ -1188,6 +1188,84 @@ namespace Evergine.Bindings.OpenXR
 			=> xrGetExportedLocalizationMapDataML_ptr(map, bufferCapacityInput, bufferCountOutput, buffer);
 
 		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrCreateSpatialAnchorsAsyncMLDelegate(XrSession session, XrSpatialAnchorsCreateInfoBaseHeaderML* createInfo, ulong* future);
+		private static xrCreateSpatialAnchorsAsyncMLDelegate xrCreateSpatialAnchorsAsyncML_ptr;
+		public static XrResult xrCreateSpatialAnchorsAsyncML(XrSession session, XrSpatialAnchorsCreateInfoBaseHeaderML* createInfo, ulong* future)
+			=> xrCreateSpatialAnchorsAsyncML_ptr(session, createInfo, future);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrCreateSpatialAnchorsCompleteMLDelegate(XrSession session, ulong future, XrCreateSpatialAnchorsCompletionML* completion);
+		private static xrCreateSpatialAnchorsCompleteMLDelegate xrCreateSpatialAnchorsCompleteML_ptr;
+		public static XrResult xrCreateSpatialAnchorsCompleteML(XrSession session, ulong future, XrCreateSpatialAnchorsCompletionML* completion)
+			=> xrCreateSpatialAnchorsCompleteML_ptr(session, future, completion);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrGetSpatialAnchorStateMLDelegate(XrSpace anchor, XrSpatialAnchorStateML* state);
+		private static xrGetSpatialAnchorStateMLDelegate xrGetSpatialAnchorStateML_ptr;
+		public static XrResult xrGetSpatialAnchorStateML(XrSpace anchor, XrSpatialAnchorStateML* state)
+			=> xrGetSpatialAnchorStateML_ptr(anchor, state);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrCreateSpatialAnchorsStorageMLDelegate(XrSession session, XrSpatialAnchorsCreateStorageInfoML* createInfo, XrSpatialAnchorsStorageML* storage);
+		private static xrCreateSpatialAnchorsStorageMLDelegate xrCreateSpatialAnchorsStorageML_ptr;
+		public static XrResult xrCreateSpatialAnchorsStorageML(XrSession session, XrSpatialAnchorsCreateStorageInfoML* createInfo, XrSpatialAnchorsStorageML* storage)
+			=> xrCreateSpatialAnchorsStorageML_ptr(session, createInfo, storage);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrDestroySpatialAnchorsStorageMLDelegate(XrSpatialAnchorsStorageML storage);
+		private static xrDestroySpatialAnchorsStorageMLDelegate xrDestroySpatialAnchorsStorageML_ptr;
+		public static XrResult xrDestroySpatialAnchorsStorageML(XrSpatialAnchorsStorageML storage)
+			=> xrDestroySpatialAnchorsStorageML_ptr(storage);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrQuerySpatialAnchorsAsyncMLDelegate(XrSpatialAnchorsStorageML storage, XrSpatialAnchorsQueryInfoBaseHeaderML* queryInfo, ulong* future);
+		private static xrQuerySpatialAnchorsAsyncMLDelegate xrQuerySpatialAnchorsAsyncML_ptr;
+		public static XrResult xrQuerySpatialAnchorsAsyncML(XrSpatialAnchorsStorageML storage, XrSpatialAnchorsQueryInfoBaseHeaderML* queryInfo, ulong* future)
+			=> xrQuerySpatialAnchorsAsyncML_ptr(storage, queryInfo, future);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrQuerySpatialAnchorsCompleteMLDelegate(XrSpatialAnchorsStorageML storage, ulong future, XrSpatialAnchorsQueryCompletionML* completion);
+		private static xrQuerySpatialAnchorsCompleteMLDelegate xrQuerySpatialAnchorsCompleteML_ptr;
+		public static XrResult xrQuerySpatialAnchorsCompleteML(XrSpatialAnchorsStorageML storage, ulong future, XrSpatialAnchorsQueryCompletionML* completion)
+			=> xrQuerySpatialAnchorsCompleteML_ptr(storage, future, completion);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrPublishSpatialAnchorsAsyncMLDelegate(XrSpatialAnchorsStorageML storage, XrSpatialAnchorsPublishInfoML* publishInfo, ulong* future);
+		private static xrPublishSpatialAnchorsAsyncMLDelegate xrPublishSpatialAnchorsAsyncML_ptr;
+		public static XrResult xrPublishSpatialAnchorsAsyncML(XrSpatialAnchorsStorageML storage, XrSpatialAnchorsPublishInfoML* publishInfo, ulong* future)
+			=> xrPublishSpatialAnchorsAsyncML_ptr(storage, publishInfo, future);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrPublishSpatialAnchorsCompleteMLDelegate(XrSpatialAnchorsStorageML storage, ulong future, XrSpatialAnchorsPublishCompletionML* completion);
+		private static xrPublishSpatialAnchorsCompleteMLDelegate xrPublishSpatialAnchorsCompleteML_ptr;
+		public static XrResult xrPublishSpatialAnchorsCompleteML(XrSpatialAnchorsStorageML storage, ulong future, XrSpatialAnchorsPublishCompletionML* completion)
+			=> xrPublishSpatialAnchorsCompleteML_ptr(storage, future, completion);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrDeleteSpatialAnchorsAsyncMLDelegate(XrSpatialAnchorsStorageML storage, XrSpatialAnchorsDeleteInfoML* deleteInfo, ulong* future);
+		private static xrDeleteSpatialAnchorsAsyncMLDelegate xrDeleteSpatialAnchorsAsyncML_ptr;
+		public static XrResult xrDeleteSpatialAnchorsAsyncML(XrSpatialAnchorsStorageML storage, XrSpatialAnchorsDeleteInfoML* deleteInfo, ulong* future)
+			=> xrDeleteSpatialAnchorsAsyncML_ptr(storage, deleteInfo, future);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrDeleteSpatialAnchorsCompleteMLDelegate(XrSpatialAnchorsStorageML storage, ulong future, XrSpatialAnchorsDeleteCompletionML* completion);
+		private static xrDeleteSpatialAnchorsCompleteMLDelegate xrDeleteSpatialAnchorsCompleteML_ptr;
+		public static XrResult xrDeleteSpatialAnchorsCompleteML(XrSpatialAnchorsStorageML storage, ulong future, XrSpatialAnchorsDeleteCompletionML* completion)
+			=> xrDeleteSpatialAnchorsCompleteML_ptr(storage, future, completion);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrUpdateSpatialAnchorsExpirationAsyncMLDelegate(XrSpatialAnchorsStorageML storage, XrSpatialAnchorsUpdateExpirationInfoML* updateInfo, ulong* future);
+		private static xrUpdateSpatialAnchorsExpirationAsyncMLDelegate xrUpdateSpatialAnchorsExpirationAsyncML_ptr;
+		public static XrResult xrUpdateSpatialAnchorsExpirationAsyncML(XrSpatialAnchorsStorageML storage, XrSpatialAnchorsUpdateExpirationInfoML* updateInfo, ulong* future)
+			=> xrUpdateSpatialAnchorsExpirationAsyncML_ptr(storage, updateInfo, future);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrUpdateSpatialAnchorsExpirationCompleteMLDelegate(XrSpatialAnchorsStorageML storage, ulong future, XrSpatialAnchorsUpdateExpirationCompletionML* completion);
+		private static xrUpdateSpatialAnchorsExpirationCompleteMLDelegate xrUpdateSpatialAnchorsExpirationCompleteML_ptr;
+		public static XrResult xrUpdateSpatialAnchorsExpirationCompleteML(XrSpatialAnchorsStorageML storage, ulong future, XrSpatialAnchorsUpdateExpirationCompletionML* completion)
+			=> xrUpdateSpatialAnchorsExpirationCompleteML_ptr(storage, future, completion);
+
+		[UnmanagedFunctionPointer(CallConv)]
 		private delegate XrResult xrEnableUserCalibrationEventsMLDelegate(XrInstance instance, XrUserCalibrationEnableEventsInfoML* enableInfo);
 		private static xrEnableUserCalibrationEventsMLDelegate xrEnableUserCalibrationEventsML_ptr;
 		public static XrResult xrEnableUserCalibrationEventsML(XrInstance instance, XrUserCalibrationEnableEventsInfoML* enableInfo)
@@ -1662,6 +1740,30 @@ namespace Evergine.Bindings.OpenXR
 			=> xrGetSpatialAnchorNameHTC_ptr(anchor, name);
 
 		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrCreateBodyTrackerHTCDelegate(XrSession session, XrBodyTrackerCreateInfoHTC* createInfo, XrBodyTrackerHTC* bodyTracker);
+		private static xrCreateBodyTrackerHTCDelegate xrCreateBodyTrackerHTC_ptr;
+		public static XrResult xrCreateBodyTrackerHTC(XrSession session, XrBodyTrackerCreateInfoHTC* createInfo, XrBodyTrackerHTC* bodyTracker)
+			=> xrCreateBodyTrackerHTC_ptr(session, createInfo, bodyTracker);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrDestroyBodyTrackerHTCDelegate(XrBodyTrackerHTC bodyTracker);
+		private static xrDestroyBodyTrackerHTCDelegate xrDestroyBodyTrackerHTC_ptr;
+		public static XrResult xrDestroyBodyTrackerHTC(XrBodyTrackerHTC bodyTracker)
+			=> xrDestroyBodyTrackerHTC_ptr(bodyTracker);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrLocateBodyJointsHTCDelegate(XrBodyTrackerHTC bodyTracker, XrBodyJointsLocateInfoHTC* locateInfo, XrBodyJointLocationsHTC* locations);
+		private static xrLocateBodyJointsHTCDelegate xrLocateBodyJointsHTC_ptr;
+		public static XrResult xrLocateBodyJointsHTC(XrBodyTrackerHTC bodyTracker, XrBodyJointsLocateInfoHTC* locateInfo, XrBodyJointLocationsHTC* locations)
+			=> xrLocateBodyJointsHTC_ptr(bodyTracker, locateInfo, locations);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrGetBodySkeletonHTCDelegate(XrBodyTrackerHTC bodyTracker, XrSpace baseSpace, uint skeletonGenerationId, XrBodySkeletonHTC* skeleton);
+		private static xrGetBodySkeletonHTCDelegate xrGetBodySkeletonHTC_ptr;
+		public static XrResult xrGetBodySkeletonHTC(XrBodyTrackerHTC bodyTracker, XrSpace baseSpace, uint skeletonGenerationId, XrBodySkeletonHTC* skeleton)
+			=> xrGetBodySkeletonHTC_ptr(bodyTracker, baseSpace, skeletonGenerationId, skeleton);
+
+		[UnmanagedFunctionPointer(CallConv)]
 		private delegate XrResult xrApplyForceFeedbackCurlMNDXDelegate(XrHandTrackerEXT handTracker, XrForceFeedbackCurlApplyLocationsMNDX* locations);
 		private static xrApplyForceFeedbackCurlMNDXDelegate xrApplyForceFeedbackCurlMNDX_ptr;
 		public static XrResult xrApplyForceFeedbackCurlMNDX(XrHandTrackerEXT handTracker, XrForceFeedbackCurlApplyLocationsMNDX* locations)
@@ -1714,6 +1816,66 @@ namespace Evergine.Bindings.OpenXR
 		private static xrCancelFutureEXTDelegate xrCancelFutureEXT_ptr;
 		public static XrResult xrCancelFutureEXT(XrInstance instance, XrFutureCancelInfoEXT* cancelInfo)
 			=> xrCancelFutureEXT_ptr(instance, cancelInfo);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrSetSystemNotificationsMLDelegate(XrInstance instance, XrSystemNotificationsSetInfoML* info);
+		private static xrSetSystemNotificationsMLDelegate xrSetSystemNotificationsML_ptr;
+		public static XrResult xrSetSystemNotificationsML(XrInstance instance, XrSystemNotificationsSetInfoML* info)
+			=> xrSetSystemNotificationsML_ptr(instance, info);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrCreateWorldMeshDetectorMLDelegate(XrSession session, XrWorldMeshDetectorCreateInfoML* createInfo, XrWorldMeshDetectorML* detector);
+		private static xrCreateWorldMeshDetectorMLDelegate xrCreateWorldMeshDetectorML_ptr;
+		public static XrResult xrCreateWorldMeshDetectorML(XrSession session, XrWorldMeshDetectorCreateInfoML* createInfo, XrWorldMeshDetectorML* detector)
+			=> xrCreateWorldMeshDetectorML_ptr(session, createInfo, detector);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrDestroyWorldMeshDetectorMLDelegate(XrWorldMeshDetectorML detector);
+		private static xrDestroyWorldMeshDetectorMLDelegate xrDestroyWorldMeshDetectorML_ptr;
+		public static XrResult xrDestroyWorldMeshDetectorML(XrWorldMeshDetectorML detector)
+			=> xrDestroyWorldMeshDetectorML_ptr(detector);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrRequestWorldMeshStateAsyncMLDelegate(XrWorldMeshDetectorML detector, XrWorldMeshStateRequestInfoML* stateRequest, ulong* future);
+		private static xrRequestWorldMeshStateAsyncMLDelegate xrRequestWorldMeshStateAsyncML_ptr;
+		public static XrResult xrRequestWorldMeshStateAsyncML(XrWorldMeshDetectorML detector, XrWorldMeshStateRequestInfoML* stateRequest, ulong* future)
+			=> xrRequestWorldMeshStateAsyncML_ptr(detector, stateRequest, future);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrRequestWorldMeshStateCompleteMLDelegate(XrWorldMeshDetectorML detector, ulong future, XrWorldMeshStateRequestCompletionML* completion);
+		private static xrRequestWorldMeshStateCompleteMLDelegate xrRequestWorldMeshStateCompleteML_ptr;
+		public static XrResult xrRequestWorldMeshStateCompleteML(XrWorldMeshDetectorML detector, ulong future, XrWorldMeshStateRequestCompletionML* completion)
+			=> xrRequestWorldMeshStateCompleteML_ptr(detector, future, completion);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrGetWorldMeshBufferRecommendSizeMLDelegate(XrWorldMeshDetectorML detector, XrWorldMeshBufferRecommendedSizeInfoML* sizeInfo, XrWorldMeshBufferSizeML* size);
+		private static xrGetWorldMeshBufferRecommendSizeMLDelegate xrGetWorldMeshBufferRecommendSizeML_ptr;
+		public static XrResult xrGetWorldMeshBufferRecommendSizeML(XrWorldMeshDetectorML detector, XrWorldMeshBufferRecommendedSizeInfoML* sizeInfo, XrWorldMeshBufferSizeML* size)
+			=> xrGetWorldMeshBufferRecommendSizeML_ptr(detector, sizeInfo, size);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrAllocateWorldMeshBufferMLDelegate(XrWorldMeshDetectorML detector, XrWorldMeshBufferSizeML* size, XrWorldMeshBufferML* buffer);
+		private static xrAllocateWorldMeshBufferMLDelegate xrAllocateWorldMeshBufferML_ptr;
+		public static XrResult xrAllocateWorldMeshBufferML(XrWorldMeshDetectorML detector, XrWorldMeshBufferSizeML* size, XrWorldMeshBufferML* buffer)
+			=> xrAllocateWorldMeshBufferML_ptr(detector, size, buffer);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrFreeWorldMeshBufferMLDelegate(XrWorldMeshDetectorML detector, XrWorldMeshBufferML* buffer);
+		private static xrFreeWorldMeshBufferMLDelegate xrFreeWorldMeshBufferML_ptr;
+		public static XrResult xrFreeWorldMeshBufferML(XrWorldMeshDetectorML detector, XrWorldMeshBufferML* buffer)
+			=> xrFreeWorldMeshBufferML_ptr(detector, buffer);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrRequestWorldMeshAsyncMLDelegate(XrWorldMeshDetectorML detector, XrWorldMeshGetInfoML* getInfo, XrWorldMeshBufferML* buffer, ulong* future);
+		private static xrRequestWorldMeshAsyncMLDelegate xrRequestWorldMeshAsyncML_ptr;
+		public static XrResult xrRequestWorldMeshAsyncML(XrWorldMeshDetectorML detector, XrWorldMeshGetInfoML* getInfo, XrWorldMeshBufferML* buffer, ulong* future)
+			=> xrRequestWorldMeshAsyncML_ptr(detector, getInfo, buffer, future);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrRequestWorldMeshCompleteMLDelegate(XrWorldMeshDetectorML detector, XrWorldMeshRequestCompletionInfoML* completionInfo, ulong future, XrWorldMeshRequestCompletionML* completion);
+		private static xrRequestWorldMeshCompleteMLDelegate xrRequestWorldMeshCompleteML_ptr;
+		public static XrResult xrRequestWorldMeshCompleteML(XrWorldMeshDetectorML detector, XrWorldMeshRequestCompletionInfoML* completionInfo, ulong future, XrWorldMeshRequestCompletionML* completion)
+			=> xrRequestWorldMeshCompleteML_ptr(detector, completionInfo, future, completion);
 
 		public static void LoadFunctionPointers(XrInstance instance = default)
 		{
@@ -1919,6 +2081,19 @@ namespace Evergine.Bindings.OpenXR
 			nativeLib.LoadFunction("xrCreateExportedLocalizationMapML",  out xrCreateExportedLocalizationMapML_ptr);
 			nativeLib.LoadFunction("xrDestroyExportedLocalizationMapML",  out xrDestroyExportedLocalizationMapML_ptr);
 			nativeLib.LoadFunction("xrGetExportedLocalizationMapDataML",  out xrGetExportedLocalizationMapDataML_ptr);
+			nativeLib.LoadFunction("xrCreateSpatialAnchorsAsyncML",  out xrCreateSpatialAnchorsAsyncML_ptr);
+			nativeLib.LoadFunction("xrCreateSpatialAnchorsCompleteML",  out xrCreateSpatialAnchorsCompleteML_ptr);
+			nativeLib.LoadFunction("xrGetSpatialAnchorStateML",  out xrGetSpatialAnchorStateML_ptr);
+			nativeLib.LoadFunction("xrCreateSpatialAnchorsStorageML",  out xrCreateSpatialAnchorsStorageML_ptr);
+			nativeLib.LoadFunction("xrDestroySpatialAnchorsStorageML",  out xrDestroySpatialAnchorsStorageML_ptr);
+			nativeLib.LoadFunction("xrQuerySpatialAnchorsAsyncML",  out xrQuerySpatialAnchorsAsyncML_ptr);
+			nativeLib.LoadFunction("xrQuerySpatialAnchorsCompleteML",  out xrQuerySpatialAnchorsCompleteML_ptr);
+			nativeLib.LoadFunction("xrPublishSpatialAnchorsAsyncML",  out xrPublishSpatialAnchorsAsyncML_ptr);
+			nativeLib.LoadFunction("xrPublishSpatialAnchorsCompleteML",  out xrPublishSpatialAnchorsCompleteML_ptr);
+			nativeLib.LoadFunction("xrDeleteSpatialAnchorsAsyncML",  out xrDeleteSpatialAnchorsAsyncML_ptr);
+			nativeLib.LoadFunction("xrDeleteSpatialAnchorsCompleteML",  out xrDeleteSpatialAnchorsCompleteML_ptr);
+			nativeLib.LoadFunction("xrUpdateSpatialAnchorsExpirationAsyncML",  out xrUpdateSpatialAnchorsExpirationAsyncML_ptr);
+			nativeLib.LoadFunction("xrUpdateSpatialAnchorsExpirationCompleteML",  out xrUpdateSpatialAnchorsExpirationCompleteML_ptr);
 			nativeLib.LoadFunction("xrEnableUserCalibrationEventsML",  out xrEnableUserCalibrationEventsML_ptr);
 			nativeLib.LoadFunction("xrCreateSpatialAnchorStoreConnectionMSFT",  out xrCreateSpatialAnchorStoreConnectionMSFT_ptr);
 			nativeLib.LoadFunction("xrDestroySpatialAnchorStoreConnectionMSFT",  out xrDestroySpatialAnchorStoreConnectionMSFT_ptr);
@@ -1998,6 +2173,10 @@ namespace Evergine.Bindings.OpenXR
 			nativeLib.LoadFunction("xrApplyFoveationHTC",  out xrApplyFoveationHTC_ptr);
 			nativeLib.LoadFunction("xrCreateSpatialAnchorHTC",  out xrCreateSpatialAnchorHTC_ptr);
 			nativeLib.LoadFunction("xrGetSpatialAnchorNameHTC",  out xrGetSpatialAnchorNameHTC_ptr);
+			nativeLib.LoadFunction("xrCreateBodyTrackerHTC",  out xrCreateBodyTrackerHTC_ptr);
+			nativeLib.LoadFunction("xrDestroyBodyTrackerHTC",  out xrDestroyBodyTrackerHTC_ptr);
+			nativeLib.LoadFunction("xrLocateBodyJointsHTC",  out xrLocateBodyJointsHTC_ptr);
+			nativeLib.LoadFunction("xrGetBodySkeletonHTC",  out xrGetBodySkeletonHTC_ptr);
 			nativeLib.LoadFunction("xrApplyForceFeedbackCurlMNDX",  out xrApplyForceFeedbackCurlMNDX_ptr);
 			nativeLib.LoadFunction("xrCreatePlaneDetectorEXT",  out xrCreatePlaneDetectorEXT_ptr);
 			nativeLib.LoadFunction("xrDestroyPlaneDetectorEXT",  out xrDestroyPlaneDetectorEXT_ptr);
@@ -2007,6 +2186,16 @@ namespace Evergine.Bindings.OpenXR
 			nativeLib.LoadFunction("xrGetPlanePolygonBufferEXT",  out xrGetPlanePolygonBufferEXT_ptr);
 			nativeLib.LoadFunction("xrPollFutureEXT",  out xrPollFutureEXT_ptr);
 			nativeLib.LoadFunction("xrCancelFutureEXT",  out xrCancelFutureEXT_ptr);
+			nativeLib.LoadFunction("xrSetSystemNotificationsML",  out xrSetSystemNotificationsML_ptr);
+			nativeLib.LoadFunction("xrCreateWorldMeshDetectorML",  out xrCreateWorldMeshDetectorML_ptr);
+			nativeLib.LoadFunction("xrDestroyWorldMeshDetectorML",  out xrDestroyWorldMeshDetectorML_ptr);
+			nativeLib.LoadFunction("xrRequestWorldMeshStateAsyncML",  out xrRequestWorldMeshStateAsyncML_ptr);
+			nativeLib.LoadFunction("xrRequestWorldMeshStateCompleteML",  out xrRequestWorldMeshStateCompleteML_ptr);
+			nativeLib.LoadFunction("xrGetWorldMeshBufferRecommendSizeML",  out xrGetWorldMeshBufferRecommendSizeML_ptr);
+			nativeLib.LoadFunction("xrAllocateWorldMeshBufferML",  out xrAllocateWorldMeshBufferML_ptr);
+			nativeLib.LoadFunction("xrFreeWorldMeshBufferML",  out xrFreeWorldMeshBufferML_ptr);
+			nativeLib.LoadFunction("xrRequestWorldMeshAsyncML",  out xrRequestWorldMeshAsyncML_ptr);
+			nativeLib.LoadFunction("xrRequestWorldMeshCompleteML",  out xrRequestWorldMeshCompleteML_ptr);
 		}
 	}
 }
