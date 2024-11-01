@@ -152,7 +152,7 @@ namespace Evergine.Bindings.OpenXR
 		public const string XR_HTC_VIVE_COSMOS_CONTROLLER_INTERACTION_EXTENSION_NAME = "XR_HTC_vive_cosmos_controller_interaction";
 		public const uint XR_HTCX_vive_tracker_interaction_SPEC_VERSION = 3;
 		public const string XR_HTCX_VIVE_TRACKER_INTERACTION_EXTENSION_NAME = "XR_HTCX_vive_tracker_interaction";
-		public const uint XR_HTC_facial_tracking_SPEC_VERSION = 2;
+		public const uint XR_HTC_facial_tracking_SPEC_VERSION = 3;
 		public const string XR_HTC_FACIAL_TRACKING_EXTENSION_NAME = "XR_HTC_facial_tracking";
 		public const uint XR_HTC_vive_focus3_controller_interaction_SPEC_VERSION = 2;
 		public const string XR_HTC_VIVE_FOCUS3_CONTROLLER_INTERACTION_EXTENSION_NAME = "XR_HTC_vive_focus3_controller_interaction";
@@ -201,7 +201,7 @@ namespace Evergine.Bindings.OpenXR
 		public const string XR_VARJO_MARKER_TRACKING_EXTENSION_NAME = "XR_VARJO_marker_tracking";
 		public const uint XR_VARJO_view_offset_SPEC_VERSION = 1;
 		public const string XR_VARJO_VIEW_OFFSET_EXTENSION_NAME = "XR_VARJO_view_offset";
-		public const uint XR_VARJO_xr4_controller_interaction_SPEC_VERSION = 1;
+		public const uint XR_VARJO_xr4_controller_interaction_SPEC_VERSION = 2;
 		public const string XR_VARJO_XR4_CONTROLLER_INTERACTION_EXTENSION_NAME = "XR_VARJO_xr4_controller_interaction";
 		public const uint XR_ML_ml2_controller_interaction_SPEC_VERSION = 1;
 		public const string XR_ML_ML2_CONTROLLER_INTERACTION_EXTENSION_NAME = "XR_ML_ml2_controller_interaction";
