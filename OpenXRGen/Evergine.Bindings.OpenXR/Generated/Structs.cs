@@ -6782,6 +6782,169 @@ namespace Evergine.Bindings.OpenXR
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSystemColocationDiscoveryPropertiesMETA
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrBool32 supportsColocationDiscovery;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrColocationAdvertisementStartInfoMETA
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint bufferSize;
+		public byte* buffer;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrColocationAdvertisementStopInfoMETA
+	{
+		public XrStructureType type;
+		public void* next;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrColocationDiscoveryStartInfoMETA
+	{
+		public XrStructureType type;
+		public void* next;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrColocationDiscoveryStopInfoMETA
+	{
+		public XrStructureType type;
+		public void* next;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrEventDataStartColocationAdvertisementCompleteMETA
+	{
+		public XrStructureType type;
+		public void* next;
+		public ulong advertisementRequestId;
+		public XrResult result;
+		public XrUuid advertisementUuid;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrEventDataColocationAdvertisementCompleteMETA
+	{
+		public XrStructureType type;
+		public void* next;
+		public ulong advertisementRequestId;
+		public XrResult result;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrEventDataStopColocationAdvertisementCompleteMETA
+	{
+		public XrStructureType type;
+		public void* next;
+		public ulong requestId;
+		public XrResult result;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrEventDataStartColocationDiscoveryCompleteMETA
+	{
+		public XrStructureType type;
+		public void* next;
+		public ulong discoveryRequestId;
+		public XrResult result;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrEventDataColocationDiscoveryResultMETA
+	{
+		public XrStructureType type;
+		public void* next;
+		public ulong discoveryRequestId;
+		public XrUuid advertisementUuid;
+		public uint bufferSize;
+		public fixed byte buffer[(int)OpenXRNative.XR_MAX_COLOCATION_DISCOVERY_BUFFER_SIZE_META];
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrEventDataColocationDiscoveryCompleteMETA
+	{
+		public XrStructureType type;
+		public void* next;
+		public ulong discoveryRequestId;
+		public XrResult result;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrEventDataStopColocationDiscoveryCompleteMETA
+	{
+		public XrStructureType type;
+		public void* next;
+		public ulong requestId;
+		public XrResult result;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSystemSpatialEntitySharingPropertiesMETA
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrBool32 supportsSpatialEntitySharing;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrShareSpacesRecipientBaseHeaderMETA
+	{
+		public XrStructureType type;
+		public void* next;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrShareSpacesInfoMETA
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint spaceCount;
+		public XrSpace* spaces;
+		public XrShareSpacesRecipientBaseHeaderMETA* recipientInfo;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrEventDataShareSpacesCompleteMETA
+	{
+		public XrStructureType type;
+		public void* next;
+		public ulong requestId;
+		public XrResult result;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrShareSpacesRecipientGroupsMETA
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint groupCount;
+		public XrUuid* groups;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpaceGroupUuidFilterInfoMETA
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrUuid groupUuid;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSystemSpatialEntityGroupSharingPropertiesMETA
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrBool32 supportsSpatialEntityGroupSharing;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct XrCompositionLayerDepthTestVARJO
 	{
 		public XrStructureType type;
@@ -8169,6 +8332,41 @@ namespace Evergine.Bindings.OpenXR
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSystemFacialExpressionPropertiesML
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrBool32 supportsFacialExpression;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrFacialExpressionClientCreateInfoML
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint requestedCount;
+		public XrFacialBlendShapeML* requestedFacialBlendShapes;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrFacialExpressionBlendShapePropertiesML
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrFacialBlendShapeML requestedFacialBlendShape;
+		public float weight;
+		public ulong flags;
+		public long time;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrFacialExpressionBlendShapeGetInfoML
+	{
+		public XrStructureType type;
+		public void* next;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct XrRecommendedLayerResolutionMETA
 	{
 		public XrStructureType type;
@@ -8661,6 +8859,14 @@ namespace Evergine.Bindings.OpenXR
 		public XrResult futureResult;
 		public uint blockCount;
 		public XrWorldMeshBlockML* blocks;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrEventDataPassthroughLayerResumedMETA
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrPassthroughLayerFB layer;
 	}
 
 }

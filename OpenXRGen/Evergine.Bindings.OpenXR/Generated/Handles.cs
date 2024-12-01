@@ -407,6 +407,21 @@ namespace Evergine.Bindings.OpenXR
 		public override int GetHashCode() => Handle.GetHashCode();
 }
 
+	public partial struct XrFacialExpressionClientML : IEquatable<XrFacialExpressionClientML>
+{
+		public readonly ulong Handle;
+		public XrFacialExpressionClientML(ulong existingHandle) { Handle = existingHandle; }
+		public static XrFacialExpressionClientML Null => new XrFacialExpressionClientML(0);
+		public static implicit operator XrFacialExpressionClientML(ulong handle) => new XrFacialExpressionClientML(handle);
+		public static bool operator ==(XrFacialExpressionClientML left, XrFacialExpressionClientML right) => left.Handle == right.Handle;
+		public static bool operator !=(XrFacialExpressionClientML left, XrFacialExpressionClientML right) => left.Handle != right.Handle;
+		public static bool operator ==(XrFacialExpressionClientML left, ulong right) => left.Handle == right;
+		public static bool operator !=(XrFacialExpressionClientML left, ulong right) => left.Handle != right;
+		public bool Equals(XrFacialExpressionClientML h) => Handle == h.Handle;
+		public override bool Equals(object o) => o is XrFacialExpressionClientML h && Equals(h);
+		public override int GetHashCode() => Handle.GetHashCode();
+}
+
 	public partial struct XrEnvironmentDepthProviderMETA : IEquatable<XrEnvironmentDepthProviderMETA>
 {
 		public readonly ulong Handle;

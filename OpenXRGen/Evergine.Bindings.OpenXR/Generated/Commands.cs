@@ -1644,6 +1644,12 @@ namespace Evergine.Bindings.OpenXR
 			=> xrGetFaceExpressionWeights2FB_ptr(faceTracker, expressionInfo, expressionWeights);
 
 		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrShareSpacesMETADelegate(XrSession session, XrShareSpacesInfoMETA* info, ulong* requestId);
+		private static xrShareSpacesMETADelegate xrShareSpacesMETA_ptr;
+		public static XrResult xrShareSpacesMETA(XrSession session, XrShareSpacesInfoMETA* info, ulong* requestId)
+			=> xrShareSpacesMETA_ptr(session, info, requestId);
+
+		[UnmanagedFunctionPointer(CallConv)]
 		private delegate XrResult xrCreateEnvironmentDepthProviderMETADelegate(XrSession session, XrEnvironmentDepthProviderCreateInfoMETA* createInfo, XrEnvironmentDepthProviderMETA* environmentDepthProvider);
 		private static xrCreateEnvironmentDepthProviderMETADelegate xrCreateEnvironmentDepthProviderMETA_ptr;
 		public static XrResult xrCreateEnvironmentDepthProviderMETA(XrSession session, XrEnvironmentDepthProviderCreateInfoMETA* createInfo, XrEnvironmentDepthProviderMETA* environmentDepthProvider)
@@ -1876,6 +1882,48 @@ namespace Evergine.Bindings.OpenXR
 		private static xrRequestWorldMeshCompleteMLDelegate xrRequestWorldMeshCompleteML_ptr;
 		public static XrResult xrRequestWorldMeshCompleteML(XrWorldMeshDetectorML detector, XrWorldMeshRequestCompletionInfoML* completionInfo, ulong future, XrWorldMeshRequestCompletionML* completion)
 			=> xrRequestWorldMeshCompleteML_ptr(detector, completionInfo, future, completion);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrCreateFacialExpressionClientMLDelegate(XrSession session, XrFacialExpressionClientCreateInfoML* createInfo, XrFacialExpressionClientML* facialExpressionClient);
+		private static xrCreateFacialExpressionClientMLDelegate xrCreateFacialExpressionClientML_ptr;
+		public static XrResult xrCreateFacialExpressionClientML(XrSession session, XrFacialExpressionClientCreateInfoML* createInfo, XrFacialExpressionClientML* facialExpressionClient)
+			=> xrCreateFacialExpressionClientML_ptr(session, createInfo, facialExpressionClient);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrDestroyFacialExpressionClientMLDelegate(XrFacialExpressionClientML facialExpressionClient);
+		private static xrDestroyFacialExpressionClientMLDelegate xrDestroyFacialExpressionClientML_ptr;
+		public static XrResult xrDestroyFacialExpressionClientML(XrFacialExpressionClientML facialExpressionClient)
+			=> xrDestroyFacialExpressionClientML_ptr(facialExpressionClient);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrGetFacialExpressionBlendShapePropertiesMLDelegate(XrFacialExpressionClientML facialExpressionClient, XrFacialExpressionBlendShapeGetInfoML* blendShapeGetInfo, uint blendShapeCount, XrFacialExpressionBlendShapePropertiesML* blendShapes);
+		private static xrGetFacialExpressionBlendShapePropertiesMLDelegate xrGetFacialExpressionBlendShapePropertiesML_ptr;
+		public static XrResult xrGetFacialExpressionBlendShapePropertiesML(XrFacialExpressionClientML facialExpressionClient, XrFacialExpressionBlendShapeGetInfoML* blendShapeGetInfo, uint blendShapeCount, XrFacialExpressionBlendShapePropertiesML* blendShapes)
+			=> xrGetFacialExpressionBlendShapePropertiesML_ptr(facialExpressionClient, blendShapeGetInfo, blendShapeCount, blendShapes);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrStartColocationDiscoveryMETADelegate(XrSession session, XrColocationDiscoveryStartInfoMETA* info, ulong* discoveryRequestId);
+		private static xrStartColocationDiscoveryMETADelegate xrStartColocationDiscoveryMETA_ptr;
+		public static XrResult xrStartColocationDiscoveryMETA(XrSession session, XrColocationDiscoveryStartInfoMETA* info, ulong* discoveryRequestId)
+			=> xrStartColocationDiscoveryMETA_ptr(session, info, discoveryRequestId);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrStopColocationDiscoveryMETADelegate(XrSession session, XrColocationDiscoveryStopInfoMETA* info, ulong* requestId);
+		private static xrStopColocationDiscoveryMETADelegate xrStopColocationDiscoveryMETA_ptr;
+		public static XrResult xrStopColocationDiscoveryMETA(XrSession session, XrColocationDiscoveryStopInfoMETA* info, ulong* requestId)
+			=> xrStopColocationDiscoveryMETA_ptr(session, info, requestId);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrStartColocationAdvertisementMETADelegate(XrSession session, XrColocationAdvertisementStartInfoMETA* info, ulong* advertisementRequestId);
+		private static xrStartColocationAdvertisementMETADelegate xrStartColocationAdvertisementMETA_ptr;
+		public static XrResult xrStartColocationAdvertisementMETA(XrSession session, XrColocationAdvertisementStartInfoMETA* info, ulong* advertisementRequestId)
+			=> xrStartColocationAdvertisementMETA_ptr(session, info, advertisementRequestId);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrStopColocationAdvertisementMETADelegate(XrSession session, XrColocationAdvertisementStopInfoMETA* info, ulong* requestId);
+		private static xrStopColocationAdvertisementMETADelegate xrStopColocationAdvertisementMETA_ptr;
+		public static XrResult xrStopColocationAdvertisementMETA(XrSession session, XrColocationAdvertisementStopInfoMETA* info, ulong* requestId)
+			=> xrStopColocationAdvertisementMETA_ptr(session, info, requestId);
 
 		public static void LoadFunctionPointers(XrInstance instance = default)
 		{
@@ -2157,6 +2205,7 @@ namespace Evergine.Bindings.OpenXR
 			nativeLib.LoadFunction("xrCreateFaceTracker2FB",  out xrCreateFaceTracker2FB_ptr);
 			nativeLib.LoadFunction("xrDestroyFaceTracker2FB",  out xrDestroyFaceTracker2FB_ptr);
 			nativeLib.LoadFunction("xrGetFaceExpressionWeights2FB",  out xrGetFaceExpressionWeights2FB_ptr);
+			nativeLib.LoadFunction("xrShareSpacesMETA",  out xrShareSpacesMETA_ptr);
 			nativeLib.LoadFunction("xrCreateEnvironmentDepthProviderMETA",  out xrCreateEnvironmentDepthProviderMETA_ptr);
 			nativeLib.LoadFunction("xrDestroyEnvironmentDepthProviderMETA",  out xrDestroyEnvironmentDepthProviderMETA_ptr);
 			nativeLib.LoadFunction("xrStartEnvironmentDepthProviderMETA",  out xrStartEnvironmentDepthProviderMETA_ptr);
@@ -2196,6 +2245,13 @@ namespace Evergine.Bindings.OpenXR
 			nativeLib.LoadFunction("xrFreeWorldMeshBufferML",  out xrFreeWorldMeshBufferML_ptr);
 			nativeLib.LoadFunction("xrRequestWorldMeshAsyncML",  out xrRequestWorldMeshAsyncML_ptr);
 			nativeLib.LoadFunction("xrRequestWorldMeshCompleteML",  out xrRequestWorldMeshCompleteML_ptr);
+			nativeLib.LoadFunction("xrCreateFacialExpressionClientML",  out xrCreateFacialExpressionClientML_ptr);
+			nativeLib.LoadFunction("xrDestroyFacialExpressionClientML",  out xrDestroyFacialExpressionClientML_ptr);
+			nativeLib.LoadFunction("xrGetFacialExpressionBlendShapePropertiesML",  out xrGetFacialExpressionBlendShapePropertiesML_ptr);
+			nativeLib.LoadFunction("xrStartColocationDiscoveryMETA",  out xrStartColocationDiscoveryMETA_ptr);
+			nativeLib.LoadFunction("xrStopColocationDiscoveryMETA",  out xrStopColocationDiscoveryMETA_ptr);
+			nativeLib.LoadFunction("xrStartColocationAdvertisementMETA",  out xrStartColocationAdvertisementMETA_ptr);
+			nativeLib.LoadFunction("xrStopColocationAdvertisementMETA",  out xrStopColocationAdvertisementMETA_ptr);
 		}
 	}
 }

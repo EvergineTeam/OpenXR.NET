@@ -30,7 +30,7 @@ namespace Evergine.Bindings.OpenXR
 		public const string XR_KHR_ANDROID_CREATE_INSTANCE_EXTENSION_NAME = "XR_KHR_android_create_instance";
 		public const uint XR_KHR_composition_layer_depth_SPEC_VERSION = 6;
 		public const string XR_KHR_COMPOSITION_LAYER_DEPTH_EXTENSION_NAME = "XR_KHR_composition_layer_depth";
-		public const uint XR_KHR_vulkan_swapchain_format_list_SPEC_VERSION = 4;
+		public const uint XR_KHR_vulkan_swapchain_format_list_SPEC_VERSION = 5;
 		public const string XR_KHR_VULKAN_SWAPCHAIN_FORMAT_LIST_EXTENSION_NAME = "XR_KHR_vulkan_swapchain_format_list";
 		public const uint XR_EXT_performance_settings_SPEC_VERSION = 4;
 		public const string XR_EXT_PERFORMANCE_SETTINGS_EXTENSION_NAME = "XR_EXT_performance_settings";
@@ -311,8 +311,13 @@ namespace Evergine.Bindings.OpenXR
 		public const string XR_META_AUTOMATIC_LAYER_FILTER_EXTENSION_NAME = "XR_META_automatic_layer_filter";
 		public const uint XR_META_touch_controller_plus_SPEC_VERSION = 1;
 		public const string XR_META_TOUCH_CONTROLLER_PLUS_EXTENSION_NAME = "XR_META_touch_controller_plus";
+		public const uint XR_META_passthrough_layer_resumed_event_SPEC_VERSION = 1;
+		public const string XR_META_PASSTHROUGH_LAYER_RESUMED_EVENT_EXTENSION_NAME = "XR_META_passthrough_layer_resumed_event";
 		public const uint XR_FB_face_tracking2_SPEC_VERSION = 1;
 		public const string XR_FB_FACE_TRACKING2_EXTENSION_NAME = "XR_FB_face_tracking2";
+		public const uint XR_META_spatial_entity_sharing_SPEC_VERSION = 1;
+		public const string XR_META_SPATIAL_ENTITY_SHARING_EXTENSION_NAME = "XR_META_spatial_entity_sharing";
+		public const uint XR_MAX_SPACES_PER_SHARE_REQUEST_META = 32;
 		public const uint XR_META_environment_depth_SPEC_VERSION = 1;
 		public const string XR_META_ENVIRONMENT_DEPTH_EXTENSION_NAME = "XR_META_environment_depth";
 		public const uint XR_EXT_uuid_SPEC_VERSION = 1;
@@ -356,12 +361,19 @@ namespace Evergine.Bindings.OpenXR
 		public const string XR_ML_SYSTEM_NOTIFICATIONS_EXTENSION_NAME = "XR_ML_system_notifications";
 		public const uint XR_ML_world_mesh_detection_SPEC_VERSION = 1;
 		public const string XR_ML_WORLD_MESH_DETECTION_EXTENSION_NAME = "XR_ML_world_mesh_detection";
+		public const uint XR_ML_facial_expression_SPEC_VERSION = 1;
+		public const string XR_ML_FACIAL_EXPRESSION_EXTENSION_NAME = "XR_ML_facial_expression";
 		public const uint XR_ML_view_configuration_depth_range_change_SPEC_VERSION = 1;
 		public const string XR_ML_VIEW_CONFIGURATION_DEPTH_RANGE_CHANGE_EXTENSION_NAME = "XR_ML_view_configuration_depth_range_change";
 		public const uint XR_YVR_controller_interaction_SPEC_VERSION = 1;
 		public const string XR_YVR_CONTROLLER_INTERACTION_EXTENSION_NAME = "XR_YVR_controller_interaction";
 		public const uint XR_EXT_composition_layer_inverted_alpha_SPEC_VERSION = 1;
 		public const string XR_EXT_COMPOSITION_LAYER_INVERTED_ALPHA_EXTENSION_NAME = "XR_EXT_composition_layer_inverted_alpha";
+		public const uint XR_META_colocation_discovery_SPEC_VERSION = 1;
+		public const string XR_META_COLOCATION_DISCOVERY_EXTENSION_NAME = "XR_META_colocation_discovery";
+		public const uint XR_MAX_COLOCATION_DISCOVERY_BUFFER_SIZE_META = 1024;
+		public const uint XR_META_spatial_entity_group_sharing_SPEC_VERSION = 1;
+		public const string XR_META_SPATIAL_ENTITY_GROUP_SHARING_EXTENSION_NAME = "XR_META_spatial_entity_group_sharing";
 		public const uint XR_KHR_maintenance1_SPEC_VERSION = 1;
 		public const string XR_KHR_MAINTENANCE1_EXTENSION_NAME = "XR_KHR_maintenance1";
 	}
