@@ -279,6 +279,8 @@ namespace Evergine.Bindings.OpenXR
 		public const string XR_FB_TOUCH_CONTROLLER_PROXIMITY_EXTENSION_NAME = "XR_FB_touch_controller_proximity";
 		public const uint XR_FB_haptic_pcm_SPEC_VERSION = 1;
 		public const string XR_FB_HAPTIC_PCM_EXTENSION_NAME = "XR_FB_haptic_pcm";
+		public const uint XR_EXT_frame_synthesis_SPEC_VERSION = 1;
+		public const string XR_EXT_FRAME_SYNTHESIS_EXTENSION_NAME = "XR_EXT_frame_synthesis";
 		public const uint XR_FB_composition_layer_depth_test_SPEC_VERSION = 1;
 		public const string XR_FB_COMPOSITION_LAYER_DEPTH_TEST_EXTENSION_NAME = "XR_FB_composition_layer_depth_test";
 		public const uint XR_META_local_dimming_SPEC_VERSION = 1;
@@ -342,6 +344,8 @@ namespace Evergine.Bindings.OpenXR
 		public const string XR_MNDX_FORCE_FEEDBACK_CURL_EXTENSION_NAME = "XR_MNDX_force_feedback_curl";
 		public const uint XR_BD_controller_interaction_SPEC_VERSION = 2;
 		public const string XR_BD_CONTROLLER_INTERACTION_EXTENSION_NAME = "XR_BD_controller_interaction";
+		public const uint XR_BD_body_tracking_SPEC_VERSION = 1;
+		public const string XR_BD_BODY_TRACKING_EXTENSION_NAME = "XR_BD_body_tracking";
 		public const uint XR_EXT_local_floor_SPEC_VERSION = 1;
 		public const string XR_EXT_LOCAL_FLOOR_EXTENSION_NAME = "XR_EXT_local_floor";
 		public const uint XR_EXT_hand_tracking_data_source_SPEC_VERSION = 1;

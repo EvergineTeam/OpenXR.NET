@@ -1776,6 +1776,24 @@ namespace Evergine.Bindings.OpenXR
 			=> xrApplyForceFeedbackCurlMNDX_ptr(handTracker, locations);
 
 		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrCreateBodyTrackerBDDelegate(XrSession session, XrBodyTrackerCreateInfoBD* createInfo, XrBodyTrackerBD* bodyTracker);
+		private static xrCreateBodyTrackerBDDelegate xrCreateBodyTrackerBD_ptr;
+		public static XrResult xrCreateBodyTrackerBD(XrSession session, XrBodyTrackerCreateInfoBD* createInfo, XrBodyTrackerBD* bodyTracker)
+			=> xrCreateBodyTrackerBD_ptr(session, createInfo, bodyTracker);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrDestroyBodyTrackerBDDelegate(XrBodyTrackerBD bodyTracker);
+		private static xrDestroyBodyTrackerBDDelegate xrDestroyBodyTrackerBD_ptr;
+		public static XrResult xrDestroyBodyTrackerBD(XrBodyTrackerBD bodyTracker)
+			=> xrDestroyBodyTrackerBD_ptr(bodyTracker);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrLocateBodyJointsBDDelegate(XrBodyTrackerBD bodyTracker, XrBodyJointsLocateInfoBD* locateInfo, XrBodyJointLocationsBD* locations);
+		private static xrLocateBodyJointsBDDelegate xrLocateBodyJointsBD_ptr;
+		public static XrResult xrLocateBodyJointsBD(XrBodyTrackerBD bodyTracker, XrBodyJointsLocateInfoBD* locateInfo, XrBodyJointLocationsBD* locations)
+			=> xrLocateBodyJointsBD_ptr(bodyTracker, locateInfo, locations);
+
+		[UnmanagedFunctionPointer(CallConv)]
 		private delegate XrResult xrCreatePlaneDetectorEXTDelegate(XrSession session, XrPlaneDetectorCreateInfoEXT* createInfo, XrPlaneDetectorEXT* planeDetector);
 		private static xrCreatePlaneDetectorEXTDelegate xrCreatePlaneDetectorEXT_ptr;
 		public static XrResult xrCreatePlaneDetectorEXT(XrSession session, XrPlaneDetectorCreateInfoEXT* createInfo, XrPlaneDetectorEXT* planeDetector)
@@ -2227,6 +2245,9 @@ namespace Evergine.Bindings.OpenXR
 			nativeLib.LoadFunction("xrLocateBodyJointsHTC",  out xrLocateBodyJointsHTC_ptr);
 			nativeLib.LoadFunction("xrGetBodySkeletonHTC",  out xrGetBodySkeletonHTC_ptr);
 			nativeLib.LoadFunction("xrApplyForceFeedbackCurlMNDX",  out xrApplyForceFeedbackCurlMNDX_ptr);
+			nativeLib.LoadFunction("xrCreateBodyTrackerBD",  out xrCreateBodyTrackerBD_ptr);
+			nativeLib.LoadFunction("xrDestroyBodyTrackerBD",  out xrDestroyBodyTrackerBD_ptr);
+			nativeLib.LoadFunction("xrLocateBodyJointsBD",  out xrLocateBodyJointsBD_ptr);
 			nativeLib.LoadFunction("xrCreatePlaneDetectorEXT",  out xrCreatePlaneDetectorEXT_ptr);
 			nativeLib.LoadFunction("xrDestroyPlaneDetectorEXT",  out xrDestroyPlaneDetectorEXT_ptr);
 			nativeLib.LoadFunction("xrBeginPlaneDetectionEXT",  out xrBeginPlaneDetectionEXT_ptr);

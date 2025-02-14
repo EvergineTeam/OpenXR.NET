@@ -482,6 +482,21 @@ namespace Evergine.Bindings.OpenXR
 		public override int GetHashCode() => Handle.GetHashCode();
 }
 
+	public partial struct XrBodyTrackerBD : IEquatable<XrBodyTrackerBD>
+{
+		public readonly ulong Handle;
+		public XrBodyTrackerBD(ulong existingHandle) { Handle = existingHandle; }
+		public static XrBodyTrackerBD Null => new XrBodyTrackerBD(0);
+		public static implicit operator XrBodyTrackerBD(ulong handle) => new XrBodyTrackerBD(handle);
+		public static bool operator ==(XrBodyTrackerBD left, XrBodyTrackerBD right) => left.Handle == right.Handle;
+		public static bool operator !=(XrBodyTrackerBD left, XrBodyTrackerBD right) => left.Handle != right.Handle;
+		public static bool operator ==(XrBodyTrackerBD left, ulong right) => left.Handle == right;
+		public static bool operator !=(XrBodyTrackerBD left, ulong right) => left.Handle != right;
+		public bool Equals(XrBodyTrackerBD h) => Handle == h.Handle;
+		public override bool Equals(object o) => o is XrBodyTrackerBD h && Equals(h);
+		public override int GetHashCode() => Handle.GetHashCode();
+}
+
 	public partial struct XrSpatialGraphNodeBindingMSFT : IEquatable<XrSpatialGraphNodeBindingMSFT>
 {
 		public readonly ulong Handle;

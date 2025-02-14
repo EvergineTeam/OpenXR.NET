@@ -5214,6 +5214,32 @@ namespace Evergine.Bindings.OpenXR
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrFrameSynthesisInfoEXT
+	{
+		public XrStructureType type;
+		public void* next;
+		public ulong layerFlags;
+		public XrSwapchainSubImage motionVectorSubImage;
+		public XrVector4f motionVectorScale;
+		public XrVector4f motionVectorOffset;
+		public XrPosef appSpaceDeltaPose;
+		public XrSwapchainSubImage depthSubImage;
+		public float minDepth;
+		public float maxDepth;
+		public float nearZ;
+		public float farZ;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrFrameSynthesisConfigViewEXT
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint recommendedMotionVectorImageRectWidth;
+		public uint recommendedMotionVectorImageRectHeight;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct XrSpatialAnchorCreateInfoMSFT
 	{
 		public XrStructureType type;
@@ -7412,6 +7438,48 @@ namespace Evergine.Bindings.OpenXR
 		public void* next;
 		public XrSpatialAnchorStoreConnectionMSFT spatialAnchorStore;
 		public XrSpatialAnchorPersistenceNameMSFT spatialAnchorPersistenceName;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSystemBodyTrackingPropertiesBD
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrBool32 supportsBodyTracking;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrBodyTrackerCreateInfoBD
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrBodyJointSetBD jointSet;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrBodyJointsLocateInfoBD
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrSpace baseSpace;
+		public long time;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrBodyJointLocationBD
+	{
+		public ulong locationFlags;
+		public XrPosef pose;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrBodyJointLocationsBD
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrBool32 allJointPosesTracked;
+		public uint jointLocationCount;
+		public XrBodyJointLocationBD* jointLocations;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
