@@ -227,6 +227,9 @@ namespace Evergine.Bindings.OpenXR
 		public const uint XR_MAX_SPATIAL_ANCHOR_NAME_SIZE_MSFT = 256;
 		public const uint XR_MSFT_scene_marker_SPEC_VERSION = 1;
 		public const string XR_MSFT_SCENE_MARKER_EXTENSION_NAME = "XR_MSFT_scene_marker";
+		public const uint XR_KHR_extended_struct_name_lengths_SPEC_VERSION = 1;
+		public const string XR_KHR_EXTENDED_STRUCT_NAME_LENGTHS_EXTENSION_NAME = "XR_KHR_extended_struct_name_lengths";
+		public const uint XR_MAX_STRUCTURE_NAME_SIZE_EXTENDED_KHR = 256;
 		public const uint XR_ULTRALEAP_hand_tracking_forearm_SPEC_VERSION = 1;
 		public const string XR_ULTRALEAP_HAND_TRACKING_FOREARM_EXTENSION_NAME = "XR_ULTRALEAP_hand_tracking_forearm";
 		public const uint XR_FB_spatial_entity_query_SPEC_VERSION = 1;
@@ -303,6 +306,8 @@ namespace Evergine.Bindings.OpenXR
 		public const string XR_FB_SPATIAL_ENTITY_USER_EXTENSION_NAME = "XR_FB_spatial_entity_user";
 		public const uint XR_META_headset_id_SPEC_VERSION = 2;
 		public const string XR_META_HEADSET_ID_EXTENSION_NAME = "XR_META_headset_id";
+		public const uint XR_META_hand_tracking_microgestures_SPEC_VERSION = 1;
+		public const string XR_META_HAND_TRACKING_MICROGESTURES_EXTENSION_NAME = "XR_META_hand_tracking_microgestures";
 		public const uint XR_META_recommended_layer_resolution_SPEC_VERSION = 1;
 		public const string XR_META_RECOMMENDED_LAYER_RESOLUTION_EXTENSION_NAME = "XR_META_recommended_layer_resolution";
 		public const uint XR_META_passthrough_color_lut_SPEC_VERSION = 1;
@@ -380,5 +385,7 @@ namespace Evergine.Bindings.OpenXR
 		public const string XR_META_SPATIAL_ENTITY_GROUP_SHARING_EXTENSION_NAME = "XR_META_spatial_entity_group_sharing";
 		public const uint XR_KHR_maintenance1_SPEC_VERSION = 1;
 		public const string XR_KHR_MAINTENANCE1_EXTENSION_NAME = "XR_KHR_maintenance1";
+		public const uint XR_LOGITECH_mx_ink_stylus_interaction_SPEC_VERSION = 1;
+		public const string XR_LOGITECH_MX_INK_STYLUS_INTERACTION_EXTENSION_NAME = "XR_LOGITECH_mx_ink_stylus_interaction";
 	}
 }

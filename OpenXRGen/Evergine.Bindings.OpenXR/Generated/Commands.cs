@@ -1326,6 +1326,12 @@ namespace Evergine.Bindings.OpenXR
 			=> xrGetSceneMarkerDecodedStringMSFT_ptr(scene, markerId, bufferCapacityInput, bufferCountOutput, buffer);
 
 		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrStructureTypeToString2KHRDelegate(XrInstance instance, XrStructureType value, byte buffer);
+		private static xrStructureTypeToString2KHRDelegate xrStructureTypeToString2KHR_ptr;
+		public static XrResult xrStructureTypeToString2KHR(XrInstance instance, XrStructureType value, byte buffer)
+			=> xrStructureTypeToString2KHR_ptr(instance, value, buffer);
+
+		[UnmanagedFunctionPointer(CallConv)]
 		private delegate XrResult xrQuerySpacesFBDelegate(XrSession session, XrSpaceQueryInfoBaseHeaderFB* info, ulong* requestId);
 		private static xrQuerySpacesFBDelegate xrQuerySpacesFB_ptr;
 		public static XrResult xrQuerySpacesFB(XrSession session, XrSpaceQueryInfoBaseHeaderFB* info, ulong* requestId)
@@ -2170,6 +2176,7 @@ namespace Evergine.Bindings.OpenXR
 			nativeLib.LoadFunction("xrClearSpatialAnchorStoreMSFT",  out xrClearSpatialAnchorStoreMSFT_ptr);
 			nativeLib.LoadFunction("xrGetSceneMarkerRawDataMSFT",  out xrGetSceneMarkerRawDataMSFT_ptr);
 			nativeLib.LoadFunction("xrGetSceneMarkerDecodedStringMSFT",  out xrGetSceneMarkerDecodedStringMSFT_ptr);
+			nativeLib.LoadFunction("xrStructureTypeToString2KHR",  out xrStructureTypeToString2KHR_ptr);
 			nativeLib.LoadFunction("xrQuerySpacesFB",  out xrQuerySpacesFB_ptr);
 			nativeLib.LoadFunction("xrRetrieveSpaceQueryResultsFB",  out xrRetrieveSpaceQueryResultsFB_ptr);
 			nativeLib.LoadFunction("xrSaveSpaceFB",  out xrSaveSpaceFB_ptr);
