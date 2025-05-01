@@ -1800,6 +1800,180 @@ namespace Evergine.Bindings.OpenXR
 			=> xrLocateBodyJointsBD_ptr(bodyTracker, locateInfo, locations);
 
 		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrEnumerateSpatialEntityComponentTypesBDDelegate(XrSenseDataSnapshotBD snapshot, ulong entityId, uint componentTypeCapacityInput, uint* componentTypeCountOutput, XrSpatialEntityComponentTypeBD* componentTypes);
+		private static xrEnumerateSpatialEntityComponentTypesBDDelegate xrEnumerateSpatialEntityComponentTypesBD_ptr;
+		public static XrResult xrEnumerateSpatialEntityComponentTypesBD(XrSenseDataSnapshotBD snapshot, ulong entityId, uint componentTypeCapacityInput, uint* componentTypeCountOutput, XrSpatialEntityComponentTypeBD* componentTypes)
+			=> xrEnumerateSpatialEntityComponentTypesBD_ptr(snapshot, entityId, componentTypeCapacityInput, componentTypeCountOutput, componentTypes);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrGetSpatialEntityUuidBDDelegate(XrSenseDataSnapshotBD snapshot, ulong entityId, XrUuid* uuid);
+		private static xrGetSpatialEntityUuidBDDelegate xrGetSpatialEntityUuidBD_ptr;
+		public static XrResult xrGetSpatialEntityUuidBD(XrSenseDataSnapshotBD snapshot, ulong entityId, XrUuid* uuid)
+			=> xrGetSpatialEntityUuidBD_ptr(snapshot, entityId, uuid);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrGetSpatialEntityComponentDataBDDelegate(XrSenseDataSnapshotBD snapshot, XrSpatialEntityComponentGetInfoBD* getInfo, XrSpatialEntityComponentDataBaseHeaderBD* componentData);
+		private static xrGetSpatialEntityComponentDataBDDelegate xrGetSpatialEntityComponentDataBD_ptr;
+		public static XrResult xrGetSpatialEntityComponentDataBD(XrSenseDataSnapshotBD snapshot, XrSpatialEntityComponentGetInfoBD* getInfo, XrSpatialEntityComponentDataBaseHeaderBD* componentData)
+			=> xrGetSpatialEntityComponentDataBD_ptr(snapshot, getInfo, componentData);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrCreateSenseDataProviderBDDelegate(XrSession session, XrSenseDataProviderCreateInfoBD* createInfo, XrSenseDataProviderBD* provider);
+		private static xrCreateSenseDataProviderBDDelegate xrCreateSenseDataProviderBD_ptr;
+		public static XrResult xrCreateSenseDataProviderBD(XrSession session, XrSenseDataProviderCreateInfoBD* createInfo, XrSenseDataProviderBD* provider)
+			=> xrCreateSenseDataProviderBD_ptr(session, createInfo, provider);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrStartSenseDataProviderAsyncBDDelegate(XrSenseDataProviderBD provider, XrSenseDataProviderStartInfoBD* startInfo, ulong* future);
+		private static xrStartSenseDataProviderAsyncBDDelegate xrStartSenseDataProviderAsyncBD_ptr;
+		public static XrResult xrStartSenseDataProviderAsyncBD(XrSenseDataProviderBD provider, XrSenseDataProviderStartInfoBD* startInfo, ulong* future)
+			=> xrStartSenseDataProviderAsyncBD_ptr(provider, startInfo, future);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrStartSenseDataProviderCompleteBDDelegate(XrSession session, ulong future, XrFutureCompletionEXT* completion);
+		private static xrStartSenseDataProviderCompleteBDDelegate xrStartSenseDataProviderCompleteBD_ptr;
+		public static XrResult xrStartSenseDataProviderCompleteBD(XrSession session, ulong future, XrFutureCompletionEXT* completion)
+			=> xrStartSenseDataProviderCompleteBD_ptr(session, future, completion);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrGetSenseDataProviderStateBDDelegate(XrSenseDataProviderBD provider, XrSenseDataProviderStateBD* state);
+		private static xrGetSenseDataProviderStateBDDelegate xrGetSenseDataProviderStateBD_ptr;
+		public static XrResult xrGetSenseDataProviderStateBD(XrSenseDataProviderBD provider, XrSenseDataProviderStateBD* state)
+			=> xrGetSenseDataProviderStateBD_ptr(provider, state);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrQuerySenseDataAsyncBDDelegate(XrSenseDataProviderBD provider, XrSenseDataQueryInfoBD* queryInfo, ulong* future);
+		private static xrQuerySenseDataAsyncBDDelegate xrQuerySenseDataAsyncBD_ptr;
+		public static XrResult xrQuerySenseDataAsyncBD(XrSenseDataProviderBD provider, XrSenseDataQueryInfoBD* queryInfo, ulong* future)
+			=> xrQuerySenseDataAsyncBD_ptr(provider, queryInfo, future);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrQuerySenseDataCompleteBDDelegate(XrSenseDataProviderBD provider, ulong future, XrSenseDataQueryCompletionBD* completion);
+		private static xrQuerySenseDataCompleteBDDelegate xrQuerySenseDataCompleteBD_ptr;
+		public static XrResult xrQuerySenseDataCompleteBD(XrSenseDataProviderBD provider, ulong future, XrSenseDataQueryCompletionBD* completion)
+			=> xrQuerySenseDataCompleteBD_ptr(provider, future, completion);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrDestroySenseDataSnapshotBDDelegate(XrSenseDataSnapshotBD snapshot);
+		private static xrDestroySenseDataSnapshotBDDelegate xrDestroySenseDataSnapshotBD_ptr;
+		public static XrResult xrDestroySenseDataSnapshotBD(XrSenseDataSnapshotBD snapshot)
+			=> xrDestroySenseDataSnapshotBD_ptr(snapshot);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrGetQueriedSenseDataBDDelegate(XrSenseDataSnapshotBD snapshot, XrQueriedSenseDataGetInfoBD* getInfo, XrQueriedSenseDataBD* queriedSenseData);
+		private static xrGetQueriedSenseDataBDDelegate xrGetQueriedSenseDataBD_ptr;
+		public static XrResult xrGetQueriedSenseDataBD(XrSenseDataSnapshotBD snapshot, XrQueriedSenseDataGetInfoBD* getInfo, XrQueriedSenseDataBD* queriedSenseData)
+			=> xrGetQueriedSenseDataBD_ptr(snapshot, getInfo, queriedSenseData);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrStopSenseDataProviderBDDelegate(XrSenseDataProviderBD provider);
+		private static xrStopSenseDataProviderBDDelegate xrStopSenseDataProviderBD_ptr;
+		public static XrResult xrStopSenseDataProviderBD(XrSenseDataProviderBD provider)
+			=> xrStopSenseDataProviderBD_ptr(provider);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrDestroySenseDataProviderBDDelegate(XrSenseDataProviderBD provider);
+		private static xrDestroySenseDataProviderBDDelegate xrDestroySenseDataProviderBD_ptr;
+		public static XrResult xrDestroySenseDataProviderBD(XrSenseDataProviderBD provider)
+			=> xrDestroySenseDataProviderBD_ptr(provider);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrCreateSpatialEntityAnchorBDDelegate(XrSenseDataProviderBD provider, XrSpatialEntityAnchorCreateInfoBD* createInfo, XrAnchorBD* anchor);
+		private static xrCreateSpatialEntityAnchorBDDelegate xrCreateSpatialEntityAnchorBD_ptr;
+		public static XrResult xrCreateSpatialEntityAnchorBD(XrSenseDataProviderBD provider, XrSpatialEntityAnchorCreateInfoBD* createInfo, XrAnchorBD* anchor)
+			=> xrCreateSpatialEntityAnchorBD_ptr(provider, createInfo, anchor);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrDestroyAnchorBDDelegate(XrAnchorBD anchor);
+		private static xrDestroyAnchorBDDelegate xrDestroyAnchorBD_ptr;
+		public static XrResult xrDestroyAnchorBD(XrAnchorBD anchor)
+			=> xrDestroyAnchorBD_ptr(anchor);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrGetAnchorUuidBDDelegate(XrAnchorBD anchor, XrUuid* uuid);
+		private static xrGetAnchorUuidBDDelegate xrGetAnchorUuidBD_ptr;
+		public static XrResult xrGetAnchorUuidBD(XrAnchorBD anchor, XrUuid* uuid)
+			=> xrGetAnchorUuidBD_ptr(anchor, uuid);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrCreateAnchorSpaceBDDelegate(XrSession session, XrAnchorSpaceCreateInfoBD* createInfo, XrSpace* space);
+		private static xrCreateAnchorSpaceBDDelegate xrCreateAnchorSpaceBD_ptr;
+		public static XrResult xrCreateAnchorSpaceBD(XrSession session, XrAnchorSpaceCreateInfoBD* createInfo, XrSpace* space)
+			=> xrCreateAnchorSpaceBD_ptr(session, createInfo, space);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrCreateSpatialAnchorAsyncBDDelegate(XrSenseDataProviderBD provider, XrSpatialAnchorCreateInfoBD* info, ulong* future);
+		private static xrCreateSpatialAnchorAsyncBDDelegate xrCreateSpatialAnchorAsyncBD_ptr;
+		public static XrResult xrCreateSpatialAnchorAsyncBD(XrSenseDataProviderBD provider, XrSpatialAnchorCreateInfoBD* info, ulong* future)
+			=> xrCreateSpatialAnchorAsyncBD_ptr(provider, info, future);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrCreateSpatialAnchorCompleteBDDelegate(XrSenseDataProviderBD provider, ulong future, XrSpatialAnchorCreateCompletionBD* completion);
+		private static xrCreateSpatialAnchorCompleteBDDelegate xrCreateSpatialAnchorCompleteBD_ptr;
+		public static XrResult xrCreateSpatialAnchorCompleteBD(XrSenseDataProviderBD provider, ulong future, XrSpatialAnchorCreateCompletionBD* completion)
+			=> xrCreateSpatialAnchorCompleteBD_ptr(provider, future, completion);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrPersistSpatialAnchorAsyncBDDelegate(XrSenseDataProviderBD provider, XrSpatialAnchorPersistInfoBD* info, ulong* future);
+		private static xrPersistSpatialAnchorAsyncBDDelegate xrPersistSpatialAnchorAsyncBD_ptr;
+		public static XrResult xrPersistSpatialAnchorAsyncBD(XrSenseDataProviderBD provider, XrSpatialAnchorPersistInfoBD* info, ulong* future)
+			=> xrPersistSpatialAnchorAsyncBD_ptr(provider, info, future);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrPersistSpatialAnchorCompleteBDDelegate(XrSenseDataProviderBD provider, ulong future, XrFutureCompletionEXT* completion);
+		private static xrPersistSpatialAnchorCompleteBDDelegate xrPersistSpatialAnchorCompleteBD_ptr;
+		public static XrResult xrPersistSpatialAnchorCompleteBD(XrSenseDataProviderBD provider, ulong future, XrFutureCompletionEXT* completion)
+			=> xrPersistSpatialAnchorCompleteBD_ptr(provider, future, completion);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrUnpersistSpatialAnchorAsyncBDDelegate(XrSenseDataProviderBD provider, XrSpatialAnchorUnpersistInfoBD* info, ulong* future);
+		private static xrUnpersistSpatialAnchorAsyncBDDelegate xrUnpersistSpatialAnchorAsyncBD_ptr;
+		public static XrResult xrUnpersistSpatialAnchorAsyncBD(XrSenseDataProviderBD provider, XrSpatialAnchorUnpersistInfoBD* info, ulong* future)
+			=> xrUnpersistSpatialAnchorAsyncBD_ptr(provider, info, future);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrUnpersistSpatialAnchorCompleteBDDelegate(XrSenseDataProviderBD provider, ulong future, XrFutureCompletionEXT* completion);
+		private static xrUnpersistSpatialAnchorCompleteBDDelegate xrUnpersistSpatialAnchorCompleteBD_ptr;
+		public static XrResult xrUnpersistSpatialAnchorCompleteBD(XrSenseDataProviderBD provider, ulong future, XrFutureCompletionEXT* completion)
+			=> xrUnpersistSpatialAnchorCompleteBD_ptr(provider, future, completion);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrShareSpatialAnchorAsyncBDDelegate(XrSenseDataProviderBD provider, XrSpatialAnchorShareInfoBD* info, ulong* future);
+		private static xrShareSpatialAnchorAsyncBDDelegate xrShareSpatialAnchorAsyncBD_ptr;
+		public static XrResult xrShareSpatialAnchorAsyncBD(XrSenseDataProviderBD provider, XrSpatialAnchorShareInfoBD* info, ulong* future)
+			=> xrShareSpatialAnchorAsyncBD_ptr(provider, info, future);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrShareSpatialAnchorCompleteBDDelegate(XrSenseDataProviderBD provider, ulong future, XrFutureCompletionEXT* completion);
+		private static xrShareSpatialAnchorCompleteBDDelegate xrShareSpatialAnchorCompleteBD_ptr;
+		public static XrResult xrShareSpatialAnchorCompleteBD(XrSenseDataProviderBD provider, ulong future, XrFutureCompletionEXT* completion)
+			=> xrShareSpatialAnchorCompleteBD_ptr(provider, future, completion);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrDownloadSharedSpatialAnchorAsyncBDDelegate(XrSenseDataProviderBD provider, XrSharedSpatialAnchorDownloadInfoBD* info, ulong* future);
+		private static xrDownloadSharedSpatialAnchorAsyncBDDelegate xrDownloadSharedSpatialAnchorAsyncBD_ptr;
+		public static XrResult xrDownloadSharedSpatialAnchorAsyncBD(XrSenseDataProviderBD provider, XrSharedSpatialAnchorDownloadInfoBD* info, ulong* future)
+			=> xrDownloadSharedSpatialAnchorAsyncBD_ptr(provider, info, future);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrDownloadSharedSpatialAnchorCompleteBDDelegate(XrSenseDataProviderBD provider, ulong future, XrFutureCompletionEXT* completion);
+		private static xrDownloadSharedSpatialAnchorCompleteBDDelegate xrDownloadSharedSpatialAnchorCompleteBD_ptr;
+		public static XrResult xrDownloadSharedSpatialAnchorCompleteBD(XrSenseDataProviderBD provider, ulong future, XrFutureCompletionEXT* completion)
+			=> xrDownloadSharedSpatialAnchorCompleteBD_ptr(provider, future, completion);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrCaptureSceneAsyncBDDelegate(XrSenseDataProviderBD provider, XrSceneCaptureInfoBD* info, ulong* future);
+		private static xrCaptureSceneAsyncBDDelegate xrCaptureSceneAsyncBD_ptr;
+		public static XrResult xrCaptureSceneAsyncBD(XrSenseDataProviderBD provider, XrSceneCaptureInfoBD* info, ulong* future)
+			=> xrCaptureSceneAsyncBD_ptr(provider, info, future);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrCaptureSceneCompleteBDDelegate(XrSenseDataProviderBD provider, ulong future, XrFutureCompletionEXT* completion);
+		private static xrCaptureSceneCompleteBDDelegate xrCaptureSceneCompleteBD_ptr;
+		public static XrResult xrCaptureSceneCompleteBD(XrSenseDataProviderBD provider, ulong future, XrFutureCompletionEXT* completion)
+			=> xrCaptureSceneCompleteBD_ptr(provider, future, completion);
+
+		[UnmanagedFunctionPointer(CallConv)]
 		private delegate XrResult xrCreatePlaneDetectorEXTDelegate(XrSession session, XrPlaneDetectorCreateInfoEXT* createInfo, XrPlaneDetectorEXT* planeDetector);
 		private static xrCreatePlaneDetectorEXTDelegate xrCreatePlaneDetectorEXT_ptr;
 		public static XrResult xrCreatePlaneDetectorEXT(XrSession session, XrPlaneDetectorCreateInfoEXT* createInfo, XrPlaneDetectorEXT* planeDetector)
@@ -2255,6 +2429,35 @@ namespace Evergine.Bindings.OpenXR
 			nativeLib.LoadFunction("xrCreateBodyTrackerBD",  out xrCreateBodyTrackerBD_ptr);
 			nativeLib.LoadFunction("xrDestroyBodyTrackerBD",  out xrDestroyBodyTrackerBD_ptr);
 			nativeLib.LoadFunction("xrLocateBodyJointsBD",  out xrLocateBodyJointsBD_ptr);
+			nativeLib.LoadFunction("xrEnumerateSpatialEntityComponentTypesBD",  out xrEnumerateSpatialEntityComponentTypesBD_ptr);
+			nativeLib.LoadFunction("xrGetSpatialEntityUuidBD",  out xrGetSpatialEntityUuidBD_ptr);
+			nativeLib.LoadFunction("xrGetSpatialEntityComponentDataBD",  out xrGetSpatialEntityComponentDataBD_ptr);
+			nativeLib.LoadFunction("xrCreateSenseDataProviderBD",  out xrCreateSenseDataProviderBD_ptr);
+			nativeLib.LoadFunction("xrStartSenseDataProviderAsyncBD",  out xrStartSenseDataProviderAsyncBD_ptr);
+			nativeLib.LoadFunction("xrStartSenseDataProviderCompleteBD",  out xrStartSenseDataProviderCompleteBD_ptr);
+			nativeLib.LoadFunction("xrGetSenseDataProviderStateBD",  out xrGetSenseDataProviderStateBD_ptr);
+			nativeLib.LoadFunction("xrQuerySenseDataAsyncBD",  out xrQuerySenseDataAsyncBD_ptr);
+			nativeLib.LoadFunction("xrQuerySenseDataCompleteBD",  out xrQuerySenseDataCompleteBD_ptr);
+			nativeLib.LoadFunction("xrDestroySenseDataSnapshotBD",  out xrDestroySenseDataSnapshotBD_ptr);
+			nativeLib.LoadFunction("xrGetQueriedSenseDataBD",  out xrGetQueriedSenseDataBD_ptr);
+			nativeLib.LoadFunction("xrStopSenseDataProviderBD",  out xrStopSenseDataProviderBD_ptr);
+			nativeLib.LoadFunction("xrDestroySenseDataProviderBD",  out xrDestroySenseDataProviderBD_ptr);
+			nativeLib.LoadFunction("xrCreateSpatialEntityAnchorBD",  out xrCreateSpatialEntityAnchorBD_ptr);
+			nativeLib.LoadFunction("xrDestroyAnchorBD",  out xrDestroyAnchorBD_ptr);
+			nativeLib.LoadFunction("xrGetAnchorUuidBD",  out xrGetAnchorUuidBD_ptr);
+			nativeLib.LoadFunction("xrCreateAnchorSpaceBD",  out xrCreateAnchorSpaceBD_ptr);
+			nativeLib.LoadFunction("xrCreateSpatialAnchorAsyncBD",  out xrCreateSpatialAnchorAsyncBD_ptr);
+			nativeLib.LoadFunction("xrCreateSpatialAnchorCompleteBD",  out xrCreateSpatialAnchorCompleteBD_ptr);
+			nativeLib.LoadFunction("xrPersistSpatialAnchorAsyncBD",  out xrPersistSpatialAnchorAsyncBD_ptr);
+			nativeLib.LoadFunction("xrPersistSpatialAnchorCompleteBD",  out xrPersistSpatialAnchorCompleteBD_ptr);
+			nativeLib.LoadFunction("xrUnpersistSpatialAnchorAsyncBD",  out xrUnpersistSpatialAnchorAsyncBD_ptr);
+			nativeLib.LoadFunction("xrUnpersistSpatialAnchorCompleteBD",  out xrUnpersistSpatialAnchorCompleteBD_ptr);
+			nativeLib.LoadFunction("xrShareSpatialAnchorAsyncBD",  out xrShareSpatialAnchorAsyncBD_ptr);
+			nativeLib.LoadFunction("xrShareSpatialAnchorCompleteBD",  out xrShareSpatialAnchorCompleteBD_ptr);
+			nativeLib.LoadFunction("xrDownloadSharedSpatialAnchorAsyncBD",  out xrDownloadSharedSpatialAnchorAsyncBD_ptr);
+			nativeLib.LoadFunction("xrDownloadSharedSpatialAnchorCompleteBD",  out xrDownloadSharedSpatialAnchorCompleteBD_ptr);
+			nativeLib.LoadFunction("xrCaptureSceneAsyncBD",  out xrCaptureSceneAsyncBD_ptr);
+			nativeLib.LoadFunction("xrCaptureSceneCompleteBD",  out xrCaptureSceneCompleteBD_ptr);
 			nativeLib.LoadFunction("xrCreatePlaneDetectorEXT",  out xrCreatePlaneDetectorEXT_ptr);
 			nativeLib.LoadFunction("xrDestroyPlaneDetectorEXT",  out xrDestroyPlaneDetectorEXT_ptr);
 			nativeLib.LoadFunction("xrBeginPlaneDetectionEXT",  out xrBeginPlaneDetectionEXT_ptr);

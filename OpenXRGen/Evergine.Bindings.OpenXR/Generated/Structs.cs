@@ -8937,5 +8937,307 @@ namespace Evergine.Bindings.OpenXR
 		public XrPassthroughLayerFB layer;
 	}
 
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSystemSpatialSensingPropertiesBD
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrBool32 supportsSpatialSensing;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialEntityComponentGetInfoBD
+	{
+		public XrStructureType type;
+		public void* next;
+		public ulong entityId;
+		public XrSpatialEntityComponentTypeBD componentType;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialEntityComponentDataBaseHeaderBD
+	{
+		public XrStructureType type;
+		public void* next;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialEntityLocationGetInfoBD
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrSpace baseSpace;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialEntityComponentDataLocationBD
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrSpaceLocation location;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialEntityComponentDataSemanticBD
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint labelCapacityInput;
+		public uint labelCountOutput;
+		public XrSemanticLabelBD* labels;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialEntityComponentDataBoundingBox2DBD
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrRect2Df boundingBox2D;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialEntityComponentDataPolygonBD
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint vertexCapacityInput;
+		public uint vertexCountOutput;
+		public XrVector2f* vertices;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialEntityComponentDataBoundingBox3DBD
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrBoxf boundingBox3D;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialEntityComponentDataTriangleMeshBD
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint vertexCapacityInput;
+		public uint vertexCountOutput;
+		public XrVector3f* vertices;
+		public uint indexCapacityInput;
+		public uint indexCountOutput;
+		public ushort* indices;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSenseDataProviderCreateInfoBD
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrSenseDataProviderTypeBD providerType;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSenseDataProviderStartInfoBD
+	{
+		public XrStructureType type;
+		public void* next;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrEventDataSenseDataProviderStateChangedBD
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrSenseDataProviderBD provider;
+		public XrSenseDataProviderStateBD newState;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrEventDataSenseDataUpdatedBD
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrSenseDataProviderBD provider;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSenseDataQueryInfoBD
+	{
+		public XrStructureType type;
+		public void* next;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSenseDataFilterUuidBD
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint uuidCount;
+		public XrUuid* uuids;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSenseDataFilterSemanticBD
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint labelCount;
+		public XrSemanticLabelBD* labels;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSenseDataQueryCompletionBD
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrResult futureResult;
+		public XrSenseDataSnapshotBD snapshot;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrQueriedSenseDataGetInfoBD
+	{
+		public XrStructureType type;
+		public void* next;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrQueriedSenseDataBD
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint stateCapacityInput;
+		public uint stateCountOutput;
+		public XrSpatialEntityStateBD* states;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialEntityStateBD
+	{
+		public XrStructureType type;
+		public void* next;
+		public ulong entityId;
+		public long lastUpdateTime;
+		public XrUuid uuid;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialEntityAnchorCreateInfoBD
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrSenseDataSnapshotBD snapshot;
+		public ulong entityId;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrAnchorSpaceCreateInfoBD
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrAnchorBD anchor;
+		public XrPosef poseInAnchorSpace;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSystemSpatialAnchorPropertiesBD
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrBool32 supportsSpatialAnchor;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialAnchorCreateInfoBD
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrSpace space;
+		public XrPosef pose;
+		public long time;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialAnchorCreateCompletionBD
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrResult futureResult;
+		public XrAnchorBD anchor;
+		public XrUuid uuid;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialAnchorPersistInfoBD
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrPersistenceLocationBD location;
+		public XrAnchorBD anchor;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialAnchorUnpersistInfoBD
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrPersistenceLocationBD location;
+		public XrAnchorBD anchor;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSystemSpatialAnchorSharingPropertiesBD
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrBool32 supportsSpatialAnchorSharing;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialAnchorShareInfoBD
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrAnchorBD anchor;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSharedSpatialAnchorDownloadInfoBD
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrUuid uuid;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSystemSpatialMeshPropertiesBD
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrBool32 supportsSpatialMesh;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSenseDataProviderCreateInfoSpatialMeshBD
+	{
+		public XrStructureType type;
+		public void* next;
+		public ulong configFlags;
+		public XrSpatialMeshLodBD lod;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSystemSpatialScenePropertiesBD
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrBool32 supportsSpatialScene;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSceneCaptureInfoBD
+	{
+		public XrStructureType type;
+		public void* next;
+	}
+
 }
 

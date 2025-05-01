@@ -497,6 +497,51 @@ namespace Evergine.Bindings.OpenXR
 		public override int GetHashCode() => Handle.GetHashCode();
 }
 
+	public partial struct XrSenseDataProviderBD : IEquatable<XrSenseDataProviderBD>
+{
+		public readonly ulong Handle;
+		public XrSenseDataProviderBD(ulong existingHandle) { Handle = existingHandle; }
+		public static XrSenseDataProviderBD Null => new XrSenseDataProviderBD(0);
+		public static implicit operator XrSenseDataProviderBD(ulong handle) => new XrSenseDataProviderBD(handle);
+		public static bool operator ==(XrSenseDataProviderBD left, XrSenseDataProviderBD right) => left.Handle == right.Handle;
+		public static bool operator !=(XrSenseDataProviderBD left, XrSenseDataProviderBD right) => left.Handle != right.Handle;
+		public static bool operator ==(XrSenseDataProviderBD left, ulong right) => left.Handle == right;
+		public static bool operator !=(XrSenseDataProviderBD left, ulong right) => left.Handle != right;
+		public bool Equals(XrSenseDataProviderBD h) => Handle == h.Handle;
+		public override bool Equals(object o) => o is XrSenseDataProviderBD h && Equals(h);
+		public override int GetHashCode() => Handle.GetHashCode();
+}
+
+	public partial struct XrSenseDataSnapshotBD : IEquatable<XrSenseDataSnapshotBD>
+{
+		public readonly ulong Handle;
+		public XrSenseDataSnapshotBD(ulong existingHandle) { Handle = existingHandle; }
+		public static XrSenseDataSnapshotBD Null => new XrSenseDataSnapshotBD(0);
+		public static implicit operator XrSenseDataSnapshotBD(ulong handle) => new XrSenseDataSnapshotBD(handle);
+		public static bool operator ==(XrSenseDataSnapshotBD left, XrSenseDataSnapshotBD right) => left.Handle == right.Handle;
+		public static bool operator !=(XrSenseDataSnapshotBD left, XrSenseDataSnapshotBD right) => left.Handle != right.Handle;
+		public static bool operator ==(XrSenseDataSnapshotBD left, ulong right) => left.Handle == right;
+		public static bool operator !=(XrSenseDataSnapshotBD left, ulong right) => left.Handle != right;
+		public bool Equals(XrSenseDataSnapshotBD h) => Handle == h.Handle;
+		public override bool Equals(object o) => o is XrSenseDataSnapshotBD h && Equals(h);
+		public override int GetHashCode() => Handle.GetHashCode();
+}
+
+	public partial struct XrAnchorBD : IEquatable<XrAnchorBD>
+{
+		public readonly ulong Handle;
+		public XrAnchorBD(ulong existingHandle) { Handle = existingHandle; }
+		public static XrAnchorBD Null => new XrAnchorBD(0);
+		public static implicit operator XrAnchorBD(ulong handle) => new XrAnchorBD(handle);
+		public static bool operator ==(XrAnchorBD left, XrAnchorBD right) => left.Handle == right.Handle;
+		public static bool operator !=(XrAnchorBD left, XrAnchorBD right) => left.Handle != right.Handle;
+		public static bool operator ==(XrAnchorBD left, ulong right) => left.Handle == right;
+		public static bool operator !=(XrAnchorBD left, ulong right) => left.Handle != right;
+		public bool Equals(XrAnchorBD h) => Handle == h.Handle;
+		public override bool Equals(object o) => o is XrAnchorBD h && Equals(h);
+		public override int GetHashCode() => Handle.GetHashCode();
+}
+
 	public partial struct XrSpatialGraphNodeBindingMSFT : IEquatable<XrSpatialGraphNodeBindingMSFT>
 {
 		public readonly ulong Handle;

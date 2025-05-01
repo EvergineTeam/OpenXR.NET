@@ -302,6 +302,8 @@ namespace Evergine.Bindings.OpenXR
 		public const string XR_META_PERFORMANCE_METRICS_EXTENSION_NAME = "XR_META_performance_metrics";
 		public const uint XR_FB_spatial_entity_storage_batch_SPEC_VERSION = 1;
 		public const string XR_FB_SPATIAL_ENTITY_STORAGE_BATCH_EXTENSION_NAME = "XR_FB_spatial_entity_storage_batch";
+		public const uint XR_META_detached_controllers_SPEC_VERSION = 1;
+		public const string XR_META_DETACHED_CONTROLLERS_EXTENSION_NAME = "XR_META_detached_controllers";
 		public const uint XR_FB_spatial_entity_user_SPEC_VERSION = 1;
 		public const string XR_FB_SPATIAL_ENTITY_USER_EXTENSION_NAME = "XR_FB_spatial_entity_user";
 		public const uint XR_META_headset_id_SPEC_VERSION = 2;
@@ -351,6 +353,16 @@ namespace Evergine.Bindings.OpenXR
 		public const string XR_BD_CONTROLLER_INTERACTION_EXTENSION_NAME = "XR_BD_controller_interaction";
 		public const uint XR_BD_body_tracking_SPEC_VERSION = 1;
 		public const string XR_BD_BODY_TRACKING_EXTENSION_NAME = "XR_BD_body_tracking";
+		public const uint XR_BD_spatial_sensing_SPEC_VERSION = 1;
+		public const string XR_BD_SPATIAL_SENSING_EXTENSION_NAME = "XR_BD_spatial_sensing";
+		public const uint XR_BD_spatial_anchor_SPEC_VERSION = 1;
+		public const string XR_BD_SPATIAL_ANCHOR_EXTENSION_NAME = "XR_BD_spatial_anchor";
+		public const uint XR_BD_spatial_anchor_sharing_SPEC_VERSION = 1;
+		public const string XR_BD_SPATIAL_ANCHOR_SHARING_EXTENSION_NAME = "XR_BD_spatial_anchor_sharing";
+		public const uint XR_BD_spatial_scene_SPEC_VERSION = 1;
+		public const string XR_BD_SPATIAL_SCENE_EXTENSION_NAME = "XR_BD_spatial_scene";
+		public const uint XR_BD_spatial_mesh_SPEC_VERSION = 1;
+		public const string XR_BD_SPATIAL_MESH_EXTENSION_NAME = "XR_BD_spatial_mesh";
 		public const uint XR_EXT_local_floor_SPEC_VERSION = 1;
 		public const string XR_EXT_LOCAL_FLOOR_EXTENSION_NAME = "XR_EXT_local_floor";
 		public const uint XR_EXT_hand_tracking_data_source_SPEC_VERSION = 1;
