@@ -5534,6 +5534,14 @@ namespace Evergine.Bindings.OpenXR
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSystemPropertiesBodyTrackingFullBodyMETA
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrBool32 supportsFullBodyTracking;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct XrSystemEyeTrackingPropertiesFB
 	{
 		public XrStructureType type;
@@ -7483,6 +7491,15 @@ namespace Evergine.Bindings.OpenXR
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrFuturePollResultProgressBD
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrBool32 isSupported;
+		public uint progressPercentage;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct XrFacialTrackerCreateInfoHTC
 	{
 		public XrStructureType type;
@@ -8626,6 +8643,367 @@ namespace Evergine.Bindings.OpenXR
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialCapabilityComponentTypesEXT
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint componentTypeCapacityInput;
+		public uint componentTypeCountOutput;
+		public XrSpatialComponentTypeEXT* componentTypes;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialCapabilityConfigurationBaseHeaderEXT
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrSpatialCapabilityEXT capability;
+		public uint enabledComponentCount;
+		public XrSpatialComponentTypeEXT* enabledComponents;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialContextCreateInfoEXT
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint capabilityConfigCount;
+		public XrSpatialCapabilityConfigurationBaseHeaderEXT** capabilityConfigs;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrCreateSpatialContextCompletionEXT
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrResult futureResult;
+		public XrSpatialContextEXT spatialContext;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialDiscoverySnapshotCreateInfoEXT
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint componentTypeCount;
+		public XrSpatialComponentTypeEXT* componentTypes;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrCreateSpatialDiscoverySnapshotCompletionInfoEXT
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrSpace baseSpace;
+		public long time;
+		public ulong future;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrCreateSpatialDiscoverySnapshotCompletionEXT
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrResult futureResult;
+		public XrSpatialSnapshotEXT snapshot;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialComponentDataQueryConditionEXT
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint componentTypeCount;
+		public XrSpatialComponentTypeEXT* componentTypes;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialComponentDataQueryResultEXT
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint entityIdCapacityInput;
+		public uint entityIdCountOutput;
+		public ulong* entityIds;
+		public uint entityStateCapacityInput;
+		public uint entityStateCountOutput;
+		public XrSpatialEntityTrackingStateEXT* entityStates;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialBufferEXT
+	{
+		public ulong bufferId;
+		public XrSpatialBufferTypeEXT bufferType;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialBufferGetInfoEXT
+	{
+		public XrStructureType type;
+		public void* next;
+		public ulong bufferId;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialBounded2DDataEXT
+	{
+		public XrPosef center;
+		public XrExtent2Df extents;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialComponentBounded2DListEXT
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint boundCount;
+		public XrSpatialBounded2DDataEXT* bounds;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialComponentBounded3DListEXT
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint boundCount;
+		public XrBoxf* bounds;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialComponentParentListEXT
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint parentCount;
+		public ulong* parents;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialMeshDataEXT
+	{
+		public XrPosef origin;
+		public XrSpatialBufferEXT vertexBuffer;
+		public XrSpatialBufferEXT indexBuffer;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialComponentMesh3DListEXT
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint meshCount;
+		public XrSpatialMeshDataEXT* meshes;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialEntityFromIdCreateInfoEXT
+	{
+		public XrStructureType type;
+		public void* next;
+		public ulong entityId;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialUpdateSnapshotCreateInfoEXT
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint entityCount;
+		public XrSpatialEntityEXT* entities;
+		public uint componentTypeCount;
+		public XrSpatialComponentTypeEXT* componentTypes;
+		public XrSpace baseSpace;
+		public long time;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrEventDataSpatialDiscoveryRecommendedEXT
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrSpatialContextEXT spatialContext;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialFilterTrackingStateEXT
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrSpatialEntityTrackingStateEXT trackingState;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialCapabilityConfigurationAnchorEXT
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrSpatialCapabilityEXT capability;
+		public uint enabledComponentCount;
+		public XrSpatialComponentTypeEXT* enabledComponents;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialComponentAnchorListEXT
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint locationCount;
+		public XrPosef* locations;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialAnchorCreateInfoEXT
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrSpace baseSpace;
+		public long time;
+		public XrPosef pose;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialPersistenceContextCreateInfoEXT
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrSpatialPersistenceScopeEXT scope;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrCreateSpatialPersistenceContextCompletionEXT
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrResult futureResult;
+		public XrSpatialPersistenceContextResultEXT createResult;
+		public XrSpatialPersistenceContextEXT persistenceContext;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialContextPersistenceConfigEXT
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint persistenceContextCount;
+		public XrSpatialPersistenceContextEXT* persistenceContexts;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialDiscoveryPersistenceUuidFilterEXT
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint persistedUuidCount;
+		public XrUuid* persistedUuids;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialPersistenceDataEXT
+	{
+		public XrUuid persistUuid;
+		public XrSpatialPersistenceStateEXT persistState;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialComponentPersistenceListEXT
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint persistDataCount;
+		public XrSpatialPersistenceDataEXT* persistData;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialEntityPersistInfoEXT
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrSpatialContextEXT spatialContext;
+		public ulong spatialEntityId;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrPersistSpatialEntityCompletionEXT
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrResult futureResult;
+		public XrSpatialPersistenceContextResultEXT persistResult;
+		public XrUuid persistUuid;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialEntityUnpersistInfoEXT
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrUuid persistUuid;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrUnpersistSpatialEntityCompletionEXT
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrResult futureResult;
+		public XrSpatialPersistenceContextResultEXT unpersistResult;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialCapabilityConfigurationPlaneTrackingEXT
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrSpatialCapabilityEXT capability;
+		public uint enabledComponentCount;
+		public XrSpatialComponentTypeEXT* enabledComponents;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialComponentPlaneAlignmentListEXT
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint planeAlignmentCount;
+		public XrSpatialPlaneAlignmentEXT* planeAlignments;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialComponentMesh2DListEXT
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint meshCount;
+		public XrSpatialMeshDataEXT* meshes;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialPolygon2DDataEXT
+	{
+		public XrPosef origin;
+		public XrSpatialBufferEXT vertexBuffer;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialComponentPolygon2DListEXT
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint polygonCount;
+		public XrSpatialPolygon2DDataEXT* polygons;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialComponentPlaneSemanticLabelListEXT
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint semanticLabelCount;
+		public XrSpatialPlaneSemanticLabelEXT* semanticLabels;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct XrSystemNotificationsSetInfoML
 	{
 		public XrStructureType type;
@@ -8938,6 +9316,141 @@ namespace Evergine.Bindings.OpenXR
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrRenderModelCreateInfoEXT
+	{
+		public XrStructureType type;
+		public void* next;
+		public ulong renderModelId;
+		public uint gltfExtensionCount;
+		public byte** gltfExtensions;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrRenderModelPropertiesGetInfoEXT
+	{
+		public XrStructureType type;
+		public void* next;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrRenderModelPropertiesEXT
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrUuid cacheId;
+		public uint animatableNodeCount;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrRenderModelSpaceCreateInfoEXT
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrRenderModelEXT renderModel;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrRenderModelAssetCreateInfoEXT
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrUuid cacheId;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrRenderModelAssetDataGetInfoEXT
+	{
+		public XrStructureType type;
+		public void* next;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrRenderModelAssetDataEXT
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint bufferCapacityInput;
+		public uint bufferCountOutput;
+		public byte* buffer;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrRenderModelAssetPropertiesGetInfoEXT
+	{
+		public XrStructureType type;
+		public void* next;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrRenderModelAssetNodePropertiesEXT
+	{
+		public fixed byte uniqueName[(int)OpenXRNative.XR_MAX_RENDER_MODEL_ASSET_NODE_NAME_SIZE_EXT];
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrRenderModelAssetPropertiesEXT
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint nodePropertyCount;
+		public XrRenderModelAssetNodePropertiesEXT* nodeProperties;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrRenderModelStateGetInfoEXT
+	{
+		public XrStructureType type;
+		public void* next;
+		public long displayTime;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrRenderModelNodeStateEXT
+	{
+		public XrPosef nodePose;
+		public XrBool32 isVisible;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrRenderModelStateEXT
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint nodeStateCount;
+		public XrRenderModelNodeStateEXT* nodeStates;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrInteractionRenderModelIdsEnumerateInfoEXT
+	{
+		public XrStructureType type;
+		public void* next;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrInteractionRenderModelSubactionPathInfoEXT
+	{
+		public XrStructureType type;
+		public void* next;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrInteractionRenderModelTopLevelUserPathGetInfoEXT
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint topLevelUserPathCount;
+		public ulong* topLevelUserPaths;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrEventDataInteractionRenderModelsChangedEXT
+	{
+		public XrStructureType type;
+		public void* next;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct XrSystemSpatialSensingPropertiesBD
 	{
 		public XrStructureType type;
@@ -9237,6 +9750,128 @@ namespace Evergine.Bindings.OpenXR
 	{
 		public XrStructureType type;
 		public void* next;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSystemSpatialPlanePropertiesBD
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrBool32 supportsSpatialPlane;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialEntityComponentDataPlaneOrientationBD
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrPlaneOrientationBD orientation;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSenseDataFilterPlaneOrientationBD
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint orientationCount;
+		public XrPlaneOrientationBD* orientations;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSystemSimultaneousHandsAndControllersPropertiesMETA
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrBool32 supportsSimultaneousHandsAndControllers;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSimultaneousHandsAndControllersTrackingResumeInfoMETA
+	{
+		public XrStructureType type;
+		public void* next;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSimultaneousHandsAndControllersTrackingPauseInfoMETA
+	{
+		public XrStructureType type;
+		public void* next;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialCapabilityConfigurationArucoMarkerEXT
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrSpatialCapabilityEXT capability;
+		public uint enabledComponentCount;
+		public XrSpatialComponentTypeEXT* enabledComponents;
+		public XrSpatialMarkerArucoDictEXT arUcoDict;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialCapabilityConfigurationAprilTagEXT
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrSpatialCapabilityEXT capability;
+		public uint enabledComponentCount;
+		public XrSpatialComponentTypeEXT* enabledComponents;
+		public XrSpatialMarkerAprilTagDictEXT aprilDict;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialCapabilityConfigurationQrCodeEXT
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrSpatialCapabilityEXT capability;
+		public uint enabledComponentCount;
+		public XrSpatialComponentTypeEXT* enabledComponents;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialCapabilityConfigurationMicroQrCodeEXT
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrSpatialCapabilityEXT capability;
+		public uint enabledComponentCount;
+		public XrSpatialComponentTypeEXT* enabledComponents;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialMarkerSizeEXT
+	{
+		public XrStructureType type;
+		public void* next;
+		public float markerSideLength;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialMarkerStaticOptimizationEXT
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrBool32 optimizeForStaticMarker;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialMarkerDataEXT
+	{
+		public XrSpatialCapabilityEXT capability;
+		public uint markerId;
+		public XrSpatialBufferEXT data;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialComponentMarkerListEXT
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint markerCount;
+		public XrSpatialMarkerDataEXT* markers;
 	}
 
 }
