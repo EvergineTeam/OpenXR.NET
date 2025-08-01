@@ -1608,6 +1608,18 @@ namespace Evergine.Bindings.OpenXR
 			=> xrGetRecommendedLayerResolutionMETA_ptr(session, info, resolution);
 
 		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrSaveSpacesMETADelegate(XrSession session, XrSpacesSaveInfoMETA* info, ulong* requestId);
+		private static xrSaveSpacesMETADelegate xrSaveSpacesMETA_ptr;
+		public static XrResult xrSaveSpacesMETA(XrSession session, XrSpacesSaveInfoMETA* info, ulong* requestId)
+			=> xrSaveSpacesMETA_ptr(session, info, requestId);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrEraseSpacesMETADelegate(XrSession session, XrSpacesEraseInfoMETA* info, ulong* requestId);
+		private static xrEraseSpacesMETADelegate xrEraseSpacesMETA_ptr;
+		public static XrResult xrEraseSpacesMETA(XrSession session, XrSpacesEraseInfoMETA* info, ulong* requestId)
+			=> xrEraseSpacesMETA_ptr(session, info, requestId);
+
+		[UnmanagedFunctionPointer(CallConv)]
 		private delegate XrResult xrCreatePassthroughColorLutMETADelegate(XrPassthroughFB passthrough, XrPassthroughColorLutCreateInfoMETA* createInfo, XrPassthroughColorLutMETA* colorLut);
 		private static xrCreatePassthroughColorLutMETADelegate xrCreatePassthroughColorLutMETA_ptr;
 		public static XrResult xrCreatePassthroughColorLutMETA(XrPassthroughFB passthrough, XrPassthroughColorLutCreateInfoMETA* createInfo, XrPassthroughColorLutMETA* colorLut)
@@ -1630,6 +1642,18 @@ namespace Evergine.Bindings.OpenXR
 		private static xrGetSpaceTriangleMeshMETADelegate xrGetSpaceTriangleMeshMETA_ptr;
 		public static XrResult xrGetSpaceTriangleMeshMETA(XrSpace space, XrSpaceTriangleMeshGetInfoMETA* getInfo, XrSpaceTriangleMeshMETA* triangleMeshOutput)
 			=> xrGetSpaceTriangleMeshMETA_ptr(space, getInfo, triangleMeshOutput);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrSuggestBodyTrackingCalibrationOverrideMETADelegate(XrBodyTrackerFB bodyTracker, XrBodyTrackingCalibrationInfoMETA* calibrationInfo);
+		private static xrSuggestBodyTrackingCalibrationOverrideMETADelegate xrSuggestBodyTrackingCalibrationOverrideMETA_ptr;
+		public static XrResult xrSuggestBodyTrackingCalibrationOverrideMETA(XrBodyTrackerFB bodyTracker, XrBodyTrackingCalibrationInfoMETA* calibrationInfo)
+			=> xrSuggestBodyTrackingCalibrationOverrideMETA_ptr(bodyTracker, calibrationInfo);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrResetBodyTrackingCalibrationMETADelegate(XrBodyTrackerFB bodyTracker);
+		private static xrResetBodyTrackingCalibrationMETADelegate xrResetBodyTrackingCalibrationMETA_ptr;
+		public static XrResult xrResetBodyTrackingCalibrationMETA(XrBodyTrackerFB bodyTracker)
+			=> xrResetBodyTrackingCalibrationMETA_ptr(bodyTracker);
 
 		[UnmanagedFunctionPointer(CallConv)]
 		private delegate XrResult xrCreateFaceTracker2FBDelegate(XrSession session, XrFaceTrackerCreateInfo2FB* createInfo, XrFaceTracker2FB* faceTracker);
@@ -2082,6 +2106,120 @@ namespace Evergine.Bindings.OpenXR
 			=> xrGetPlanePolygonBufferEXT_ptr(planeDetector, planeId, polygonBufferIndex, polygonBuffer);
 
 		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrEnumerateSupportedTrackableTypesANDROIDDelegate(XrInstance instance, ulong systemId, uint trackableTypeCapacityInput, uint* trackableTypeCountOutput, XrTrackableTypeANDROID* trackableTypes);
+		private static xrEnumerateSupportedTrackableTypesANDROIDDelegate xrEnumerateSupportedTrackableTypesANDROID_ptr;
+		public static XrResult xrEnumerateSupportedTrackableTypesANDROID(XrInstance instance, ulong systemId, uint trackableTypeCapacityInput, uint* trackableTypeCountOutput, XrTrackableTypeANDROID* trackableTypes)
+			=> xrEnumerateSupportedTrackableTypesANDROID_ptr(instance, systemId, trackableTypeCapacityInput, trackableTypeCountOutput, trackableTypes);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrEnumerateSupportedAnchorTrackableTypesANDROIDDelegate(XrInstance instance, ulong systemId, uint trackableTypeCapacityInput, uint* trackableTypeCountOutput, XrTrackableTypeANDROID* trackableTypes);
+		private static xrEnumerateSupportedAnchorTrackableTypesANDROIDDelegate xrEnumerateSupportedAnchorTrackableTypesANDROID_ptr;
+		public static XrResult xrEnumerateSupportedAnchorTrackableTypesANDROID(XrInstance instance, ulong systemId, uint trackableTypeCapacityInput, uint* trackableTypeCountOutput, XrTrackableTypeANDROID* trackableTypes)
+			=> xrEnumerateSupportedAnchorTrackableTypesANDROID_ptr(instance, systemId, trackableTypeCapacityInput, trackableTypeCountOutput, trackableTypes);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrCreateTrackableTrackerANDROIDDelegate(XrSession session, XrTrackableTrackerCreateInfoANDROID* createInfo, XrTrackableTrackerANDROID* trackableTracker);
+		private static xrCreateTrackableTrackerANDROIDDelegate xrCreateTrackableTrackerANDROID_ptr;
+		public static XrResult xrCreateTrackableTrackerANDROID(XrSession session, XrTrackableTrackerCreateInfoANDROID* createInfo, XrTrackableTrackerANDROID* trackableTracker)
+			=> xrCreateTrackableTrackerANDROID_ptr(session, createInfo, trackableTracker);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrDestroyTrackableTrackerANDROIDDelegate(XrTrackableTrackerANDROID trackableTracker);
+		private static xrDestroyTrackableTrackerANDROIDDelegate xrDestroyTrackableTrackerANDROID_ptr;
+		public static XrResult xrDestroyTrackableTrackerANDROID(XrTrackableTrackerANDROID trackableTracker)
+			=> xrDestroyTrackableTrackerANDROID_ptr(trackableTracker);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrGetAllTrackablesANDROIDDelegate(XrTrackableTrackerANDROID trackableTracker, uint trackableCapacityInput, uint* trackableCountOutput, ulong* trackables);
+		private static xrGetAllTrackablesANDROIDDelegate xrGetAllTrackablesANDROID_ptr;
+		public static XrResult xrGetAllTrackablesANDROID(XrTrackableTrackerANDROID trackableTracker, uint trackableCapacityInput, uint* trackableCountOutput, ulong* trackables)
+			=> xrGetAllTrackablesANDROID_ptr(trackableTracker, trackableCapacityInput, trackableCountOutput, trackables);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrGetTrackablePlaneANDROIDDelegate(XrTrackableTrackerANDROID trackableTracker, XrTrackableGetInfoANDROID* getInfo, XrTrackablePlaneANDROID* planeOutput);
+		private static xrGetTrackablePlaneANDROIDDelegate xrGetTrackablePlaneANDROID_ptr;
+		public static XrResult xrGetTrackablePlaneANDROID(XrTrackableTrackerANDROID trackableTracker, XrTrackableGetInfoANDROID* getInfo, XrTrackablePlaneANDROID* planeOutput)
+			=> xrGetTrackablePlaneANDROID_ptr(trackableTracker, getInfo, planeOutput);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrCreateAnchorSpaceANDROIDDelegate(XrSession session, XrAnchorSpaceCreateInfoANDROID* createInfo, XrSpace* anchorOutput);
+		private static xrCreateAnchorSpaceANDROIDDelegate xrCreateAnchorSpaceANDROID_ptr;
+		public static XrResult xrCreateAnchorSpaceANDROID(XrSession session, XrAnchorSpaceCreateInfoANDROID* createInfo, XrSpace* anchorOutput)
+			=> xrCreateAnchorSpaceANDROID_ptr(session, createInfo, anchorOutput);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrEnumerateSupportedPersistenceAnchorTypesANDROIDDelegate(XrInstance instance, ulong systemId, uint trackableTypeCapacityInput, uint* trackableTypeCountOutput, XrTrackableTypeANDROID* trackableTypes);
+		private static xrEnumerateSupportedPersistenceAnchorTypesANDROIDDelegate xrEnumerateSupportedPersistenceAnchorTypesANDROID_ptr;
+		public static XrResult xrEnumerateSupportedPersistenceAnchorTypesANDROID(XrInstance instance, ulong systemId, uint trackableTypeCapacityInput, uint* trackableTypeCountOutput, XrTrackableTypeANDROID* trackableTypes)
+			=> xrEnumerateSupportedPersistenceAnchorTypesANDROID_ptr(instance, systemId, trackableTypeCapacityInput, trackableTypeCountOutput, trackableTypes);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrCreateDeviceAnchorPersistenceANDROIDDelegate(XrSession session, XrDeviceAnchorPersistenceCreateInfoANDROID* createInfo, XrDeviceAnchorPersistenceANDROID* outHandle);
+		private static xrCreateDeviceAnchorPersistenceANDROIDDelegate xrCreateDeviceAnchorPersistenceANDROID_ptr;
+		public static XrResult xrCreateDeviceAnchorPersistenceANDROID(XrSession session, XrDeviceAnchorPersistenceCreateInfoANDROID* createInfo, XrDeviceAnchorPersistenceANDROID* outHandle)
+			=> xrCreateDeviceAnchorPersistenceANDROID_ptr(session, createInfo, outHandle);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrDestroyDeviceAnchorPersistenceANDROIDDelegate(XrDeviceAnchorPersistenceANDROID handle);
+		private static xrDestroyDeviceAnchorPersistenceANDROIDDelegate xrDestroyDeviceAnchorPersistenceANDROID_ptr;
+		public static XrResult xrDestroyDeviceAnchorPersistenceANDROID(XrDeviceAnchorPersistenceANDROID handle)
+			=> xrDestroyDeviceAnchorPersistenceANDROID_ptr(handle);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrPersistAnchorANDROIDDelegate(XrDeviceAnchorPersistenceANDROID handle, XrPersistedAnchorSpaceInfoANDROID* persistedInfo, XrUuid* anchorIdOutput);
+		private static xrPersistAnchorANDROIDDelegate xrPersistAnchorANDROID_ptr;
+		public static XrResult xrPersistAnchorANDROID(XrDeviceAnchorPersistenceANDROID handle, XrPersistedAnchorSpaceInfoANDROID* persistedInfo, XrUuid* anchorIdOutput)
+			=> xrPersistAnchorANDROID_ptr(handle, persistedInfo, anchorIdOutput);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrGetAnchorPersistStateANDROIDDelegate(XrDeviceAnchorPersistenceANDROID handle, XrUuid* anchorId, XrAnchorPersistStateANDROID* persistState);
+		private static xrGetAnchorPersistStateANDROIDDelegate xrGetAnchorPersistStateANDROID_ptr;
+		public static XrResult xrGetAnchorPersistStateANDROID(XrDeviceAnchorPersistenceANDROID handle, XrUuid* anchorId, XrAnchorPersistStateANDROID* persistState)
+			=> xrGetAnchorPersistStateANDROID_ptr(handle, anchorId, persistState);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrCreatePersistedAnchorSpaceANDROIDDelegate(XrDeviceAnchorPersistenceANDROID handle, XrPersistedAnchorSpaceCreateInfoANDROID* createInfo, XrSpace* anchorOutput);
+		private static xrCreatePersistedAnchorSpaceANDROIDDelegate xrCreatePersistedAnchorSpaceANDROID_ptr;
+		public static XrResult xrCreatePersistedAnchorSpaceANDROID(XrDeviceAnchorPersistenceANDROID handle, XrPersistedAnchorSpaceCreateInfoANDROID* createInfo, XrSpace* anchorOutput)
+			=> xrCreatePersistedAnchorSpaceANDROID_ptr(handle, createInfo, anchorOutput);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrEnumeratePersistedAnchorsANDROIDDelegate(XrDeviceAnchorPersistenceANDROID handle, uint anchorIdCapacityInput, uint* anchorIdCountOutput, XrUuid* anchorIds);
+		private static xrEnumeratePersistedAnchorsANDROIDDelegate xrEnumeratePersistedAnchorsANDROID_ptr;
+		public static XrResult xrEnumeratePersistedAnchorsANDROID(XrDeviceAnchorPersistenceANDROID handle, uint anchorIdCapacityInput, uint* anchorIdCountOutput, XrUuid* anchorIds)
+			=> xrEnumeratePersistedAnchorsANDROID_ptr(handle, anchorIdCapacityInput, anchorIdCountOutput, anchorIds);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrUnpersistAnchorANDROIDDelegate(XrDeviceAnchorPersistenceANDROID handle, XrUuid* anchorId);
+		private static xrUnpersistAnchorANDROIDDelegate xrUnpersistAnchorANDROID_ptr;
+		public static XrResult xrUnpersistAnchorANDROID(XrDeviceAnchorPersistenceANDROID handle, XrUuid* anchorId)
+			=> xrUnpersistAnchorANDROID_ptr(handle, anchorId);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrGetPassthroughCameraStateANDROIDDelegate(XrSession session, XrPassthroughCameraStateGetInfoANDROID* getInfo, XrPassthroughCameraStateANDROID* cameraStateOutput);
+		private static xrGetPassthroughCameraStateANDROIDDelegate xrGetPassthroughCameraStateANDROID_ptr;
+		public static XrResult xrGetPassthroughCameraStateANDROID(XrSession session, XrPassthroughCameraStateGetInfoANDROID* getInfo, XrPassthroughCameraStateANDROID* cameraStateOutput)
+			=> xrGetPassthroughCameraStateANDROID_ptr(session, getInfo, cameraStateOutput);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrEnumerateRaycastSupportedTrackableTypesANDROIDDelegate(XrInstance instance, ulong systemId, uint trackableTypeCapacityInput, uint* trackableTypeCountOutput, XrTrackableTypeANDROID* trackableTypes);
+		private static xrEnumerateRaycastSupportedTrackableTypesANDROIDDelegate xrEnumerateRaycastSupportedTrackableTypesANDROID_ptr;
+		public static XrResult xrEnumerateRaycastSupportedTrackableTypesANDROID(XrInstance instance, ulong systemId, uint trackableTypeCapacityInput, uint* trackableTypeCountOutput, XrTrackableTypeANDROID* trackableTypes)
+			=> xrEnumerateRaycastSupportedTrackableTypesANDROID_ptr(instance, systemId, trackableTypeCapacityInput, trackableTypeCountOutput, trackableTypes);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrRaycastANDROIDDelegate(XrSession session, XrRaycastInfoANDROID* rayInfo, XrRaycastHitResultsANDROID* results);
+		private static xrRaycastANDROIDDelegate xrRaycastANDROID_ptr;
+		public static XrResult xrRaycastANDROID(XrSession session, XrRaycastInfoANDROID* rayInfo, XrRaycastHitResultsANDROID* results)
+			=> xrRaycastANDROID_ptr(session, rayInfo, results);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrGetTrackableObjectANDROIDDelegate(XrTrackableTrackerANDROID tracker, XrTrackableGetInfoANDROID* getInfo, XrTrackableObjectANDROID* objectOutput);
+		private static xrGetTrackableObjectANDROIDDelegate xrGetTrackableObjectANDROID_ptr;
+		public static XrResult xrGetTrackableObjectANDROID(XrTrackableTrackerANDROID tracker, XrTrackableGetInfoANDROID* getInfo, XrTrackableObjectANDROID* objectOutput)
+			=> xrGetTrackableObjectANDROID_ptr(tracker, getInfo, objectOutput);
+
+		[UnmanagedFunctionPointer(CallConv)]
 		private delegate XrResult xrPollFutureEXTDelegate(XrInstance instance, XrFuturePollInfoEXT* pollInfo, XrFuturePollResultEXT* pollResult);
 		private static xrPollFutureEXTDelegate xrPollFutureEXT_ptr;
 		public static XrResult xrPollFutureEXT(XrInstance instance, XrFuturePollInfoEXT* pollInfo, XrFuturePollResultEXT* pollResult)
@@ -2206,6 +2344,24 @@ namespace Evergine.Bindings.OpenXR
 		private static xrStopColocationAdvertisementMETADelegate xrStopColocationAdvertisementMETA_ptr;
 		public static XrResult xrStopColocationAdvertisementMETA(XrSession session, XrColocationAdvertisementStopInfoMETA* info, ulong* requestId)
 			=> xrStopColocationAdvertisementMETA_ptr(session, info, requestId);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrShareAnchorANDROIDDelegate(XrSession session, XrAnchorSharingInfoANDROID* sharingInfo, XrAnchorSharingTokenANDROID* anchorToken);
+		private static xrShareAnchorANDROIDDelegate xrShareAnchorANDROID_ptr;
+		public static XrResult xrShareAnchorANDROID(XrSession session, XrAnchorSharingInfoANDROID* sharingInfo, XrAnchorSharingTokenANDROID* anchorToken)
+			=> xrShareAnchorANDROID_ptr(session, sharingInfo, anchorToken);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrUnshareAnchorANDROIDDelegate(XrSession session, XrSpace anchor);
+		private static xrUnshareAnchorANDROIDDelegate xrUnshareAnchorANDROID_ptr;
+		public static XrResult xrUnshareAnchorANDROID(XrSession session, XrSpace anchor)
+			=> xrUnshareAnchorANDROID_ptr(session, anchor);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrGetTrackableMarkerANDROIDDelegate(XrTrackableTrackerANDROID tracker, XrTrackableGetInfoANDROID* getInfo, XrTrackableMarkerANDROID* markerOutput);
+		private static xrGetTrackableMarkerANDROIDDelegate xrGetTrackableMarkerANDROID_ptr;
+		public static XrResult xrGetTrackableMarkerANDROID(XrTrackableTrackerANDROID tracker, XrTrackableGetInfoANDROID* getInfo, XrTrackableMarkerANDROID* markerOutput)
+			=> xrGetTrackableMarkerANDROID_ptr(tracker, getInfo, markerOutput);
 
 		[UnmanagedFunctionPointer(CallConv)]
 		private delegate XrResult xrEnumerateSpatialCapabilitiesEXTDelegate(XrInstance instance, ulong systemId, uint capabilityCapacityInput, uint* capabilityCountOutput, XrSpatialCapabilityEXT* capabilities);
@@ -2655,10 +2811,14 @@ namespace Evergine.Bindings.OpenXR
 			nativeLib.LoadFunction("xrGetSpaceUserIdFB",  out xrGetSpaceUserIdFB_ptr);
 			nativeLib.LoadFunction("xrDestroySpaceUserFB",  out xrDestroySpaceUserFB_ptr);
 			nativeLib.LoadFunction("xrGetRecommendedLayerResolutionMETA",  out xrGetRecommendedLayerResolutionMETA_ptr);
+			nativeLib.LoadFunction("xrSaveSpacesMETA",  out xrSaveSpacesMETA_ptr);
+			nativeLib.LoadFunction("xrEraseSpacesMETA",  out xrEraseSpacesMETA_ptr);
 			nativeLib.LoadFunction("xrCreatePassthroughColorLutMETA",  out xrCreatePassthroughColorLutMETA_ptr);
 			nativeLib.LoadFunction("xrDestroyPassthroughColorLutMETA",  out xrDestroyPassthroughColorLutMETA_ptr);
 			nativeLib.LoadFunction("xrUpdatePassthroughColorLutMETA",  out xrUpdatePassthroughColorLutMETA_ptr);
 			nativeLib.LoadFunction("xrGetSpaceTriangleMeshMETA",  out xrGetSpaceTriangleMeshMETA_ptr);
+			nativeLib.LoadFunction("xrSuggestBodyTrackingCalibrationOverrideMETA",  out xrSuggestBodyTrackingCalibrationOverrideMETA_ptr);
+			nativeLib.LoadFunction("xrResetBodyTrackingCalibrationMETA",  out xrResetBodyTrackingCalibrationMETA_ptr);
 			nativeLib.LoadFunction("xrCreateFaceTracker2FB",  out xrCreateFaceTracker2FB_ptr);
 			nativeLib.LoadFunction("xrDestroyFaceTracker2FB",  out xrDestroyFaceTracker2FB_ptr);
 			nativeLib.LoadFunction("xrGetFaceExpressionWeights2FB",  out xrGetFaceExpressionWeights2FB_ptr);
@@ -2734,6 +2894,25 @@ namespace Evergine.Bindings.OpenXR
 			nativeLib.LoadFunction("xrGetPlaneDetectionStateEXT",  out xrGetPlaneDetectionStateEXT_ptr);
 			nativeLib.LoadFunction("xrGetPlaneDetectionsEXT",  out xrGetPlaneDetectionsEXT_ptr);
 			nativeLib.LoadFunction("xrGetPlanePolygonBufferEXT",  out xrGetPlanePolygonBufferEXT_ptr);
+			nativeLib.LoadFunction("xrEnumerateSupportedTrackableTypesANDROID",  out xrEnumerateSupportedTrackableTypesANDROID_ptr);
+			nativeLib.LoadFunction("xrEnumerateSupportedAnchorTrackableTypesANDROID",  out xrEnumerateSupportedAnchorTrackableTypesANDROID_ptr);
+			nativeLib.LoadFunction("xrCreateTrackableTrackerANDROID",  out xrCreateTrackableTrackerANDROID_ptr);
+			nativeLib.LoadFunction("xrDestroyTrackableTrackerANDROID",  out xrDestroyTrackableTrackerANDROID_ptr);
+			nativeLib.LoadFunction("xrGetAllTrackablesANDROID",  out xrGetAllTrackablesANDROID_ptr);
+			nativeLib.LoadFunction("xrGetTrackablePlaneANDROID",  out xrGetTrackablePlaneANDROID_ptr);
+			nativeLib.LoadFunction("xrCreateAnchorSpaceANDROID",  out xrCreateAnchorSpaceANDROID_ptr);
+			nativeLib.LoadFunction("xrEnumerateSupportedPersistenceAnchorTypesANDROID",  out xrEnumerateSupportedPersistenceAnchorTypesANDROID_ptr);
+			nativeLib.LoadFunction("xrCreateDeviceAnchorPersistenceANDROID",  out xrCreateDeviceAnchorPersistenceANDROID_ptr);
+			nativeLib.LoadFunction("xrDestroyDeviceAnchorPersistenceANDROID",  out xrDestroyDeviceAnchorPersistenceANDROID_ptr);
+			nativeLib.LoadFunction("xrPersistAnchorANDROID",  out xrPersistAnchorANDROID_ptr);
+			nativeLib.LoadFunction("xrGetAnchorPersistStateANDROID",  out xrGetAnchorPersistStateANDROID_ptr);
+			nativeLib.LoadFunction("xrCreatePersistedAnchorSpaceANDROID",  out xrCreatePersistedAnchorSpaceANDROID_ptr);
+			nativeLib.LoadFunction("xrEnumeratePersistedAnchorsANDROID",  out xrEnumeratePersistedAnchorsANDROID_ptr);
+			nativeLib.LoadFunction("xrUnpersistAnchorANDROID",  out xrUnpersistAnchorANDROID_ptr);
+			nativeLib.LoadFunction("xrGetPassthroughCameraStateANDROID",  out xrGetPassthroughCameraStateANDROID_ptr);
+			nativeLib.LoadFunction("xrEnumerateRaycastSupportedTrackableTypesANDROID",  out xrEnumerateRaycastSupportedTrackableTypesANDROID_ptr);
+			nativeLib.LoadFunction("xrRaycastANDROID",  out xrRaycastANDROID_ptr);
+			nativeLib.LoadFunction("xrGetTrackableObjectANDROID",  out xrGetTrackableObjectANDROID_ptr);
 			nativeLib.LoadFunction("xrPollFutureEXT",  out xrPollFutureEXT_ptr);
 			nativeLib.LoadFunction("xrCancelFutureEXT",  out xrCancelFutureEXT_ptr);
 			nativeLib.LoadFunction("xrSetSystemNotificationsML",  out xrSetSystemNotificationsML_ptr);
@@ -2755,6 +2934,9 @@ namespace Evergine.Bindings.OpenXR
 			nativeLib.LoadFunction("xrStopColocationDiscoveryMETA",  out xrStopColocationDiscoveryMETA_ptr);
 			nativeLib.LoadFunction("xrStartColocationAdvertisementMETA",  out xrStartColocationAdvertisementMETA_ptr);
 			nativeLib.LoadFunction("xrStopColocationAdvertisementMETA",  out xrStopColocationAdvertisementMETA_ptr);
+			nativeLib.LoadFunction("xrShareAnchorANDROID",  out xrShareAnchorANDROID_ptr);
+			nativeLib.LoadFunction("xrUnshareAnchorANDROID",  out xrUnshareAnchorANDROID_ptr);
+			nativeLib.LoadFunction("xrGetTrackableMarkerANDROID",  out xrGetTrackableMarkerANDROID_ptr);
 			nativeLib.LoadFunction("xrEnumerateSpatialCapabilitiesEXT",  out xrEnumerateSpatialCapabilitiesEXT_ptr);
 			nativeLib.LoadFunction("xrEnumerateSpatialCapabilityComponentTypesEXT",  out xrEnumerateSpatialCapabilityComponentTypesEXT_ptr);
 			nativeLib.LoadFunction("xrEnumerateSpatialCapabilityFeaturesEXT",  out xrEnumerateSpatialCapabilityFeaturesEXT_ptr);

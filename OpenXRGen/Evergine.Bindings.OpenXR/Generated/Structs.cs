@@ -5542,6 +5542,30 @@ namespace Evergine.Bindings.OpenXR
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrBodyTrackingCalibrationInfoMETA
+	{
+		public XrStructureType type;
+		public void* next;
+		public float bodyHeight;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrBodyTrackingCalibrationStatusMETA
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrBodyTrackingCalibrationStateMETA status;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSystemPropertiesBodyTrackingCalibrationMETA
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrBool32 supportsHeightOverride;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct XrSystemEyeTrackingPropertiesFB
 	{
 		public XrStructureType type;
@@ -7811,6 +7835,52 @@ namespace Evergine.Bindings.OpenXR
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSystemSpacePersistencePropertiesMETA
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrBool32 supportsSpacePersistence;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpacesSaveInfoMETA
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint spaceCount;
+		public XrSpace* spaces;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrEventDataSpacesSaveResultMETA
+	{
+		public XrStructureType type;
+		public void* next;
+		public ulong requestId;
+		public XrResult result;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpacesEraseInfoMETA
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint spaceCount;
+		public XrSpace* spaces;
+		public uint uuidCount;
+		public XrUuid* uuids;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrEventDataSpacesEraseResultMETA
+	{
+		public XrStructureType type;
+		public void* next;
+		public ulong requestId;
+		public XrResult result;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct XrPassthroughColorLutDataMETA
 	{
 		public uint bufferSize;
@@ -8000,6 +8070,232 @@ namespace Evergine.Bindings.OpenXR
 	{
 		public XrForceFeedbackCurlLocationMNDX location;
 		public float value;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSystemPassthroughCameraStatePropertiesANDROID
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrBool32 supportsPassthroughCameraState;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrPassthroughCameraStateGetInfoANDROID
+	{
+		public XrStructureType type;
+		public void* next;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrTrackableTrackerCreateInfoANDROID
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrTrackableTypeANDROID trackableType;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrTrackableGetInfoANDROID
+	{
+		public XrStructureType type;
+		public void* next;
+		public ulong trackable;
+		public XrSpace baseSpace;
+		public long time;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrTrackablePlaneANDROID
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrTrackingStateANDROID trackingState;
+		public XrPosef centerPose;
+		public XrExtent2Df extents;
+		public XrPlaneTypeANDROID planeType;
+		public XrPlaneLabelANDROID planeLabel;
+		public ulong subsumedByPlane;
+		public long lastUpdatedTime;
+		public uint vertexCapacityInput;
+		public uint vertexCountOutput;
+		public XrVector2f* vertices;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrAnchorSpaceCreateInfoANDROID
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrSpace space;
+		public long time;
+		public XrPosef pose;
+		public ulong trackable;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSystemTrackablesPropertiesANDROID
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrBool32 supportsAnchor;
+		public uint maxAnchors;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrTrackableObjectANDROID
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrTrackingStateANDROID trackingState;
+		public XrPosef centerPose;
+		public XrExtent3Df extents;
+		public XrObjectLabelANDROID objectLabel;
+		public long lastUpdatedTime;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrTrackableObjectConfigurationANDROID
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint labelCount;
+		public XrObjectLabelANDROID* activeLabels;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrRaycastInfoANDROID
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint maxResults;
+		public uint trackerCount;
+		public XrTrackableTrackerANDROID* trackers;
+		public XrVector3f origin;
+		public XrVector3f trajectory;
+		public XrSpace space;
+		public long time;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrRaycastHitResultANDROID
+	{
+		public XrTrackableTypeANDROID type;
+		public ulong trackable;
+		public XrPosef pose;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrRaycastHitResultsANDROID
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint resultsCapacityInput;
+		public uint resultsCountOutput;
+		public XrRaycastHitResultANDROID* results;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSystemMarkerTrackingPropertiesANDROID
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrBool32 supportsMarkerTracking;
+		public XrBool32 supportsMarkerSizeEstimation;
+		public ushort maxMarkerCount;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrTrackableMarkerConfigurationANDROID
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrTrackableMarkerTrackingModeANDROID trackingMode;
+		public uint databaseCount;
+		public XrTrackableMarkerDatabaseANDROID* databases;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrTrackableMarkerDatabaseANDROID
+	{
+		public XrTrackableMarkerDictionaryANDROID dictionary;
+		public uint entryCount;
+		public XrTrackableMarkerDatabaseEntryANDROID* entries;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrTrackableMarkerDatabaseEntryANDROID
+	{
+		public int id;
+		public float edgeSize;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrTrackableMarkerANDROID
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrTrackingStateANDROID trackingState;
+		public long lastUpdatedTime;
+		public XrTrackableMarkerDictionaryANDROID dictionary;
+		public int markerId;
+		public XrPosef centerPose;
+		public XrExtent2Df extents;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSystemAnchorSharingExportPropertiesANDROID
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrBool32 supportsAnchorSharingExport;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrAnchorSharingInfoANDROID
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrSpace anchor;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrAnchorSharingTokenANDROID
+	{
+		public XrStructureType type;
+		public void* next;
+		public AIBinder* token;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrDeviceAnchorPersistenceCreateInfoANDROID
+	{
+		public XrStructureType type;
+		public void* next;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrPersistedAnchorSpaceCreateInfoANDROID
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrUuid anchorId;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrPersistedAnchorSpaceInfoANDROID
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrSpace anchor;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSystemDeviceAnchorPersistencePropertiesANDROID
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrBool32 supportsAnchorPersistence;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -9674,8 +9970,8 @@ namespace Evergine.Bindings.OpenXR
 		public XrStructureType type;
 		public void* next;
 		public XrResult futureResult;
-		public XrAnchorBD anchor;
 		public XrUuid uuid;
+		public XrAnchorBD anchor;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -9797,6 +10093,22 @@ namespace Evergine.Bindings.OpenXR
 	{
 		public XrStructureType type;
 		public void* next;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrLoaderInitInfoPropertiesEXT
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint propertyValueCount;
+		public XrLoaderInitPropertyValueEXT* propertyValues;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrLoaderInitPropertyValueEXT
+	{
+		public byte* name;
+		public byte* value;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]

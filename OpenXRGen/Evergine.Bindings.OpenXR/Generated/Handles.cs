@@ -242,6 +242,36 @@ namespace Evergine.Bindings.OpenXR
 		public override int GetHashCode() => Handle.GetHashCode();
 }
 
+	public partial struct XrTrackableTrackerANDROID : IEquatable<XrTrackableTrackerANDROID>
+{
+		public readonly ulong Handle;
+		public XrTrackableTrackerANDROID(ulong existingHandle) { Handle = existingHandle; }
+		public static XrTrackableTrackerANDROID Null => new XrTrackableTrackerANDROID(0);
+		public static implicit operator XrTrackableTrackerANDROID(ulong handle) => new XrTrackableTrackerANDROID(handle);
+		public static bool operator ==(XrTrackableTrackerANDROID left, XrTrackableTrackerANDROID right) => left.Handle == right.Handle;
+		public static bool operator !=(XrTrackableTrackerANDROID left, XrTrackableTrackerANDROID right) => left.Handle != right.Handle;
+		public static bool operator ==(XrTrackableTrackerANDROID left, ulong right) => left.Handle == right;
+		public static bool operator !=(XrTrackableTrackerANDROID left, ulong right) => left.Handle != right;
+		public bool Equals(XrTrackableTrackerANDROID h) => Handle == h.Handle;
+		public override bool Equals(object o) => o is XrTrackableTrackerANDROID h && Equals(h);
+		public override int GetHashCode() => Handle.GetHashCode();
+}
+
+	public partial struct XrDeviceAnchorPersistenceANDROID : IEquatable<XrDeviceAnchorPersistenceANDROID>
+{
+		public readonly ulong Handle;
+		public XrDeviceAnchorPersistenceANDROID(ulong existingHandle) { Handle = existingHandle; }
+		public static XrDeviceAnchorPersistenceANDROID Null => new XrDeviceAnchorPersistenceANDROID(0);
+		public static implicit operator XrDeviceAnchorPersistenceANDROID(ulong handle) => new XrDeviceAnchorPersistenceANDROID(handle);
+		public static bool operator ==(XrDeviceAnchorPersistenceANDROID left, XrDeviceAnchorPersistenceANDROID right) => left.Handle == right.Handle;
+		public static bool operator !=(XrDeviceAnchorPersistenceANDROID left, XrDeviceAnchorPersistenceANDROID right) => left.Handle != right.Handle;
+		public static bool operator ==(XrDeviceAnchorPersistenceANDROID left, ulong right) => left.Handle == right;
+		public static bool operator !=(XrDeviceAnchorPersistenceANDROID left, ulong right) => left.Handle != right;
+		public bool Equals(XrDeviceAnchorPersistenceANDROID h) => Handle == h.Handle;
+		public override bool Equals(object o) => o is XrDeviceAnchorPersistenceANDROID h && Equals(h);
+		public override int GetHashCode() => Handle.GetHashCode();
+}
+
 	public partial struct XrFaceTrackerFB : IEquatable<XrFaceTrackerFB>
 {
 		public readonly ulong Handle;
