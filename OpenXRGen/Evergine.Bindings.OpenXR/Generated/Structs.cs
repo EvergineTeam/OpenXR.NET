@@ -8264,7 +8264,7 @@ namespace Evergine.Bindings.OpenXR
 	{
 		public XrStructureType type;
 		public void* next;
-		public AIBinder* token;
+		public IntPtr token;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]

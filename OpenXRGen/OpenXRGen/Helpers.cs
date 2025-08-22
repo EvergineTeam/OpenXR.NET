@@ -262,6 +262,7 @@ namespace OpenXRGen
                 case "VkSamplerAddressMode":
                 case "VkComponentSwizzle":
                 case "MLCoordinateFrameUID":
+                case "AIBinder":
                     return true;
                 default:
                     return false;
