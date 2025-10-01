@@ -1602,6 +1602,18 @@ namespace Evergine.Bindings.OpenXR
 			=> xrDestroySpaceUserFB_ptr(user);
 
 		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrDiscoverSpacesMETADelegate(XrSession session, XrSpaceDiscoveryInfoMETA* info, ulong* requestId);
+		private static xrDiscoverSpacesMETADelegate xrDiscoverSpacesMETA_ptr;
+		public static XrResult xrDiscoverSpacesMETA(XrSession session, XrSpaceDiscoveryInfoMETA* info, ulong* requestId)
+			=> xrDiscoverSpacesMETA_ptr(session, info, requestId);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrRetrieveSpaceDiscoveryResultsMETADelegate(XrSession session, ulong requestId, XrSpaceDiscoveryResultsMETA* results);
+		private static xrRetrieveSpaceDiscoveryResultsMETADelegate xrRetrieveSpaceDiscoveryResultsMETA_ptr;
+		public static XrResult xrRetrieveSpaceDiscoveryResultsMETA(XrSession session, ulong requestId, XrSpaceDiscoveryResultsMETA* results)
+			=> xrRetrieveSpaceDiscoveryResultsMETA_ptr(session, requestId, results);
+
+		[UnmanagedFunctionPointer(CallConv)]
 		private delegate XrResult xrGetRecommendedLayerResolutionMETADelegate(XrSession session, XrRecommendedLayerResolutionGetInfoMETA* info, XrRecommendedLayerResolutionMETA* resolution);
 		private static xrGetRecommendedLayerResolutionMETADelegate xrGetRecommendedLayerResolutionMETA_ptr;
 		public static XrResult xrGetRecommendedLayerResolutionMETA(XrSession session, XrRecommendedLayerResolutionGetInfoMETA* info, XrRecommendedLayerResolutionMETA* resolution)
@@ -2810,6 +2822,8 @@ namespace Evergine.Bindings.OpenXR
 			nativeLib.LoadFunction("xrCreateSpaceUserFB",  out xrCreateSpaceUserFB_ptr);
 			nativeLib.LoadFunction("xrGetSpaceUserIdFB",  out xrGetSpaceUserIdFB_ptr);
 			nativeLib.LoadFunction("xrDestroySpaceUserFB",  out xrDestroySpaceUserFB_ptr);
+			nativeLib.LoadFunction("xrDiscoverSpacesMETA",  out xrDiscoverSpacesMETA_ptr);
+			nativeLib.LoadFunction("xrRetrieveSpaceDiscoveryResultsMETA",  out xrRetrieveSpaceDiscoveryResultsMETA_ptr);
 			nativeLib.LoadFunction("xrGetRecommendedLayerResolutionMETA",  out xrGetRecommendedLayerResolutionMETA_ptr);
 			nativeLib.LoadFunction("xrSaveSpacesMETA",  out xrSaveSpacesMETA_ptr);
 			nativeLib.LoadFunction("xrEraseSpacesMETA",  out xrEraseSpacesMETA_ptr);

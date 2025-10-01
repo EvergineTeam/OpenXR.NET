@@ -308,6 +308,8 @@ namespace Evergine.Bindings.OpenXR
 		public const string XR_FB_SPATIAL_ENTITY_USER_EXTENSION_NAME = "XR_FB_spatial_entity_user";
 		public const uint XR_META_headset_id_SPEC_VERSION = 2;
 		public const string XR_META_HEADSET_ID_EXTENSION_NAME = "XR_META_headset_id";
+		public const uint XR_META_spatial_entity_discovery_SPEC_VERSION = 1;
+		public const string XR_META_SPATIAL_ENTITY_DISCOVERY_EXTENSION_NAME = "XR_META_spatial_entity_discovery";
 		public const uint XR_META_hand_tracking_microgestures_SPEC_VERSION = 1;
 		public const string XR_META_HAND_TRACKING_MICROGESTURES_EXTENSION_NAME = "XR_META_hand_tracking_microgestures";
 		public const uint XR_META_recommended_layer_resolution_SPEC_VERSION = 1;
@@ -344,7 +346,7 @@ namespace Evergine.Bindings.OpenXR
 		public const uint XR_MAX_RENDER_MODEL_ASSET_NODE_NAME_SIZE_EXT = 64;
 		public const uint XR_EXT_interaction_render_model_SPEC_VERSION = 1;
 		public const string XR_EXT_INTERACTION_RENDER_MODEL_EXTENSION_NAME = "XR_EXT_interaction_render_model";
-		public const uint XR_EXT_hand_interaction_SPEC_VERSION = 1;
+		public const uint XR_EXT_hand_interaction_SPEC_VERSION = 2;
 		public const string XR_EXT_HAND_INTERACTION_EXTENSION_NAME = "XR_EXT_hand_interaction";
 		public const uint XR_QCOM_tracking_optimization_settings_SPEC_VERSION = 1;
 		public const string XR_QCOM_TRACKING_OPTIMIZATION_SETTINGS_EXTENSION_NAME = "XR_QCOM_tracking_optimization_settings";
@@ -387,7 +389,7 @@ namespace Evergine.Bindings.OpenXR
 		public const string XR_EXT_PLANE_DETECTION_EXTENSION_NAME = "XR_EXT_plane_detection";
 		public const uint XR_OPPO_controller_interaction_SPEC_VERSION = 1;
 		public const string XR_OPPO_CONTROLLER_INTERACTION_EXTENSION_NAME = "XR_OPPO_controller_interaction";
-		public const uint XR_ANDROID_trackables_SPEC_VERSION = 1;
+		public const uint XR_ANDROID_trackables_SPEC_VERSION = 2;
 		public const string XR_ANDROID_TRACKABLES_EXTENSION_NAME = "XR_ANDROID_trackables";
 		public const uint XR_ANDROID_device_anchor_persistence_SPEC_VERSION = 1;
 		public const string XR_ANDROID_DEVICE_ANCHOR_PERSISTENCE_EXTENSION_NAME = "XR_ANDROID_device_anchor_persistence";
@@ -429,6 +431,8 @@ namespace Evergine.Bindings.OpenXR
 		public const string XR_ANDROID_TRACKABLES_MARKER_EXTENSION_NAME = "XR_ANDROID_trackables_marker";
 		public const uint XR_KHR_maintenance1_SPEC_VERSION = 1;
 		public const string XR_KHR_MAINTENANCE1_EXTENSION_NAME = "XR_KHR_maintenance1";
+		public const uint XR_KHR_generic_controller_SPEC_VERSION = 1;
+		public const string XR_KHR_GENERIC_CONTROLLER_EXTENSION_NAME = "XR_KHR_generic_controller";
 		public const uint XR_EXT_spatial_entity_SPEC_VERSION = 1;
 		public const string XR_EXT_SPATIAL_ENTITY_EXTENSION_NAME = "XR_EXT_spatial_entity";
 		public const uint XR_EXT_spatial_plane_tracking_SPEC_VERSION = 1;

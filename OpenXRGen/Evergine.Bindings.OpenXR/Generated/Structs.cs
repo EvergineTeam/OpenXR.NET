@@ -7881,6 +7881,81 @@ namespace Evergine.Bindings.OpenXR
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSystemSpaceDiscoveryPropertiesMETA
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrBool32 supportsSpaceDiscovery;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpaceFilterBaseHeaderMETA
+	{
+		public XrStructureType type;
+		public void* next;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpaceDiscoveryInfoMETA
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint filterCount;
+		public XrSpaceFilterBaseHeaderMETA* filters;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpaceFilterUuidMETA
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint uuidCount;
+		public XrUuid* uuids;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpaceFilterComponentMETA
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrSpaceComponentTypeFB componentType;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpaceDiscoveryResultMETA
+	{
+		public XrSpace space;
+		public XrUuid uuid;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpaceDiscoveryResultsMETA
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint resultCapacityInput;
+		public uint resultCountOutput;
+		public XrSpaceDiscoveryResultMETA* results;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrEventDataSpaceDiscoveryResultsAvailableMETA
+	{
+		public XrStructureType type;
+		public void* next;
+		public ulong requestId;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrEventDataSpaceDiscoveryCompleteMETA
+	{
+		public XrStructureType type;
+		public void* next;
+		public ulong requestId;
+		public XrResult result;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct XrPassthroughColorLutDataMETA
 	{
 		public uint bufferSize;
@@ -8118,7 +8193,7 @@ namespace Evergine.Bindings.OpenXR
 		public ulong subsumedByPlane;
 		public long lastUpdatedTime;
 		public uint vertexCapacityInput;
-		public uint vertexCountOutput;
+		public uint* vertexCountOutput;
 		public XrVector2f* vertices;
 	}
 
