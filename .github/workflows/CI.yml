@@ -1,92 +1,32 @@
+# Binding CI - Simple Template
+
+# This template is for .NET bindings.
+# Copy this file to your repository as `.github/workflows/CI.yml` and customize the inputs below.
+
 name: CI
+
 on:
+  workflow_dispatch:
   push:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
 
-env:
-  filePath: ${{  'xr.xml'  }}
-  fileTmpPath: ${{  'xr.xml_tmp'  }}
-  basePath: ${{  'KhronosRegistry'  }}
-  sourceUrl: ${{  'https://raw.githubusercontent.com/KhronosGroup/OpenXR-Docs/master/specification/registry/xr.xml'  }}
-  selfUrl: ${{  'https://raw.githubusercontent.com/EvergineTeam/OpenXR.NET/main/KhronosRegistry/xr.xml'  }}
-  nugetOutputPath: ${{  'nupkgs'  }}
-
 jobs:
-  download:
-    runs-on: windows-latest
-    outputs:
-      output1: ${{ steps.xr.outputs.hash1 }}
-      output2: ${{ steps.xr.outputs.hash2 }}
-      output3: ${{ steps.xr.outputs.date }}
-    steps:
-      - name: download target file
-        uses: carlosperate/download-file-action@v1.0.3
-        with:
-          # URL of the file to download
-          file-url: ${{  env.sourceUrl  }}
-          file-name: ${{  env.filePath  }}
-      - name: download our file
-        uses: carlosperate/download-file-action@v1.0.3
-        with:
-          # URL of the file to download
-          file-url: ${{  env.selfUrl  }}
-          file-name: ${{  env.fileTmpPath  }}
-      - name: Get hash from saved xr
-        id: xr
-        run: |
-          echo "::set-output name=hash1::${{ hashFiles('xr.xml')  }}"
-          echo "::set-output name=hash2::${{ hashFiles('xr.xml_tmp')  }}"
-          echo "::set-output name=date::$(date +'%Y.%m.%d')"
+  ci:
+    uses: EvergineTeam/evergine-standards/.github/workflows/binding-common-ci.yml@main
+    with:
+      generator-project: "OpenXRGen/OpenXRGen/OpenXRGen.csproj"  # Path to your generator .csproj
+      generator-name: "OpenXR"                # Name of your generator executable
+      binding-project: "OpenXRGen/Evergine.Bindings.OpenXR/Evergine.Bindings.OpenXR.csproj" # Path to your binding .csproj
+      target-framework: "net8.0"                   # Target framework for generator/binding
+      runtime-identifier: ""                      # Runtime identifier (win-x64, linux-x64, etc.)
+      build-configuration: "Release"               # Build configuration (Release, Debug, etc.)
+      nuget-artifacts: false                       # Upload NuGets as workflow artifacts
+      revision: ${{ github.run_number }}           # Revision for date-based version (bindings style). Use with bindings.
 
-  build_and_publish:
-    needs: [download]
-    runs-on: windows-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: 8.x
-      - uses: nuget/setup-nuget@v2
-        with:
-          nuget-version: "6.x"
-      - name: remove old file
-        run: |
-          cd ${{  env.basePath  }}
-          rm ${{  env.filePath  }}
-          ls
-      - name: download target file
-        uses: carlosperate/download-file-action@v1.0.3
-        with:
-          # URL of the file to download
-          file-url: ${{  env.sourceUrl  }}
-          file-name: ${{  env.filePath  }}
-          location: ${{ env.basePath  }}/
-      - name: Generate Bindings
-        id: build_bindings
-        run: powershell ./Generate-Bindings.ps1
-      - name: Commit if update
-        if: ${{ needs.download.outputs.output1 != needs.download.outputs.output2 }}
-        uses: EndBug/add-and-commit@v9
-        with:
-          message: Updating new OpenXR version
-      - name: Generate NuGet packages
-        id: build_nugets
-        run: powershell ./Generate-NuGets.ps1 -Version  ${{  needs.download.outputs.output3  }}.${{  github.run_number  }} -outputfolder ${{  env.nugetOutputPath  }}
-      - name: SendGrid Mail Action
-        if: ${{ failure() }}
-        uses: mmichailidis/sendgrid-mail-action@v1.1
-        with:
-          # The token for sendgrid
-          sendgrid-token: ${{ secrets.WAVE_SENDGRID_TOKEN }}
-          # List of emails separated by comma that the email will go
-          mail: ${{ secrets.EVERGINE_EMAILREPORT_LIST }}
-          # The email that will be shown as sender
-          from: ${{ secrets.EVERGINE_EMAIL }}
-          # The subject of the email
-          subject: Open XR Update NuGet has failed
-          # Defines if it should be one email with multiple address or multiple emails with a single address
-          individual: false
-          # The body of the mail. The placeholders that can be used are $EVENT$, $ISSUE$, $ACTION$
-          text: something when wrong when updating new xr.xml file from KhronosRegistry
+# Tips:
+# - For direct version (add-ons style):
+#   version: "3.4.22.288-local"
+# - For date-based version (bindings style):
+#   revision: ""  # Uses github.run_number or custom logic

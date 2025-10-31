@@ -5,7 +5,7 @@ This binding is generated from xr.xml file included in the KhronosRegistry:
 https://github.com/KhronosGroup/OpenXR-SDK/blob/main/specification/registry/xr.xml
 
 [![CI](https://github.com/EvergineTeam/OpenXR.NET/actions/workflows/CI.yml/badge.svg)](https://github.com/EvergineTeam/OpenXR.NET/actions/workflows/CI.yml)
-[![Monthly update check](https://github.com/EvergineTeam/OpenXR.NET/actions/workflows/monthly_update.yml/badge.svg)](https://github.com/EvergineTeam/OpenXR.NET/actions/workflows/monthly_update.yml)
+[![CD](https://github.com/EvergineTeam/OpenXR.NET/actions/workflows/CD.yml/badge.svg)](https://github.com/EvergineTeam/OpenXR.NET/actions/workflows/CD.yml)
 [![Nuget](https://img.shields.io/nuget/v/Evergine.Bindings.OpenXR?logo=nuget)](https://www.nuget.org/packages/Evergine.Bindings.OpenXR)
 
 ## Features
