@@ -10,8 +10,8 @@ namespace OpenXRGen
     {
         static void Main(string[] args)
         {
-            string vkFile = "..\\..\\..\\..\\..\\KhronosRegistry\\xr.xml";
-            string outputPath = "..\\..\\..\\..\\Evergine.Bindings.OpenXR\\Generated";
+            string vkFile = Path.Combine("..", "..", "..", "..", "..", "KhronosRegistry", "xr.xml");
+            string outputPath = Path.Combine("..", "..", "..", "..", "Evergine.Bindings.OpenXR", "Generated");
 
             var openXRSpec = OpenXRSpecification.FromFile(vkFile);
             var openXRVersion = OpenXRVersion.FromSpec(openXRSpec, "AllVersions", openXRSpec.Extensions.ToImmutableList());
