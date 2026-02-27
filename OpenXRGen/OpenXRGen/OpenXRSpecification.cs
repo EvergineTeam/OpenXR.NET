@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 using System.Xml.Linq;
 
 namespace OpenXRGen
@@ -22,6 +23,7 @@ namespace OpenXRGen
         public List<FeatureDefinition> Features = new List<FeatureDefinition>();
         public Dictionary<string, string> BaseTypes = new Dictionary<string, string>();
         public Dictionary<string, string> Alias = new Dictionary<string, string>();
+        public Dictionary<string, string> Defines = new Dictionary<string, string>();
         public List<ExtensionDefinition> Extensions = new List<ExtensionDefinition>();
 
         public static OpenXRSpecification FromFile(string xmlFile)
@@ -60,6 +62,32 @@ namespace OpenXRGen
             }
 
             var types = registry.Elements("types");
+
+            // #define values are tracked for struct array sizing, not emitted as generated C# constants.
+            var defineTypes = types.Elements("type").Where(t => t.Attribute("category")?.Value == "define");
+            foreach (var defineType in defineTypes)
+            {
+                var name = defineType.Element("name")?.Value;
+                if (string.IsNullOrEmpty(name) || spec.Defines.ContainsKey(name))
+                {
+                    continue;
+                }
+
+                // XElement.Value is like "#define XR_FOO 123" (without XML tags).
+                var valueMatch = Regex.Match(defineType.Value, $@"#define\s+{Regex.Escape(name)}\s+(?<value>.+)");
+                if (!valueMatch.Success)
+                {
+                    continue;
+                }
+
+                var value = valueMatch.Groups["value"].Value.Trim();
+                if (string.IsNullOrEmpty(value))
+                {
+                    continue;
+                }
+
+                spec.Defines[name] = value;
+            }
 
             // FuncPointers
             var funcPointers = types.Elements("type").Where(f => f.Attribute("category")?.Value == "funcpointer");

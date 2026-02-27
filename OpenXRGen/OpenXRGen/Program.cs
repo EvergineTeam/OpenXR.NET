@@ -1,5 +1,6 @@
-﻿using System;
+using System;
 using System.Collections.Immutable;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -8,6 +9,54 @@ namespace OpenXRGen
 {
     class Program
     {
+        private static bool TryParseDefineIntValue(string rawValue, out int value)
+        {
+            value = 0;
+            if (string.IsNullOrWhiteSpace(rawValue))
+            {
+                return false;
+            }
+
+            string trimmed = rawValue.Trim();
+
+            while (trimmed.StartsWith("(") && trimmed.EndsWith(")") && trimmed.Length > 2)
+            {
+                trimmed = trimmed.Substring(1, trimmed.Length - 2).Trim();
+            }
+
+            if (trimmed.Contains(" ") || trimmed.Contains("(") || trimmed.Contains(")") || trimmed.Contains("*") || trimmed.Contains("+") || trimmed.Contains("/"))
+            {
+                return false;
+            }
+
+            bool negative = trimmed.StartsWith("-");
+            if (negative)
+            {
+                trimmed = trimmed.Substring(1);
+            }
+
+            string normalized = trimmed.TrimEnd('u', 'U', 'l', 'L');
+
+            if (normalized.StartsWith("0x", StringComparison.OrdinalIgnoreCase))
+            {
+                if (!int.TryParse(normalized.Substring(2), NumberStyles.HexNumber, CultureInfo.InvariantCulture, out value))
+                {
+                    return false;
+                }
+            }
+            else if (!int.TryParse(normalized, NumberStyles.Integer, CultureInfo.InvariantCulture, out value))
+            {
+                return false;
+            }
+
+            if (negative)
+            {
+                value = -value;
+            }
+
+            return true;
+        }
+
         static void Main(string[] args)
         {
             string vkFile = Path.Combine("..", "..", "..", "..", "..", "KhronosRegistry", "xr.xml");
@@ -165,23 +214,55 @@ namespace OpenXRGen
                         else if (member.ConstantValue != null)
                         {
                             var validConstant = openXRVersion.Constants.FirstOrDefault(c => c.Name == member.ConstantValue);
+                            var enumCount = openXRVersion.Enums
+                                .SelectMany(e => e.Values)
+                                .FirstOrDefault(v => v.Name == member.ConstantValue);
+                            openXRSpec.Defines.TryGetValue(member.ConstantValue, out var defineValueRaw);
+                            bool hasDefineIntValue = TryParseDefineIntValue(defineValueRaw, out int defineCount);
 
                             if (Helpers.SupportFixed(csType))
                             {
-                                file.WriteLine($"\t\tpublic fixed {csType} {Helpers.ValidatedName(member.Name)}[(int)OpenXRNative.{validConstant.Name}];");
+                                if (validConstant != null)
+                                {
+                                    file.WriteLine($"\t\tpublic fixed {csType} {Helpers.ValidatedName(member.Name)}[(int)OpenXRNative.{validConstant.Name}];");
+                                }
+                                else if (enumCount != null)
+                                {
+                                    file.WriteLine($"\t\tpublic fixed {csType} {Helpers.ValidatedName(member.Name)}[{enumCount.Value}];");
+                                }
+                                else if (hasDefineIntValue)
+                                {
+                                    file.WriteLine($"\t\tpublic fixed {csType} {Helpers.ValidatedName(member.Name)}[{defineCount}];");
+                                }
+                                else
+                                {
+                                    throw new InvalidOperationException($"Cannot resolve array size constant '{member.ConstantValue}' for member '{member.Name}' in struct '{structure.Name}'.");
+                                }
                             }
                             else
                             {
                                 int count = 0;
 
-                                if (validConstant.Value == null)
+                                if (validConstant != null && validConstant.Value == null)
                                 {
                                     var alias = openXRVersion.Constants.FirstOrDefault(c => c.Name == validConstant.Alias);
                                     count = int.Parse(alias.Value);
                                 }
-                                else
+                                else if (validConstant != null)
                                 {
                                     count = int.Parse(validConstant.Value);
+                                }
+                                else if (enumCount != null)
+                                {
+                                    count = enumCount.Value;
+                                }
+                                else if (hasDefineIntValue)
+                                {
+                                    count = defineCount;
+                                }
+                                else
+                                {
+                                    throw new InvalidOperationException($"Cannot resolve array size constant '{member.ConstantValue}' for member '{member.Name}' in struct '{structure.Name}'.");
                                 }
 
                                 for (int i = 0; i < count; i++)
@@ -281,3 +362,8 @@ namespace OpenXRGen
         }
     }
 }
+
+
+
+
+
