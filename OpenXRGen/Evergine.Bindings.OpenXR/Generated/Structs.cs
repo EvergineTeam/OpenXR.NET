@@ -148,7 +148,7 @@ namespace Evergine.Bindings.OpenXR
 		public uint structVersion;
 		public UIntPtr structSize;
 		public void* loaderInstance;
-		public byte settings_file_location;
+		public fixed byte settings_file_location[512];
 		public XrApiLayerNextInfo* nextInfo;
 	}
 
@@ -5602,7 +5602,8 @@ namespace Evergine.Bindings.OpenXR
 	{
 		public XrStructureType type;
 		public void* next;
-		public XrEyeGazeFB gaze;
+		public XrEyeGazeFB gaze_0;
+		public XrEyeGazeFB gaze_1;
 		public long time;
 	}
 
@@ -8148,6 +8149,45 @@ namespace Evergine.Bindings.OpenXR
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrFaceTrackerCreateInfoANDROID
+	{
+		public XrStructureType type;
+		public void* next;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrFaceStateGetInfoANDROID
+	{
+		public XrStructureType type;
+		public void* next;
+		public long time;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrFaceStateANDROID
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint parametersCapacityInput;
+		public uint parametersCountOutput;
+		public float* parameters;
+		public XrFaceTrackingStateANDROID faceTrackingState;
+		public long sampleTime;
+		public XrBool32 isValid;
+		public uint regionConfidencesCapacityInput;
+		public uint regionConfidencesCountOutput;
+		public float* regionConfidences;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSystemFaceTrackingPropertiesANDROID
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrBool32 supportsFaceTracking;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct XrSystemPassthroughCameraStatePropertiesANDROID
 	{
 		public XrStructureType type;
@@ -8784,7 +8824,7 @@ namespace Evergine.Bindings.OpenXR
 	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct XrUuid
 	{
-		public byte data;
+		public fixed byte data[(int)OpenXRNative.XR_UUID_SIZE];
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -8950,6 +8990,14 @@ namespace Evergine.Bindings.OpenXR
 		public float farZ;
 		public XrEnvironmentDepthImageViewMETA views_0;
 		public XrEnvironmentDepthImageViewMETA views_1;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrEnvironmentDepthImageTimestampMETA
+	{
+		public XrStructureType type;
+		public void* next;
+		public long captureTime;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -10259,6 +10307,51 @@ namespace Evergine.Bindings.OpenXR
 		public void* next;
 		public uint markerCount;
 		public XrSpatialMarkerDataEXT* markers;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSystemFacialSimulationPropertiesBD
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrBool32 supportsFaceTracking;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrFaceTrackerCreateInfoBD
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrFacialSimulationModeBD mode;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrFacialSimulationDataGetInfoBD
+	{
+		public XrStructureType type;
+		public void* next;
+		public long time;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrFacialSimulationDataBD
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint faceExpressionWeightCount;
+		public float* faceExpressionWeights;
+		public XrBool32 isUpperFaceDataValid;
+		public XrBool32 isLowerFaceDataValid;
+		public long time;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrLipExpressionDataBD
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint lipsyncExpressionWeightCount;
+		public float* lipsyncExpressionWeights;
 	}
 
 }
