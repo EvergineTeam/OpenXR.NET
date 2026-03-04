@@ -362,8 +362,3 @@ namespace OpenXRGen
         }
     }
 }
-
-
-
-
-
