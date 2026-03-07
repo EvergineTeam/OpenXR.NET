@@ -1908,6 +1908,42 @@ namespace Evergine.Bindings.OpenXR
 			=> xrLocateBodyJointsBD_ptr(bodyTracker, locateInfo, locations);
 
 		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrEnumerateFacialSimulationModesBDDelegate(XrSession session, uint modeCapacityInput, uint* modeCountOutput, XrFacialSimulationModeBD* modes);
+		private static xrEnumerateFacialSimulationModesBDDelegate xrEnumerateFacialSimulationModesBD_ptr;
+		public static XrResult xrEnumerateFacialSimulationModesBD(XrSession session, uint modeCapacityInput, uint* modeCountOutput, XrFacialSimulationModeBD* modes)
+			=> xrEnumerateFacialSimulationModesBD_ptr(session, modeCapacityInput, modeCountOutput, modes);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrCreateFaceTrackerBDDelegate(XrSession session, XrFaceTrackerCreateInfoBD* createInfo, XrFaceTrackerBD* tracker);
+		private static xrCreateFaceTrackerBDDelegate xrCreateFaceTrackerBD_ptr;
+		public static XrResult xrCreateFaceTrackerBD(XrSession session, XrFaceTrackerCreateInfoBD* createInfo, XrFaceTrackerBD* tracker)
+			=> xrCreateFaceTrackerBD_ptr(session, createInfo, tracker);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrDestroyFaceTrackerBDDelegate(XrFaceTrackerBD tracker);
+		private static xrDestroyFaceTrackerBDDelegate xrDestroyFaceTrackerBD_ptr;
+		public static XrResult xrDestroyFaceTrackerBD(XrFaceTrackerBD tracker)
+			=> xrDestroyFaceTrackerBD_ptr(tracker);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrGetFacialSimulationDataBDDelegate(XrFaceTrackerBD tracker, XrFacialSimulationDataGetInfoBD* info, XrFacialSimulationDataBD* facialData);
+		private static xrGetFacialSimulationDataBDDelegate xrGetFacialSimulationDataBD_ptr;
+		public static XrResult xrGetFacialSimulationDataBD(XrFaceTrackerBD tracker, XrFacialSimulationDataGetInfoBD* info, XrFacialSimulationDataBD* facialData)
+			=> xrGetFacialSimulationDataBD_ptr(tracker, info, facialData);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrSetFacialSimulationModeBDDelegate(XrFaceTrackerBD tracker, XrFacialSimulationModeBD mode);
+		private static xrSetFacialSimulationModeBDDelegate xrSetFacialSimulationModeBD_ptr;
+		public static XrResult xrSetFacialSimulationModeBD(XrFaceTrackerBD tracker, XrFacialSimulationModeBD mode)
+			=> xrSetFacialSimulationModeBD_ptr(tracker, mode);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrGetFacialSimulationModeBDDelegate(XrFaceTrackerBD tracker, XrFacialSimulationModeBD* mode);
+		private static xrGetFacialSimulationModeBDDelegate xrGetFacialSimulationModeBD_ptr;
+		public static XrResult xrGetFacialSimulationModeBD(XrFaceTrackerBD tracker, XrFacialSimulationModeBD* mode)
+			=> xrGetFacialSimulationModeBD_ptr(tracker, mode);
+
+		[UnmanagedFunctionPointer(CallConv)]
 		private delegate XrResult xrEnumerateSpatialEntityComponentTypesBDDelegate(XrSenseDataSnapshotBD snapshot, ulong entityId, uint componentTypeCapacityInput, uint* componentTypeCountOutput, XrSpatialEntityComponentTypeBD* componentTypes);
 		private static xrEnumerateSpatialEntityComponentTypesBDDelegate xrEnumerateSpatialEntityComponentTypesBD_ptr;
 		public static XrResult xrEnumerateSpatialEntityComponentTypesBD(XrSenseDataSnapshotBD snapshot, ulong entityId, uint componentTypeCapacityInput, uint* componentTypeCountOutput, XrSpatialEntityComponentTypeBD* componentTypes)
@@ -2208,6 +2244,30 @@ namespace Evergine.Bindings.OpenXR
 			=> xrUnpersistAnchorANDROID_ptr(handle, anchorId);
 
 		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrCreateFaceTrackerANDROIDDelegate(XrSession session, XrFaceTrackerCreateInfoANDROID* createInfo, XrFaceTrackerANDROID* faceTracker);
+		private static xrCreateFaceTrackerANDROIDDelegate xrCreateFaceTrackerANDROID_ptr;
+		public static XrResult xrCreateFaceTrackerANDROID(XrSession session, XrFaceTrackerCreateInfoANDROID* createInfo, XrFaceTrackerANDROID* faceTracker)
+			=> xrCreateFaceTrackerANDROID_ptr(session, createInfo, faceTracker);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrDestroyFaceTrackerANDROIDDelegate(XrFaceTrackerANDROID faceTracker);
+		private static xrDestroyFaceTrackerANDROIDDelegate xrDestroyFaceTrackerANDROID_ptr;
+		public static XrResult xrDestroyFaceTrackerANDROID(XrFaceTrackerANDROID faceTracker)
+			=> xrDestroyFaceTrackerANDROID_ptr(faceTracker);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrGetFaceStateANDROIDDelegate(XrFaceTrackerANDROID faceTracker, XrFaceStateGetInfoANDROID* getInfo, XrFaceStateANDROID* faceStateOutput);
+		private static xrGetFaceStateANDROIDDelegate xrGetFaceStateANDROID_ptr;
+		public static XrResult xrGetFaceStateANDROID(XrFaceTrackerANDROID faceTracker, XrFaceStateGetInfoANDROID* getInfo, XrFaceStateANDROID* faceStateOutput)
+			=> xrGetFaceStateANDROID_ptr(faceTracker, getInfo, faceStateOutput);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrGetFaceCalibrationStateANDROIDDelegate(XrFaceTrackerANDROID faceTracker, XrBool32* faceIsCalibratedOutput);
+		private static xrGetFaceCalibrationStateANDROIDDelegate xrGetFaceCalibrationStateANDROID_ptr;
+		public static XrResult xrGetFaceCalibrationStateANDROID(XrFaceTrackerANDROID faceTracker, XrBool32* faceIsCalibratedOutput)
+			=> xrGetFaceCalibrationStateANDROID_ptr(faceTracker, faceIsCalibratedOutput);
+
+		[UnmanagedFunctionPointer(CallConv)]
 		private delegate XrResult xrGetPassthroughCameraStateANDROIDDelegate(XrSession session, XrPassthroughCameraStateGetInfoANDROID* getInfo, XrPassthroughCameraStateANDROID* cameraStateOutput);
 		private static xrGetPassthroughCameraStateANDROIDDelegate xrGetPassthroughCameraStateANDROID_ptr;
 		public static XrResult xrGetPassthroughCameraStateANDROID(XrSession session, XrPassthroughCameraStateGetInfoANDROID* getInfo, XrPassthroughCameraStateANDROID* cameraStateOutput)
@@ -2374,6 +2434,42 @@ namespace Evergine.Bindings.OpenXR
 		private static xrGetTrackableMarkerANDROIDDelegate xrGetTrackableMarkerANDROID_ptr;
 		public static XrResult xrGetTrackableMarkerANDROID(XrTrackableTrackerANDROID tracker, XrTrackableGetInfoANDROID* getInfo, XrTrackableMarkerANDROID* markerOutput)
 			=> xrGetTrackableMarkerANDROID_ptr(tracker, getInfo, markerOutput);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrCreateTrackableImageDatabaseAsyncANDROIDDelegate(XrSession session, XrTrackableImageDatabaseCreateInfoANDROID* createInfo, ulong* future);
+		private static xrCreateTrackableImageDatabaseAsyncANDROIDDelegate xrCreateTrackableImageDatabaseAsyncANDROID_ptr;
+		public static XrResult xrCreateTrackableImageDatabaseAsyncANDROID(XrSession session, XrTrackableImageDatabaseCreateInfoANDROID* createInfo, ulong* future)
+			=> xrCreateTrackableImageDatabaseAsyncANDROID_ptr(session, createInfo, future);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrCreateTrackableImageDatabaseCompleteANDROIDDelegate(XrSession session, ulong future, XrCreateTrackableImageDatabaseCompletionANDROID* completion);
+		private static xrCreateTrackableImageDatabaseCompleteANDROIDDelegate xrCreateTrackableImageDatabaseCompleteANDROID_ptr;
+		public static XrResult xrCreateTrackableImageDatabaseCompleteANDROID(XrSession session, ulong future, XrCreateTrackableImageDatabaseCompletionANDROID* completion)
+			=> xrCreateTrackableImageDatabaseCompleteANDROID_ptr(session, future, completion);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrDestroyTrackableImageDatabaseANDROIDDelegate(XrTrackableImageDatabaseANDROID database);
+		private static xrDestroyTrackableImageDatabaseANDROIDDelegate xrDestroyTrackableImageDatabaseANDROID_ptr;
+		public static XrResult xrDestroyTrackableImageDatabaseANDROID(XrTrackableImageDatabaseANDROID database)
+			=> xrDestroyTrackableImageDatabaseANDROID_ptr(database);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrAddTrackableImageDatabaseANDROIDDelegate(XrTrackableTrackerANDROID tracker, XrTrackableImageDatabaseANDROID database);
+		private static xrAddTrackableImageDatabaseANDROIDDelegate xrAddTrackableImageDatabaseANDROID_ptr;
+		public static XrResult xrAddTrackableImageDatabaseANDROID(XrTrackableTrackerANDROID tracker, XrTrackableImageDatabaseANDROID database)
+			=> xrAddTrackableImageDatabaseANDROID_ptr(tracker, database);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrRemoveTrackableImageDatabaseANDROIDDelegate(XrTrackableTrackerANDROID tracker, XrTrackableImageDatabaseANDROID database);
+		private static xrRemoveTrackableImageDatabaseANDROIDDelegate xrRemoveTrackableImageDatabaseANDROID_ptr;
+		public static XrResult xrRemoveTrackableImageDatabaseANDROID(XrTrackableTrackerANDROID tracker, XrTrackableImageDatabaseANDROID database)
+			=> xrRemoveTrackableImageDatabaseANDROID_ptr(tracker, database);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrGetTrackableImageANDROIDDelegate(XrTrackableTrackerANDROID tracker, XrTrackableGetInfoANDROID* getInfo, XrTrackableImageANDROID* trackable);
+		private static xrGetTrackableImageANDROIDDelegate xrGetTrackableImageANDROID_ptr;
+		public static XrResult xrGetTrackableImageANDROID(XrTrackableTrackerANDROID tracker, XrTrackableGetInfoANDROID* getInfo, XrTrackableImageANDROID* trackable)
+			=> xrGetTrackableImageANDROID_ptr(tracker, getInfo, trackable);
 
 		[UnmanagedFunctionPointer(CallConv)]
 		private delegate XrResult xrEnumerateSpatialCapabilitiesEXTDelegate(XrInstance instance, ulong systemId, uint capabilityCapacityInput, uint* capabilityCountOutput, XrSpatialCapabilityEXT* capabilities);
@@ -2873,6 +2969,12 @@ namespace Evergine.Bindings.OpenXR
 			nativeLib.LoadFunction("xrCreateBodyTrackerBD",  out xrCreateBodyTrackerBD_ptr);
 			nativeLib.LoadFunction("xrDestroyBodyTrackerBD",  out xrDestroyBodyTrackerBD_ptr);
 			nativeLib.LoadFunction("xrLocateBodyJointsBD",  out xrLocateBodyJointsBD_ptr);
+			nativeLib.LoadFunction("xrEnumerateFacialSimulationModesBD",  out xrEnumerateFacialSimulationModesBD_ptr);
+			nativeLib.LoadFunction("xrCreateFaceTrackerBD",  out xrCreateFaceTrackerBD_ptr);
+			nativeLib.LoadFunction("xrDestroyFaceTrackerBD",  out xrDestroyFaceTrackerBD_ptr);
+			nativeLib.LoadFunction("xrGetFacialSimulationDataBD",  out xrGetFacialSimulationDataBD_ptr);
+			nativeLib.LoadFunction("xrSetFacialSimulationModeBD",  out xrSetFacialSimulationModeBD_ptr);
+			nativeLib.LoadFunction("xrGetFacialSimulationModeBD",  out xrGetFacialSimulationModeBD_ptr);
 			nativeLib.LoadFunction("xrEnumerateSpatialEntityComponentTypesBD",  out xrEnumerateSpatialEntityComponentTypesBD_ptr);
 			nativeLib.LoadFunction("xrGetSpatialEntityUuidBD",  out xrGetSpatialEntityUuidBD_ptr);
 			nativeLib.LoadFunction("xrGetSpatialEntityComponentDataBD",  out xrGetSpatialEntityComponentDataBD_ptr);
@@ -2923,6 +3025,10 @@ namespace Evergine.Bindings.OpenXR
 			nativeLib.LoadFunction("xrCreatePersistedAnchorSpaceANDROID",  out xrCreatePersistedAnchorSpaceANDROID_ptr);
 			nativeLib.LoadFunction("xrEnumeratePersistedAnchorsANDROID",  out xrEnumeratePersistedAnchorsANDROID_ptr);
 			nativeLib.LoadFunction("xrUnpersistAnchorANDROID",  out xrUnpersistAnchorANDROID_ptr);
+			nativeLib.LoadFunction("xrCreateFaceTrackerANDROID",  out xrCreateFaceTrackerANDROID_ptr);
+			nativeLib.LoadFunction("xrDestroyFaceTrackerANDROID",  out xrDestroyFaceTrackerANDROID_ptr);
+			nativeLib.LoadFunction("xrGetFaceStateANDROID",  out xrGetFaceStateANDROID_ptr);
+			nativeLib.LoadFunction("xrGetFaceCalibrationStateANDROID",  out xrGetFaceCalibrationStateANDROID_ptr);
 			nativeLib.LoadFunction("xrGetPassthroughCameraStateANDROID",  out xrGetPassthroughCameraStateANDROID_ptr);
 			nativeLib.LoadFunction("xrEnumerateRaycastSupportedTrackableTypesANDROID",  out xrEnumerateRaycastSupportedTrackableTypesANDROID_ptr);
 			nativeLib.LoadFunction("xrRaycastANDROID",  out xrRaycastANDROID_ptr);
@@ -2951,6 +3057,12 @@ namespace Evergine.Bindings.OpenXR
 			nativeLib.LoadFunction("xrShareAnchorANDROID",  out xrShareAnchorANDROID_ptr);
 			nativeLib.LoadFunction("xrUnshareAnchorANDROID",  out xrUnshareAnchorANDROID_ptr);
 			nativeLib.LoadFunction("xrGetTrackableMarkerANDROID",  out xrGetTrackableMarkerANDROID_ptr);
+			nativeLib.LoadFunction("xrCreateTrackableImageDatabaseAsyncANDROID",  out xrCreateTrackableImageDatabaseAsyncANDROID_ptr);
+			nativeLib.LoadFunction("xrCreateTrackableImageDatabaseCompleteANDROID",  out xrCreateTrackableImageDatabaseCompleteANDROID_ptr);
+			nativeLib.LoadFunction("xrDestroyTrackableImageDatabaseANDROID",  out xrDestroyTrackableImageDatabaseANDROID_ptr);
+			nativeLib.LoadFunction("xrAddTrackableImageDatabaseANDROID",  out xrAddTrackableImageDatabaseANDROID_ptr);
+			nativeLib.LoadFunction("xrRemoveTrackableImageDatabaseANDROID",  out xrRemoveTrackableImageDatabaseANDROID_ptr);
+			nativeLib.LoadFunction("xrGetTrackableImageANDROID",  out xrGetTrackableImageANDROID_ptr);
 			nativeLib.LoadFunction("xrEnumerateSpatialCapabilitiesEXT",  out xrEnumerateSpatialCapabilitiesEXT_ptr);
 			nativeLib.LoadFunction("xrEnumerateSpatialCapabilityComponentTypesEXT",  out xrEnumerateSpatialCapabilityComponentTypesEXT_ptr);
 			nativeLib.LoadFunction("xrEnumerateSpatialCapabilityFeaturesEXT",  out xrEnumerateSpatialCapabilityFeaturesEXT_ptr);

@@ -242,6 +242,21 @@ namespace Evergine.Bindings.OpenXR
 		public override int GetHashCode() => Handle.GetHashCode();
 }
 
+	public partial struct XrFaceTrackerANDROID : IEquatable<XrFaceTrackerANDROID>
+{
+		public readonly ulong Handle;
+		public XrFaceTrackerANDROID(ulong existingHandle) { Handle = existingHandle; }
+		public static XrFaceTrackerANDROID Null => new XrFaceTrackerANDROID(0);
+		public static implicit operator XrFaceTrackerANDROID(ulong handle) => new XrFaceTrackerANDROID(handle);
+		public static bool operator ==(XrFaceTrackerANDROID left, XrFaceTrackerANDROID right) => left.Handle == right.Handle;
+		public static bool operator !=(XrFaceTrackerANDROID left, XrFaceTrackerANDROID right) => left.Handle != right.Handle;
+		public static bool operator ==(XrFaceTrackerANDROID left, ulong right) => left.Handle == right;
+		public static bool operator !=(XrFaceTrackerANDROID left, ulong right) => left.Handle != right;
+		public bool Equals(XrFaceTrackerANDROID h) => Handle == h.Handle;
+		public override bool Equals(object o) => o is XrFaceTrackerANDROID h && Equals(h);
+		public override int GetHashCode() => Handle.GetHashCode();
+}
+
 	public partial struct XrTrackableTrackerANDROID : IEquatable<XrTrackableTrackerANDROID>
 {
 		public readonly ulong Handle;
@@ -662,6 +677,21 @@ namespace Evergine.Bindings.OpenXR
 		public override int GetHashCode() => Handle.GetHashCode();
 }
 
+	public partial struct XrFaceTrackerBD : IEquatable<XrFaceTrackerBD>
+{
+		public readonly ulong Handle;
+		public XrFaceTrackerBD(ulong existingHandle) { Handle = existingHandle; }
+		public static XrFaceTrackerBD Null => new XrFaceTrackerBD(0);
+		public static implicit operator XrFaceTrackerBD(ulong handle) => new XrFaceTrackerBD(handle);
+		public static bool operator ==(XrFaceTrackerBD left, XrFaceTrackerBD right) => left.Handle == right.Handle;
+		public static bool operator !=(XrFaceTrackerBD left, XrFaceTrackerBD right) => left.Handle != right.Handle;
+		public static bool operator ==(XrFaceTrackerBD left, ulong right) => left.Handle == right;
+		public static bool operator !=(XrFaceTrackerBD left, ulong right) => left.Handle != right;
+		public bool Equals(XrFaceTrackerBD h) => Handle == h.Handle;
+		public override bool Equals(object o) => o is XrFaceTrackerBD h && Equals(h);
+		public override int GetHashCode() => Handle.GetHashCode();
+}
+
 	public partial struct XrSpatialGraphNodeBindingMSFT : IEquatable<XrSpatialGraphNodeBindingMSFT>
 {
 		public readonly ulong Handle;
@@ -719,6 +749,21 @@ namespace Evergine.Bindings.OpenXR
 		public static bool operator !=(XrSpatialAnchorStoreConnectionMSFT left, ulong right) => left.Handle != right;
 		public bool Equals(XrSpatialAnchorStoreConnectionMSFT h) => Handle == h.Handle;
 		public override bool Equals(object o) => o is XrSpatialAnchorStoreConnectionMSFT h && Equals(h);
+		public override int GetHashCode() => Handle.GetHashCode();
+}
+
+	public partial struct XrTrackableImageDatabaseANDROID : IEquatable<XrTrackableImageDatabaseANDROID>
+{
+		public readonly ulong Handle;
+		public XrTrackableImageDatabaseANDROID(ulong existingHandle) { Handle = existingHandle; }
+		public static XrTrackableImageDatabaseANDROID Null => new XrTrackableImageDatabaseANDROID(0);
+		public static implicit operator XrTrackableImageDatabaseANDROID(ulong handle) => new XrTrackableImageDatabaseANDROID(handle);
+		public static bool operator ==(XrTrackableImageDatabaseANDROID left, XrTrackableImageDatabaseANDROID right) => left.Handle == right.Handle;
+		public static bool operator !=(XrTrackableImageDatabaseANDROID left, XrTrackableImageDatabaseANDROID right) => left.Handle != right.Handle;
+		public static bool operator ==(XrTrackableImageDatabaseANDROID left, ulong right) => left.Handle == right;
+		public static bool operator !=(XrTrackableImageDatabaseANDROID left, ulong right) => left.Handle != right;
+		public bool Equals(XrTrackableImageDatabaseANDROID h) => Handle == h.Handle;
+		public override bool Equals(object o) => o is XrTrackableImageDatabaseANDROID h && Equals(h);
 		public override int GetHashCode() => Handle.GetHashCode();
 }
 

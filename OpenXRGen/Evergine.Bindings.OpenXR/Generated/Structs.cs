@@ -8148,6 +8148,45 @@ namespace Evergine.Bindings.OpenXR
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrFaceTrackerCreateInfoANDROID
+	{
+		public XrStructureType type;
+		public void* next;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrFaceStateGetInfoANDROID
+	{
+		public XrStructureType type;
+		public void* next;
+		public long time;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrFaceStateANDROID
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint parametersCapacityInput;
+		public uint parametersCountOutput;
+		public float* parameters;
+		public XrFaceTrackingStateANDROID faceTrackingState;
+		public long sampleTime;
+		public XrBool32 isValid;
+		public uint regionConfidencesCapacityInput;
+		public uint regionConfidencesCountOutput;
+		public float* regionConfidences;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSystemFaceTrackingPropertiesANDROID
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrBool32 supportsFaceTracking;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct XrSystemPassthroughCameraStatePropertiesANDROID
 	{
 		public XrStructureType type;
@@ -8950,6 +8989,14 @@ namespace Evergine.Bindings.OpenXR
 		public float farZ;
 		public XrEnvironmentDepthImageViewMETA views_0;
 		public XrEnvironmentDepthImageViewMETA views_1;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrEnvironmentDepthImageTimestampMETA
+	{
+		public XrStructureType type;
+		public void* next;
+		public long captureTime;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -10259,6 +10306,124 @@ namespace Evergine.Bindings.OpenXR
 		public void* next;
 		public uint markerCount;
 		public XrSpatialMarkerDataEXT* markers;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSystemFacialSimulationPropertiesBD
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrBool32 supportsFaceTracking;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrFaceTrackerCreateInfoBD
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrFacialSimulationModeBD mode;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrFacialSimulationDataGetInfoBD
+	{
+		public XrStructureType type;
+		public void* next;
+		public long time;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrFacialSimulationDataBD
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint faceExpressionWeightCount;
+		public float* faceExpressionWeights;
+		public XrBool32 isUpperFaceDataValid;
+		public XrBool32 isLowerFaceDataValid;
+		public long time;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrLipExpressionDataBD
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint lipsyncExpressionWeightCount;
+		public float* lipsyncExpressionWeights;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSystemImageTrackingPropertiesANDROID
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrBool32 supportsImageTracking;
+		public XrBool32 supportsPhysicalSizeEstimation;
+		public uint maxTrackedImageCount;
+		public uint maxLoadedImageCount;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrTrackableImageDatabaseEntryANDROID
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrTrackableImageTrackingModeANDROID trackingMode;
+		public float physicalWidth;
+		public uint imageWidth;
+		public uint imageHeight;
+		public XrTrackableImageFormatANDROID format;
+		public uint bufferSize;
+		public byte* buffer;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrTrackableImageDatabaseCreateInfoANDROID
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint entryCount;
+		public XrTrackableImageDatabaseEntryANDROID* entries;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrCreateTrackableImageDatabaseCompletionANDROID
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrResult futureResult;
+		public XrTrackableImageDatabaseANDROID database;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrTrackableImageConfigurationANDROID
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint databaseCount;
+		public XrTrackableImageDatabaseANDROID* databases;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrTrackableImageANDROID
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrTrackingStateANDROID trackingState;
+		public long lastUpdatedTime;
+		public XrTrackableImageDatabaseANDROID database;
+		public uint databaseEntryIndex;
+		public XrPosef centerPose;
+		public XrExtent2Df extents;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrEventDataImageTrackingLostANDROID
+	{
+		public XrStructureType type;
+		public void* next;
+		public long time;
 	}
 
 }
