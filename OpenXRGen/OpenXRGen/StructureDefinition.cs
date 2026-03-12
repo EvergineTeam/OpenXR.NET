@@ -90,19 +90,29 @@ namespace OpenXRGen
 
             if (m.ConstantValue == null)
             {
-                Match match = Regex.Match(m.Value, $@"{m.Name}\[(\d+)\](\[(\d+)\])?");
-                if (match.Captures.Count > 0)
+                Match match = Regex.Match(m.Value, $@"{Regex.Escape(m.Name)}\[(?<count1>[^\]]+)\](\[(?<count2>[^\]]+)\])?");
+                if (match.Success)
                 {
-                    if (match.Groups[2].Value != string.Empty)
+                    string count1 = match.Groups["count1"].Value;
+                    string count2 = match.Groups["count2"].Value;
+
+                    bool firstIsNumeric = int.TryParse(count1, out int value1);
+                    bool secondIsPresent = !string.IsNullOrEmpty(count2);
+                    int value2 = 0;
+                    bool secondIsNumeric = secondIsPresent && int.TryParse(count2, out value2);
+
+                    if (firstIsNumeric && !secondIsPresent)
                     {
-                        string valueString1 = match.Groups[1].Value;
-                        string valueString2 = match.Groups[3].Value;
-                        m.ElementCount = int.Parse(valueString1) * int.Parse(valueString2);
+                        m.ElementCount = value1;
                     }
-                    else
+                    else if (firstIsNumeric && secondIsNumeric)
                     {
-                        string valueString = match.Groups[1].Value;
-                        m.ElementCount = int.Parse(valueString);
+                        m.ElementCount = value1 * value2;
+                    }
+                    else if (!secondIsPresent)
+                    {
+                        // Handles array declarations using symbolic constants in member text.
+                        m.ConstantValue = count1;
                     }
                 }
             }

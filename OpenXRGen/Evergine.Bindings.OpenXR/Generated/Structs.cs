@@ -148,7 +148,7 @@ namespace Evergine.Bindings.OpenXR
 		public uint structVersion;
 		public UIntPtr structSize;
 		public void* loaderInstance;
-		public byte settings_file_location;
+		public fixed byte settings_file_location[512];
 		public XrApiLayerNextInfo* nextInfo;
 	}
 
@@ -5602,7 +5602,8 @@ namespace Evergine.Bindings.OpenXR
 	{
 		public XrStructureType type;
 		public void* next;
-		public XrEyeGazeFB gaze;
+		public XrEyeGazeFB gaze_0;
+		public XrEyeGazeFB gaze_1;
 		public long time;
 	}
 
@@ -8823,7 +8824,7 @@ namespace Evergine.Bindings.OpenXR
 	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct XrUuid
 	{
-		public byte data;
+		public fixed byte data[(int)OpenXRNative.XR_UUID_SIZE];
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
