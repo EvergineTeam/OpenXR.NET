@@ -60,7 +60,7 @@ namespace OpenXRGen
             return constant;
         }
 
-        public static object NormalizeValue(string value)
+        public static string NormalizeValue(string value)
         {
             return value.Replace("ULL", "UL");
         }

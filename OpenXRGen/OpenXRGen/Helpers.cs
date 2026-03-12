@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -267,6 +268,65 @@ namespace OpenXRGen
                 default:
                     return false;
             }
+        }
+
+        /// <summary>
+        /// Attempts to parse a raw C #define value string (e.g. "(512)", "0x10", "-1u") into an integer.
+        /// Returns false for complex expressions that cannot be reduced to a single integer.
+        /// </summary>
+        public static bool TryParseDefineIntValue(string rawValue, out int value)
+        {
+            value = 0;
+            if (string.IsNullOrWhiteSpace(rawValue))
+            {
+                return false;
+            }
+
+            string trimmed = rawValue.Trim();
+
+            // Strip a single layer of outer parentheses, e.g. "(512)" → "512".
+            // The trimmed.Length > 2 guard ensures this terminates.
+            while (trimmed.Length > 2 && trimmed.StartsWith("(") && trimmed.EndsWith(")"))
+            {
+                trimmed = trimmed.Substring(1, trimmed.Length - 2).Trim();
+            }
+
+            // Reject complex expressions: anything with whitespace, arithmetic operators, or parentheses.
+            // A leading '-' is handled separately as a sign for negative numbers.
+            string checkString = trimmed.StartsWith("-") ? trimmed.Substring(1) : trimmed;
+            if (checkString.Contains(" ") || checkString.Contains("(") || checkString.Contains(")") ||
+                checkString.Contains("*") || checkString.Contains("+") || checkString.Contains("-") ||
+                checkString.Contains("/"))
+            {
+                return false;
+            }
+
+            bool negative = trimmed.StartsWith("-");
+            if (negative)
+            {
+                trimmed = trimmed.Substring(1);
+            }
+
+            string normalized = trimmed.TrimEnd('u', 'U', 'l', 'L');
+
+            if (normalized.StartsWith("0x", StringComparison.OrdinalIgnoreCase))
+            {
+                if (!int.TryParse(normalized.Substring(2), NumberStyles.HexNumber, CultureInfo.InvariantCulture, out value))
+                {
+                    return false;
+                }
+            }
+            else if (!int.TryParse(normalized, NumberStyles.Integer, CultureInfo.InvariantCulture, out value))
+            {
+                return false;
+            }
+
+            if (negative)
+            {
+                value = -value;
+            }
+
+            return true;
         }
     }
 }

@@ -8,6 +8,54 @@ namespace OpenXRGen
 {
     class Program
     {
+        /// <summary>
+        /// Attempts to resolve a constant name to an integer array count by searching API Constants,
+        /// enum values, and #define entries in order.
+        /// </summary>
+        private static bool TryResolveArrayCount(
+            string constantName,
+            OpenXRVersion openXRVersion,
+            OpenXRSpecification openXRSpec,
+            out int count)
+        {
+            // Try API Constants first
+            var apiConstant = openXRVersion.Constants.FirstOrDefault(c => c.Name == constantName);
+            if (apiConstant != null)
+            {
+                if (apiConstant.Value == null)
+                {
+                    var alias = openXRVersion.Constants.FirstOrDefault(c => c.Name == apiConstant.Alias);
+                    count = int.Parse(alias.Value);
+                }
+                else
+                {
+                    count = int.Parse(apiConstant.Value);
+                }
+
+                return true;
+            }
+
+            // Try enum values
+            var enumValue = openXRVersion.Enums
+                .SelectMany(e => e.Values)
+                .FirstOrDefault(v => v.Name == constantName);
+            if (enumValue != null)
+            {
+                count = enumValue.Value;
+                return true;
+            }
+
+            // Try #define values
+            if (openXRSpec.Defines.TryGetValue(constantName, out var defineValueRaw) &&
+                Helpers.TryParseDefineIntValue(defineValueRaw, out count))
+            {
+                return true;
+            }
+
+            count = 0;
+            return false;
+        }
+
         static void Main(string[] args)
         {
             string vkFile = Path.Combine("..", "..", "..", "..", "..", "KhronosRegistry", "xr.xml");
@@ -164,24 +212,28 @@ namespace OpenXRGen
                         }
                         else if (member.ConstantValue != null)
                         {
-                            var validConstant = openXRVersion.Constants.FirstOrDefault(c => c.Name == member.ConstantValue);
+                            var apiConstant = openXRVersion.Constants.FirstOrDefault(c => c.Name == member.ConstantValue);
 
                             if (Helpers.SupportFixed(csType))
                             {
-                                file.WriteLine($"\t\tpublic fixed {csType} {Helpers.ValidatedName(member.Name)}[(int)OpenXRNative.{validConstant.Name}];");
-                            }
-                            else
-                            {
-                                int count = 0;
-
-                                if (validConstant.Value == null)
+                                if (apiConstant != null)
                                 {
-                                    var alias = openXRVersion.Constants.FirstOrDefault(c => c.Name == validConstant.Alias);
-                                    count = int.Parse(alias.Value);
+                                    file.WriteLine($"\t\tpublic fixed {csType} {Helpers.ValidatedName(member.Name)}[(int)OpenXRNative.{apiConstant.Name}];");
+                                }
+                                else if (TryResolveArrayCount(member.ConstantValue, openXRVersion, openXRSpec, out int count))
+                                {
+                                    file.WriteLine($"\t\tpublic fixed {csType} {Helpers.ValidatedName(member.Name)}[{count}];");
                                 }
                                 else
                                 {
-                                    count = int.Parse(validConstant.Value);
+                                    throw new InvalidOperationException($"Cannot resolve array size constant '{member.ConstantValue}' for member '{member.Name}' in struct '{structure.Name}'.");
+                                }
+                            }
+                            else
+                            {
+                                if (!TryResolveArrayCount(member.ConstantValue, openXRVersion, openXRSpec, out int count))
+                                {
+                                    throw new InvalidOperationException($"Cannot resolve array size constant '{member.ConstantValue}' for member '{member.Name}' in struct '{structure.Name}'.");
                                 }
 
                                 for (int i = 0; i < count; i++)
