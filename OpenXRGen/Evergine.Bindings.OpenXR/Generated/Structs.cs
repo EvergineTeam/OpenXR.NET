@@ -231,7 +231,7 @@ namespace Evergine.Bindings.OpenXR
 	{
 		public XrStructureType type;
 		public void* next;
-		public ulong systemId;
+		public XrSystemId systemId;
 		public uint vendorId;
 		public fixed byte systemName[(int)OpenXRNative.XR_MAX_SYSTEM_NAME_SIZE];
 		public XrSystemGraphicsProperties graphicsProperties;
@@ -348,7 +348,7 @@ namespace Evergine.Bindings.OpenXR
 		public XrStructureType type;
 		public void* next;
 		public ulong createFlags;
-		public ulong systemId;
+		public XrSystemId systemId;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -467,7 +467,7 @@ namespace Evergine.Bindings.OpenXR
 		public XrStructureType type;
 		public void* next;
 		public XrAction action;
-		public ulong subactionPath;
+		public XrPath subactionPath;
 		public XrPosef poseInActionSpace;
 	}
 
@@ -4826,7 +4826,7 @@ namespace Evergine.Bindings.OpenXR
 		public XrStructureType type;
 		public void* next;
 		public XrAction action;
-		public ulong subactionPath;
+		public XrPath subactionPath;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -4835,7 +4835,7 @@ namespace Evergine.Bindings.OpenXR
 		public XrStructureType type;
 		public void* next;
 		public XrAction action;
-		public ulong subactionPath;
+		public XrPath subactionPath;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -4852,7 +4852,7 @@ namespace Evergine.Bindings.OpenXR
 	public unsafe partial struct XrActionSuggestedBinding
 	{
 		public XrAction action;
-		public ulong binding;
+		public XrPath binding;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -4860,7 +4860,7 @@ namespace Evergine.Bindings.OpenXR
 	{
 		public XrStructureType type;
 		public void* next;
-		public ulong interactionProfile;
+		public XrPath interactionProfile;
 		public uint countSuggestedBindings;
 		public XrActionSuggestedBinding* suggestedBindings;
 	}
@@ -4869,7 +4869,7 @@ namespace Evergine.Bindings.OpenXR
 	public unsafe partial struct XrActiveActionSet
 	{
 		public XrActionSet actionSet;
-		public ulong subactionPath;
+		public XrPath subactionPath;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -4903,7 +4903,7 @@ namespace Evergine.Bindings.OpenXR
 	{
 		public XrStructureType type;
 		public void* next;
-		public ulong sourcePath;
+		public XrPath sourcePath;
 		public ulong whichComponents;
 	}
 
@@ -4920,7 +4920,7 @@ namespace Evergine.Bindings.OpenXR
 	{
 		public XrStructureType type;
 		public void* next;
-		public ulong interactionProfile;
+		public XrPath interactionProfile;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -4931,7 +4931,7 @@ namespace Evergine.Bindings.OpenXR
 		public fixed byte actionName[(int)OpenXRNative.XR_MAX_ACTION_NAME_SIZE];
 		public XrActionType actionType;
 		public uint countSubactionPaths;
-		public ulong* subactionPaths;
+		public XrPath* subactionPaths;
 		public fixed byte localizedActionName[(int)OpenXRNative.XR_MAX_LOCALIZED_ACTION_NAME_SIZE];
 	}
 
@@ -5067,7 +5067,7 @@ namespace Evergine.Bindings.OpenXR
 	{
 		public XrStructureType type;
 		public void* next;
-		public ulong systemId;
+		public XrSystemId systemId;
 		public ulong createFlags;
 		public IntPtr pfnGetInstanceProcAddr;
 		public IntPtr vulkanCreateInfo;
@@ -5079,7 +5079,7 @@ namespace Evergine.Bindings.OpenXR
 	{
 		public XrStructureType type;
 		public void* next;
-		public ulong systemId;
+		public XrSystemId systemId;
 		public ulong createFlags;
 		public IntPtr pfnGetInstanceProcAddr;
 		public IntPtr vulkanPhysicalDevice;
@@ -5092,7 +5092,7 @@ namespace Evergine.Bindings.OpenXR
 	{
 		public XrStructureType type;
 		public void* next;
-		public ulong systemId;
+		public XrSystemId systemId;
 		public IntPtr vulkanInstance;
 	}
 
@@ -5157,7 +5157,7 @@ namespace Evergine.Bindings.OpenXR
 	{
 		public XrStructureType type;
 		public void* next;
-		public ulong binding;
+		public XrPath binding;
 		public XrActionSet actionSet;
 		public float forceThreshold;
 		public float forceThresholdReleased;
@@ -5174,7 +5174,7 @@ namespace Evergine.Bindings.OpenXR
 		public XrStructureType type;
 		public void* next;
 		public XrAction action;
-		public ulong binding;
+		public XrPath binding;
 		public float onThreshold;
 		public float offThreshold;
 		public XrHapticBaseHeader* onHaptic;
@@ -5883,7 +5883,7 @@ namespace Evergine.Bindings.OpenXR
 	{
 		public XrStructureType type;
 		public void* next;
-		public ulong modelKey;
+		public XrControllerModelKeyMSFT modelKey;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -6303,7 +6303,7 @@ namespace Evergine.Bindings.OpenXR
 	{
 		public XrStructureType type;
 		public void* next;
-		public ulong requestId;
+		public XrAsyncRequestIdFB requestId;
 		public XrResult result;
 		public XrSpace space;
 		public XrUuid uuid;
@@ -6314,7 +6314,7 @@ namespace Evergine.Bindings.OpenXR
 	{
 		public XrStructureType type;
 		public void* next;
-		public ulong requestId;
+		public XrAsyncRequestIdFB requestId;
 		public XrResult result;
 		public XrSpace space;
 		public XrUuid uuid;
@@ -6487,7 +6487,7 @@ namespace Evergine.Bindings.OpenXR
 	{
 		public XrStructureType type;
 		public void* next;
-		public ulong path;
+		public XrPath path;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -6497,7 +6497,7 @@ namespace Evergine.Bindings.OpenXR
 		public void* next;
 		public uint vendorId;
 		public fixed byte modelName[(int)OpenXRNative.XR_MAX_RENDER_MODEL_NAME_SIZE_FB];
-		public ulong modelKey;
+		public XrRenderModelKeyFB modelKey;
 		public uint modelVersion;
 		public ulong flags;
 	}
@@ -6525,7 +6525,7 @@ namespace Evergine.Bindings.OpenXR
 	{
 		public XrStructureType type;
 		public void* next;
-		public ulong modelKey;
+		public XrRenderModelKeyFB modelKey;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -6609,7 +6609,7 @@ namespace Evergine.Bindings.OpenXR
 	{
 		public XrStructureType type;
 		public void* next;
-		public ulong requestId;
+		public XrAsyncRequestIdFB requestId;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -6617,7 +6617,7 @@ namespace Evergine.Bindings.OpenXR
 	{
 		public XrStructureType type;
 		public void* next;
-		public ulong requestId;
+		public XrAsyncRequestIdFB requestId;
 		public XrResult result;
 	}
 
@@ -6645,7 +6645,7 @@ namespace Evergine.Bindings.OpenXR
 	{
 		public XrStructureType type;
 		public void* next;
-		public ulong requestId;
+		public XrAsyncRequestIdFB requestId;
 		public XrResult result;
 		public XrSpace space;
 		public XrUuid uuid;
@@ -6657,7 +6657,7 @@ namespace Evergine.Bindings.OpenXR
 	{
 		public XrStructureType type;
 		public void* next;
-		public ulong requestId;
+		public XrAsyncRequestIdFB requestId;
 		public XrResult result;
 		public XrSpace space;
 		public XrUuid uuid;
@@ -6680,7 +6680,7 @@ namespace Evergine.Bindings.OpenXR
 	{
 		public XrStructureType type;
 		public void* next;
-		public ulong requestId;
+		public XrAsyncRequestIdFB requestId;
 		public XrResult result;
 	}
 
@@ -6699,7 +6699,7 @@ namespace Evergine.Bindings.OpenXR
 	{
 		public XrStructureType type;
 		public void* next;
-		public ulong requestId;
+		public XrAsyncRequestIdFB requestId;
 		public XrResult result;
 	}
 
@@ -6803,7 +6803,7 @@ namespace Evergine.Bindings.OpenXR
 	{
 		public XrStructureType type;
 		public void* next;
-		public ulong requestId;
+		public XrAsyncRequestIdFB requestId;
 		public XrResult result;
 	}
 
@@ -6883,7 +6883,7 @@ namespace Evergine.Bindings.OpenXR
 	{
 		public XrStructureType type;
 		public void* next;
-		public ulong advertisementRequestId;
+		public XrAsyncRequestIdFB advertisementRequestId;
 		public XrResult result;
 		public XrUuid advertisementUuid;
 	}
@@ -6893,7 +6893,7 @@ namespace Evergine.Bindings.OpenXR
 	{
 		public XrStructureType type;
 		public void* next;
-		public ulong advertisementRequestId;
+		public XrAsyncRequestIdFB advertisementRequestId;
 		public XrResult result;
 	}
 
@@ -6902,7 +6902,7 @@ namespace Evergine.Bindings.OpenXR
 	{
 		public XrStructureType type;
 		public void* next;
-		public ulong requestId;
+		public XrAsyncRequestIdFB requestId;
 		public XrResult result;
 	}
 
@@ -6911,7 +6911,7 @@ namespace Evergine.Bindings.OpenXR
 	{
 		public XrStructureType type;
 		public void* next;
-		public ulong discoveryRequestId;
+		public XrAsyncRequestIdFB discoveryRequestId;
 		public XrResult result;
 	}
 
@@ -6920,7 +6920,7 @@ namespace Evergine.Bindings.OpenXR
 	{
 		public XrStructureType type;
 		public void* next;
-		public ulong discoveryRequestId;
+		public XrAsyncRequestIdFB discoveryRequestId;
 		public XrUuid advertisementUuid;
 		public uint bufferSize;
 		public fixed byte buffer[(int)OpenXRNative.XR_MAX_COLOCATION_DISCOVERY_BUFFER_SIZE_META];
@@ -6931,7 +6931,7 @@ namespace Evergine.Bindings.OpenXR
 	{
 		public XrStructureType type;
 		public void* next;
-		public ulong discoveryRequestId;
+		public XrAsyncRequestIdFB discoveryRequestId;
 		public XrResult result;
 	}
 
@@ -6940,7 +6940,7 @@ namespace Evergine.Bindings.OpenXR
 	{
 		public XrStructureType type;
 		public void* next;
-		public ulong requestId;
+		public XrAsyncRequestIdFB requestId;
 		public XrResult result;
 	}
 
@@ -6974,7 +6974,7 @@ namespace Evergine.Bindings.OpenXR
 	{
 		public XrStructureType type;
 		public void* next;
-		public ulong requestId;
+		public XrAsyncRequestIdFB requestId;
 		public XrResult result;
 	}
 
@@ -7623,8 +7623,8 @@ namespace Evergine.Bindings.OpenXR
 	{
 		public XrStructureType type;
 		public void* next;
-		public ulong persistentPath;
-		public ulong rolePath;
+		public XrPath persistentPath;
+		public XrPath rolePath;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -7857,7 +7857,7 @@ namespace Evergine.Bindings.OpenXR
 	{
 		public XrStructureType type;
 		public void* next;
-		public ulong requestId;
+		public XrAsyncRequestIdFB requestId;
 		public XrResult result;
 	}
 
@@ -7877,7 +7877,7 @@ namespace Evergine.Bindings.OpenXR
 	{
 		public XrStructureType type;
 		public void* next;
-		public ulong requestId;
+		public XrAsyncRequestIdFB requestId;
 		public XrResult result;
 	}
 
@@ -7944,7 +7944,7 @@ namespace Evergine.Bindings.OpenXR
 	{
 		public XrStructureType type;
 		public void* next;
-		public ulong requestId;
+		public XrAsyncRequestIdFB requestId;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -7952,7 +7952,7 @@ namespace Evergine.Bindings.OpenXR
 	{
 		public XrStructureType type;
 		public void* next;
-		public ulong requestId;
+		public XrAsyncRequestIdFB requestId;
 		public XrResult result;
 	}
 
@@ -8215,7 +8215,7 @@ namespace Evergine.Bindings.OpenXR
 	{
 		public XrStructureType type;
 		public void* next;
-		public ulong trackable;
+		public XrTrackableANDROID trackable;
 		public XrSpace baseSpace;
 		public long time;
 	}
@@ -8230,7 +8230,7 @@ namespace Evergine.Bindings.OpenXR
 		public XrExtent2Df extents;
 		public XrPlaneTypeANDROID planeType;
 		public XrPlaneLabelANDROID planeLabel;
-		public ulong subsumedByPlane;
+		public XrTrackableANDROID subsumedByPlane;
 		public long lastUpdatedTime;
 		public uint vertexCapacityInput;
 		public uint* vertexCountOutput;
@@ -8245,7 +8245,7 @@ namespace Evergine.Bindings.OpenXR
 		public XrSpace space;
 		public long time;
 		public XrPosef pose;
-		public ulong trackable;
+		public XrTrackableANDROID trackable;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -8296,7 +8296,7 @@ namespace Evergine.Bindings.OpenXR
 	public unsafe partial struct XrRaycastHitResultANDROID
 	{
 		public XrTrackableTypeANDROID type;
-		public ulong trackable;
+		public XrTrackableANDROID trackable;
 		public XrPosef pose;
 	}
 
@@ -8778,7 +8778,7 @@ namespace Evergine.Bindings.OpenXR
 		public XrStructureType type;
 		public void* next;
 		public XrMarkerDetectorML markerDetector;
-		public ulong marker;
+		public XrMarkerML marker;
 		public XrPosef poseInMarkerSpace;
 	}
 
@@ -9143,7 +9143,7 @@ namespace Evergine.Bindings.OpenXR
 		public void* next;
 		public uint entityIdCapacityInput;
 		public uint entityIdCountOutput;
-		public ulong* entityIds;
+		public XrSpatialEntityIdEXT* entityIds;
 		public uint entityStateCapacityInput;
 		public uint entityStateCountOutput;
 		public XrSpatialEntityTrackingStateEXT* entityStates;
@@ -9152,7 +9152,7 @@ namespace Evergine.Bindings.OpenXR
 	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct XrSpatialBufferEXT
 	{
-		public ulong bufferId;
+		public XrSpatialBufferIdEXT bufferId;
 		public XrSpatialBufferTypeEXT bufferType;
 	}
 
@@ -9161,7 +9161,7 @@ namespace Evergine.Bindings.OpenXR
 	{
 		public XrStructureType type;
 		public void* next;
-		public ulong bufferId;
+		public XrSpatialBufferIdEXT bufferId;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -9195,7 +9195,7 @@ namespace Evergine.Bindings.OpenXR
 		public XrStructureType type;
 		public void* next;
 		public uint parentCount;
-		public ulong* parents;
+		public XrSpatialEntityIdEXT* parents;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -9220,7 +9220,7 @@ namespace Evergine.Bindings.OpenXR
 	{
 		public XrStructureType type;
 		public void* next;
-		public ulong entityId;
+		public XrSpatialEntityIdEXT entityId;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -9339,7 +9339,7 @@ namespace Evergine.Bindings.OpenXR
 		public XrStructureType type;
 		public void* next;
 		public XrSpatialContextEXT spatialContext;
-		public ulong spatialEntityId;
+		public XrSpatialEntityIdEXT spatialEntityId;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -9739,7 +9739,7 @@ namespace Evergine.Bindings.OpenXR
 	{
 		public XrStructureType type;
 		public void* next;
-		public ulong renderModelId;
+		public XrRenderModelIdEXT renderModelId;
 		public uint gltfExtensionCount;
 		public byte** gltfExtensions;
 	}
@@ -9859,7 +9859,7 @@ namespace Evergine.Bindings.OpenXR
 		public XrStructureType type;
 		public void* next;
 		public uint topLevelUserPathCount;
-		public ulong* topLevelUserPaths;
+		public XrPath* topLevelUserPaths;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -9882,7 +9882,7 @@ namespace Evergine.Bindings.OpenXR
 	{
 		public XrStructureType type;
 		public void* next;
-		public ulong entityId;
+		public XrSpatialEntityIdBD entityId;
 		public XrSpatialEntityComponentTypeBD componentType;
 	}
 
@@ -10046,7 +10046,7 @@ namespace Evergine.Bindings.OpenXR
 	{
 		public XrStructureType type;
 		public void* next;
-		public ulong entityId;
+		public XrSpatialEntityIdBD entityId;
 		public long lastUpdateTime;
 		public XrUuid uuid;
 	}
@@ -10057,7 +10057,7 @@ namespace Evergine.Bindings.OpenXR
 		public XrStructureType type;
 		public void* next;
 		public XrSenseDataSnapshotBD snapshot;
-		public ulong entityId;
+		public XrSpatialEntityIdBD entityId;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]

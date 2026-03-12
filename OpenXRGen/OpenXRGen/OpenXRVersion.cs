@@ -14,6 +14,7 @@ namespace OpenXRGen
         public List<StructureDefinition> Structs = new List<StructureDefinition>();
         public List<StructureDefinition> Unions = new List<StructureDefinition>();
         public List<HandleDefinition> Handles = new List<HandleDefinition>();
+        public List<AtomDefinition> Atoms = new List<AtomDefinition>();
         public List<CommandDefinition> Commands = new List<CommandDefinition>();
 
         public static OpenXRVersion FromSpec(OpenXRSpecification spec, string versionName, IEnumerable<ExtensionDefinition> extensions)
@@ -22,6 +23,7 @@ namespace OpenXRGen
             version.Constants = spec.Constants;
             version.FuncPointers = spec.FuncPointers;
             version.Handles = spec.Handles;
+            version.Atoms = spec.Atoms;
             version.Unions = spec.Unions;
             version.Structs = spec.Structs;
             version.Enums = spec.Enums;

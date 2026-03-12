@@ -767,4 +767,169 @@ namespace Evergine.Bindings.OpenXR
 		public override int GetHashCode() => Handle.GetHashCode();
 }
 
+	public partial struct XrPath : IEquatable<XrPath>
+{
+		public readonly ulong Handle;
+		public XrPath(ulong existingHandle) { Handle = existingHandle; }
+		public static XrPath Null => new XrPath(0);
+		public static implicit operator XrPath(ulong handle) => new XrPath(handle);
+		public static bool operator ==(XrPath left, XrPath right) => left.Handle == right.Handle;
+		public static bool operator !=(XrPath left, XrPath right) => left.Handle != right.Handle;
+		public static bool operator ==(XrPath left, ulong right) => left.Handle == right;
+		public static bool operator !=(XrPath left, ulong right) => left.Handle != right;
+		public bool Equals(XrPath h) => Handle == h.Handle;
+		public override bool Equals(object o) => o is XrPath h && Equals(h);
+		public override int GetHashCode() => Handle.GetHashCode();
+}
+
+	public partial struct XrSystemId : IEquatable<XrSystemId>
+{
+		public readonly ulong Handle;
+		public XrSystemId(ulong existingHandle) { Handle = existingHandle; }
+		public static XrSystemId Null => new XrSystemId(0);
+		public static implicit operator XrSystemId(ulong handle) => new XrSystemId(handle);
+		public static bool operator ==(XrSystemId left, XrSystemId right) => left.Handle == right.Handle;
+		public static bool operator !=(XrSystemId left, XrSystemId right) => left.Handle != right.Handle;
+		public static bool operator ==(XrSystemId left, ulong right) => left.Handle == right;
+		public static bool operator !=(XrSystemId left, ulong right) => left.Handle != right;
+		public bool Equals(XrSystemId h) => Handle == h.Handle;
+		public override bool Equals(object o) => o is XrSystemId h && Equals(h);
+		public override int GetHashCode() => Handle.GetHashCode();
+}
+
+	public partial struct XrControllerModelKeyMSFT : IEquatable<XrControllerModelKeyMSFT>
+{
+		public readonly ulong Handle;
+		public XrControllerModelKeyMSFT(ulong existingHandle) { Handle = existingHandle; }
+		public static XrControllerModelKeyMSFT Null => new XrControllerModelKeyMSFT(0);
+		public static implicit operator XrControllerModelKeyMSFT(ulong handle) => new XrControllerModelKeyMSFT(handle);
+		public static bool operator ==(XrControllerModelKeyMSFT left, XrControllerModelKeyMSFT right) => left.Handle == right.Handle;
+		public static bool operator !=(XrControllerModelKeyMSFT left, XrControllerModelKeyMSFT right) => left.Handle != right.Handle;
+		public static bool operator ==(XrControllerModelKeyMSFT left, ulong right) => left.Handle == right;
+		public static bool operator !=(XrControllerModelKeyMSFT left, ulong right) => left.Handle != right;
+		public bool Equals(XrControllerModelKeyMSFT h) => Handle == h.Handle;
+		public override bool Equals(object o) => o is XrControllerModelKeyMSFT h && Equals(h);
+		public override int GetHashCode() => Handle.GetHashCode();
+}
+
+	public partial struct XrAsyncRequestIdFB : IEquatable<XrAsyncRequestIdFB>
+{
+		public readonly ulong Handle;
+		public XrAsyncRequestIdFB(ulong existingHandle) { Handle = existingHandle; }
+		public static XrAsyncRequestIdFB Null => new XrAsyncRequestIdFB(0);
+		public static implicit operator XrAsyncRequestIdFB(ulong handle) => new XrAsyncRequestIdFB(handle);
+		public static bool operator ==(XrAsyncRequestIdFB left, XrAsyncRequestIdFB right) => left.Handle == right.Handle;
+		public static bool operator !=(XrAsyncRequestIdFB left, XrAsyncRequestIdFB right) => left.Handle != right.Handle;
+		public static bool operator ==(XrAsyncRequestIdFB left, ulong right) => left.Handle == right;
+		public static bool operator !=(XrAsyncRequestIdFB left, ulong right) => left.Handle != right;
+		public bool Equals(XrAsyncRequestIdFB h) => Handle == h.Handle;
+		public override bool Equals(object o) => o is XrAsyncRequestIdFB h && Equals(h);
+		public override int GetHashCode() => Handle.GetHashCode();
+}
+
+	public partial struct XrRenderModelKeyFB : IEquatable<XrRenderModelKeyFB>
+{
+		public readonly ulong Handle;
+		public XrRenderModelKeyFB(ulong existingHandle) { Handle = existingHandle; }
+		public static XrRenderModelKeyFB Null => new XrRenderModelKeyFB(0);
+		public static implicit operator XrRenderModelKeyFB(ulong handle) => new XrRenderModelKeyFB(handle);
+		public static bool operator ==(XrRenderModelKeyFB left, XrRenderModelKeyFB right) => left.Handle == right.Handle;
+		public static bool operator !=(XrRenderModelKeyFB left, XrRenderModelKeyFB right) => left.Handle != right.Handle;
+		public static bool operator ==(XrRenderModelKeyFB left, ulong right) => left.Handle == right;
+		public static bool operator !=(XrRenderModelKeyFB left, ulong right) => left.Handle != right;
+		public bool Equals(XrRenderModelKeyFB h) => Handle == h.Handle;
+		public override bool Equals(object o) => o is XrRenderModelKeyFB h && Equals(h);
+		public override int GetHashCode() => Handle.GetHashCode();
+}
+
+	public partial struct XrTrackableANDROID : IEquatable<XrTrackableANDROID>
+{
+		public readonly ulong Handle;
+		public XrTrackableANDROID(ulong existingHandle) { Handle = existingHandle; }
+		public static XrTrackableANDROID Null => new XrTrackableANDROID(0);
+		public static implicit operator XrTrackableANDROID(ulong handle) => new XrTrackableANDROID(handle);
+		public static bool operator ==(XrTrackableANDROID left, XrTrackableANDROID right) => left.Handle == right.Handle;
+		public static bool operator !=(XrTrackableANDROID left, XrTrackableANDROID right) => left.Handle != right.Handle;
+		public static bool operator ==(XrTrackableANDROID left, ulong right) => left.Handle == right;
+		public static bool operator !=(XrTrackableANDROID left, ulong right) => left.Handle != right;
+		public bool Equals(XrTrackableANDROID h) => Handle == h.Handle;
+		public override bool Equals(object o) => o is XrTrackableANDROID h && Equals(h);
+		public override int GetHashCode() => Handle.GetHashCode();
+}
+
+	public partial struct XrMarkerML : IEquatable<XrMarkerML>
+{
+		public readonly ulong Handle;
+		public XrMarkerML(ulong existingHandle) { Handle = existingHandle; }
+		public static XrMarkerML Null => new XrMarkerML(0);
+		public static implicit operator XrMarkerML(ulong handle) => new XrMarkerML(handle);
+		public static bool operator ==(XrMarkerML left, XrMarkerML right) => left.Handle == right.Handle;
+		public static bool operator !=(XrMarkerML left, XrMarkerML right) => left.Handle != right.Handle;
+		public static bool operator ==(XrMarkerML left, ulong right) => left.Handle == right;
+		public static bool operator !=(XrMarkerML left, ulong right) => left.Handle != right;
+		public bool Equals(XrMarkerML h) => Handle == h.Handle;
+		public override bool Equals(object o) => o is XrMarkerML h && Equals(h);
+		public override int GetHashCode() => Handle.GetHashCode();
+}
+
+	public partial struct XrRenderModelIdEXT : IEquatable<XrRenderModelIdEXT>
+{
+		public readonly ulong Handle;
+		public XrRenderModelIdEXT(ulong existingHandle) { Handle = existingHandle; }
+		public static XrRenderModelIdEXT Null => new XrRenderModelIdEXT(0);
+		public static implicit operator XrRenderModelIdEXT(ulong handle) => new XrRenderModelIdEXT(handle);
+		public static bool operator ==(XrRenderModelIdEXT left, XrRenderModelIdEXT right) => left.Handle == right.Handle;
+		public static bool operator !=(XrRenderModelIdEXT left, XrRenderModelIdEXT right) => left.Handle != right.Handle;
+		public static bool operator ==(XrRenderModelIdEXT left, ulong right) => left.Handle == right;
+		public static bool operator !=(XrRenderModelIdEXT left, ulong right) => left.Handle != right;
+		public bool Equals(XrRenderModelIdEXT h) => Handle == h.Handle;
+		public override bool Equals(object o) => o is XrRenderModelIdEXT h && Equals(h);
+		public override int GetHashCode() => Handle.GetHashCode();
+}
+
+	public partial struct XrSpatialEntityIdEXT : IEquatable<XrSpatialEntityIdEXT>
+{
+		public readonly ulong Handle;
+		public XrSpatialEntityIdEXT(ulong existingHandle) { Handle = existingHandle; }
+		public static XrSpatialEntityIdEXT Null => new XrSpatialEntityIdEXT(0);
+		public static implicit operator XrSpatialEntityIdEXT(ulong handle) => new XrSpatialEntityIdEXT(handle);
+		public static bool operator ==(XrSpatialEntityIdEXT left, XrSpatialEntityIdEXT right) => left.Handle == right.Handle;
+		public static bool operator !=(XrSpatialEntityIdEXT left, XrSpatialEntityIdEXT right) => left.Handle != right.Handle;
+		public static bool operator ==(XrSpatialEntityIdEXT left, ulong right) => left.Handle == right;
+		public static bool operator !=(XrSpatialEntityIdEXT left, ulong right) => left.Handle != right;
+		public bool Equals(XrSpatialEntityIdEXT h) => Handle == h.Handle;
+		public override bool Equals(object o) => o is XrSpatialEntityIdEXT h && Equals(h);
+		public override int GetHashCode() => Handle.GetHashCode();
+}
+
+	public partial struct XrSpatialBufferIdEXT : IEquatable<XrSpatialBufferIdEXT>
+{
+		public readonly ulong Handle;
+		public XrSpatialBufferIdEXT(ulong existingHandle) { Handle = existingHandle; }
+		public static XrSpatialBufferIdEXT Null => new XrSpatialBufferIdEXT(0);
+		public static implicit operator XrSpatialBufferIdEXT(ulong handle) => new XrSpatialBufferIdEXT(handle);
+		public static bool operator ==(XrSpatialBufferIdEXT left, XrSpatialBufferIdEXT right) => left.Handle == right.Handle;
+		public static bool operator !=(XrSpatialBufferIdEXT left, XrSpatialBufferIdEXT right) => left.Handle != right.Handle;
+		public static bool operator ==(XrSpatialBufferIdEXT left, ulong right) => left.Handle == right;
+		public static bool operator !=(XrSpatialBufferIdEXT left, ulong right) => left.Handle != right;
+		public bool Equals(XrSpatialBufferIdEXT h) => Handle == h.Handle;
+		public override bool Equals(object o) => o is XrSpatialBufferIdEXT h && Equals(h);
+		public override int GetHashCode() => Handle.GetHashCode();
+}
+
+	public partial struct XrSpatialEntityIdBD : IEquatable<XrSpatialEntityIdBD>
+{
+		public readonly ulong Handle;
+		public XrSpatialEntityIdBD(ulong existingHandle) { Handle = existingHandle; }
+		public static XrSpatialEntityIdBD Null => new XrSpatialEntityIdBD(0);
+		public static implicit operator XrSpatialEntityIdBD(ulong handle) => new XrSpatialEntityIdBD(handle);
+		public static bool operator ==(XrSpatialEntityIdBD left, XrSpatialEntityIdBD right) => left.Handle == right.Handle;
+		public static bool operator !=(XrSpatialEntityIdBD left, XrSpatialEntityIdBD right) => left.Handle != right.Handle;
+		public static bool operator ==(XrSpatialEntityIdBD left, ulong right) => left.Handle == right;
+		public static bool operator !=(XrSpatialEntityIdBD left, ulong right) => left.Handle != right;
+		public bool Equals(XrSpatialEntityIdBD h) => Handle == h.Handle;
+		public override bool Equals(object o) => o is XrSpatialEntityIdBD h && Equals(h);
+		public override int GetHashCode() => Handle.GetHashCode();
+}
+
 }

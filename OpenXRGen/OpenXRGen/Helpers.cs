@@ -156,7 +156,6 @@ namespace OpenXRGen
                 case "uint32_t*":
                     return "uint*";
                 case "uint64_t":
-                case "XR_DEFINE_ATOM":
                     return "ulong";
                 case "uint64_t*":
                     return "ulong*";

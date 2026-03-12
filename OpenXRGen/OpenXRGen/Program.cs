@@ -283,6 +283,27 @@ namespace OpenXRGen
                     file.WriteLine("}\n");
                 }
 
+                // Atom types (XR_DEFINE_ATOM)
+                foreach (var atom in openXRVersion.Atoms)
+                {
+                    file.WriteLine($"\tpublic partial struct {atom.Name} : IEquatable<{atom.Name}>");
+                    file.WriteLine("{");
+
+                    file.WriteLine($"\t\tpublic readonly ulong Handle;");
+
+                    file.WriteLine($"\t\tpublic {atom.Name}(ulong existingHandle) {{ Handle = existingHandle; }}");
+                    file.WriteLine($"\t\tpublic static {atom.Name} Null => new {atom.Name}(0);");
+                    file.WriteLine($"\t\tpublic static implicit operator {atom.Name}(ulong handle) => new {atom.Name}(handle);");
+                    file.WriteLine($"\t\tpublic static bool operator ==({atom.Name} left, {atom.Name} right) => left.Handle == right.Handle;");
+                    file.WriteLine($"\t\tpublic static bool operator !=({atom.Name} left, {atom.Name} right) => left.Handle != right.Handle;");
+                    file.WriteLine($"\t\tpublic static bool operator ==({atom.Name} left, ulong right) => left.Handle == right;");
+                    file.WriteLine($"\t\tpublic static bool operator !=({atom.Name} left, ulong right) => left.Handle != right;");
+                    file.WriteLine($"\t\tpublic bool Equals({atom.Name} h) => Handle == h.Handle;");
+                    file.WriteLine($"\t\tpublic override bool Equals(object o) => o is {atom.Name} h && Equals(h);");
+                    file.WriteLine($"\t\tpublic override int GetHashCode() => Handle.GetHashCode();");
+                    file.WriteLine("}\n");
+                }
+
                 file.WriteLine("}");
             }
 

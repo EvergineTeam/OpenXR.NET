@@ -168,6 +168,10 @@ namespace OpenXRGen
                         {
                             return StructureDefinition.GetSizeInBytes(@struct, openXRVersion);
                         }
+                        else if (openXRVersion.Atoms.Exists(a => a.Name == m.Type))
+                        {
+                            return 8; // atom types (XR_DEFINE_ATOM) are ulong-backed
+                        }
                         else
                         {
                             return 4; // enums

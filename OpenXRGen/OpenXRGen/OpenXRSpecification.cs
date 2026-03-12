@@ -19,6 +19,7 @@ namespace OpenXRGen
         public List<StructureDefinition> Structs = new List<StructureDefinition>();
         public List<StructureDefinition> Unions = new List<StructureDefinition>();
         public List<HandleDefinition> Handles = new List<HandleDefinition>();
+        public List<AtomDefinition> Atoms = new List<AtomDefinition>();
         public List<CommandDefinition> Commands = new List<CommandDefinition>();
         public List<FeatureDefinition> Features = new List<FeatureDefinition>();
         public Dictionary<string, string> BaseTypes = new Dictionary<string, string>();
@@ -133,6 +134,14 @@ namespace OpenXRGen
                 .ToDictionary(
                     bt => bt.Element("name").Value,
                     bt => bt.Element("type")?.Value);
+
+            // Atoms (XR_DEFINE_ATOM basetypes)
+            var atomNames = spec.BaseTypes.Where(bt => bt.Value == "XR_DEFINE_ATOM").Select(bt => bt.Key).ToList();
+            foreach (var atomName in atomNames)
+            {
+                spec.Atoms.Add(new AtomDefinition { Name = atomName });
+                spec.BaseTypes.Remove(atomName);
+            }
 
             // Handles
             var handles = types.Elements("type").Where(h => h.Attribute("category")?.Value == "handle");

@@ -60,21 +60,21 @@ namespace Evergine.Bindings.OpenXR
 			=> xrStructureTypeToString_ptr(instance, value, buffer);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrGetSystemDelegate(XrInstance instance, XrSystemGetInfo* getInfo, ulong* systemId);
+		private delegate XrResult xrGetSystemDelegate(XrInstance instance, XrSystemGetInfo* getInfo, XrSystemId* systemId);
 		private static xrGetSystemDelegate xrGetSystem_ptr;
-		public static XrResult xrGetSystem(XrInstance instance, XrSystemGetInfo* getInfo, ulong* systemId)
+		public static XrResult xrGetSystem(XrInstance instance, XrSystemGetInfo* getInfo, XrSystemId* systemId)
 			=> xrGetSystem_ptr(instance, getInfo, systemId);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrGetSystemPropertiesDelegate(XrInstance instance, ulong systemId, XrSystemProperties* properties);
+		private delegate XrResult xrGetSystemPropertiesDelegate(XrInstance instance, XrSystemId systemId, XrSystemProperties* properties);
 		private static xrGetSystemPropertiesDelegate xrGetSystemProperties_ptr;
-		public static XrResult xrGetSystemProperties(XrInstance instance, ulong systemId, XrSystemProperties* properties)
+		public static XrResult xrGetSystemProperties(XrInstance instance, XrSystemId systemId, XrSystemProperties* properties)
 			=> xrGetSystemProperties_ptr(instance, systemId, properties);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrEnumerateEnvironmentBlendModesDelegate(XrInstance instance, ulong systemId, XrViewConfigurationType viewConfigurationType, uint environmentBlendModeCapacityInput, uint* environmentBlendModeCountOutput, XrEnvironmentBlendMode* environmentBlendModes);
+		private delegate XrResult xrEnumerateEnvironmentBlendModesDelegate(XrInstance instance, XrSystemId systemId, XrViewConfigurationType viewConfigurationType, uint environmentBlendModeCapacityInput, uint* environmentBlendModeCountOutput, XrEnvironmentBlendMode* environmentBlendModes);
 		private static xrEnumerateEnvironmentBlendModesDelegate xrEnumerateEnvironmentBlendModes_ptr;
-		public static XrResult xrEnumerateEnvironmentBlendModes(XrInstance instance, ulong systemId, XrViewConfigurationType viewConfigurationType, uint environmentBlendModeCapacityInput, uint* environmentBlendModeCountOutput, XrEnvironmentBlendMode* environmentBlendModes)
+		public static XrResult xrEnumerateEnvironmentBlendModes(XrInstance instance, XrSystemId systemId, XrViewConfigurationType viewConfigurationType, uint environmentBlendModeCapacityInput, uint* environmentBlendModeCountOutput, XrEnvironmentBlendMode* environmentBlendModes)
 			=> xrEnumerateEnvironmentBlendModes_ptr(instance, systemId, viewConfigurationType, environmentBlendModeCapacityInput, environmentBlendModeCountOutput, environmentBlendModes);
 
 		[UnmanagedFunctionPointer(CallConv)]
@@ -126,21 +126,21 @@ namespace Evergine.Bindings.OpenXR
 			=> xrDestroySpace_ptr(space);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrEnumerateViewConfigurationsDelegate(XrInstance instance, ulong systemId, uint viewConfigurationTypeCapacityInput, uint* viewConfigurationTypeCountOutput, XrViewConfigurationType* viewConfigurationTypes);
+		private delegate XrResult xrEnumerateViewConfigurationsDelegate(XrInstance instance, XrSystemId systemId, uint viewConfigurationTypeCapacityInput, uint* viewConfigurationTypeCountOutput, XrViewConfigurationType* viewConfigurationTypes);
 		private static xrEnumerateViewConfigurationsDelegate xrEnumerateViewConfigurations_ptr;
-		public static XrResult xrEnumerateViewConfigurations(XrInstance instance, ulong systemId, uint viewConfigurationTypeCapacityInput, uint* viewConfigurationTypeCountOutput, XrViewConfigurationType* viewConfigurationTypes)
+		public static XrResult xrEnumerateViewConfigurations(XrInstance instance, XrSystemId systemId, uint viewConfigurationTypeCapacityInput, uint* viewConfigurationTypeCountOutput, XrViewConfigurationType* viewConfigurationTypes)
 			=> xrEnumerateViewConfigurations_ptr(instance, systemId, viewConfigurationTypeCapacityInput, viewConfigurationTypeCountOutput, viewConfigurationTypes);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrGetViewConfigurationPropertiesDelegate(XrInstance instance, ulong systemId, XrViewConfigurationType viewConfigurationType, XrViewConfigurationProperties* configurationProperties);
+		private delegate XrResult xrGetViewConfigurationPropertiesDelegate(XrInstance instance, XrSystemId systemId, XrViewConfigurationType viewConfigurationType, XrViewConfigurationProperties* configurationProperties);
 		private static xrGetViewConfigurationPropertiesDelegate xrGetViewConfigurationProperties_ptr;
-		public static XrResult xrGetViewConfigurationProperties(XrInstance instance, ulong systemId, XrViewConfigurationType viewConfigurationType, XrViewConfigurationProperties* configurationProperties)
+		public static XrResult xrGetViewConfigurationProperties(XrInstance instance, XrSystemId systemId, XrViewConfigurationType viewConfigurationType, XrViewConfigurationProperties* configurationProperties)
 			=> xrGetViewConfigurationProperties_ptr(instance, systemId, viewConfigurationType, configurationProperties);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrEnumerateViewConfigurationViewsDelegate(XrInstance instance, ulong systemId, XrViewConfigurationType viewConfigurationType, uint viewCapacityInput, uint* viewCountOutput, XrViewConfigurationView* views);
+		private delegate XrResult xrEnumerateViewConfigurationViewsDelegate(XrInstance instance, XrSystemId systemId, XrViewConfigurationType viewConfigurationType, uint viewCapacityInput, uint* viewCountOutput, XrViewConfigurationView* views);
 		private static xrEnumerateViewConfigurationViewsDelegate xrEnumerateViewConfigurationViews_ptr;
-		public static XrResult xrEnumerateViewConfigurationViews(XrInstance instance, ulong systemId, XrViewConfigurationType viewConfigurationType, uint viewCapacityInput, uint* viewCountOutput, XrViewConfigurationView* views)
+		public static XrResult xrEnumerateViewConfigurationViews(XrInstance instance, XrSystemId systemId, XrViewConfigurationType viewConfigurationType, uint viewCapacityInput, uint* viewCountOutput, XrViewConfigurationView* views)
 			=> xrEnumerateViewConfigurationViews_ptr(instance, systemId, viewConfigurationType, viewCapacityInput, viewCountOutput, views);
 
 		[UnmanagedFunctionPointer(CallConv)]
@@ -228,15 +228,15 @@ namespace Evergine.Bindings.OpenXR
 			=> xrLocateViews_ptr(session, viewLocateInfo, viewState, viewCapacityInput, viewCountOutput, views);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrStringToPathDelegate(XrInstance instance, byte* pathString, ulong* path);
+		private delegate XrResult xrStringToPathDelegate(XrInstance instance, byte* pathString, XrPath* path);
 		private static xrStringToPathDelegate xrStringToPath_ptr;
-		public static XrResult xrStringToPath(XrInstance instance, byte* pathString, ulong* path)
+		public static XrResult xrStringToPath(XrInstance instance, byte* pathString, XrPath* path)
 			=> xrStringToPath_ptr(instance, pathString, path);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrPathToStringDelegate(XrInstance instance, ulong path, uint bufferCapacityInput, uint* bufferCountOutput, byte* buffer);
+		private delegate XrResult xrPathToStringDelegate(XrInstance instance, XrPath path, uint bufferCapacityInput, uint* bufferCountOutput, byte* buffer);
 		private static xrPathToStringDelegate xrPathToString_ptr;
-		public static XrResult xrPathToString(XrInstance instance, ulong path, uint bufferCapacityInput, uint* bufferCountOutput, byte* buffer)
+		public static XrResult xrPathToString(XrInstance instance, XrPath path, uint bufferCapacityInput, uint* bufferCountOutput, byte* buffer)
 			=> xrPathToString_ptr(instance, path, bufferCapacityInput, bufferCountOutput, buffer);
 
 		[UnmanagedFunctionPointer(CallConv)]
@@ -276,9 +276,9 @@ namespace Evergine.Bindings.OpenXR
 			=> xrAttachSessionActionSets_ptr(session, attachInfo);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrGetCurrentInteractionProfileDelegate(XrSession session, ulong topLevelUserPath, XrInteractionProfileState* interactionProfile);
+		private delegate XrResult xrGetCurrentInteractionProfileDelegate(XrSession session, XrPath topLevelUserPath, XrInteractionProfileState* interactionProfile);
 		private static xrGetCurrentInteractionProfileDelegate xrGetCurrentInteractionProfile_ptr;
-		public static XrResult xrGetCurrentInteractionProfile(XrSession session, ulong topLevelUserPath, XrInteractionProfileState* interactionProfile)
+		public static XrResult xrGetCurrentInteractionProfile(XrSession session, XrPath topLevelUserPath, XrInteractionProfileState* interactionProfile)
 			=> xrGetCurrentInteractionProfile_ptr(session, topLevelUserPath, interactionProfile);
 
 		[UnmanagedFunctionPointer(CallConv)]
@@ -312,9 +312,9 @@ namespace Evergine.Bindings.OpenXR
 			=> xrSyncActions_ptr(session, syncInfo);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrEnumerateBoundSourcesForActionDelegate(XrSession session, XrBoundSourcesForActionEnumerateInfo* enumerateInfo, uint sourceCapacityInput, uint* sourceCountOutput, ulong* sources);
+		private delegate XrResult xrEnumerateBoundSourcesForActionDelegate(XrSession session, XrBoundSourcesForActionEnumerateInfo* enumerateInfo, uint sourceCapacityInput, uint* sourceCountOutput, XrPath* sources);
 		private static xrEnumerateBoundSourcesForActionDelegate xrEnumerateBoundSourcesForAction_ptr;
-		public static XrResult xrEnumerateBoundSourcesForAction(XrSession session, XrBoundSourcesForActionEnumerateInfo* enumerateInfo, uint sourceCapacityInput, uint* sourceCountOutput, ulong* sources)
+		public static XrResult xrEnumerateBoundSourcesForAction(XrSession session, XrBoundSourcesForActionEnumerateInfo* enumerateInfo, uint sourceCapacityInput, uint* sourceCountOutput, XrPath* sources)
 			=> xrEnumerateBoundSourcesForAction_ptr(session, enumerateInfo, sourceCapacityInput, sourceCountOutput, sources);
 
 		[UnmanagedFunctionPointer(CallConv)]
@@ -426,57 +426,57 @@ namespace Evergine.Bindings.OpenXR
 			=> xrSessionInsertDebugUtilsLabelEXT_ptr(session, labelInfo);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrGetOpenGLGraphicsRequirementsKHRDelegate(XrInstance instance, ulong systemId, XrGraphicsRequirementsOpenGLKHR* graphicsRequirements);
+		private delegate XrResult xrGetOpenGLGraphicsRequirementsKHRDelegate(XrInstance instance, XrSystemId systemId, XrGraphicsRequirementsOpenGLKHR* graphicsRequirements);
 		private static xrGetOpenGLGraphicsRequirementsKHRDelegate xrGetOpenGLGraphicsRequirementsKHR_ptr;
-		public static XrResult xrGetOpenGLGraphicsRequirementsKHR(XrInstance instance, ulong systemId, XrGraphicsRequirementsOpenGLKHR* graphicsRequirements)
+		public static XrResult xrGetOpenGLGraphicsRequirementsKHR(XrInstance instance, XrSystemId systemId, XrGraphicsRequirementsOpenGLKHR* graphicsRequirements)
 			=> xrGetOpenGLGraphicsRequirementsKHR_ptr(instance, systemId, graphicsRequirements);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrGetOpenGLESGraphicsRequirementsKHRDelegate(XrInstance instance, ulong systemId, XrGraphicsRequirementsOpenGLESKHR* graphicsRequirements);
+		private delegate XrResult xrGetOpenGLESGraphicsRequirementsKHRDelegate(XrInstance instance, XrSystemId systemId, XrGraphicsRequirementsOpenGLESKHR* graphicsRequirements);
 		private static xrGetOpenGLESGraphicsRequirementsKHRDelegate xrGetOpenGLESGraphicsRequirementsKHR_ptr;
-		public static XrResult xrGetOpenGLESGraphicsRequirementsKHR(XrInstance instance, ulong systemId, XrGraphicsRequirementsOpenGLESKHR* graphicsRequirements)
+		public static XrResult xrGetOpenGLESGraphicsRequirementsKHR(XrInstance instance, XrSystemId systemId, XrGraphicsRequirementsOpenGLESKHR* graphicsRequirements)
 			=> xrGetOpenGLESGraphicsRequirementsKHR_ptr(instance, systemId, graphicsRequirements);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrGetVulkanInstanceExtensionsKHRDelegate(XrInstance instance, ulong systemId, uint bufferCapacityInput, uint* bufferCountOutput, byte* buffer);
+		private delegate XrResult xrGetVulkanInstanceExtensionsKHRDelegate(XrInstance instance, XrSystemId systemId, uint bufferCapacityInput, uint* bufferCountOutput, byte* buffer);
 		private static xrGetVulkanInstanceExtensionsKHRDelegate xrGetVulkanInstanceExtensionsKHR_ptr;
-		public static XrResult xrGetVulkanInstanceExtensionsKHR(XrInstance instance, ulong systemId, uint bufferCapacityInput, uint* bufferCountOutput, byte* buffer)
+		public static XrResult xrGetVulkanInstanceExtensionsKHR(XrInstance instance, XrSystemId systemId, uint bufferCapacityInput, uint* bufferCountOutput, byte* buffer)
 			=> xrGetVulkanInstanceExtensionsKHR_ptr(instance, systemId, bufferCapacityInput, bufferCountOutput, buffer);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrGetVulkanDeviceExtensionsKHRDelegate(XrInstance instance, ulong systemId, uint bufferCapacityInput, uint* bufferCountOutput, byte* buffer);
+		private delegate XrResult xrGetVulkanDeviceExtensionsKHRDelegate(XrInstance instance, XrSystemId systemId, uint bufferCapacityInput, uint* bufferCountOutput, byte* buffer);
 		private static xrGetVulkanDeviceExtensionsKHRDelegate xrGetVulkanDeviceExtensionsKHR_ptr;
-		public static XrResult xrGetVulkanDeviceExtensionsKHR(XrInstance instance, ulong systemId, uint bufferCapacityInput, uint* bufferCountOutput, byte* buffer)
+		public static XrResult xrGetVulkanDeviceExtensionsKHR(XrInstance instance, XrSystemId systemId, uint bufferCapacityInput, uint* bufferCountOutput, byte* buffer)
 			=> xrGetVulkanDeviceExtensionsKHR_ptr(instance, systemId, bufferCapacityInput, bufferCountOutput, buffer);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrGetVulkanGraphicsDeviceKHRDelegate(XrInstance instance, ulong systemId, IntPtr vkInstance, IntPtr vkPhysicalDevice);
+		private delegate XrResult xrGetVulkanGraphicsDeviceKHRDelegate(XrInstance instance, XrSystemId systemId, IntPtr vkInstance, IntPtr vkPhysicalDevice);
 		private static xrGetVulkanGraphicsDeviceKHRDelegate xrGetVulkanGraphicsDeviceKHR_ptr;
-		public static XrResult xrGetVulkanGraphicsDeviceKHR(XrInstance instance, ulong systemId, IntPtr vkInstance, IntPtr vkPhysicalDevice)
+		public static XrResult xrGetVulkanGraphicsDeviceKHR(XrInstance instance, XrSystemId systemId, IntPtr vkInstance, IntPtr vkPhysicalDevice)
 			=> xrGetVulkanGraphicsDeviceKHR_ptr(instance, systemId, vkInstance, vkPhysicalDevice);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrGetVulkanGraphicsRequirementsKHRDelegate(XrInstance instance, ulong systemId, XrGraphicsRequirementsVulkanKHR* graphicsRequirements);
+		private delegate XrResult xrGetVulkanGraphicsRequirementsKHRDelegate(XrInstance instance, XrSystemId systemId, XrGraphicsRequirementsVulkanKHR* graphicsRequirements);
 		private static xrGetVulkanGraphicsRequirementsKHRDelegate xrGetVulkanGraphicsRequirementsKHR_ptr;
-		public static XrResult xrGetVulkanGraphicsRequirementsKHR(XrInstance instance, ulong systemId, XrGraphicsRequirementsVulkanKHR* graphicsRequirements)
+		public static XrResult xrGetVulkanGraphicsRequirementsKHR(XrInstance instance, XrSystemId systemId, XrGraphicsRequirementsVulkanKHR* graphicsRequirements)
 			=> xrGetVulkanGraphicsRequirementsKHR_ptr(instance, systemId, graphicsRequirements);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrGetD3D11GraphicsRequirementsKHRDelegate(XrInstance instance, ulong systemId, XrGraphicsRequirementsD3D11KHR* graphicsRequirements);
+		private delegate XrResult xrGetD3D11GraphicsRequirementsKHRDelegate(XrInstance instance, XrSystemId systemId, XrGraphicsRequirementsD3D11KHR* graphicsRequirements);
 		private static xrGetD3D11GraphicsRequirementsKHRDelegate xrGetD3D11GraphicsRequirementsKHR_ptr;
-		public static XrResult xrGetD3D11GraphicsRequirementsKHR(XrInstance instance, ulong systemId, XrGraphicsRequirementsD3D11KHR* graphicsRequirements)
+		public static XrResult xrGetD3D11GraphicsRequirementsKHR(XrInstance instance, XrSystemId systemId, XrGraphicsRequirementsD3D11KHR* graphicsRequirements)
 			=> xrGetD3D11GraphicsRequirementsKHR_ptr(instance, systemId, graphicsRequirements);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrGetD3D12GraphicsRequirementsKHRDelegate(XrInstance instance, ulong systemId, XrGraphicsRequirementsD3D12KHR* graphicsRequirements);
+		private delegate XrResult xrGetD3D12GraphicsRequirementsKHRDelegate(XrInstance instance, XrSystemId systemId, XrGraphicsRequirementsD3D12KHR* graphicsRequirements);
 		private static xrGetD3D12GraphicsRequirementsKHRDelegate xrGetD3D12GraphicsRequirementsKHR_ptr;
-		public static XrResult xrGetD3D12GraphicsRequirementsKHR(XrInstance instance, ulong systemId, XrGraphicsRequirementsD3D12KHR* graphicsRequirements)
+		public static XrResult xrGetD3D12GraphicsRequirementsKHR(XrInstance instance, XrSystemId systemId, XrGraphicsRequirementsD3D12KHR* graphicsRequirements)
 			=> xrGetD3D12GraphicsRequirementsKHR_ptr(instance, systemId, graphicsRequirements);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrGetMetalGraphicsRequirementsKHRDelegate(XrInstance instance, ulong systemId, XrGraphicsRequirementsMetalKHR* graphicsRequirements);
+		private delegate XrResult xrGetMetalGraphicsRequirementsKHRDelegate(XrInstance instance, XrSystemId systemId, XrGraphicsRequirementsMetalKHR* graphicsRequirements);
 		private static xrGetMetalGraphicsRequirementsKHRDelegate xrGetMetalGraphicsRequirementsKHR_ptr;
-		public static XrResult xrGetMetalGraphicsRequirementsKHR(XrInstance instance, ulong systemId, XrGraphicsRequirementsMetalKHR* graphicsRequirements)
+		public static XrResult xrGetMetalGraphicsRequirementsKHR(XrInstance instance, XrSystemId systemId, XrGraphicsRequirementsMetalKHR* graphicsRequirements)
 			=> xrGetMetalGraphicsRequirementsKHR_ptr(instance, systemId, graphicsRequirements);
 
 		[UnmanagedFunctionPointer(CallConv)]
@@ -528,33 +528,33 @@ namespace Evergine.Bindings.OpenXR
 			=> xrDestroySpatialAnchorMSFT_ptr(anchor);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrSetInputDeviceActiveEXTDelegate(XrSession session, ulong interactionProfile, ulong topLevelPath, XrBool32 isActive);
+		private delegate XrResult xrSetInputDeviceActiveEXTDelegate(XrSession session, XrPath interactionProfile, XrPath topLevelPath, XrBool32 isActive);
 		private static xrSetInputDeviceActiveEXTDelegate xrSetInputDeviceActiveEXT_ptr;
-		public static XrResult xrSetInputDeviceActiveEXT(XrSession session, ulong interactionProfile, ulong topLevelPath, XrBool32 isActive)
+		public static XrResult xrSetInputDeviceActiveEXT(XrSession session, XrPath interactionProfile, XrPath topLevelPath, XrBool32 isActive)
 			=> xrSetInputDeviceActiveEXT_ptr(session, interactionProfile, topLevelPath, isActive);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrSetInputDeviceStateBoolEXTDelegate(XrSession session, ulong topLevelPath, ulong inputSourcePath, XrBool32 state);
+		private delegate XrResult xrSetInputDeviceStateBoolEXTDelegate(XrSession session, XrPath topLevelPath, XrPath inputSourcePath, XrBool32 state);
 		private static xrSetInputDeviceStateBoolEXTDelegate xrSetInputDeviceStateBoolEXT_ptr;
-		public static XrResult xrSetInputDeviceStateBoolEXT(XrSession session, ulong topLevelPath, ulong inputSourcePath, XrBool32 state)
+		public static XrResult xrSetInputDeviceStateBoolEXT(XrSession session, XrPath topLevelPath, XrPath inputSourcePath, XrBool32 state)
 			=> xrSetInputDeviceStateBoolEXT_ptr(session, topLevelPath, inputSourcePath, state);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrSetInputDeviceStateFloatEXTDelegate(XrSession session, ulong topLevelPath, ulong inputSourcePath, float state);
+		private delegate XrResult xrSetInputDeviceStateFloatEXTDelegate(XrSession session, XrPath topLevelPath, XrPath inputSourcePath, float state);
 		private static xrSetInputDeviceStateFloatEXTDelegate xrSetInputDeviceStateFloatEXT_ptr;
-		public static XrResult xrSetInputDeviceStateFloatEXT(XrSession session, ulong topLevelPath, ulong inputSourcePath, float state)
+		public static XrResult xrSetInputDeviceStateFloatEXT(XrSession session, XrPath topLevelPath, XrPath inputSourcePath, float state)
 			=> xrSetInputDeviceStateFloatEXT_ptr(session, topLevelPath, inputSourcePath, state);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrSetInputDeviceStateVector2fEXTDelegate(XrSession session, ulong topLevelPath, ulong inputSourcePath, XrVector2f state);
+		private delegate XrResult xrSetInputDeviceStateVector2fEXTDelegate(XrSession session, XrPath topLevelPath, XrPath inputSourcePath, XrVector2f state);
 		private static xrSetInputDeviceStateVector2fEXTDelegate xrSetInputDeviceStateVector2fEXT_ptr;
-		public static XrResult xrSetInputDeviceStateVector2fEXT(XrSession session, ulong topLevelPath, ulong inputSourcePath, XrVector2f state)
+		public static XrResult xrSetInputDeviceStateVector2fEXT(XrSession session, XrPath topLevelPath, XrPath inputSourcePath, XrVector2f state)
 			=> xrSetInputDeviceStateVector2fEXT_ptr(session, topLevelPath, inputSourcePath, state);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrSetInputDeviceLocationEXTDelegate(XrSession session, ulong topLevelPath, ulong inputSourcePath, XrSpace space, XrPosef pose);
+		private delegate XrResult xrSetInputDeviceLocationEXTDelegate(XrSession session, XrPath topLevelPath, XrPath inputSourcePath, XrSpace space, XrPosef pose);
 		private static xrSetInputDeviceLocationEXTDelegate xrSetInputDeviceLocationEXT_ptr;
-		public static XrResult xrSetInputDeviceLocationEXT(XrSession session, ulong topLevelPath, ulong inputSourcePath, XrSpace space, XrPosef pose)
+		public static XrResult xrSetInputDeviceLocationEXT(XrSession session, XrPath topLevelPath, XrPath inputSourcePath, XrSpace space, XrPosef pose)
 			=> xrSetInputDeviceLocationEXT_ptr(session, topLevelPath, inputSourcePath, space, pose);
 
 		[UnmanagedFunctionPointer(CallConv)]
@@ -612,27 +612,27 @@ namespace Evergine.Bindings.OpenXR
 			=> xrUpdateHandMeshMSFT_ptr(handTracker, updateInfo, handMesh);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrGetControllerModelKeyMSFTDelegate(XrSession session, ulong topLevelUserPath, XrControllerModelKeyStateMSFT* controllerModelKeyState);
+		private delegate XrResult xrGetControllerModelKeyMSFTDelegate(XrSession session, XrPath topLevelUserPath, XrControllerModelKeyStateMSFT* controllerModelKeyState);
 		private static xrGetControllerModelKeyMSFTDelegate xrGetControllerModelKeyMSFT_ptr;
-		public static XrResult xrGetControllerModelKeyMSFT(XrSession session, ulong topLevelUserPath, XrControllerModelKeyStateMSFT* controllerModelKeyState)
+		public static XrResult xrGetControllerModelKeyMSFT(XrSession session, XrPath topLevelUserPath, XrControllerModelKeyStateMSFT* controllerModelKeyState)
 			=> xrGetControllerModelKeyMSFT_ptr(session, topLevelUserPath, controllerModelKeyState);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrLoadControllerModelMSFTDelegate(XrSession session, ulong modelKey, uint bufferCapacityInput, uint* bufferCountOutput, byte* buffer);
+		private delegate XrResult xrLoadControllerModelMSFTDelegate(XrSession session, XrControllerModelKeyMSFT modelKey, uint bufferCapacityInput, uint* bufferCountOutput, byte* buffer);
 		private static xrLoadControllerModelMSFTDelegate xrLoadControllerModelMSFT_ptr;
-		public static XrResult xrLoadControllerModelMSFT(XrSession session, ulong modelKey, uint bufferCapacityInput, uint* bufferCountOutput, byte* buffer)
+		public static XrResult xrLoadControllerModelMSFT(XrSession session, XrControllerModelKeyMSFT modelKey, uint bufferCapacityInput, uint* bufferCountOutput, byte* buffer)
 			=> xrLoadControllerModelMSFT_ptr(session, modelKey, bufferCapacityInput, bufferCountOutput, buffer);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrGetControllerModelPropertiesMSFTDelegate(XrSession session, ulong modelKey, XrControllerModelPropertiesMSFT* properties);
+		private delegate XrResult xrGetControllerModelPropertiesMSFTDelegate(XrSession session, XrControllerModelKeyMSFT modelKey, XrControllerModelPropertiesMSFT* properties);
 		private static xrGetControllerModelPropertiesMSFTDelegate xrGetControllerModelPropertiesMSFT_ptr;
-		public static XrResult xrGetControllerModelPropertiesMSFT(XrSession session, ulong modelKey, XrControllerModelPropertiesMSFT* properties)
+		public static XrResult xrGetControllerModelPropertiesMSFT(XrSession session, XrControllerModelKeyMSFT modelKey, XrControllerModelPropertiesMSFT* properties)
 			=> xrGetControllerModelPropertiesMSFT_ptr(session, modelKey, properties);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrGetControllerModelStateMSFTDelegate(XrSession session, ulong modelKey, XrControllerModelStateMSFT* state);
+		private delegate XrResult xrGetControllerModelStateMSFTDelegate(XrSession session, XrControllerModelKeyMSFT modelKey, XrControllerModelStateMSFT* state);
 		private static xrGetControllerModelStateMSFTDelegate xrGetControllerModelStateMSFT_ptr;
-		public static XrResult xrGetControllerModelStateMSFT(XrSession session, ulong modelKey, XrControllerModelStateMSFT* state)
+		public static XrResult xrGetControllerModelStateMSFT(XrSession session, XrControllerModelKeyMSFT modelKey, XrControllerModelStateMSFT* state)
 			=> xrGetControllerModelStateMSFT_ptr(session, modelKey, state);
 
 		[UnmanagedFunctionPointer(CallConv)]
@@ -648,9 +648,9 @@ namespace Evergine.Bindings.OpenXR
 			=> xrTryGetPerceptionAnchorFromSpatialAnchorMSFT_ptr(session, anchor, perceptionAnchor);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrEnumerateReprojectionModesMSFTDelegate(XrInstance instance, ulong systemId, XrViewConfigurationType viewConfigurationType, uint modeCapacityInput, uint* modeCountOutput, XrReprojectionModeMSFT* modes);
+		private delegate XrResult xrEnumerateReprojectionModesMSFTDelegate(XrInstance instance, XrSystemId systemId, XrViewConfigurationType viewConfigurationType, uint modeCapacityInput, uint* modeCountOutput, XrReprojectionModeMSFT* modes);
 		private static xrEnumerateReprojectionModesMSFTDelegate xrEnumerateReprojectionModesMSFT_ptr;
-		public static XrResult xrEnumerateReprojectionModesMSFT(XrInstance instance, ulong systemId, XrViewConfigurationType viewConfigurationType, uint modeCapacityInput, uint* modeCountOutput, XrReprojectionModeMSFT* modes)
+		public static XrResult xrEnumerateReprojectionModesMSFT(XrInstance instance, XrSystemId systemId, XrViewConfigurationType viewConfigurationType, uint modeCapacityInput, uint* modeCountOutput, XrReprojectionModeMSFT* modes)
 			=> xrEnumerateReprojectionModesMSFT_ptr(instance, systemId, viewConfigurationType, modeCapacityInput, modeCountOutput, modes);
 
 		[UnmanagedFunctionPointer(CallConv)]
@@ -714,9 +714,9 @@ namespace Evergine.Bindings.OpenXR
 			=> xrGetVulkanGraphicsDevice2KHR_ptr(instance, getInfo, vulkanPhysicalDevice);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrEnumerateSceneComputeFeaturesMSFTDelegate(XrInstance instance, ulong systemId, uint featureCapacityInput, uint* featureCountOutput, XrSceneComputeFeatureMSFT* features);
+		private delegate XrResult xrEnumerateSceneComputeFeaturesMSFTDelegate(XrInstance instance, XrSystemId systemId, uint featureCapacityInput, uint* featureCountOutput, XrSceneComputeFeatureMSFT* features);
 		private static xrEnumerateSceneComputeFeaturesMSFTDelegate xrEnumerateSceneComputeFeaturesMSFT_ptr;
-		public static XrResult xrEnumerateSceneComputeFeaturesMSFT(XrInstance instance, ulong systemId, uint featureCapacityInput, uint* featureCountOutput, XrSceneComputeFeatureMSFT* features)
+		public static XrResult xrEnumerateSceneComputeFeaturesMSFT(XrInstance instance, XrSystemId systemId, uint featureCapacityInput, uint* featureCountOutput, XrSceneComputeFeatureMSFT* features)
 			=> xrEnumerateSceneComputeFeaturesMSFT_ptr(instance, systemId, featureCapacityInput, featureCountOutput, features);
 
 		[UnmanagedFunctionPointer(CallConv)]
@@ -846,9 +846,9 @@ namespace Evergine.Bindings.OpenXR
 			=> xrGetHandMeshFB_ptr(handTracker, mesh);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrCreateSpatialAnchorFBDelegate(XrSession session, XrSpatialAnchorCreateInfoFB* info, ulong* requestId);
+		private delegate XrResult xrCreateSpatialAnchorFBDelegate(XrSession session, XrSpatialAnchorCreateInfoFB* info, XrAsyncRequestIdFB* requestId);
 		private static xrCreateSpatialAnchorFBDelegate xrCreateSpatialAnchorFB_ptr;
-		public static XrResult xrCreateSpatialAnchorFB(XrSession session, XrSpatialAnchorCreateInfoFB* info, ulong* requestId)
+		public static XrResult xrCreateSpatialAnchorFB(XrSession session, XrSpatialAnchorCreateInfoFB* info, XrAsyncRequestIdFB* requestId)
 			=> xrCreateSpatialAnchorFB_ptr(session, info, requestId);
 
 		[UnmanagedFunctionPointer(CallConv)]
@@ -864,9 +864,9 @@ namespace Evergine.Bindings.OpenXR
 			=> xrEnumerateSpaceSupportedComponentsFB_ptr(space, componentTypeCapacityInput, componentTypeCountOutput, componentTypes);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrSetSpaceComponentStatusFBDelegate(XrSpace space, XrSpaceComponentStatusSetInfoFB* info, ulong* requestId);
+		private delegate XrResult xrSetSpaceComponentStatusFBDelegate(XrSpace space, XrSpaceComponentStatusSetInfoFB* info, XrAsyncRequestIdFB* requestId);
 		private static xrSetSpaceComponentStatusFBDelegate xrSetSpaceComponentStatusFB_ptr;
-		public static XrResult xrSetSpaceComponentStatusFB(XrSpace space, XrSpaceComponentStatusSetInfoFB* info, ulong* requestId)
+		public static XrResult xrSetSpaceComponentStatusFB(XrSpace space, XrSpaceComponentStatusSetInfoFB* info, XrAsyncRequestIdFB* requestId)
 			=> xrSetSpaceComponentStatusFB_ptr(space, info, requestId);
 
 		[UnmanagedFunctionPointer(CallConv)]
@@ -1026,9 +1026,9 @@ namespace Evergine.Bindings.OpenXR
 			=> xrEnumerateRenderModelPathsFB_ptr(session, pathCapacityInput, pathCountOutput, paths);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrGetRenderModelPropertiesFBDelegate(XrSession session, ulong path, XrRenderModelPropertiesFB* properties);
+		private delegate XrResult xrGetRenderModelPropertiesFBDelegate(XrSession session, XrPath path, XrRenderModelPropertiesFB* properties);
 		private static xrGetRenderModelPropertiesFBDelegate xrGetRenderModelPropertiesFB_ptr;
-		public static XrResult xrGetRenderModelPropertiesFB(XrSession session, ulong path, XrRenderModelPropertiesFB* properties)
+		public static XrResult xrGetRenderModelPropertiesFB(XrSession session, XrPath path, XrRenderModelPropertiesFB* properties)
 			=> xrGetRenderModelPropertiesFB_ptr(session, path, properties);
 
 		[UnmanagedFunctionPointer(CallConv)]
@@ -1110,33 +1110,33 @@ namespace Evergine.Bindings.OpenXR
 			=> xrGetMarkerDetectorStateML_ptr(markerDetector, state);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrGetMarkersMLDelegate(XrMarkerDetectorML markerDetector, uint markerCapacityInput, uint* markerCountOutput, ulong* markers);
+		private delegate XrResult xrGetMarkersMLDelegate(XrMarkerDetectorML markerDetector, uint markerCapacityInput, uint* markerCountOutput, XrMarkerML* markers);
 		private static xrGetMarkersMLDelegate xrGetMarkersML_ptr;
-		public static XrResult xrGetMarkersML(XrMarkerDetectorML markerDetector, uint markerCapacityInput, uint* markerCountOutput, ulong* markers)
+		public static XrResult xrGetMarkersML(XrMarkerDetectorML markerDetector, uint markerCapacityInput, uint* markerCountOutput, XrMarkerML* markers)
 			=> xrGetMarkersML_ptr(markerDetector, markerCapacityInput, markerCountOutput, markers);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrGetMarkerReprojectionErrorMLDelegate(XrMarkerDetectorML markerDetector, ulong marker, float* reprojectionErrorMeters);
+		private delegate XrResult xrGetMarkerReprojectionErrorMLDelegate(XrMarkerDetectorML markerDetector, XrMarkerML marker, float* reprojectionErrorMeters);
 		private static xrGetMarkerReprojectionErrorMLDelegate xrGetMarkerReprojectionErrorML_ptr;
-		public static XrResult xrGetMarkerReprojectionErrorML(XrMarkerDetectorML markerDetector, ulong marker, float* reprojectionErrorMeters)
+		public static XrResult xrGetMarkerReprojectionErrorML(XrMarkerDetectorML markerDetector, XrMarkerML marker, float* reprojectionErrorMeters)
 			=> xrGetMarkerReprojectionErrorML_ptr(markerDetector, marker, reprojectionErrorMeters);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrGetMarkerLengthMLDelegate(XrMarkerDetectorML markerDetector, ulong marker, float* meters);
+		private delegate XrResult xrGetMarkerLengthMLDelegate(XrMarkerDetectorML markerDetector, XrMarkerML marker, float* meters);
 		private static xrGetMarkerLengthMLDelegate xrGetMarkerLengthML_ptr;
-		public static XrResult xrGetMarkerLengthML(XrMarkerDetectorML markerDetector, ulong marker, float* meters)
+		public static XrResult xrGetMarkerLengthML(XrMarkerDetectorML markerDetector, XrMarkerML marker, float* meters)
 			=> xrGetMarkerLengthML_ptr(markerDetector, marker, meters);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrGetMarkerNumberMLDelegate(XrMarkerDetectorML markerDetector, ulong marker, ulong* number);
+		private delegate XrResult xrGetMarkerNumberMLDelegate(XrMarkerDetectorML markerDetector, XrMarkerML marker, ulong* number);
 		private static xrGetMarkerNumberMLDelegate xrGetMarkerNumberML_ptr;
-		public static XrResult xrGetMarkerNumberML(XrMarkerDetectorML markerDetector, ulong marker, ulong* number)
+		public static XrResult xrGetMarkerNumberML(XrMarkerDetectorML markerDetector, XrMarkerML marker, ulong* number)
 			=> xrGetMarkerNumberML_ptr(markerDetector, marker, number);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrGetMarkerStringMLDelegate(XrMarkerDetectorML markerDetector, ulong marker, uint bufferCapacityInput, uint* bufferCountOutput, byte* buffer);
+		private delegate XrResult xrGetMarkerStringMLDelegate(XrMarkerDetectorML markerDetector, XrMarkerML marker, uint bufferCapacityInput, uint* bufferCountOutput, byte* buffer);
 		private static xrGetMarkerStringMLDelegate xrGetMarkerStringML_ptr;
-		public static XrResult xrGetMarkerStringML(XrMarkerDetectorML markerDetector, ulong marker, uint bufferCapacityInput, uint* bufferCountOutput, byte* buffer)
+		public static XrResult xrGetMarkerStringML(XrMarkerDetectorML markerDetector, XrMarkerML marker, uint bufferCapacityInput, uint* bufferCountOutput, byte* buffer)
 			=> xrGetMarkerStringML_ptr(markerDetector, marker, bufferCapacityInput, bufferCountOutput, buffer);
 
 		[UnmanagedFunctionPointer(CallConv)]
@@ -1332,27 +1332,27 @@ namespace Evergine.Bindings.OpenXR
 			=> xrStructureTypeToString2KHR_ptr(instance, value, buffer);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrQuerySpacesFBDelegate(XrSession session, XrSpaceQueryInfoBaseHeaderFB* info, ulong* requestId);
+		private delegate XrResult xrQuerySpacesFBDelegate(XrSession session, XrSpaceQueryInfoBaseHeaderFB* info, XrAsyncRequestIdFB* requestId);
 		private static xrQuerySpacesFBDelegate xrQuerySpacesFB_ptr;
-		public static XrResult xrQuerySpacesFB(XrSession session, XrSpaceQueryInfoBaseHeaderFB* info, ulong* requestId)
+		public static XrResult xrQuerySpacesFB(XrSession session, XrSpaceQueryInfoBaseHeaderFB* info, XrAsyncRequestIdFB* requestId)
 			=> xrQuerySpacesFB_ptr(session, info, requestId);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrRetrieveSpaceQueryResultsFBDelegate(XrSession session, ulong requestId, XrSpaceQueryResultsFB* results);
+		private delegate XrResult xrRetrieveSpaceQueryResultsFBDelegate(XrSession session, XrAsyncRequestIdFB requestId, XrSpaceQueryResultsFB* results);
 		private static xrRetrieveSpaceQueryResultsFBDelegate xrRetrieveSpaceQueryResultsFB_ptr;
-		public static XrResult xrRetrieveSpaceQueryResultsFB(XrSession session, ulong requestId, XrSpaceQueryResultsFB* results)
+		public static XrResult xrRetrieveSpaceQueryResultsFB(XrSession session, XrAsyncRequestIdFB requestId, XrSpaceQueryResultsFB* results)
 			=> xrRetrieveSpaceQueryResultsFB_ptr(session, requestId, results);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrSaveSpaceFBDelegate(XrSession session, XrSpaceSaveInfoFB* info, ulong* requestId);
+		private delegate XrResult xrSaveSpaceFBDelegate(XrSession session, XrSpaceSaveInfoFB* info, XrAsyncRequestIdFB* requestId);
 		private static xrSaveSpaceFBDelegate xrSaveSpaceFB_ptr;
-		public static XrResult xrSaveSpaceFB(XrSession session, XrSpaceSaveInfoFB* info, ulong* requestId)
+		public static XrResult xrSaveSpaceFB(XrSession session, XrSpaceSaveInfoFB* info, XrAsyncRequestIdFB* requestId)
 			=> xrSaveSpaceFB_ptr(session, info, requestId);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrEraseSpaceFBDelegate(XrSession session, XrSpaceEraseInfoFB* info, ulong* requestId);
+		private delegate XrResult xrEraseSpaceFBDelegate(XrSession session, XrSpaceEraseInfoFB* info, XrAsyncRequestIdFB* requestId);
 		private static xrEraseSpaceFBDelegate xrEraseSpaceFB_ptr;
-		public static XrResult xrEraseSpaceFB(XrSession session, XrSpaceEraseInfoFB* info, ulong* requestId)
+		public static XrResult xrEraseSpaceFB(XrSession session, XrSpaceEraseInfoFB* info, XrAsyncRequestIdFB* requestId)
 			=> xrEraseSpaceFB_ptr(session, info, requestId);
 
 		[UnmanagedFunctionPointer(CallConv)]
@@ -1368,9 +1368,9 @@ namespace Evergine.Bindings.OpenXR
 			=> xrGetAudioInputDeviceGuidOculus_ptr(instance, buffer);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrShareSpacesFBDelegate(XrSession session, XrSpaceShareInfoFB* info, ulong* requestId);
+		private delegate XrResult xrShareSpacesFBDelegate(XrSession session, XrSpaceShareInfoFB* info, XrAsyncRequestIdFB* requestId);
 		private static xrShareSpacesFBDelegate xrShareSpacesFB_ptr;
-		public static XrResult xrShareSpacesFB(XrSession session, XrSpaceShareInfoFB* info, ulong* requestId)
+		public static XrResult xrShareSpacesFB(XrSession session, XrSpaceShareInfoFB* info, XrAsyncRequestIdFB* requestId)
 			=> xrShareSpacesFB_ptr(session, info, requestId);
 
 		[UnmanagedFunctionPointer(CallConv)]
@@ -1410,9 +1410,9 @@ namespace Evergine.Bindings.OpenXR
 			=> xrSetDigitalLensControlALMALENCE_ptr(session, digitalLensControl);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrRequestSceneCaptureFBDelegate(XrSession session, XrSceneCaptureRequestInfoFB* info, ulong* requestId);
+		private delegate XrResult xrRequestSceneCaptureFBDelegate(XrSession session, XrSceneCaptureRequestInfoFB* info, XrAsyncRequestIdFB* requestId);
 		private static xrRequestSceneCaptureFBDelegate xrRequestSceneCaptureFB_ptr;
-		public static XrResult xrRequestSceneCaptureFB(XrSession session, XrSceneCaptureRequestInfoFB* info, ulong* requestId)
+		public static XrResult xrRequestSceneCaptureFB(XrSession session, XrSceneCaptureRequestInfoFB* info, XrAsyncRequestIdFB* requestId)
 			=> xrRequestSceneCaptureFB_ptr(session, info, requestId);
 
 		[UnmanagedFunctionPointer(CallConv)]
@@ -1554,9 +1554,9 @@ namespace Evergine.Bindings.OpenXR
 			=> xrEnumerateExternalCamerasOCULUS_ptr(session, cameraCapacityInput, cameraCountOutput, cameras);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrEnumeratePerformanceMetricsCounterPathsMETADelegate(XrInstance instance, uint counterPathCapacityInput, uint* counterPathCountOutput, ulong* counterPaths);
+		private delegate XrResult xrEnumeratePerformanceMetricsCounterPathsMETADelegate(XrInstance instance, uint counterPathCapacityInput, uint* counterPathCountOutput, XrPath* counterPaths);
 		private static xrEnumeratePerformanceMetricsCounterPathsMETADelegate xrEnumeratePerformanceMetricsCounterPathsMETA_ptr;
-		public static XrResult xrEnumeratePerformanceMetricsCounterPathsMETA(XrInstance instance, uint counterPathCapacityInput, uint* counterPathCountOutput, ulong* counterPaths)
+		public static XrResult xrEnumeratePerformanceMetricsCounterPathsMETA(XrInstance instance, uint counterPathCapacityInput, uint* counterPathCountOutput, XrPath* counterPaths)
 			=> xrEnumeratePerformanceMetricsCounterPathsMETA_ptr(instance, counterPathCapacityInput, counterPathCountOutput, counterPaths);
 
 		[UnmanagedFunctionPointer(CallConv)]
@@ -1572,15 +1572,15 @@ namespace Evergine.Bindings.OpenXR
 			=> xrGetPerformanceMetricsStateMETA_ptr(session, state);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrQueryPerformanceMetricsCounterMETADelegate(XrSession session, ulong counterPath, XrPerformanceMetricsCounterMETA* counter);
+		private delegate XrResult xrQueryPerformanceMetricsCounterMETADelegate(XrSession session, XrPath counterPath, XrPerformanceMetricsCounterMETA* counter);
 		private static xrQueryPerformanceMetricsCounterMETADelegate xrQueryPerformanceMetricsCounterMETA_ptr;
-		public static XrResult xrQueryPerformanceMetricsCounterMETA(XrSession session, ulong counterPath, XrPerformanceMetricsCounterMETA* counter)
+		public static XrResult xrQueryPerformanceMetricsCounterMETA(XrSession session, XrPath counterPath, XrPerformanceMetricsCounterMETA* counter)
 			=> xrQueryPerformanceMetricsCounterMETA_ptr(session, counterPath, counter);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrSaveSpaceListFBDelegate(XrSession session, XrSpaceListSaveInfoFB* info, ulong* requestId);
+		private delegate XrResult xrSaveSpaceListFBDelegate(XrSession session, XrSpaceListSaveInfoFB* info, XrAsyncRequestIdFB* requestId);
 		private static xrSaveSpaceListFBDelegate xrSaveSpaceListFB_ptr;
-		public static XrResult xrSaveSpaceListFB(XrSession session, XrSpaceListSaveInfoFB* info, ulong* requestId)
+		public static XrResult xrSaveSpaceListFB(XrSession session, XrSpaceListSaveInfoFB* info, XrAsyncRequestIdFB* requestId)
 			=> xrSaveSpaceListFB_ptr(session, info, requestId);
 
 		[UnmanagedFunctionPointer(CallConv)]
@@ -1602,15 +1602,15 @@ namespace Evergine.Bindings.OpenXR
 			=> xrDestroySpaceUserFB_ptr(user);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrDiscoverSpacesMETADelegate(XrSession session, XrSpaceDiscoveryInfoMETA* info, ulong* requestId);
+		private delegate XrResult xrDiscoverSpacesMETADelegate(XrSession session, XrSpaceDiscoveryInfoMETA* info, XrAsyncRequestIdFB* requestId);
 		private static xrDiscoverSpacesMETADelegate xrDiscoverSpacesMETA_ptr;
-		public static XrResult xrDiscoverSpacesMETA(XrSession session, XrSpaceDiscoveryInfoMETA* info, ulong* requestId)
+		public static XrResult xrDiscoverSpacesMETA(XrSession session, XrSpaceDiscoveryInfoMETA* info, XrAsyncRequestIdFB* requestId)
 			=> xrDiscoverSpacesMETA_ptr(session, info, requestId);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrRetrieveSpaceDiscoveryResultsMETADelegate(XrSession session, ulong requestId, XrSpaceDiscoveryResultsMETA* results);
+		private delegate XrResult xrRetrieveSpaceDiscoveryResultsMETADelegate(XrSession session, XrAsyncRequestIdFB requestId, XrSpaceDiscoveryResultsMETA* results);
 		private static xrRetrieveSpaceDiscoveryResultsMETADelegate xrRetrieveSpaceDiscoveryResultsMETA_ptr;
-		public static XrResult xrRetrieveSpaceDiscoveryResultsMETA(XrSession session, ulong requestId, XrSpaceDiscoveryResultsMETA* results)
+		public static XrResult xrRetrieveSpaceDiscoveryResultsMETA(XrSession session, XrAsyncRequestIdFB requestId, XrSpaceDiscoveryResultsMETA* results)
 			=> xrRetrieveSpaceDiscoveryResultsMETA_ptr(session, requestId, results);
 
 		[UnmanagedFunctionPointer(CallConv)]
@@ -1620,15 +1620,15 @@ namespace Evergine.Bindings.OpenXR
 			=> xrGetRecommendedLayerResolutionMETA_ptr(session, info, resolution);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrSaveSpacesMETADelegate(XrSession session, XrSpacesSaveInfoMETA* info, ulong* requestId);
+		private delegate XrResult xrSaveSpacesMETADelegate(XrSession session, XrSpacesSaveInfoMETA* info, XrAsyncRequestIdFB* requestId);
 		private static xrSaveSpacesMETADelegate xrSaveSpacesMETA_ptr;
-		public static XrResult xrSaveSpacesMETA(XrSession session, XrSpacesSaveInfoMETA* info, ulong* requestId)
+		public static XrResult xrSaveSpacesMETA(XrSession session, XrSpacesSaveInfoMETA* info, XrAsyncRequestIdFB* requestId)
 			=> xrSaveSpacesMETA_ptr(session, info, requestId);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrEraseSpacesMETADelegate(XrSession session, XrSpacesEraseInfoMETA* info, ulong* requestId);
+		private delegate XrResult xrEraseSpacesMETADelegate(XrSession session, XrSpacesEraseInfoMETA* info, XrAsyncRequestIdFB* requestId);
 		private static xrEraseSpacesMETADelegate xrEraseSpacesMETA_ptr;
-		public static XrResult xrEraseSpacesMETA(XrSession session, XrSpacesEraseInfoMETA* info, ulong* requestId)
+		public static XrResult xrEraseSpacesMETA(XrSession session, XrSpacesEraseInfoMETA* info, XrAsyncRequestIdFB* requestId)
 			=> xrEraseSpacesMETA_ptr(session, info, requestId);
 
 		[UnmanagedFunctionPointer(CallConv)]
@@ -1686,9 +1686,9 @@ namespace Evergine.Bindings.OpenXR
 			=> xrGetFaceExpressionWeights2FB_ptr(faceTracker, expressionInfo, expressionWeights);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrShareSpacesMETADelegate(XrSession session, XrShareSpacesInfoMETA* info, ulong* requestId);
+		private delegate XrResult xrShareSpacesMETADelegate(XrSession session, XrShareSpacesInfoMETA* info, XrAsyncRequestIdFB* requestId);
 		private static xrShareSpacesMETADelegate xrShareSpacesMETA_ptr;
-		public static XrResult xrShareSpacesMETA(XrSession session, XrShareSpacesInfoMETA* info, ulong* requestId)
+		public static XrResult xrShareSpacesMETA(XrSession session, XrShareSpacesInfoMETA* info, XrAsyncRequestIdFB* requestId)
 			=> xrShareSpacesMETA_ptr(session, info, requestId);
 
 		[UnmanagedFunctionPointer(CallConv)]
@@ -1806,21 +1806,21 @@ namespace Evergine.Bindings.OpenXR
 			=> xrGetRenderModelStateEXT_ptr(renderModel, getInfo, state);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrEnumerateInteractionRenderModelIdsEXTDelegate(XrSession session, XrInteractionRenderModelIdsEnumerateInfoEXT* getInfo, uint renderModelIdCapacityInput, uint* renderModelIdCountOutput, ulong* renderModelIds);
+		private delegate XrResult xrEnumerateInteractionRenderModelIdsEXTDelegate(XrSession session, XrInteractionRenderModelIdsEnumerateInfoEXT* getInfo, uint renderModelIdCapacityInput, uint* renderModelIdCountOutput, XrRenderModelIdEXT* renderModelIds);
 		private static xrEnumerateInteractionRenderModelIdsEXTDelegate xrEnumerateInteractionRenderModelIdsEXT_ptr;
-		public static XrResult xrEnumerateInteractionRenderModelIdsEXT(XrSession session, XrInteractionRenderModelIdsEnumerateInfoEXT* getInfo, uint renderModelIdCapacityInput, uint* renderModelIdCountOutput, ulong* renderModelIds)
+		public static XrResult xrEnumerateInteractionRenderModelIdsEXT(XrSession session, XrInteractionRenderModelIdsEnumerateInfoEXT* getInfo, uint renderModelIdCapacityInput, uint* renderModelIdCountOutput, XrRenderModelIdEXT* renderModelIds)
 			=> xrEnumerateInteractionRenderModelIdsEXT_ptr(session, getInfo, renderModelIdCapacityInput, renderModelIdCountOutput, renderModelIds);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrEnumerateRenderModelSubactionPathsEXTDelegate(XrRenderModelEXT renderModel, XrInteractionRenderModelSubactionPathInfoEXT* info, uint pathCapacityInput, uint* pathCountOutput, ulong* paths);
+		private delegate XrResult xrEnumerateRenderModelSubactionPathsEXTDelegate(XrRenderModelEXT renderModel, XrInteractionRenderModelSubactionPathInfoEXT* info, uint pathCapacityInput, uint* pathCountOutput, XrPath* paths);
 		private static xrEnumerateRenderModelSubactionPathsEXTDelegate xrEnumerateRenderModelSubactionPathsEXT_ptr;
-		public static XrResult xrEnumerateRenderModelSubactionPathsEXT(XrRenderModelEXT renderModel, XrInteractionRenderModelSubactionPathInfoEXT* info, uint pathCapacityInput, uint* pathCountOutput, ulong* paths)
+		public static XrResult xrEnumerateRenderModelSubactionPathsEXT(XrRenderModelEXT renderModel, XrInteractionRenderModelSubactionPathInfoEXT* info, uint pathCapacityInput, uint* pathCountOutput, XrPath* paths)
 			=> xrEnumerateRenderModelSubactionPathsEXT_ptr(renderModel, info, pathCapacityInput, pathCountOutput, paths);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrGetRenderModelPoseTopLevelUserPathEXTDelegate(XrRenderModelEXT renderModel, XrInteractionRenderModelTopLevelUserPathGetInfoEXT* info, ulong* topLevelUserPath);
+		private delegate XrResult xrGetRenderModelPoseTopLevelUserPathEXTDelegate(XrRenderModelEXT renderModel, XrInteractionRenderModelTopLevelUserPathGetInfoEXT* info, XrPath* topLevelUserPath);
 		private static xrGetRenderModelPoseTopLevelUserPathEXTDelegate xrGetRenderModelPoseTopLevelUserPathEXT_ptr;
-		public static XrResult xrGetRenderModelPoseTopLevelUserPathEXT(XrRenderModelEXT renderModel, XrInteractionRenderModelTopLevelUserPathGetInfoEXT* info, ulong* topLevelUserPath)
+		public static XrResult xrGetRenderModelPoseTopLevelUserPathEXT(XrRenderModelEXT renderModel, XrInteractionRenderModelTopLevelUserPathGetInfoEXT* info, XrPath* topLevelUserPath)
 			=> xrGetRenderModelPoseTopLevelUserPathEXT_ptr(renderModel, info, topLevelUserPath);
 
 		[UnmanagedFunctionPointer(CallConv)]
@@ -1944,15 +1944,15 @@ namespace Evergine.Bindings.OpenXR
 			=> xrGetFacialSimulationModeBD_ptr(tracker, mode);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrEnumerateSpatialEntityComponentTypesBDDelegate(XrSenseDataSnapshotBD snapshot, ulong entityId, uint componentTypeCapacityInput, uint* componentTypeCountOutput, XrSpatialEntityComponentTypeBD* componentTypes);
+		private delegate XrResult xrEnumerateSpatialEntityComponentTypesBDDelegate(XrSenseDataSnapshotBD snapshot, XrSpatialEntityIdBD entityId, uint componentTypeCapacityInput, uint* componentTypeCountOutput, XrSpatialEntityComponentTypeBD* componentTypes);
 		private static xrEnumerateSpatialEntityComponentTypesBDDelegate xrEnumerateSpatialEntityComponentTypesBD_ptr;
-		public static XrResult xrEnumerateSpatialEntityComponentTypesBD(XrSenseDataSnapshotBD snapshot, ulong entityId, uint componentTypeCapacityInput, uint* componentTypeCountOutput, XrSpatialEntityComponentTypeBD* componentTypes)
+		public static XrResult xrEnumerateSpatialEntityComponentTypesBD(XrSenseDataSnapshotBD snapshot, XrSpatialEntityIdBD entityId, uint componentTypeCapacityInput, uint* componentTypeCountOutput, XrSpatialEntityComponentTypeBD* componentTypes)
 			=> xrEnumerateSpatialEntityComponentTypesBD_ptr(snapshot, entityId, componentTypeCapacityInput, componentTypeCountOutput, componentTypes);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrGetSpatialEntityUuidBDDelegate(XrSenseDataSnapshotBD snapshot, ulong entityId, XrUuid* uuid);
+		private delegate XrResult xrGetSpatialEntityUuidBDDelegate(XrSenseDataSnapshotBD snapshot, XrSpatialEntityIdBD entityId, XrUuid* uuid);
 		private static xrGetSpatialEntityUuidBDDelegate xrGetSpatialEntityUuidBD_ptr;
-		public static XrResult xrGetSpatialEntityUuidBD(XrSenseDataSnapshotBD snapshot, ulong entityId, XrUuid* uuid)
+		public static XrResult xrGetSpatialEntityUuidBD(XrSenseDataSnapshotBD snapshot, XrSpatialEntityIdBD entityId, XrUuid* uuid)
 			=> xrGetSpatialEntityUuidBD_ptr(snapshot, entityId, uuid);
 
 		[UnmanagedFunctionPointer(CallConv)]
@@ -2154,15 +2154,15 @@ namespace Evergine.Bindings.OpenXR
 			=> xrGetPlanePolygonBufferEXT_ptr(planeDetector, planeId, polygonBufferIndex, polygonBuffer);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrEnumerateSupportedTrackableTypesANDROIDDelegate(XrInstance instance, ulong systemId, uint trackableTypeCapacityInput, uint* trackableTypeCountOutput, XrTrackableTypeANDROID* trackableTypes);
+		private delegate XrResult xrEnumerateSupportedTrackableTypesANDROIDDelegate(XrInstance instance, XrSystemId systemId, uint trackableTypeCapacityInput, uint* trackableTypeCountOutput, XrTrackableTypeANDROID* trackableTypes);
 		private static xrEnumerateSupportedTrackableTypesANDROIDDelegate xrEnumerateSupportedTrackableTypesANDROID_ptr;
-		public static XrResult xrEnumerateSupportedTrackableTypesANDROID(XrInstance instance, ulong systemId, uint trackableTypeCapacityInput, uint* trackableTypeCountOutput, XrTrackableTypeANDROID* trackableTypes)
+		public static XrResult xrEnumerateSupportedTrackableTypesANDROID(XrInstance instance, XrSystemId systemId, uint trackableTypeCapacityInput, uint* trackableTypeCountOutput, XrTrackableTypeANDROID* trackableTypes)
 			=> xrEnumerateSupportedTrackableTypesANDROID_ptr(instance, systemId, trackableTypeCapacityInput, trackableTypeCountOutput, trackableTypes);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrEnumerateSupportedAnchorTrackableTypesANDROIDDelegate(XrInstance instance, ulong systemId, uint trackableTypeCapacityInput, uint* trackableTypeCountOutput, XrTrackableTypeANDROID* trackableTypes);
+		private delegate XrResult xrEnumerateSupportedAnchorTrackableTypesANDROIDDelegate(XrInstance instance, XrSystemId systemId, uint trackableTypeCapacityInput, uint* trackableTypeCountOutput, XrTrackableTypeANDROID* trackableTypes);
 		private static xrEnumerateSupportedAnchorTrackableTypesANDROIDDelegate xrEnumerateSupportedAnchorTrackableTypesANDROID_ptr;
-		public static XrResult xrEnumerateSupportedAnchorTrackableTypesANDROID(XrInstance instance, ulong systemId, uint trackableTypeCapacityInput, uint* trackableTypeCountOutput, XrTrackableTypeANDROID* trackableTypes)
+		public static XrResult xrEnumerateSupportedAnchorTrackableTypesANDROID(XrInstance instance, XrSystemId systemId, uint trackableTypeCapacityInput, uint* trackableTypeCountOutput, XrTrackableTypeANDROID* trackableTypes)
 			=> xrEnumerateSupportedAnchorTrackableTypesANDROID_ptr(instance, systemId, trackableTypeCapacityInput, trackableTypeCountOutput, trackableTypes);
 
 		[UnmanagedFunctionPointer(CallConv)]
@@ -2178,9 +2178,9 @@ namespace Evergine.Bindings.OpenXR
 			=> xrDestroyTrackableTrackerANDROID_ptr(trackableTracker);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrGetAllTrackablesANDROIDDelegate(XrTrackableTrackerANDROID trackableTracker, uint trackableCapacityInput, uint* trackableCountOutput, ulong* trackables);
+		private delegate XrResult xrGetAllTrackablesANDROIDDelegate(XrTrackableTrackerANDROID trackableTracker, uint trackableCapacityInput, uint* trackableCountOutput, XrTrackableANDROID* trackables);
 		private static xrGetAllTrackablesANDROIDDelegate xrGetAllTrackablesANDROID_ptr;
-		public static XrResult xrGetAllTrackablesANDROID(XrTrackableTrackerANDROID trackableTracker, uint trackableCapacityInput, uint* trackableCountOutput, ulong* trackables)
+		public static XrResult xrGetAllTrackablesANDROID(XrTrackableTrackerANDROID trackableTracker, uint trackableCapacityInput, uint* trackableCountOutput, XrTrackableANDROID* trackables)
 			=> xrGetAllTrackablesANDROID_ptr(trackableTracker, trackableCapacityInput, trackableCountOutput, trackables);
 
 		[UnmanagedFunctionPointer(CallConv)]
@@ -2196,9 +2196,9 @@ namespace Evergine.Bindings.OpenXR
 			=> xrCreateAnchorSpaceANDROID_ptr(session, createInfo, anchorOutput);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrEnumerateSupportedPersistenceAnchorTypesANDROIDDelegate(XrInstance instance, ulong systemId, uint trackableTypeCapacityInput, uint* trackableTypeCountOutput, XrTrackableTypeANDROID* trackableTypes);
+		private delegate XrResult xrEnumerateSupportedPersistenceAnchorTypesANDROIDDelegate(XrInstance instance, XrSystemId systemId, uint trackableTypeCapacityInput, uint* trackableTypeCountOutput, XrTrackableTypeANDROID* trackableTypes);
 		private static xrEnumerateSupportedPersistenceAnchorTypesANDROIDDelegate xrEnumerateSupportedPersistenceAnchorTypesANDROID_ptr;
-		public static XrResult xrEnumerateSupportedPersistenceAnchorTypesANDROID(XrInstance instance, ulong systemId, uint trackableTypeCapacityInput, uint* trackableTypeCountOutput, XrTrackableTypeANDROID* trackableTypes)
+		public static XrResult xrEnumerateSupportedPersistenceAnchorTypesANDROID(XrInstance instance, XrSystemId systemId, uint trackableTypeCapacityInput, uint* trackableTypeCountOutput, XrTrackableTypeANDROID* trackableTypes)
 			=> xrEnumerateSupportedPersistenceAnchorTypesANDROID_ptr(instance, systemId, trackableTypeCapacityInput, trackableTypeCountOutput, trackableTypes);
 
 		[UnmanagedFunctionPointer(CallConv)]
@@ -2274,9 +2274,9 @@ namespace Evergine.Bindings.OpenXR
 			=> xrGetPassthroughCameraStateANDROID_ptr(session, getInfo, cameraStateOutput);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrEnumerateRaycastSupportedTrackableTypesANDROIDDelegate(XrInstance instance, ulong systemId, uint trackableTypeCapacityInput, uint* trackableTypeCountOutput, XrTrackableTypeANDROID* trackableTypes);
+		private delegate XrResult xrEnumerateRaycastSupportedTrackableTypesANDROIDDelegate(XrInstance instance, XrSystemId systemId, uint trackableTypeCapacityInput, uint* trackableTypeCountOutput, XrTrackableTypeANDROID* trackableTypes);
 		private static xrEnumerateRaycastSupportedTrackableTypesANDROIDDelegate xrEnumerateRaycastSupportedTrackableTypesANDROID_ptr;
-		public static XrResult xrEnumerateRaycastSupportedTrackableTypesANDROID(XrInstance instance, ulong systemId, uint trackableTypeCapacityInput, uint* trackableTypeCountOutput, XrTrackableTypeANDROID* trackableTypes)
+		public static XrResult xrEnumerateRaycastSupportedTrackableTypesANDROID(XrInstance instance, XrSystemId systemId, uint trackableTypeCapacityInput, uint* trackableTypeCountOutput, XrTrackableTypeANDROID* trackableTypes)
 			=> xrEnumerateRaycastSupportedTrackableTypesANDROID_ptr(instance, systemId, trackableTypeCapacityInput, trackableTypeCountOutput, trackableTypes);
 
 		[UnmanagedFunctionPointer(CallConv)]
@@ -2394,27 +2394,27 @@ namespace Evergine.Bindings.OpenXR
 			=> xrPauseSimultaneousHandsAndControllersTrackingMETA_ptr(session, pauseInfo);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrStartColocationDiscoveryMETADelegate(XrSession session, XrColocationDiscoveryStartInfoMETA* info, ulong* discoveryRequestId);
+		private delegate XrResult xrStartColocationDiscoveryMETADelegate(XrSession session, XrColocationDiscoveryStartInfoMETA* info, XrAsyncRequestIdFB* discoveryRequestId);
 		private static xrStartColocationDiscoveryMETADelegate xrStartColocationDiscoveryMETA_ptr;
-		public static XrResult xrStartColocationDiscoveryMETA(XrSession session, XrColocationDiscoveryStartInfoMETA* info, ulong* discoveryRequestId)
+		public static XrResult xrStartColocationDiscoveryMETA(XrSession session, XrColocationDiscoveryStartInfoMETA* info, XrAsyncRequestIdFB* discoveryRequestId)
 			=> xrStartColocationDiscoveryMETA_ptr(session, info, discoveryRequestId);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrStopColocationDiscoveryMETADelegate(XrSession session, XrColocationDiscoveryStopInfoMETA* info, ulong* requestId);
+		private delegate XrResult xrStopColocationDiscoveryMETADelegate(XrSession session, XrColocationDiscoveryStopInfoMETA* info, XrAsyncRequestIdFB* requestId);
 		private static xrStopColocationDiscoveryMETADelegate xrStopColocationDiscoveryMETA_ptr;
-		public static XrResult xrStopColocationDiscoveryMETA(XrSession session, XrColocationDiscoveryStopInfoMETA* info, ulong* requestId)
+		public static XrResult xrStopColocationDiscoveryMETA(XrSession session, XrColocationDiscoveryStopInfoMETA* info, XrAsyncRequestIdFB* requestId)
 			=> xrStopColocationDiscoveryMETA_ptr(session, info, requestId);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrStartColocationAdvertisementMETADelegate(XrSession session, XrColocationAdvertisementStartInfoMETA* info, ulong* advertisementRequestId);
+		private delegate XrResult xrStartColocationAdvertisementMETADelegate(XrSession session, XrColocationAdvertisementStartInfoMETA* info, XrAsyncRequestIdFB* advertisementRequestId);
 		private static xrStartColocationAdvertisementMETADelegate xrStartColocationAdvertisementMETA_ptr;
-		public static XrResult xrStartColocationAdvertisementMETA(XrSession session, XrColocationAdvertisementStartInfoMETA* info, ulong* advertisementRequestId)
+		public static XrResult xrStartColocationAdvertisementMETA(XrSession session, XrColocationAdvertisementStartInfoMETA* info, XrAsyncRequestIdFB* advertisementRequestId)
 			=> xrStartColocationAdvertisementMETA_ptr(session, info, advertisementRequestId);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrStopColocationAdvertisementMETADelegate(XrSession session, XrColocationAdvertisementStopInfoMETA* info, ulong* requestId);
+		private delegate XrResult xrStopColocationAdvertisementMETADelegate(XrSession session, XrColocationAdvertisementStopInfoMETA* info, XrAsyncRequestIdFB* requestId);
 		private static xrStopColocationAdvertisementMETADelegate xrStopColocationAdvertisementMETA_ptr;
-		public static XrResult xrStopColocationAdvertisementMETA(XrSession session, XrColocationAdvertisementStopInfoMETA* info, ulong* requestId)
+		public static XrResult xrStopColocationAdvertisementMETA(XrSession session, XrColocationAdvertisementStopInfoMETA* info, XrAsyncRequestIdFB* requestId)
 			=> xrStopColocationAdvertisementMETA_ptr(session, info, requestId);
 
 		[UnmanagedFunctionPointer(CallConv)]
@@ -2472,21 +2472,21 @@ namespace Evergine.Bindings.OpenXR
 			=> xrGetTrackableImageANDROID_ptr(tracker, getInfo, trackable);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrEnumerateSpatialCapabilitiesEXTDelegate(XrInstance instance, ulong systemId, uint capabilityCapacityInput, uint* capabilityCountOutput, XrSpatialCapabilityEXT* capabilities);
+		private delegate XrResult xrEnumerateSpatialCapabilitiesEXTDelegate(XrInstance instance, XrSystemId systemId, uint capabilityCapacityInput, uint* capabilityCountOutput, XrSpatialCapabilityEXT* capabilities);
 		private static xrEnumerateSpatialCapabilitiesEXTDelegate xrEnumerateSpatialCapabilitiesEXT_ptr;
-		public static XrResult xrEnumerateSpatialCapabilitiesEXT(XrInstance instance, ulong systemId, uint capabilityCapacityInput, uint* capabilityCountOutput, XrSpatialCapabilityEXT* capabilities)
+		public static XrResult xrEnumerateSpatialCapabilitiesEXT(XrInstance instance, XrSystemId systemId, uint capabilityCapacityInput, uint* capabilityCountOutput, XrSpatialCapabilityEXT* capabilities)
 			=> xrEnumerateSpatialCapabilitiesEXT_ptr(instance, systemId, capabilityCapacityInput, capabilityCountOutput, capabilities);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrEnumerateSpatialCapabilityComponentTypesEXTDelegate(XrInstance instance, ulong systemId, XrSpatialCapabilityEXT capability, XrSpatialCapabilityComponentTypesEXT* capabilityComponents);
+		private delegate XrResult xrEnumerateSpatialCapabilityComponentTypesEXTDelegate(XrInstance instance, XrSystemId systemId, XrSpatialCapabilityEXT capability, XrSpatialCapabilityComponentTypesEXT* capabilityComponents);
 		private static xrEnumerateSpatialCapabilityComponentTypesEXTDelegate xrEnumerateSpatialCapabilityComponentTypesEXT_ptr;
-		public static XrResult xrEnumerateSpatialCapabilityComponentTypesEXT(XrInstance instance, ulong systemId, XrSpatialCapabilityEXT capability, XrSpatialCapabilityComponentTypesEXT* capabilityComponents)
+		public static XrResult xrEnumerateSpatialCapabilityComponentTypesEXT(XrInstance instance, XrSystemId systemId, XrSpatialCapabilityEXT capability, XrSpatialCapabilityComponentTypesEXT* capabilityComponents)
 			=> xrEnumerateSpatialCapabilityComponentTypesEXT_ptr(instance, systemId, capability, capabilityComponents);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrEnumerateSpatialCapabilityFeaturesEXTDelegate(XrInstance instance, ulong systemId, XrSpatialCapabilityEXT capability, uint capabilityFeatureCapacityInput, uint* capabilityFeatureCountOutput, XrSpatialCapabilityFeatureEXT* capabilityFeatures);
+		private delegate XrResult xrEnumerateSpatialCapabilityFeaturesEXTDelegate(XrInstance instance, XrSystemId systemId, XrSpatialCapabilityEXT capability, uint capabilityFeatureCapacityInput, uint* capabilityFeatureCountOutput, XrSpatialCapabilityFeatureEXT* capabilityFeatures);
 		private static xrEnumerateSpatialCapabilityFeaturesEXTDelegate xrEnumerateSpatialCapabilityFeaturesEXT_ptr;
-		public static XrResult xrEnumerateSpatialCapabilityFeaturesEXT(XrInstance instance, ulong systemId, XrSpatialCapabilityEXT capability, uint capabilityFeatureCapacityInput, uint* capabilityFeatureCountOutput, XrSpatialCapabilityFeatureEXT* capabilityFeatures)
+		public static XrResult xrEnumerateSpatialCapabilityFeaturesEXT(XrInstance instance, XrSystemId systemId, XrSpatialCapabilityEXT capability, uint capabilityFeatureCapacityInput, uint* capabilityFeatureCountOutput, XrSpatialCapabilityFeatureEXT* capabilityFeatures)
 			=> xrEnumerateSpatialCapabilityFeaturesEXT_ptr(instance, systemId, capability, capabilityFeatureCapacityInput, capabilityFeatureCountOutput, capabilityFeatures);
 
 		[UnmanagedFunctionPointer(CallConv)]
@@ -2592,15 +2592,15 @@ namespace Evergine.Bindings.OpenXR
 			=> xrGetSpatialBufferVector3fEXT_ptr(snapshot, info, bufferCapacityInput, bufferCountOutput, buffer);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrCreateSpatialAnchorEXTDelegate(XrSpatialContextEXT spatialContext, XrSpatialAnchorCreateInfoEXT* createInfo, ulong* anchorEntityId, XrSpatialEntityEXT* anchorEntity);
+		private delegate XrResult xrCreateSpatialAnchorEXTDelegate(XrSpatialContextEXT spatialContext, XrSpatialAnchorCreateInfoEXT* createInfo, XrSpatialEntityIdEXT* anchorEntityId, XrSpatialEntityEXT* anchorEntity);
 		private static xrCreateSpatialAnchorEXTDelegate xrCreateSpatialAnchorEXT_ptr;
-		public static XrResult xrCreateSpatialAnchorEXT(XrSpatialContextEXT spatialContext, XrSpatialAnchorCreateInfoEXT* createInfo, ulong* anchorEntityId, XrSpatialEntityEXT* anchorEntity)
+		public static XrResult xrCreateSpatialAnchorEXT(XrSpatialContextEXT spatialContext, XrSpatialAnchorCreateInfoEXT* createInfo, XrSpatialEntityIdEXT* anchorEntityId, XrSpatialEntityEXT* anchorEntity)
 			=> xrCreateSpatialAnchorEXT_ptr(spatialContext, createInfo, anchorEntityId, anchorEntity);
 
 		[UnmanagedFunctionPointer(CallConv)]
-		private delegate XrResult xrEnumerateSpatialPersistenceScopesEXTDelegate(XrInstance instance, ulong systemId, uint persistenceScopeCapacityInput, uint* persistenceScopeCountOutput, XrSpatialPersistenceScopeEXT* persistenceScopes);
+		private delegate XrResult xrEnumerateSpatialPersistenceScopesEXTDelegate(XrInstance instance, XrSystemId systemId, uint persistenceScopeCapacityInput, uint* persistenceScopeCountOutput, XrSpatialPersistenceScopeEXT* persistenceScopes);
 		private static xrEnumerateSpatialPersistenceScopesEXTDelegate xrEnumerateSpatialPersistenceScopesEXT_ptr;
-		public static XrResult xrEnumerateSpatialPersistenceScopesEXT(XrInstance instance, ulong systemId, uint persistenceScopeCapacityInput, uint* persistenceScopeCountOutput, XrSpatialPersistenceScopeEXT* persistenceScopes)
+		public static XrResult xrEnumerateSpatialPersistenceScopesEXT(XrInstance instance, XrSystemId systemId, uint persistenceScopeCapacityInput, uint* persistenceScopeCountOutput, XrSpatialPersistenceScopeEXT* persistenceScopes)
 			=> xrEnumerateSpatialPersistenceScopesEXT_ptr(instance, systemId, persistenceScopeCapacityInput, persistenceScopeCountOutput, persistenceScopes);
 
 		[UnmanagedFunctionPointer(CallConv)]
