@@ -26,7 +26,7 @@ namespace OpenXRGen
             else
             {
                 handle.Name = elem.Element("name").Value;
-                handle.Dispatchable = elem.Element("type")?.Value == "VK_DEFINE_HANDLE";
+                handle.Dispatchable = elem.Element("type")?.Value == "XR_DEFINE_HANDLE";
                 handle.Parent = elem.Attribute("parent")?.Value;
             }
 

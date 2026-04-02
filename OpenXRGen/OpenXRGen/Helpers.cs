@@ -30,11 +30,11 @@ namespace OpenXRGen
         {
             if (name == "object")
             {
-                return "vkObject";
+                return "xrObject";
             }
             else if (name == "event")
             {
-                return "vkEvent";
+                return "xrEvent";
             }
 
             return name;
@@ -138,7 +138,7 @@ namespace OpenXRGen
                 case "char":
                     return "byte";
                 case "wchar_t":
-                    return "string";
+                    return "char";
                 case "uint8_t*":
                 case "char*":
                     return "byte*";
@@ -149,7 +149,7 @@ namespace OpenXRGen
                 case "int16_t":
                     return "short";
                 case "int16_t*":
-                    return "int16*";
+                    return "short*";
                 case "uint32_t":
                 case "DWORD":
                     return "uint";

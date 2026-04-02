@@ -5566,6 +5566,22 @@ namespace Evergine.Bindings.OpenXR
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrBodyTrackingFidelityStatusMETA
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrBodyTrackingFidelityMETA fidelity;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSystemPropertiesBodyTrackingFidelityMETA
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrBool32 supportsBodyTrackingFidelity;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct XrSystemEyeTrackingPropertiesFB
 	{
 		public XrStructureType type;
@@ -8414,6 +8430,165 @@ namespace Evergine.Bindings.OpenXR
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrPerformanceMetricsStateANDROID
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrBool32 enabled;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrPerformanceMetricsCounterANDROID
+	{
+		public XrStructureType type;
+		public void* next;
+		public ulong counterFlags;
+		public XrPerformanceMetricsCounterUnitANDROID counterUnit;
+		public uint uintValue;
+		public float floatValue;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSystemQrCodeTrackingPropertiesANDROID
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrBool32 supportsQrCodeTracking;
+		public XrBool32 supportsQrCodeSizeEstimation;
+		public ushort maxQrCodeCount;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrTrackableQrCodeConfigurationANDROID
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrQrCodeTrackingModeANDROID trackingMode;
+		public float qrCodeEdgeSize;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrTrackableQrCodeANDROID
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrTrackingStateANDROID trackingState;
+		public long lastUpdatedTime;
+		public XrPosef centerPose;
+		public XrExtent2Df extents;
+		public uint bufferCapacityInput;
+		public uint bufferCountOutput;
+		public byte* buffer;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSystemPassthroughLayerPropertiesANDROID
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrBool32 supportsPassthroughLayer;
+		public uint maxMeshIndexCount;
+		public uint maxMeshVertexCount;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrPassthroughLayerCreateInfoANDROID
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint vertexCapacity;
+		public uint indexCapacity;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrPassthroughLayerMeshANDROID
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrWindingOrderANDROID windingOrder;
+		public uint vertexCount;
+		public XrVector3f* vertices;
+		public uint indexCount;
+		public ushort* indices;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrCompositionLayerPassthroughANDROID
+	{
+		public XrStructureType type;
+		public void* next;
+		public ulong layerFlags;
+		public XrSpace space;
+		public XrPosef pose;
+		public XrVector3f scale;
+		public float opacity;
+		public XrPassthroughLayerANDROID layer;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSystemSceneMeshingPropertiesANDROID
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrBool32 supportsSceneMeshing;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSceneMeshingTrackerCreateInfoANDROID
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrSceneMeshSemanticLabelSetANDROID semanticLabelSet;
+		public XrBool32 enableNormals;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSceneMeshSnapshotCreateInfoANDROID
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrSpace baseSpace;
+		public long time;
+		public XrBoxf boundingBox;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSceneMeshSnapshotCreationResultANDROID
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrSceneMeshSnapshotANDROID snapshot;
+		public XrSceneMeshTrackingStateANDROID trackingState;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSceneSubmeshStateANDROID
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrUuid submeshId;
+		public long lastUpdatedTime;
+		public XrPosef submeshPoseInBaseSpace;
+		public XrExtent3Df bounds;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSceneSubmeshDataANDROID
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrUuid submeshId;
+		public uint vertexCapacityInput;
+		public uint vertexCountOutput;
+		public XrVector3f* vertexPositions;
+		public XrVector3f* vertexNormals;
+		public byte* vertexSemantics;
+		public uint indexCapacityInput;
+		public uint indexCountOutput;
+		public uint* indices;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct XrSystemPlaneDetectionPropertiesEXT
 	{
 		public XrStructureType type;
@@ -9431,6 +9606,159 @@ namespace Evergine.Bindings.OpenXR
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialAudioRendererCreateInfoBD
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint framesPerBuffer;
+		public XrAudioSampleRateBD sampleRate;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrAudioBufferBD
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrAudioBufferChannelLayoutBD channelLayout;
+		public uint bufferChannels;
+		public uint bufferLength;
+		public float* buffer;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSoundObjectDirectivityCardioidBD
+	{
+		public XrStructureType type;
+		public void* next;
+		public float alpha;
+		public float order;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSoundObjectShapeSphereBD
+	{
+		public XrStructureType type;
+		public void* next;
+		public float radius;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSoundObjectDistanceAttenuationBD
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrSoundObjectDistanceAttenuationTypeBD distanceAttenuationType;
+		public float minAttenuationRange;
+		public float maxAttenuationRange;
+		public float referenceDistance;
+		public float rolloffFactor;
+		public XrSoundObjectDistanceAttenuationCurveBD* customDistanceAttenuationCurve;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrAttenuationCurvePointBD
+	{
+		public float distance;
+		public float gain;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSoundObjectDistanceAttenuationCurveBD
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint curvePointCount;
+		public XrAttenuationCurvePointBD* curvePoints;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSoundObjectConfigBD
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrBool32 enabled;
+		public XrPosef pose;
+		public XrSpace baseSpace;
+		public float mainVolume;
+		public float reflectionGain;
+		public XrBool32 enableDoppler;
+		public XrSoundObjectDistanceAttenuationBD* directSoundAttenuation;
+		public XrSoundObjectDistanceAttenuationBD* indirectSoundAttenuation;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSoundFieldConfigBD
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrBool32 enabled;
+		public XrQuaternionf orientation;
+		public XrSpace baseSpace;
+		public float mainVolume;
+		public float lfeGain;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSoundFieldChannelDefinitionSurroundBD
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrSoundFieldChannelMaskSurroundBD channelMask;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSoundFieldChannelDefinitionAmbixBD
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrSoundFieldChannelMaskAmbixBD channelMask;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSoundFieldChannelDefinitionFumaBD
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrSoundFieldChannelMaskFumaBD channelMask;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSoundTriangleMeshBD
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint vertexCount;
+		public XrVector3f* vertices;
+		public uint indexCount;
+		public uint* indices;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSoundObstacleConfigBD
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrBool32 enabled;
+		public XrPosef pose;
+		public XrSpace baseSpace;
+		public uint materialCount;
+		public XrSoundObstacleMaterialBD* materials;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSoundObstacleMaterialConfigBD
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrSoundObstacleMaterialTypeBD materialType;
+		public uint bandCount;
+		public float* bandFrequencies;
+		public float* bandAbsorptions;
+		public float* bandScatterings;
+		public float* bandTransmissions;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct XrSpatialAnchorsCreateInfoBaseHeaderML
 	{
 		public XrStructureType type;
@@ -10235,6 +10563,54 @@ namespace Evergine.Bindings.OpenXR
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialCapabilityConfigurationDepthRaycastANDROID
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrSpatialCapabilityEXT capability;
+		public uint enabledComponentCount;
+		public XrSpatialComponentTypeEXT* enabledComponents;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialRaycastInfoANDROID
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrSpace space;
+		public long time;
+		public XrVector3f origin;
+		public XrVector3f direction;
+		public float maxDistance;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialRaycastResultDataANDROID
+	{
+		public XrPosef hitPose;
+		public float distanceSquared;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialComponentRaycastResultListANDROID
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint raycastResultCount;
+		public XrSpatialRaycastResultDataANDROID* raycastResults;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialRaycastSnapshotCreateInfoANDROID
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint componentTypeCount;
+		public XrSpatialComponentTypeEXT* componentTypes;
+		public XrSpatialRaycastInfoANDROID* raycastInfo;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct XrSpatialCapabilityConfigurationArucoMarkerEXT
 	{
 		public XrStructureType type;
@@ -10307,6 +10683,33 @@ namespace Evergine.Bindings.OpenXR
 		public void* next;
 		public uint markerCount;
 		public XrSpatialMarkerDataEXT* markers;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrExtent3DiMETA
+	{
+		public int width;
+		public int height;
+		public int depth;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrTilePropertiesMETA
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrExtent3DiMETA tileDimensions;
+		public XrExtent2Di apronDimensions;
+		public XrOffset2Di origin;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrTilePropertiesHintMETA
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint propertiesCount;
+		public XrTilePropertiesMETA* properties;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -10425,6 +10828,146 @@ namespace Evergine.Bindings.OpenXR
 		public XrStructureType type;
 		public void* next;
 		public long time;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialCapabilityConfigurationObjectTrackingANDROID
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrSpatialCapabilityEXT capability;
+		public uint enabledComponentCount;
+		public XrSpatialComponentTypeEXT* enabledComponents;
+		public uint activeSemanticLabelCount;
+		public XrSpatialObjectSemanticLabelANDROID* activeSemanticLabels;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialComponentObjectSemanticLabelListANDROID
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint semanticLabelCount;
+		public XrSpatialObjectSemanticLabelANDROID* semanticLabels;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialAnchorParentANDROID
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrSpatialEntityIdEXT parentId;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialAnchorSpaceFromIdCreateInfoANDROID
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrSpatialEntityIdEXT anchorEntityId;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialDiscoveryUniqueEntitiesFilterANDROID
+	{
+		public XrStructureType type;
+		public void* next;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialComponentSubsumedByListANDROID
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint subsumedUniqueIdCount;
+		public XrSpatialEntityIdEXT* subsumedUniqueIds;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrEventDataViewConfigurationViewsChangedEXT
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrSystemId systemId;
+		public XrViewConfigurationType viewConfigurationType;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrBatteryStateDisplayEXT
+	{
+		public XrStructureType type;
+		public void* next;
+		public ulong stateFlags;
+		public float batteryLevel;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSystemEnvironmentRaycastPropertiesMETA
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrBool32 supportsEnvironmentRaycast;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrEnvironmentRaycasterCreateInfoMETA
+	{
+		public XrStructureType type;
+		public void* next;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrEnvironmentRaycasterCreateCompletionMETA
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrResult futureResult;
+		public XrEnvironmentRaycasterMETA environmentRaycaster;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrEnvironmentRaycastFilterBaseHeaderMETA
+	{
+		public XrStructureType type;
+		public void* next;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrEnvironmentRaycastFilterDistanceMETA
+	{
+		public XrStructureType type;
+		public void* next;
+		public float maxDistance;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrEnvironmentRaycastHitGetInfoMETA
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrSpace baseSpace;
+		public long time;
+		public XrVector3f origin;
+		public XrVector3f direction;
+		public uint filterCount;
+		public XrEnvironmentRaycastFilterBaseHeaderMETA* filters;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrEnvironmentRaycastHitMETA
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrEnvironmentRaycastHitStatusMETA status;
+		public XrPosef pose;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrHandGestureQCOM
+	{
+		public XrHandGestureTypeQCOM gesture;
+		public float gestureRatio;
+		public float flipRatio;
 	}
 
 }

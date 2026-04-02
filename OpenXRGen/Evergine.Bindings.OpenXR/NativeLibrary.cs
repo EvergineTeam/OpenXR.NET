@@ -47,7 +47,15 @@ namespace Evergine.Bindings.OpenXR
             SysNativeLibrary.TryGetExport(libraryHandle, name, out IntPtr funcPtr);
             if (funcPtr == IntPtr.Zero)
             {
-                OpenXRNative.xrGetInstanceProcAddr(instance, (byte*)Marshal.StringToHGlobalAnsi(name), new IntPtr(&funcPtr));
+                IntPtr namePtr = Marshal.StringToHGlobalAnsi(name);
+                try
+                {
+                    OpenXRNative.xrGetInstanceProcAddr(instance, (byte*)namePtr, new IntPtr(&funcPtr));
+                }
+                finally
+                {
+                    Marshal.FreeHGlobal(namePtr);
+                }
             }
 
             if (funcPtr != IntPtr.Zero)

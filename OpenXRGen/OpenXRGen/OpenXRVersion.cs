@@ -35,7 +35,7 @@ namespace OpenXRGen
                 // Extend Enums
                 foreach (var enumType in feature.Enums)
                 {
-                    if (enumType.Extends != null & enumType.Alias == null)
+                    if (enumType.Extends != null && enumType.Alias == null)
                     {
                         string name = enumType.Extends;
                         var enumDefinition = spec.Enums.Find(c => c.Name == name);
@@ -95,7 +95,7 @@ namespace OpenXRGen
                 // Add Enums
                 foreach (var enumType in extension.Enums)
                 {
-                    if (enumType.Extends != null & enumType.Alias == null)
+                    if (enumType.Extends != null && enumType.Alias == null)
                     {
                         string name = enumType.Extends;
                         var enumDefinition = spec.Enums.Find(c => c.Name == name);
@@ -122,8 +122,8 @@ namespace OpenXRGen
 
                     var commandDefinition = spec.Commands.Find(c => c.Prototype.Name == name);
 
-                    if (version.Commands.Count == 0 || version.Commands.Exists(c => c == null))
-                        break;
+                    if (commandDefinition == null)
+                        continue;
 
                     if(!version.Commands.Exists(c => c.Prototype.Name == name))
                         version.Commands.Add(commandDefinition);

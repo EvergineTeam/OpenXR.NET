@@ -264,7 +264,7 @@ namespace OpenXRGen
                 foreach (var handle in openXRVersion.Handles)
                 {
                     file.WriteLine($"\tpublic partial struct {handle.Name} : IEquatable<{handle.Name}>");
-                    file.WriteLine("{");
+                    file.WriteLine("\t{");
                     string handleType = handle.Dispatchable ? "IntPtr" : "ulong";
                     string nullValue = handle.Dispatchable ? "IntPtr.Zero" : "0";
 
@@ -280,14 +280,14 @@ namespace OpenXRGen
                     file.WriteLine($"\t\tpublic bool Equals({handle.Name} h) => Handle == h.Handle;");
                     file.WriteLine($"\t\tpublic override bool Equals(object o) => o is {handle.Name} h && Equals(h);");
                     file.WriteLine($"\t\tpublic override int GetHashCode() => Handle.GetHashCode();");
-                    file.WriteLine("}\n");
+                    file.WriteLine("\t}\n");
                 }
 
                 // Atom types (XR_DEFINE_ATOM)
                 foreach (var atom in openXRVersion.Atoms)
                 {
                     file.WriteLine($"\tpublic partial struct {atom.Name} : IEquatable<{atom.Name}>");
-                    file.WriteLine("{");
+                    file.WriteLine("\t{");
 
                     file.WriteLine($"\t\tpublic readonly ulong Handle;");
 
@@ -301,7 +301,7 @@ namespace OpenXRGen
                     file.WriteLine($"\t\tpublic bool Equals({atom.Name} h) => Handle == h.Handle;");
                     file.WriteLine($"\t\tpublic override bool Equals(object o) => o is {atom.Name} h && Equals(h);");
                     file.WriteLine($"\t\tpublic override int GetHashCode() => Handle.GetHashCode();");
-                    file.WriteLine("}\n");
+                    file.WriteLine("\t}\n");
                 }
 
                 file.WriteLine("}");

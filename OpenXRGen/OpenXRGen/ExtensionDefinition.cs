@@ -45,8 +45,8 @@ namespace OpenXRGen
                 extension.SortOrder = int.Parse(sortString);
             }
 
-            var requires = elem.Element("require");
-            if (requires != null)
+            var requireBlocks = elem.Elements("require");
+            foreach (var requires in requireBlocks)
             {
                 var enums = requires.Elements("enum");
                 foreach (var e in enums)
