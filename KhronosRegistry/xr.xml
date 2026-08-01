@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE xml>
+<!DOCTYPE registry>
 <?xml-model href="registry.rnc" type="application/relax-ng-compact-syntax"?>
 <?xml-model href="registry.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <registry>
+    <!--
+      DO NOT EDIT DIRECTLY - generated from xr.fragmented.xml and the following fragments:
+
+      - fragments/android/XR_ANDROID_trackables.xml
+-->
     <comment>
 Copyright (c) 2017-2026 The Khronos Group Inc.
 
@@ -37,6 +42,7 @@ maintained in the default branch of the Khronos OpenXR GitHub project.
         <tag name="COLLABORA"  author="Collabora"             contact="Rylie Pavlik @rpavlik"/>
         <tag name="DANWILLM"   author="Daniel Willmott"       contact="Daniel Willmott @danwillm"/>
         <tag name="DEEPMIRROR" author="Deep Mirror"           contact="Yuhui Lun @lyh-dm"/>
+        <tag name="DXR"        author="The DisplayXR Project" contact="David Fattal @dfattal"/>
         <tag name="EPIC"       author="Epic"                  contact="Nick Whiting @whitingn"/>
         <tag name="EXT"        author="Multivendor"           contact="Rylie Pavlik @rpavlik"/>
         <tag name="FB"         author="Facebook"              contact="Cass Everitt @casseveritt, Jonathan Wright @Nelno"/>
@@ -138,7 +144,7 @@ maintained in the default branch of the Khronos OpenXR GitHub project.
         updates them automatically by processing a line at a time.
         -->
         <type category="define">// OpenXR current version number.
-#define <name>XR_CURRENT_API_VERSION</name> <type>XR_MAKE_VERSION</type>(1, 1, 60)</type>
+#define <name>XR_CURRENT_API_VERSION</name> <type>XR_MAKE_VERSION</type>(1, 1, 62)</type>
 
         <!--
         Defines for a fixed major.minor version of OpenXR preserving the shared patch version.
@@ -281,10 +287,6 @@ maintained in the default branch of the Khronos OpenXR GitHub project.
         <type category="define">
 #define <name>XR_HAND_FOREARM_JOINT_COUNT_ULTRALEAP</name> 27</type>
 
-        <!-- XR_ANDROID_trackables -->
-        <type category="define">
-#define <name>XR_NULL_TRACKABLE_ANDROID</name> 0</type>
-
         <!-- XR_FB_face_tracking -->
         <type category="define">
 #define <name>XR_FACE_EXPRESSSION_SET_DEFAULT_FB</name> XR_FACE_EXPRESSION_SET_DEFAULT_FB</type>
@@ -344,8 +346,6 @@ maintained in the default branch of the Khronos OpenXR GitHub project.
         <type category="basetype"><type>XR_DEFINE_ATOM</type>(<name>XrAsyncRequestIdFB</name>)</type>
         <!-- XR_FB_render_model -->
         <type category="basetype"><type>XR_DEFINE_ATOM</type>(<name>XrRenderModelKeyFB</name>)</type>
-        <!-- XR_ANDROID_trackables -->
-        <type category="basetype"><type>XR_DEFINE_ATOM</type>(<name>XrTrackableANDROID</name>)</type>
         <!-- XR_ML_marker_understanding -->
         <type category="basetype"><type>XR_DEFINE_ATOM</type>(<name>XrMarkerML</name>)</type>
         <!-- XR_EXT_render_model -->
@@ -430,6 +430,9 @@ maintained in the default branch of the Khronos OpenXR GitHub project.
         <!-- Bitmask types for XR_FB_hand_tracking_aim -->
         <type bitvalues="XrHandTrackingAimFlagBitsFB" category="bitmask">typedef <type>XrFlags64</type> <name>XrHandTrackingAimFlagsFB</name>;</type>
 
+        <!-- Bitmask types for XR_BD_body_tracking_auxiliary_metrics -->
+        <type bitvalues="XrSpaceAccelerationFlagBitsBD" category="bitmask">typedef <type>XrFlags64</type> <name>XrSpaceAccelerationFlagsBD</name>;</type>
+
         <!-- Bitmask types for XR_FB_keyboard_tracking -->
         <type bitvalues="XrKeyboardTrackingFlagBitsFB"      category="bitmask">typedef <type>XrFlags64</type> <name>XrKeyboardTrackingFlagsFB</name>;</type>
         <type bitvalues="XrKeyboardTrackingQueryFlagBitsFB" category="bitmask">typedef <type>XrFlags64</type> <name>XrKeyboardTrackingQueryFlagsFB</name>;</type>
@@ -498,6 +501,9 @@ maintained in the default branch of the Khronos OpenXR GitHub project.
         <!-- Bitmask types for XR_BD_spatial_mesh -->
         <type bitvalues="XrSpatialMeshConfigFlagBitsBD" category="bitmask">typedef <type>XrFlags64</type> <name>XrSpatialMeshConfigFlagsBD</name>;</type>
 
+        <!-- Bitmask types for XR_ANDROID_geospatial -->
+        <type bitvalues="XrGeospatialPoseFlagBitsANDROID" category="bitmask">typedef <type>XrFlags64</type> <name>XrGeospatialPoseFlagsANDROID</name>;</type>
+
         <!-- Handles referring to internally-maintained objects. -->
         <!-- These types which can be 64-bit integers or opaque pointers, selected at compile time based on pointer size -->
         <type category="handle"><type>XR_DEFINE_HANDLE</type>(<name>XrInstance</name>)</type>
@@ -535,9 +541,6 @@ maintained in the default branch of the Khronos OpenXR GitHub project.
 
         <!-- XR_ANDROID_face_tracking -->
         <type category="handle" parent="XrSession"><type>XR_DEFINE_HANDLE</type>(<name>XrFaceTrackerANDROID</name>)</type>
-
-        <!-- XR_ANDROID_trackables -->
-        <type category="handle" parent="XrSession"><type>XR_DEFINE_HANDLE</type>(<name>XrTrackableTrackerANDROID</name>)</type>
 
         <!-- XR_ANDROID_trackables_marker -->
         <type name="XrTrackableMarkerTrackingModeANDROID" category="enum"/>
@@ -638,6 +641,9 @@ maintained in the default branch of the Khronos OpenXR GitHub project.
 
         <!-- XR_META_environment_raycast -->
         <type category="handle" parent="XrSession"><type>XR_DEFINE_HANDLE</type>(<name>XrEnvironmentRaycasterMETA</name>)</type>
+
+        <!-- XR_ANDROID_geospatial -->
+        <type category="handle" parent="XrSession"><type>XR_DEFINE_HANDLE</type>(<name>XrGeospatialTrackerANDROID</name>)</type>
 
         <!-- Non-handle 64-bit opaque type from XR_EXT_future -->
         <type category="basetype"><type>XR_DEFINE_OPAQUE_64</type>(<name>XrFutureEXT</name>)</type>
@@ -749,6 +755,9 @@ maintained in the default branch of the Khronos OpenXR GitHub project.
         <!-- flag bits for XR_FB_hand_tracking_aim -->
         <type name="XrHandTrackingAimFlagBitsFB" category="enum"/>
 
+        <!-- flag bits for XR_BD_body_tracking_auxiliary_metrics -->
+        <type name="XrSpaceAccelerationFlagBitsBD" category="enum"/>
+
         <!-- flag bits for XR_FB_keyboard_tracking -->
         <type name="XrKeyboardTrackingFlagBitsFB" category="enum"/>
         <type name="XrKeyboardTrackingQueryFlagBitsFB" category="enum"/>
@@ -790,12 +799,6 @@ maintained in the default branch of the Khronos OpenXR GitHub project.
         <type name="XrFaceParameterIndicesANDROID" category="enum"/>
         <type name="XrFaceTrackingStateANDROID" category="enum"/>
         <type name="XrFaceConfidenceRegionsANDROID" category="enum"/>
-
-        <!-- enums for XR_ANDROID_trackables -->
-        <type name="XrTrackingStateANDROID" category="enum"/>
-        <type name="XrTrackableTypeANDROID" category="enum"/>
-        <type name="XrPlaneTypeANDROID" category="enum"/>
-        <type name="XrPlaneLabelANDROID" category="enum"/>
 
         <!-- XR_ANDROID_trackables_object -->
         <type name="XrObjectLabelANDROID" category="enum"/>
@@ -980,6 +983,9 @@ maintained in the default branch of the Khronos OpenXR GitHub project.
         <!-- enums for XR_BD_spatial_plane -->
         <type name="XrPlaneOrientationBD" category="enum"/>
 
+        <!-- enums for XR_BD_dynamic_object_tracking -->
+        <type name="XrDynamicObjectTypeBD" category="enum"/>
+
         <!-- enums for XR_EXT_spatial_marker_tracking -->
         <type name="XrSpatialMarkerArucoDictEXT" category="enum"/>
         <type name="XrSpatialMarkerAprilTagDictEXT" category="enum"/>
@@ -1000,6 +1006,14 @@ maintained in the default branch of the Khronos OpenXR GitHub project.
 
         <!-- XR_EXT_haptic_parametric -->
         <type name="XrHapticParametricStreamFrameTypeEXT" category="enum"/>
+
+        <!-- XR_BD_body_tracking_auxiliary_metrics -->
+        <type name="XrBodyTrackingPostureBD" category="enum"/>
+        <type name="XrBodyTrackingStatusBD" category="enum"/>
+        <type name="XrBodyTrackingMessageBD" category="enum"/>
+
+        <!-- XR_SONY_swapchain_color_space -->
+        <type name="XrColorSpaceSONY" category="enum"/>
 
         <!-- Struct types -->
         <type category="struct" name="XrVector2f">
@@ -3511,6 +3525,42 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
             <member><type>uint32_t</type> <name>progressPercentage</name></member>
         </type>
 
+        <!-- XR_BD_body_tracking_auxiliary_metrics -->
+        <type category="struct" name="XrBodyTrackingPostureDataBD" structextends="XrBodyJointLocationsBD">
+            <member values="XR_TYPE_BODY_TRACKING_POSTURE_DATA_BD"><type>XrStructureType</type> <name>type</name></member>
+            <member><type>void</type>*                                       <name>next</name></member>
+            <member><type>uint32_t</type>                                    <name>postureCount</name></member>
+            <member len="postureCount"><type>XrBodyTrackingPostureBD</type>* <name>postureData</name></member>
+        </type>
+        <type category="struct" name="XrBodyJointVelocityBD">
+            <member optional="true"><type>XrSpaceVelocityFlags</type> <name>velocityFlags</name></member>
+            <member><type>XrVector3f</type>                           <name>linearVelocity</name></member>
+            <member><type>XrVector3f</type>                           <name>angularVelocity</name></member>
+        </type>
+        <type category="struct" name="XrBodyJointVelocitiesBD" structextends="XrBodyJointLocationsBD">
+            <member values="XR_TYPE_BODY_JOINT_VELOCITIES_BD"><type>XrStructureType</type> <name>type</name></member>
+            <member><type>void</type>*                                      <name>next</name></member>
+            <member><type>uint32_t</type>                                   <name>velocityCount</name></member>
+            <member len="velocityCount"><type>XrBodyJointVelocityBD</type>* <name>velocities</name></member>
+        </type>
+        <type category="struct" name="XrBodyJointAccelerationBD">
+            <member optional="true"><type>XrSpaceAccelerationFlagsBD</type> <name>accelerationFlags</name></member>
+            <member><type>XrVector3f</type>                                 <name>linearAcceleration</name></member>
+            <member><type>XrVector3f</type>                                 <name>angularAcceleration</name></member>
+        </type>
+        <type category="struct" name="XrBodyJointAccelerationsBD" structextends="XrBodyJointLocationsBD">
+            <member values="XR_TYPE_BODY_JOINT_ACCELERATIONS_BD"><type>XrStructureType</type> <name>type</name></member>
+            <member><type>void</type>*                                              <name>next</name></member>
+            <member><type>uint32_t</type>                                           <name>accelerationCount</name></member>
+            <member len="accelerationCount"><type>XrBodyJointAccelerationBD</type>* <name>accelerations</name></member>
+        </type>
+        <type category="struct" name="XrBodyTrackingStateBD">
+            <member values="XR_TYPE_BODY_TRACKING_STATE_BD"><type>XrStructureType</type> <name>type</name></member>
+            <member><type>void</type>*                   <name>next</name></member>
+            <member><type>XrBodyTrackingStatusBD</type>  <name>status</name></member>
+            <member><type>XrBodyTrackingMessageBD</type> <name>message</name></member>
+        </type>
+
         <!-- XR_HTC_facial_tracking -->
         <type category="struct" name="XrFacialTrackerCreateInfoHTC">
             <member values="XR_TYPE_FACIAL_TRACKER_CREATE_INFO_HTC"><type>XrStructureType</type> <name>type</name></member>
@@ -4054,52 +4104,9 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
             <member>const <type>void</type>*                                                                <name>next</name></member>
         </type>
 
-
-        <!-- XR_ANDROID_trackables -->
-        <type category="struct" name="XrTrackableTrackerCreateInfoANDROID">
-            <member values="XR_TYPE_TRACKABLE_TRACKER_CREATE_INFO_ANDROID"><type>XrStructureType</type> <name>type</name></member>
-            <member>const <type>void</type>*            <name>next</name></member>
-            <member><type>XrTrackableTypeANDROID</type> <name>trackableType</name></member>
-        </type>
-        <type category="struct" name="XrTrackableGetInfoANDROID">
-            <member values="XR_TYPE_TRACKABLE_GET_INFO_ANDROID"><type>XrStructureType</type> <name>type</name></member>
-            <member>const <type>void</type>*        <name>next</name></member>
-            <member><type>XrTrackableANDROID</type> <name>trackable</name></member>
-            <member><type>XrSpace</type>            <name>baseSpace</name></member>
-            <member><type>XrTime</type>             <name>time</name></member>
-        </type>
-        <type category="struct" name="XrTrackablePlaneANDROID">
-            <member values="XR_TYPE_TRACKABLE_PLANE_ANDROID"><type>XrStructureType</type> <name>type</name></member>
-            <member><type>void</type>*                                                    <name>next</name></member>
-            <member><type>XrTrackingStateANDROID</type>                                   <name>trackingState</name></member>
-            <member><type>XrPosef</type>                                                  <name>centerPose</name></member>
-            <member><type>XrExtent2Df</type>                                              <name>extents</name></member>
-            <member><type>XrPlaneTypeANDROID</type>                                       <name>planeType</name></member>
-            <member><type>XrPlaneLabelANDROID</type>                                      <name>planeLabel</name></member>
-            <member><type>XrTrackableANDROID</type>                                       <name>subsumedByPlane</name></member>
-            <member><type>XrTime</type>                                                   <name>lastUpdatedTime</name></member>
-            <member optional="true"><type>uint32_t</type>                                 <name>vertexCapacityInput</name></member>
-            <member optional="true"><type>uint32_t</type>*                                <name>vertexCountOutput</name></member>
-            <member optional="true" len="vertexCapacityInput"><type>XrVector2f</type>*    <name>vertices</name></member>
-        </type>
-        <type category="struct" name="XrAnchorSpaceCreateInfoANDROID">
-            <member values="XR_TYPE_ANCHOR_SPACE_CREATE_INFO_ANDROID"><type>XrStructureType</type> <name>type</name></member>
-            <member>const <type>void</type>*        <name>next</name></member>
-            <member><type>XrSpace</type>            <name>space</name></member>
-            <member><type>XrTime</type>             <name>time</name></member>
-            <member><type>XrPosef</type>            <name>pose</name></member>
-            <member><type>XrTrackableANDROID</type> <name>trackable</name></member>
-        </type>
-        <type category="struct" name="XrSystemTrackablesPropertiesANDROID" returnedonly="true" structextends="XrSystemProperties">
-            <member values="XR_TYPE_SYSTEM_TRACKABLES_PROPERTIES_ANDROID"><type>XrStructureType</type> <name>type</name></member>
-            <member>const <type>void</type>* <name>next</name></member>
-            <member><type>XrBool32</type>    <name>supportsAnchor</name></member>
-            <member><type>uint32_t</type>    <name>maxAnchors</name></member>
-        </type>
-
         <!-- XR_ANDROID_trackables_object -->
         <type category="struct" name="XrTrackableObjectANDROID">
-            <member values="XR_TYPE_TRACKABLE_OBJECT_ANDROID"><type>XrStructureType</type>  <name>type</name></member>
+            <member values="XR_TYPE_TRACKABLE_OBJECT_ANDROID"><type>XrStructureType</type> <name>type</name></member>
             <member><type>void</type>*                  <name>next</name></member>
             <member><type>XrTrackingStateANDROID</type> <name>trackingState</name></member>
             <member><type>XrPosef</type>                <name>centerPose</name></member>
@@ -4108,7 +4115,7 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
             <member><type>XrTime</type>                 <name>lastUpdatedTime</name></member>
         </type>
         <type category="struct" name="XrTrackableObjectConfigurationANDROID" structextends="XrTrackableTrackerCreateInfoANDROID">
-            <member values="XR_TYPE_TRACKABLE_OBJECT_CONFIGURATION_ANDROID"><type>XrStructureType</type>  <name>type</name></member>
+            <member values="XR_TYPE_TRACKABLE_OBJECT_CONFIGURATION_ANDROID"><type>XrStructureType</type> <name>type</name></member>
             <member><type>void</type>*                                        <name>next</name></member>
             <member><type>uint32_t</type>                                     <name>labelCount</name></member>
             <member len="labelCount">const <type>XrObjectLabelANDROID</type>* <name>activeLabels</name></member>
@@ -5091,14 +5098,14 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
         </type>
 
         <type category="struct" name="XrSpatialComponentAnchorListEXT" structextends="XrSpatialComponentDataQueryResultEXT">
-            <member values="XR_TYPE_SPATIAL_COMPONENT_ANCHOR_LIST_EXT"><type>XrStructureType</type>  <name>type</name></member>
+            <member values="XR_TYPE_SPATIAL_COMPONENT_ANCHOR_LIST_EXT"><type>XrStructureType</type> <name>type</name></member>
             <member><type>void</type>*                        <name>next</name></member>
             <member><type>uint32_t</type>                     <name>locationCount</name></member>
             <member len="locationCount"><type>XrPosef</type>* <name>locations</name></member>
         </type>
 
         <type category="struct" name="XrSpatialAnchorCreateInfoEXT">
-            <member values="XR_TYPE_SPATIAL_ANCHOR_CREATE_INFO_EXT"><type>XrStructureType</type>  <name>type</name></member>
+            <member values="XR_TYPE_SPATIAL_ANCHOR_CREATE_INFO_EXT"><type>XrStructureType</type> <name>type</name></member>
             <member>const <type>void</type>* <name>next</name></member>
             <member><type>XrSpace</type>     <name>baseSpace</name></member>
             <member><type>XrTime</type>      <name>time</name></member>
@@ -5177,7 +5184,7 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
 
         <!-- XR_EXT_spatial_plane_tracking -->
         <type category="struct" name="XrSpatialCapabilityConfigurationPlaneTrackingEXT" parentstruct="XrSpatialCapabilityConfigurationBaseHeaderEXT">
-            <member values="XR_TYPE_SPATIAL_CAPABILITY_CONFIGURATION_PLANE_TRACKING_EXT"><type>XrStructureType</type>  <name>type</name></member>
+            <member values="XR_TYPE_SPATIAL_CAPABILITY_CONFIGURATION_PLANE_TRACKING_EXT"><type>XrStructureType</type> <name>type</name></member>
             <member>const <type>void</type>*                                                  <name>next</name></member>
             <member><type>XrSpatialCapabilityEXT</type>                                       <name>capability</name></member>
             <member><type>uint32_t</type>                                                     <name>enabledComponentCount</name></member>
@@ -5185,14 +5192,14 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
         </type>
 
         <type category="struct" name="XrSpatialComponentPlaneAlignmentListEXT" structextends="XrSpatialComponentDataQueryResultEXT">
-            <member values="XR_TYPE_SPATIAL_COMPONENT_PLANE_ALIGNMENT_LIST_EXT"><type>XrStructureType</type>  <name>type</name></member>
+            <member values="XR_TYPE_SPATIAL_COMPONENT_PLANE_ALIGNMENT_LIST_EXT"><type>XrStructureType</type> <name>type</name></member>
             <member><type>void</type>*                                                 <name>next</name></member>
             <member><type>uint32_t</type>                                              <name>planeAlignmentCount</name></member>
             <member len="planeAlignmentCount"><type>XrSpatialPlaneAlignmentEXT</type>* <name>planeAlignments</name></member>
         </type>
 
         <type category="struct" name="XrSpatialComponentMesh2DListEXT" structextends="XrSpatialComponentDataQueryResultEXT">
-            <member values="XR_TYPE_SPATIAL_COMPONENT_MESH_2D_LIST_EXT"><type>XrStructureType</type>  <name>type</name></member>
+            <member values="XR_TYPE_SPATIAL_COMPONENT_MESH_2D_LIST_EXT"><type>XrStructureType</type> <name>type</name></member>
             <member><type>void</type>*                                 <name>next</name></member>
             <member><type>uint32_t</type>                              <name>meshCount</name></member>
             <member len="meshCount"><type>XrSpatialMeshDataEXT</type>* <name>meshes</name></member>
@@ -5204,14 +5211,14 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
         </type>
 
         <type category="struct" name="XrSpatialComponentPolygon2DListEXT" structextends="XrSpatialComponentDataQueryResultEXT">
-            <member values="XR_TYPE_SPATIAL_COMPONENT_POLYGON_2D_LIST_EXT"><type>XrStructureType</type>  <name>type</name></member>
+            <member values="XR_TYPE_SPATIAL_COMPONENT_POLYGON_2D_LIST_EXT"><type>XrStructureType</type> <name>type</name></member>
             <member><type>void</type>*                                         <name>next</name></member>
             <member><type>uint32_t</type>                                      <name>polygonCount</name></member>
             <member len="polygonCount"><type>XrSpatialPolygon2DDataEXT</type>* <name>polygons</name></member>
         </type>
 
         <type category="struct" name="XrSpatialComponentPlaneSemanticLabelListEXT" structextends="XrSpatialComponentDataQueryResultEXT">
-            <member values="XR_TYPE_SPATIAL_COMPONENT_PLANE_SEMANTIC_LABEL_LIST_EXT"><type>XrStructureType</type>  <name>type</name></member>
+            <member values="XR_TYPE_SPATIAL_COMPONENT_PLANE_SEMANTIC_LABEL_LIST_EXT"><type>XrStructureType</type> <name>type</name></member>
             <member><type>void</type>*                                                    <name>next</name></member>
             <member><type>uint32_t</type>                                                 <name>semanticLabelCount</name></member>
             <member len="semanticLabelCount"><type>XrSpatialPlaneSemanticLabelEXT</type>* <name>semanticLabels</name></member>
@@ -5226,6 +5233,29 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
             <member values="XR_TYPE_STATIONARY_REFERENCE_SPACE_GENERATION_ID_RESULT_EXT"><type>XrStructureType</type> <name>type</name></member>
             <member><type>void</type>*  <name>next</name></member>
             <member><type>XrUuid</type> <name>generationId</name></member>
+        </type>
+
+        <!-- XR_ANDROID_spatial_discovery_bounds -->
+        <type category="struct" name="XrSpatialBoundsSpherefANDROID" structextends="XrSpatialDiscoverySnapshotCreateInfoEXT">
+            <member values="XR_TYPE_SPATIAL_BOUNDS_SPHEREF_ANDROID"><type>XrStructureType</type> <name>type</name></member>
+            <member>const <type>void</type>* <name>next</name></member>
+            <member><type>XrSpace</type>     <name>space</name></member>
+            <member><type>XrTime</type>      <name>time</name></member>
+            <member><type>XrSpheref</type>   <name>sphere</name></member>
+        </type>
+        <type category="struct" name="XrSpatialBoundsBoxfANDROID" structextends="XrSpatialDiscoverySnapshotCreateInfoEXT">
+            <member values="XR_TYPE_SPATIAL_BOUNDS_BOXF_ANDROID"><type>XrStructureType</type> <name>type</name></member>
+            <member>const <type>void</type>* <name>next</name></member>
+            <member><type>XrSpace</type>     <name>space</name></member>
+            <member><type>XrTime</type>      <name>time</name></member>
+            <member><type>XrBoxf</type>      <name>box</name></member>
+        </type>
+        <type category="struct" name="XrSpatialBoundsFrustumfANDROID" structextends="XrSpatialDiscoverySnapshotCreateInfoEXT">
+            <member values="XR_TYPE_SPATIAL_BOUNDS_FRUSTUMF_ANDROID"><type>XrStructureType</type> <name>type</name></member>
+            <member>const <type>void</type>* <name>next</name></member>
+            <member><type>XrSpace</type>     <name>space</name></member>
+            <member><type>XrTime</type>      <name>time</name></member>
+            <member><type>XrFrustumf</type>  <name>frustum</name></member>
         </type>
 
         <!-- XR_ML_system_notifications -->
@@ -5700,7 +5730,7 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
         </type>
 
         <type category="struct" name="XrSpatialEntityComponentGetInfoBD">
-            <member values="XR_TYPE_SPATIAL_ENTITY_COMPONENT_GET_INFO_BD"><type>XrStructureType</type>  <name>type</name></member>
+            <member values="XR_TYPE_SPATIAL_ENTITY_COMPONENT_GET_INFO_BD"><type>XrStructureType</type> <name>type</name></member>
             <member>const <type>void</type>*                    <name>next</name></member>
             <member><type>XrSpatialEntityIdBD</type>            <name>entityId</name></member>
             <member><type>XrSpatialEntityComponentTypeBD</type> <name>componentType</name></member>
@@ -5760,6 +5790,12 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
             <member optional="true"><type>uint32_t</type>                              <name>indexCapacityInput</name></member>
             <member optional="true"><type>uint32_t</type>                              <name>indexCountOutput</name></member>
             <member optional="true" len="indexCapacityInput"><type>uint16_t</type>*    <name>indices</name></member>
+        </type>
+
+        <type category="struct" name="XrSpatialEntityComponentDataSphereBD" structextends="XrSpatialEntityComponentDataBaseHeaderBD">
+            <member values="XR_TYPE_SPATIAL_ENTITY_COMPONENT_DATA_SPHERE_BD"><type>XrStructureType</type> <name>type</name></member>
+            <member><type>void</type>*          <name>next</name></member>
+            <member><type>XrSpheref</type>       <name>sphere</name></member>
         </type>
 
         <type category="struct" name="XrSenseDataProviderCreateInfoBD">
@@ -5949,6 +5985,54 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
             <member len="orientationCount"><type>XrPlaneOrientationBD</type>* <name>orientations</name></member>
         </type>
 
+        <!-- XR_BD_dynamic_object_tracking -->
+        <type category="struct" name="XrSystemDynamicObjectTrackingPropertiesBD" returnedonly="true" structextends="XrSystemProperties">
+            <member values="XR_TYPE_SYSTEM_DYNAMIC_OBJECT_TRACKING_PROPERTIES_BD"><type>XrStructureType</type> <name>type</name></member>
+            <member><type>void</type>*    <name>next</name></member>
+            <member><type>XrBool32</type> <name>supportsDynamicObjectTracking</name></member>
+        </type>
+
+        <type category="struct" name="XrSenseDataProviderCreateInfoDynamicObjectBD" structextends="XrSenseDataProviderCreateInfoBD">
+            <member values="XR_TYPE_SENSE_DATA_PROVIDER_CREATE_INFO_DYNAMIC_OBJECT_BD"><type>XrStructureType</type> <name>type</name></member>
+            <member>const <type>void</type>*                                          <name>next</name></member>
+            <member><type>uint32_t</type>                                             <name>trackingTypeCount</name></member>
+            <member len="trackingTypeCount">const <type>XrDynamicObjectTypeBD</type>* <name>trackingTypes</name></member>
+        </type>
+
+        <type category="struct" name="XrSpatialEntityComponentDataDynamicObjectBD" structextends="XrSpatialEntityComponentDataBaseHeaderBD">
+            <member values="XR_TYPE_SPATIAL_ENTITY_COMPONENT_DATA_DYNAMIC_OBJECT_BD"><type>XrStructureType</type> <name>type</name></member>
+            <member><type>void</type>*                 <name>next</name></member>
+            <member><type>XrDynamicObjectDataBD</type> <name>data</name></member>
+        </type>
+
+        <type category="struct" name="XrDynamicObjectDataBD">
+            <member values="XR_TYPE_DYNAMIC_OBJECT_DATA_BD"><type>XrStructureType</type> <name>type</name></member>
+            <member><type>void</type>*                 <name>next</name></member>
+            <member><type>XrDynamicObjectTypeBD</type> <name>objectType</name></member>
+        </type>
+
+        <type category="struct" name="XrSenseDataFilterDynamicObjectTypeBD" structextends="XrSenseDataQueryInfoBD">
+            <member values="XR_TYPE_SENSE_DATA_FILTER_DYNAMIC_OBJECT_TYPE_BD"><type>XrStructureType</type> <name>type</name></member>
+            <member>const <type>void</type>*                                  <name>next</name></member>
+            <member><type>uint32_t</type>                                     <name>typeCount</name></member>
+            <member len="typeCount">const <type>XrDynamicObjectTypeBD</type>* <name>types</name></member>
+        </type>
+
+
+        <!-- XR_BD_dynamic_object_keyboard -->
+        <type category="struct" name="XrSystemDynamicObjectKeyboardPropertiesBD" returnedonly="true" structextends="XrSystemProperties">
+            <member values="XR_TYPE_SYSTEM_DYNAMIC_OBJECT_KEYBOARD_PROPERTIES_BD"><type>XrStructureType</type> <name>type</name></member>
+            <member><type>void</type>*    <name>next</name></member>
+            <member><type>XrBool32</type> <name>supportsDynamicObjectKeyboard</name></member>
+        </type>
+
+        <!-- XR_BD_dynamic_object_mouse -->
+        <type category="struct" name="XrSystemDynamicObjectMousePropertiesBD" returnedonly="true" structextends="XrSystemProperties">
+            <member values="XR_TYPE_SYSTEM_DYNAMIC_OBJECT_MOUSE_PROPERTIES_BD"><type>XrStructureType</type> <name>type</name></member>
+            <member><type>void</type>*    <name>next</name></member>
+            <member><type>XrBool32</type> <name>supportsDynamicObjectMouse</name></member>
+        </type>
+
         <!-- XR_META_simultaneous_hands_and_controllers -->
         <type category="struct" name="XrSystemSimultaneousHandsAndControllersPropertiesMETA" structextends="XrSystemProperties" returnedonly="true">
             <member values="XR_TYPE_SYSTEM_SIMULTANEOUS_HANDS_AND_CONTROLLERS_PROPERTIES_META"><type>XrStructureType</type> <name>type</name></member>
@@ -5964,7 +6048,7 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
             <member>const <type>void</type>* <name>next</name></member>
         </type>
 
-        <!-- XR_KHR_loader_init_properties -->
+        <!-- XR_EXT_loader_init_properties -->
         <type category="struct" name="XrLoaderInitInfoPropertiesEXT" parentstruct="XrLoaderInitInfoBaseHeaderKHR" structextends="XrLoaderInitInfoBaseHeaderKHR">
             <member values="XR_TYPE_LOADER_INIT_INFO_PROPERTIES_EXT"><type>XrStructureType</type> <name>type</name></member>
             <member>const <type>void</type>*                                                  <name>next</name></member>
@@ -5979,7 +6063,7 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
 
         <!-- XR_ANDROID_spatial_discovery_raycast -->
         <type category="struct" name="XrSpatialCapabilityConfigurationDepthRaycastANDROID" parentstruct="XrSpatialCapabilityConfigurationBaseHeaderEXT">
-            <member values="XR_TYPE_SPATIAL_CAPABILITY_CONFIGURATION_DEPTH_RAYCAST_ANDROID"><type>XrStructureType</type>  <name>type</name></member>
+            <member values="XR_TYPE_SPATIAL_CAPABILITY_CONFIGURATION_DEPTH_RAYCAST_ANDROID"><type>XrStructureType</type> <name>type</name></member>
             <member>const <type>void</type>*                                                  <name>next</name></member>
             <member><type>XrSpatialCapabilityEXT</type>                                       <name>capability</name></member>
             <member><type>uint32_t</type>                                                     <name>enabledComponentCount</name></member>
@@ -6070,7 +6154,7 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
         </type>
 
         <type category="struct" name="XrSpatialComponentMarkerListEXT" structextends="XrSpatialComponentDataQueryResultEXT">
-            <member values="XR_TYPE_SPATIAL_COMPONENT_MARKER_LIST_EXT"><type>XrStructureType</type>  <name>type</name></member>
+            <member values="XR_TYPE_SPATIAL_COMPONENT_MARKER_LIST_EXT"><type>XrStructureType</type> <name>type</name></member>
             <member><type>void</type>*                                   <name>next</name></member>
             <member><type>uint32_t</type>                                <name>markerCount</name></member>
             <member len="markerCount"><type>XrSpatialMarkerDataEXT</type>* <name>markers</name></member>
@@ -6098,7 +6182,7 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
 
         <!-- XR_BD_facial_simulation -->
         <type category="struct" name="XrSystemFacialSimulationPropertiesBD" returnedonly="true" structextends="XrSystemProperties">
-            <member values="XR_TYPE_SYSTEM_FACIAL_SIMULATION_PROPERTIES_BD"><type>XrStructureType</type>  <name>type</name></member>
+            <member values="XR_TYPE_SYSTEM_FACIAL_SIMULATION_PROPERTIES_BD"><type>XrStructureType</type> <name>type</name></member>
             <member><type>void</type>*    <name>next</name></member>
             <member><type>XrBool32</type> <name>supportsFaceTracking</name></member>
         </type>
@@ -6130,6 +6214,99 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
             <member><type>void</type>*                                     <name>next</name></member>
             <member><type>uint32_t</type>                                  <name>lipsyncExpressionWeightCount</name></member>
             <member len="lipsyncExpressionWeightCount"><type>float</type>* <name>lipsyncExpressionWeights</name></member>
+        </type>
+
+        <!-- XR_ANDROID_geospatial -->
+        <type name="XrGeospatialTrackerStateANDROID" category="enum"/>
+        <type name="XrGeospatialPoseFlagBitsANDROID" category="enum"/>
+        <type name="XrVPSAvailabilityANDROID" category="enum"/>
+
+        <type category="struct" name="XrSystemGeospatialPropertiesANDROID" structextends="XrSystemProperties" returnedonly="true">
+            <member values="XR_TYPE_SYSTEM_GEOSPATIAL_PROPERTIES_ANDROID"><type>XrStructureType</type> <name>type</name></member>
+            <member><type>void</type>*    <name>next</name></member>
+            <member><type>XrBool32</type> <name>supportsGeospatial</name></member>
+        </type>
+        <type category="struct" name="XrGeospatialTrackerCreateInfoANDROID">
+            <member values="XR_TYPE_GEOSPATIAL_TRACKER_CREATE_INFO_ANDROID"><type>XrStructureType</type> <name>type</name></member>
+            <member>const <type>void</type>* <name>next</name></member>
+        </type>
+        <type category="struct" name="XrEventDataGeospatialTrackerStateChangedANDROID" parentstruct="XrEventDataBaseHeader" returnedonly="true">
+            <member values="XR_TYPE_EVENT_DATA_GEOSPATIAL_TRACKER_STATE_CHANGED_ANDROID"><type>XrStructureType</type> <name>type</name></member>
+            <member>const <type>void</type>*                     <name>next</name></member>
+            <member><type>XrGeospatialTrackerANDROID</type>      <name>geospatialTracker</name></member>
+            <member><type>XrGeospatialTrackerStateANDROID</type> <name>state</name></member>
+            <member><type>XrResult</type>                        <name>initializationResult</name></member>
+            <member><type>XrTime</type>                          <name>time</name></member>
+        </type>
+        <type category="struct" name="XrGeospatialPoseANDROID">
+            <member><type>XrQuaternionf</type> <name>eastUpSouthOrientation</name></member>
+            <member><type>double</type>        <name>latitude</name></member>
+            <member><type>double</type>        <name>longitude</name></member>
+            <member><type>double</type>        <name>altitude</name></member>
+        </type>
+        <type category="struct" name="XrGeospatialPoseFromPoseLocateInfoANDROID">
+            <member values="XR_TYPE_GEOSPATIAL_POSE_FROM_POSE_LOCATE_INFO_ANDROID"><type>XrStructureType</type> <name>type</name></member>
+            <member>const <type>void</type>* <name>next</name></member>
+            <member><type>XrSpace</type>     <name>space</name></member>
+            <member><type>XrTime</type>      <name>time</name></member>
+            <member><type>XrPosef</type>     <name>pose</name></member>
+        </type>
+        <type category="struct" name="XrGeospatialPoseResultANDROID" returnedonly="true">
+            <member values="XR_TYPE_GEOSPATIAL_POSE_RESULT_ANDROID"><type>XrStructureType</type> <name>type</name></member>
+            <member><type>void</type>*                        <name>next</name></member>
+            <member><type>XrGeospatialPoseFlagsANDROID</type> <name>poseFlags</name></member>
+            <member><type>XrGeospatialPoseANDROID</type>      <name>geospatialPose</name></member>
+            <member><type>double</type>                       <name>horizontalAccuracy</name></member>
+            <member><type>double</type>                       <name>verticalAccuracy</name></member>
+            <member><type>double</type>                       <name>orientationYawAccuracy</name></member>
+        </type>
+        <type category="struct" name="XrGeospatialPoseLocateInfoANDROID">
+            <member values="XR_TYPE_GEOSPATIAL_POSE_LOCATE_INFO_ANDROID"><type>XrStructureType</type> <name>type</name></member>
+            <member>const <type>void</type>*             <name>next</name></member>
+            <member><type>XrSpace</type>                 <name>space</name></member>
+            <member><type>XrTime</type>                  <name>time</name></member>
+            <member><type>XrGeospatialPoseANDROID</type> <name>geospatialPose</name></member>
+        </type>
+        <type category="struct" name="XrVPSAvailabilityCheckCompletionANDROID" parentstruct="XrFutureCompletionBaseHeaderEXT">
+            <member values="XR_TYPE_VPS_AVAILABILITY_CHECK_COMPLETION_ANDROID"><type>XrStructureType</type> <name>type</name></member>
+            <member><type>void</type>*                    <name>next</name></member>
+            <member><type>XrResult</type>                 <name>futureResult</name></member>
+            <member><type>XrVPSAvailabilityANDROID</type> <name>availability</name></member>
+        </type>
+
+        <!-- XR_ANDROID_geospatial_anchor -->
+        <type name="XrSurfaceAnchorTypeANDROID" category="enum"/>
+        <type category="struct" name="XrSystemGeospatialAnchorPropertiesANDROID" structextends="XrSystemProperties" returnedonly="true">
+            <member values="XR_TYPE_SYSTEM_GEOSPATIAL_ANCHOR_PROPERTIES_ANDROID"><type>XrStructureType</type> <name>type</name></member>
+            <member><type>void</type>*    <name>next</name></member>
+            <member><type>uint32_t</type> <name>maxSurfaceAnchorCount</name></member>
+        </type>
+        <type category="struct" name="XrGeospatialTrackerAnchorTrackingInfoANDROID" structextends="XrGeospatialTrackerCreateInfoANDROID">
+            <member values="XR_TYPE_GEOSPATIAL_TRACKER_ANCHOR_TRACKING_INFO_ANDROID"><type>XrStructureType</type> <name>type</name></member>
+            <member>const <type>void</type>* <name>next</name></member>
+            <member><type>XrBool32</type>    <name>shouldTrackPlanes</name></member>
+        </type>
+        <type category="struct" name="XrGeospatialAnchorCreateInfoANDROID">
+            <member values="XR_TYPE_GEOSPATIAL_ANCHOR_CREATE_INFO_ANDROID"><type>XrStructureType</type> <name>type</name></member>
+            <member>const <type>void</type>*                <name>next</name></member>
+            <member><type>XrGeospatialTrackerANDROID</type> <name>geospatialTracker</name></member>
+            <member><type>XrGeospatialPoseANDROID</type>    <name>geospatialPose</name></member>
+        </type>
+        <type category="struct" name="XrSurfaceAnchorCreateInfoANDROID">
+            <member values="XR_TYPE_SURFACE_ANCHOR_CREATE_INFO_ANDROID"><type>XrStructureType</type> <name>type</name></member>
+            <member>const <type>void</type>*                <name>next</name></member>
+            <member><type>XrGeospatialTrackerANDROID</type> <name>geospatialTracker</name></member>
+            <member><type>XrSurfaceAnchorTypeANDROID</type> <name>surfaceAnchorType</name></member>
+            <member><type>XrQuaternionf</type>              <name>eastUpSouthOrientation</name></member>
+            <member><type>double</type>                     <name>latitude</name></member>
+            <member><type>double</type>                     <name>longitude</name></member>
+            <member><type>double</type>                     <name>altitudeRelativeToSurface</name></member>
+        </type>
+        <type category="struct" name="XrSurfaceAnchorCreateCompletionANDROID" parentstruct="XrFutureCompletionBaseHeaderEXT">
+            <member values="XR_TYPE_SURFACE_ANCHOR_CREATE_COMPLETION_ANDROID"><type>XrStructureType</type> <name>type</name></member>
+            <member><type>void</type>*                <name>next</name></member>
+            <member><type>XrResult</type>             <name>futureResult</name></member>
+            <member><type>XrSpatialEntityIdEXT</type> <name>anchorEntityId</name></member>
         </type>
 
         <!-- XR_ANDROID_trackables_image -->
@@ -6309,12 +6486,27 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
             <member><type>XrPosef</type>                           <name>pose</name></member>
         </type>
 
+        <!-- XR_META_hand_tracking_unextrapolated_poses -->
+        <type category="struct" name="XrHandTrackingUnextrapolatedPosesRequestMETA" structextends="XrHandJointsLocateInfoEXT">
+            <member values="XR_TYPE_HAND_TRACKING_UNEXTRAPOLATED_POSES_REQUEST_META"><type>XrStructureType</type> <name>type</name></member>
+            <member>const <type>void</type>* <name>next</name></member>
+        </type>
+
+        <type category="struct" name="XrHandTrackingUnextrapolatedPosesMETA" structextends="XrHandJointLocationsEXT" returnedonly="true">
+            <member values="XR_TYPE_HAND_TRACKING_UNEXTRAPOLATED_POSES_META"><type>XrStructureType</type> <name>type</name></member>
+            <member><type>void</type>*  <name>next</name></member>
+            <member><type>XrTime</type> <name>captureTime</name></member>
+        </type>
+
         <!-- XR_QCOM_hand_tracking_gesture -->
         <type category="struct" name="XrHandGestureQCOM">
             <member><type>XrHandGestureTypeQCOM</type> <name>gesture</name></member>
             <member><type>float</type>                 <name>gestureRatio</name></member>
             <member><type>float</type>                 <name>flipRatio</name></member>
         </type>
+
+        <!-- XR_META_hand_tracking_frequency_hint -->
+        <type category="enum" name="XrHandTrackingFrequencyHintMETA"/>
 
         <!-- XR_EXT_haptic_parametric -->
         <type category="struct" name="XrHapticParametricPropertiesEXT">
@@ -6361,6 +6553,100 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
             <member><type>void</type>*    <name>next</name></member>
             <member><type>XrBool32</type> <name>supportsParametricHaptics</name></member>
         </type>
+
+        <!-- XR_ANDROID_google_cloud_auth -->
+        <type name="XrGoogleCloudAuthErrorANDROID" category="enum"/>
+        <type category="struct" name="XrGoogleCloudAuthInfoBaseHeaderANDROID">
+            <member><type>XrStructureType</type> <name>type</name></member>
+            <member>const <type>void</type>*     <name>next</name></member>
+        </type>
+        <type category="struct" name="XrGoogleCloudAuthInfoApiKeyANDROID" parentstruct="XrGoogleCloudAuthInfoBaseHeaderANDROID">
+            <member values="XR_TYPE_GOOGLE_CLOUD_AUTH_INFO_API_KEY_ANDROID"><type>XrStructureType</type> <name>type</name></member>
+            <member>const <type>void</type>*                       <name>next</name></member>
+            <member len="null-terminated">const <type>char</type>* <name>apiKey</name></member>
+        </type>
+        <type category="struct" name="XrGoogleCloudAuthInfoTokenANDROID" parentstruct="XrGoogleCloudAuthInfoBaseHeaderANDROID">
+            <member values="XR_TYPE_GOOGLE_CLOUD_AUTH_INFO_TOKEN_ANDROID"><type>XrStructureType</type> <name>type</name></member>
+            <member>const <type>void</type>*                       <name>next</name></member>
+            <member len="null-terminated">const <type>char</type>* <name>authToken</name></member>
+        </type>
+        <type category="struct" name="XrGoogleCloudAuthInfoKeylessANDROID" parentstruct="XrGoogleCloudAuthInfoBaseHeaderANDROID">
+            <member values="XR_TYPE_GOOGLE_CLOUD_AUTH_INFO_KEYLESS_ANDROID"><type>XrStructureType</type> <name>type</name></member>
+            <member>const <type>void</type>* <name>next</name></member>
+        </type>
+        <type category="struct" name="XrGoogleCloudAuthErrorResultANDROID" structextends="XrGoogleCloudAuthInfoBaseHeaderANDROID">
+            <member values="XR_TYPE_GOOGLE_CLOUD_AUTH_ERROR_RESULT_ANDROID"><type>XrStructureType</type> <name>type</name></member>
+            <member><type>void</type>*                         <name>next</name></member>
+            <member><type>XrGoogleCloudAuthErrorANDROID</type> <name>error</name></member>
+        </type>
+
+        <!-- XR_SONY_swapchain_color_space -->
+        <type category="struct" name="XrColorSpacesEnumerateInfoSONY">
+            <member values="XR_TYPE_COLOR_SPACES_ENUMERATE_INFO_SONY"><type>XrStructureType</type> <name>type</name></member>
+            <member>const <type>void</type>* <name>next</name></member>
+            <member><type>int64_t</type>     <name>format</name></member>
+        </type>
+
+        <type category="struct" name="XrSwapchainCreateInfoColorSpaceSONY" structextends="XrSwapchainCreateInfo">
+            <member values="XR_TYPE_SWAPCHAIN_CREATE_INFO_COLOR_SPACE_SONY"><type>XrStructureType</type> <name>type</name></member>
+            <member>const <type>void</type>*      <name>next</name></member>
+            <member><type>XrColorSpaceSONY</type> <name>colorSpace</name></member>
+        </type>
+
+        <!-- XR_ANDROID_trackables -->
+        <type category="define">
+#define <name>XR_NULL_TRACKABLE_ANDROID</name> 0</type>
+
+        <type category="basetype"><type>XR_DEFINE_ATOM</type>(<name>XrTrackableANDROID</name>)</type>
+
+        <type category="handle" parent="XrSession"><type>XR_DEFINE_HANDLE</type>(<name>XrTrackableTrackerANDROID</name>)</type>
+
+        <type name="XrTrackingStateANDROID" category="enum"/>
+        <type name="XrTrackableTypeANDROID" category="enum"/>
+        <type name="XrPlaneTypeANDROID" category="enum"/>
+        <type name="XrPlaneLabelANDROID" category="enum"/>
+
+        <type category="struct" name="XrTrackableTrackerCreateInfoANDROID">
+            <member values="XR_TYPE_TRACKABLE_TRACKER_CREATE_INFO_ANDROID"><type>XrStructureType</type> <name>type</name></member>
+            <member>const <type>void</type>*            <name>next</name></member>
+            <member><type>XrTrackableTypeANDROID</type> <name>trackableType</name></member>
+        </type>
+        <type category="struct" name="XrTrackableGetInfoANDROID">
+            <member values="XR_TYPE_TRACKABLE_GET_INFO_ANDROID"><type>XrStructureType</type> <name>type</name></member>
+            <member>const <type>void</type>*        <name>next</name></member>
+            <member><type>XrTrackableANDROID</type> <name>trackable</name></member>
+            <member><type>XrSpace</type>            <name>baseSpace</name></member>
+            <member><type>XrTime</type>             <name>time</name></member>
+        </type>
+        <type category="struct" name="XrTrackablePlaneANDROID">
+            <member values="XR_TYPE_TRACKABLE_PLANE_ANDROID"><type>XrStructureType</type> <name>type</name></member>
+            <member><type>void</type>*                                                    <name>next</name></member>
+            <member><type>XrTrackingStateANDROID</type>                                   <name>trackingState</name></member>
+            <member><type>XrPosef</type>                                                  <name>centerPose</name></member>
+            <member><type>XrExtent2Df</type>                                              <name>extents</name></member>
+            <member><type>XrPlaneTypeANDROID</type>                                       <name>planeType</name></member>
+            <member><type>XrPlaneLabelANDROID</type>                                      <name>planeLabel</name></member>
+            <member><type>XrTrackableANDROID</type>                                       <name>subsumedByPlane</name></member>
+            <member><type>XrTime</type>                                                   <name>lastUpdatedTime</name></member>
+            <member optional="true"><type>uint32_t</type>                                 <name>vertexCapacityInput</name></member>
+            <member optional="true"><type>uint32_t</type>*                                <name>vertexCountOutput</name></member>
+            <member optional="true" len="vertexCapacityInput"><type>XrVector2f</type>*    <name>vertices</name></member>
+        </type>
+        <type category="struct" name="XrAnchorSpaceCreateInfoANDROID">
+            <member values="XR_TYPE_ANCHOR_SPACE_CREATE_INFO_ANDROID"><type>XrStructureType</type> <name>type</name></member>
+            <member>const <type>void</type>*        <name>next</name></member>
+            <member><type>XrSpace</type>            <name>space</name></member>
+            <member><type>XrTime</type>             <name>time</name></member>
+            <member><type>XrPosef</type>            <name>pose</name></member>
+            <member><type>XrTrackableANDROID</type> <name>trackable</name></member>
+        </type>
+        <type category="struct" name="XrSystemTrackablesPropertiesANDROID" returnedonly="true" structextends="XrSystemProperties">
+            <member values="XR_TYPE_SYSTEM_TRACKABLES_PROPERTIES_ANDROID"><type>XrStructureType</type> <name>type</name></member>
+            <member>const <type>void</type>* <name>next</name></member>
+            <member><type>XrBool32</type>    <name>supportsAnchor</name></member>
+            <member><type>uint32_t</type>    <name>maxAnchors</name></member>
+        </type>
+
     </types>
 
 
@@ -7093,6 +7379,29 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
         <enum value="2"   name="XR_BODY_JOINT_SET_FULL_BODY_JOINTS_BD" comment="Contains joints in elink:XrBodyJointBD in the range ename:XR_BODY_JOINT_PELVIS_BD through ename:XR_BODY_JOINT_RIGHT_HAND_BD inclusive, a total of dlink:XR_BODY_JOINT_COUNT_BD joints."/>
     </enums>
 
+    <!-- XR_BD_body_tracking_auxiliary_metrics -->
+    <enums name="XrBodyTrackingPostureBD" type="enum">
+        <enum value="1"   name="XR_BODY_TRACKING_POSTURE_STOMP_BD"  comment="Represents a stomp posture."/>
+        <enum value="2"   name="XR_BODY_TRACKING_POSTURE_STATIC_BD" comment="Represents a static posture where the tracked user maintains a fixed pose."/>
+    </enums>
+
+    <enums name="XrBodyTrackingStatusBD" type="enum">
+        <enum value="0"   name="XR_BODY_TRACKING_STATUS_INVALID_BD" comment="Body tracking status is invalid"/>
+        <enum value="1"   name="XR_BODY_TRACKING_STATUS_VALID_BD"   comment="Body tracking status is valid"/>
+        <enum value="2"   name="XR_BODY_TRACKING_STATUS_LIMITED_BD" comment="Body tracking status is limited"/>
+    </enums>
+
+    <enums name="XrBodyTrackingMessageBD" type="enum">
+        <enum value="0"   name="XR_BODY_TRACKING_MESSAGE_NO_ERROR_BD"                        comment="No error"/>
+        <enum value="1"   name="XR_BODY_TRACKING_MESSAGE_TRACKER_NOT_CALIBRATED_BD"          comment="Body tracker is not calibrated"/>
+        <enum value="2"   name="XR_BODY_TRACKING_MESSAGE_TRACKER_NUM_NOT_ENOUGH_BD"          comment="The number of connected trackers is insufficient."/>
+        <enum value="3"   name="XR_BODY_TRACKING_MESSAGE_TRACKER_STATE_NOT_SATISFIED_BD"     comment="The tracker is not in normal tracking mode, e.g., it is being charged."/>
+        <enum value="4"   name="XR_BODY_TRACKING_MESSAGE_TRACKER_PERSISTENT_INVISIBILITY_BD" comment="The tracker remains persistently undetected or invisible."/>
+        <enum value="5"   name="XR_BODY_TRACKING_MESSAGE_TRACKER_DATA_ERROR_BD"              comment="There are errors in the data generated by the tracker."/>
+        <enum value="6"   name="XR_BODY_TRACKING_MESSAGE_USER_CHANGE_BD"                     comment="The user of the tracker may have been changed."/>
+        <enum value="7"   name="XR_BODY_TRACKING_MESSAGE_TRACKING_POSE_ERROR_BD"             comment="The body tracking pose is abnormal, e.g. the head is twisted."/>
+    </enums>
+
     <!-- XR_ULTRALEAP_hand_tracking_forearm -->
     <enums name="XrHandForearmJointULTRALEAP" type="enum">
         <enum value="0"    name="XR_HAND_FOREARM_JOINT_PALM_ULTRALEAP"/>
@@ -7504,6 +7813,12 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
         <enum bitpos="8" name="XR_HAND_TRACKING_AIM_MENU_PRESSED_BIT_FB"    comment="System menu gesture is active"/>
     </enums>
 
+    <!-- flags for XR_BD_body_tracking_auxiliary_metrics  -->
+    <enums name="XrSpaceAccelerationFlagBitsBD" type="bitmask">
+        <enum bitpos="0" name="XR_SPACE_ACCELERATION_LINEAR_VALID_BIT_BD"  comment="Linear acceleration."/>
+        <enum bitpos="1" name="XR_SPACE_ACCELERATION_ANGULAR_VALID_BIT_BD" comment="Angular acceleration."/>
+    </enums>
+
     <!-- flags for XR_FB_keyboard_tracking query state -->
     <enums name="XrKeyboardTrackingFlagBitsFB" type="bitmask">
         <enum bitpos="0" name="XR_KEYBOARD_TRACKING_EXISTS_BIT_FB"    comment="indicates that the system has a physically tracked keyboard to report.  If not set then no other bits should be considered to be valid or meaningful.  If set either XR_KEYBOARD_TRACKING_LOCAL_BIT_FB or XR_KEYBOARD_TRACKING_REMOTE_BIT_FB must also be set."/>
@@ -7837,30 +8152,6 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
         <enum value="3"   name="XR_PASSTHROUGH_CAMERA_STATE_ERROR_ANDROID"        comment="The camera is in an unrecoverable error state."/>
     </enums>
 
-    <!-- enums for XR_ANDROID_trackables -->
-    <enums name="XrTrackingStateANDROID" type="enum">
-        <enum value="0"   name="XR_TRACKING_STATE_PAUSED_ANDROID"   comment="Indicates that the trackable or anchor tracking is paused but may be resumed in the future."/>
-        <enum value="1"   name="XR_TRACKING_STATE_STOPPED_ANDROID"  comment="Tracking has stopped on this Trackable and will never be resumed."/>
-        <enum value="2"   name="XR_TRACKING_STATE_TRACKING_ANDROID" comment="The object is currently tracked and its pose is current."/>
-    </enums>
-    <enums name="XrTrackableTypeANDROID" type="enum">
-        <enum value="0"   name="XR_TRACKABLE_TYPE_NOT_VALID_ANDROID" comment="Indicates that the trackable is not valid."/>
-        <enum value="1"   name="XR_TRACKABLE_TYPE_PLANE_ANDROID"     comment="Indicates that the trackable is a plane."/>
-    </enums>
-    <enums name="XrPlaneTypeANDROID" type="enum">
-        <enum value="0"   name="XR_PLANE_TYPE_HORIZONTAL_DOWNWARD_FACING_ANDROID" comment="A horizontal plane facing downward (for example a ceiling)."/>
-        <enum value="1"   name="XR_PLANE_TYPE_HORIZONTAL_UPWARD_FACING_ANDROID"   comment="A horizontal plane facing upward (for example a floor or tabletop)."/>
-        <enum value="2"   name="XR_PLANE_TYPE_VERTICAL_ANDROID"                   comment="A vertical plane (for example a wall)."/>
-        <enum value="3"   name="XR_PLANE_TYPE_ARBITRARY_ANDROID"                  comment="A plane with an arbitrary orientation."/>
-    </enums>
-    <enums name="XrPlaneLabelANDROID" type="enum">
-        <enum value="0"   name="XR_PLANE_LABEL_UNKNOWN_ANDROID" comment="It was not possible to label the plane"/>
-        <enum value="1"   name="XR_PLANE_LABEL_WALL_ANDROID"    comment="The plane is a wall."/>
-        <enum value="2"   name="XR_PLANE_LABEL_FLOOR_ANDROID"   comment="The plane is a floor."/>
-        <enum value="3"   name="XR_PLANE_LABEL_CEILING_ANDROID" comment="The plane is a ceiling."/>
-        <enum value="4"   name="XR_PLANE_LABEL_TABLE_ANDROID"   comment="The plane is a table."/>
-    </enums>
-
     <!-- enums for XR_ANDROID_trackables_object -->
     <enums name="XrObjectLabelANDROID" type="enum">
         <enum value="0"   name="XR_OBJECT_LABEL_UNKNOWN_ANDROID"  comment="It was not possible to label the object."/>
@@ -7966,11 +8257,11 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
 
     <!-- enums for XR_QCOM_tracking_optimization_settings -->
     <enums name="XrTrackingOptimizationSettingsHintQCOM" type="enum">
-        <enum value="0"   name="XR_TRACKING_OPTIMIZATION_SETTINGS_HINT_NONE_QCOM"                     comment="Used by the application to indicate that it does not have a preference to optimize for. The run-time is understood to choose a balanced approach."/>
-        <enum value="1"   name="XR_TRACKING_OPTIMIZATION_SETTINGS_HINT_LONG_RANGE_PRIORIZATION_QCOM"  comment="Used by the application to indicate that it prefers tracking to be optimized for long range, possibly at the expense of competing interests."/>
-        <enum value="2"   name="XR_TRACKING_OPTIMIZATION_SETTINGS_HINT_CLOSE_RANGE_PRIORIZATION_QCOM" comment="Used by the application to indicate that it prefers tracking to be optimized for close range, possibly at the expense of competing interests."/>
-        <enum value="3"   name="XR_TRACKING_OPTIMIZATION_SETTINGS_HINT_LOW_POWER_PRIORIZATION_QCOM"   comment="Used by the application to indicate that it prefers tracking to be optimized for low power consumption, possibly at the expense of competing interests."/>
-        <enum value="4"   name="XR_TRACKING_OPTIMIZATION_SETTINGS_HINT_HIGH_POWER_PRIORIZATION_QCOM"  comment="Used by the application to indicate that it prefers tracking to be optimized for increased tracking performance, possibly at the cost of increased power consumption."/>
+        <enum value="0"   name="XR_TRACKING_OPTIMIZATION_SETTINGS_HINT_NONE_QCOM"                       comment="Used by the application to indicate that it does not have a preference to optimize for. The run-time is understood to choose a balanced approach."/>
+        <enum value="1"   name="XR_TRACKING_OPTIMIZATION_SETTINGS_HINT_LONG_RANGE_PRIORITIZATION_QCOM"  comment="Used by the application to indicate that it prefers tracking to be optimized for long range, possibly at the expense of competing interests."/>
+        <enum value="2"   name="XR_TRACKING_OPTIMIZATION_SETTINGS_HINT_CLOSE_RANGE_PRIORITIZATION_QCOM" comment="Used by the application to indicate that it prefers tracking to be optimized for close range, possibly at the expense of competing interests."/>
+        <enum value="3"   name="XR_TRACKING_OPTIMIZATION_SETTINGS_HINT_LOW_POWER_PRIORITIZATION_QCOM"   comment="Used by the application to indicate that it prefers tracking to be optimized for low power consumption, possibly at the expense of competing interests."/>
+        <enum value="4"   name="XR_TRACKING_OPTIMIZATION_SETTINGS_HINT_HIGH_POWER_PRIORITIZATION_QCOM"  comment="Used by the application to indicate that it prefers tracking to be optimized for increased tracking performance, possibly at the cost of increased power consumption."/>
     </enums>
 
     <enums name="XrTrackingOptimizationSettingsDomainQCOM" type="enum">
@@ -8307,6 +8598,11 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
         <!-- contents from other extensions -->
     </enums>
 
+    <!-- enums for XR_BD_dynamic_object_tracking -->
+    <enums name="XrDynamicObjectTypeBD" type="enum">
+        <enum value="0"   name="XR_DYNAMIC_OBJECT_TYPE_UNKNOWN_BD" comment="Represents an unknown object type."/>
+    </enums>
+
     <enums name="XrSemanticLabelBD" type="enum">
         <enum value="0"    name="XR_SEMANTIC_LABEL_UNKNOWN_BD"         comment="Semantic label that the runtime does not know."/>
         <enum value="1"    name="XR_SEMANTIC_LABEL_FLOOR_BD"           comment="Semantic label of floor."/>
@@ -8342,6 +8638,7 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
         <enum value="3"   name="XR_SPATIAL_ENTITY_COMPONENT_TYPE_POLYGON_BD"         comment="The two-dimensional polygon. Corresponds to component data structure slink:XrSpatialEntityComponentDataPolygonBD."/>
         <enum value="4"   name="XR_SPATIAL_ENTITY_COMPONENT_TYPE_BOUNDING_BOX_3D_BD" comment="The three-dimensional bounding box. Corresponds to component data structure slink:XrSpatialEntityComponentDataBoundingBox3DBD."/>
         <enum value="5"   name="XR_SPATIAL_ENTITY_COMPONENT_TYPE_TRIANGLE_MESH_BD"   comment="The triangle mesh. Corresponds to component data structure slink:XrSpatialEntityComponentDataTriangleMeshBD."/>
+        <enum value="6"   name="XR_SPATIAL_ENTITY_COMPONENT_TYPE_SPHERE_BD"          comment="The Sphere. Corresponds to component data structure slink:XrSpatialEntityComponentDataSphereBD."/>
     </enums>
 
     <enums name="XrSenseDataProviderStateBD" type="enum">
@@ -8630,6 +8927,22 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
         <enum value="19"   name="XR_LIP_EXPRESSION_SIL_BD"/>
     </enums>
 
+    <!-- XR_ANDROID_geospatial -->
+    <enums name="XrGeospatialTrackerStateANDROID" type="enum">
+        <enum value="0"   name="XR_GEOSPATIAL_TRACKER_STATE_STOPPED_ANDROID"               comment="The Geospatial Tracker is not running."/>
+        <enum value="1"   name="XR_GEOSPATIAL_TRACKER_STATE_RUNNING_ANDROID"               comment="The Geospatial tracker is running and usable."/>
+        <enum value="2"   name="XR_GEOSPATIAL_TRACKER_STATE_INITIALIZATION_FAILED_ANDROID" comment="The Geospatial Tracker failed to initialize, and will never be usable."/>
+    </enums>
+    <enums name="XrGeospatialPoseFlagBitsANDROID" type="bitmask">
+        <enum bitpos="0" name="XR_GEOSPATIAL_POSE_ORIENTATION_VALID_BIT_ANDROID" comment="Indicates that the orientation member contains valid data"/>
+        <enum bitpos="1" name="XR_GEOSPATIAL_POSE_POSITION_VALID_BIT_ANDROID"    comment="Indicates that the position member contains valid data"/>
+    </enums>
+    <enums name="XrVPSAvailabilityANDROID" type="enum">
+        <enum value="1"   name="XR_VPS_AVAILABILITY_UNAVAILABLE_ANDROID" comment="VPS is not available near the given location."/>
+        <enum value="2"   name="XR_VPS_AVAILABILITY_AVAILABLE_ANDROID"   comment="VPS is available near the given location."/>
+    </enums>
+
+    <!-- XR_ANDROID_trackables_image -->
     <enums name="XrTrackableImageFormatANDROID" type="enum">
         <enum value="1"   name="XR_TRACKABLE_IMAGE_FORMAT_R8G8B8A8_ANDROID" comment="RGBA image format with 8 bits per channel color and transparency data."/>
     </enums>
@@ -8645,6 +8958,65 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
         <enum bitpos="1" name="XR_BATTERY_STATE_DISPLAY_STATE_CHARGING_BIT_EXT"   comment="Indicates that the device associated with the interaction profile is charging."/>
         <enum bitpos="2" name="XR_BATTERY_STATE_DISPLAY_STATE_PLUGGED_IN_BIT_EXT" comment="Indicates that the device associated with the interaction profile is plugged in to a power source."/>
         <enum bitpos="3" name="XR_BATTERY_STATE_DISPLAY_STATE_NO_BATTERY_BIT_EXT" comment="Indicates that the device associated with the interaction profile does not have a battery power source."/>
+    </enums>
+
+    <!-- XR_ANDROID_google_cloud_auth -->
+    <enums name="XrGoogleCloudAuthErrorANDROID" type="enum">
+        <enum value="0"    name="XR_GOOGLE_CLOUD_AUTH_ERROR_NONE_ANDROID"           comment="No error occurred when invoking a Google Cloud API."/>
+        <enum value="-1"   name="XR_GOOGLE_CLOUD_AUTH_ERROR_QUOTA_EXCEEDED_ANDROID" comment="Quota exceeded when invoking a Google Cloud API."/>
+        <enum value="-2"   name="XR_GOOGLE_CLOUD_AUTH_ERROR_UNREACHABLE_ANDROID"    comment="Failed to reach a Google Cloud API, possibly due to network connectivity issues or server availability."/>
+        <enum value="-3"   name="XR_GOOGLE_CLOUD_AUTH_ERROR_ANDROID"                comment="An auth error occurred when invoking a Google Cloud API."/>
+    </enums>
+
+    <!-- XR_ANDROID_geospatial_anchor -->
+    <enums name="XrSurfaceAnchorTypeANDROID" type="enum">
+        <enum value="1"   name="XR_SURFACE_ANCHOR_TYPE_TERRAIN_ANDROID" comment="Type of an anchor placed relative to the ground."/>
+        <enum value="2"   name="XR_SURFACE_ANCHOR_TYPE_ROOFTOP_ANDROID" comment="Type of an anchor placed relative to the rooftop, or ground where there is no building."/>
+    </enums>
+
+    <!-- XR_META_hand_tracking_frequency_hint -->
+    <enums name="XrHandTrackingFrequencyHintMETA" type="enum">
+        <enum value="1"   name="XR_HAND_TRACKING_FREQUENCY_HINT_DEFAULT_META"/>
+        <enum value="2"   name="XR_HAND_TRACKING_FREQUENCY_HINT_HIGH_META"/>
+    </enums>
+
+    <!-- XR_SONY_swapchain_color_space -->
+    <enums name="XrColorSpaceSONY" type="enum">
+        <enum value="0"    name="XR_COLOR_SPACE_SRGB_NONLINEAR_SONY"       comment="sRGB color space, encoded according to the sRGB specification."/>
+        <enum value="1"    name="XR_COLOR_SPACE_DISPLAY_P3_LINEAR_SONY"    comment="Display-P3 color space, encoded using a linear transfer function."/>
+        <enum value="2"    name="XR_COLOR_SPACE_DISPLAY_P3_NONLINEAR_SONY" comment="Display-P3 color space, encoded according to the Display-P3 specification."/>
+        <enum value="3"    name="XR_COLOR_SPACE_DCI_P3_LINEAR_SONY"        comment="DCI-P3 color space, encoded using a linear transfer function."/>
+        <enum value="4"    name="XR_COLOR_SPACE_DCI_P3_NONLINEAR_SONY"     comment="DCI-P3 color space, encoded according to the DCI-P3 specification."/>
+        <enum value="5"    name="XR_COLOR_SPACE_EXTENDED_SRGB_LINEAR_SONY" comment="Extended sRGB color space, encoded using a linear transfer function."/>
+        <enum value="6"    name="XR_COLOR_SPACE_BT709_LINEAR_SONY"         comment="ITU-R BT.709 color space, encoded using a linear transfer function."/>
+        <enum value="7"    name="XR_COLOR_SPACE_BT709_NONLINEAR_SONY"      comment="ITU-R BT.709 color space, encoded according to the BT.709 specification."/>
+        <enum value="8"    name="XR_COLOR_SPACE_BT2020_LINEAR_SONY"        comment="ITU-R BT.2020 color space, encoded using a linear transfer function."/>
+        <enum value="9"    name="XR_COLOR_SPACE_BT2020_PQ_SONY"            comment="ITU-R BT.2020 color space, encoded according to the SMPTE ST 2084 Perceptual Quantizer (PQ) specification."/>
+        <enum value="10"   name="XR_COLOR_SPACE_BT2020_HLG_SONY"           comment="ITU-R BT.2020 color space, encoded according to the Hybrid Log Gamma (HLG) specification."/>
+    </enums>
+
+    <!-- XR_ANDROID_trackables -->
+    <enums name="XrTrackingStateANDROID" type="enum">
+        <enum value="0"   name="XR_TRACKING_STATE_PAUSED_ANDROID"   comment="Indicates that the trackable or anchor tracking is paused but may be resumed in the future."/>
+        <enum value="1"   name="XR_TRACKING_STATE_STOPPED_ANDROID"  comment="Tracking has stopped on this Trackable and will never be resumed."/>
+        <enum value="2"   name="XR_TRACKING_STATE_TRACKING_ANDROID" comment="The object is currently tracked and its pose is current."/>
+    </enums>
+    <enums name="XrTrackableTypeANDROID" type="enum">
+        <enum value="0"   name="XR_TRACKABLE_TYPE_NOT_VALID_ANDROID" comment="Indicates that the trackable is not valid."/>
+        <enum value="1"   name="XR_TRACKABLE_TYPE_PLANE_ANDROID"     comment="Indicates that the trackable is a plane."/>
+    </enums>
+    <enums name="XrPlaneTypeANDROID" type="enum">
+        <enum value="0"   name="XR_PLANE_TYPE_HORIZONTAL_DOWNWARD_FACING_ANDROID" comment="A horizontal plane facing downward (for example a ceiling)."/>
+        <enum value="1"   name="XR_PLANE_TYPE_HORIZONTAL_UPWARD_FACING_ANDROID"   comment="A horizontal plane facing upward (for example a floor or tabletop)."/>
+        <enum value="2"   name="XR_PLANE_TYPE_VERTICAL_ANDROID"                   comment="A vertical plane (for example a wall)."/>
+        <enum value="3"   name="XR_PLANE_TYPE_ARBITRARY_ANDROID"                  comment="A plane with an arbitrary orientation."/>
+    </enums>
+    <enums name="XrPlaneLabelANDROID" type="enum">
+        <enum value="0"   name="XR_PLANE_LABEL_UNKNOWN_ANDROID" comment="It was not possible to label the plane"/>
+        <enum value="1"   name="XR_PLANE_LABEL_WALL_ANDROID"    comment="The plane is a wall."/>
+        <enum value="2"   name="XR_PLANE_LABEL_FLOOR_ANDROID"   comment="The plane is a floor."/>
+        <enum value="3"   name="XR_PLANE_LABEL_CEILING_ANDROID" comment="The plane is a ceiling."/>
+        <enum value="4"   name="XR_PLANE_LABEL_TABLE_ANDROID"   comment="The plane is a table."/>
     </enums>
 
     <!-- SECTION: OpenXR command definitions -->
@@ -10007,6 +10379,17 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
             <param><type>XrBodyJointLocationsBD</type>* <name>locations</name></param>
         </command>
 
+        <!-- XR_BD_body_tracking_auxiliary_metrics -->
+        <command successcodes="XR_SUCCESS,XR_SESSION_LOSS_PENDING" errorcodes="XR_ERROR_FEATURE_UNSUPPORTED,XR_ERROR_FUNCTION_UNSUPPORTED,XR_ERROR_HANDLE_INVALID,XR_ERROR_INSTANCE_LOST,XR_ERROR_RUNTIME_FAILURE,XR_ERROR_SESSION_LOST,XR_ERROR_VALIDATION_FAILURE">
+            <proto><type>XrResult</type> <name>xrStartBodyTrackingCalibrationAppBD</name></proto>
+            <param><type>XrSession</type> <name>session</name></param>
+        </command>
+        <command successcodes="XR_SUCCESS,XR_SESSION_LOSS_PENDING" errorcodes="XR_ERROR_FEATURE_UNSUPPORTED,XR_ERROR_FUNCTION_UNSUPPORTED,XR_ERROR_HANDLE_INVALID,XR_ERROR_INSTANCE_LOST,XR_ERROR_RUNTIME_FAILURE,XR_ERROR_SESSION_LOST,XR_ERROR_VALIDATION_FAILURE">
+            <proto><type>XrResult</type> <name>xrGetBodyTrackingStateBD</name></proto>
+            <param><type>XrSession</type> <name>session</name></param>
+            <param><type>XrBodyTrackingStateBD</type>* <name>state</name></param>
+        </command>
+
         <!-- XR_HTC_facial_tracking -->
         <command successcodes="XR_SUCCESS,XR_SESSION_LOSS_PENDING" errorcodes="XR_ERROR_FEATURE_UNSUPPORTED,XR_ERROR_FUNCTION_UNSUPPORTED,XR_ERROR_HANDLE_INVALID,XR_ERROR_INSTANCE_LOST,XR_ERROR_LIMIT_REACHED,XR_ERROR_OUT_OF_MEMORY,XR_ERROR_RUNTIME_FAILURE,XR_ERROR_SESSION_LOST,XR_ERROR_VALIDATION_FAILURE">
             <proto><type>XrResult</type> <name>xrCreateFacialTrackerHTC</name></proto>
@@ -10325,53 +10708,6 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
             <param><type>XrSession</type> <name>session</name></param>
             <param>const <type>XrPassthroughCameraStateGetInfoANDROID</type>* <name>getInfo</name></param>
             <param><type>XrPassthroughCameraStateANDROID</type>* <name>cameraStateOutput</name></param>
-        </command>
-
-        <!-- commands for XR_ANDROID_trackables -->
-        <command successcodes="XR_SUCCESS" errorcodes="XR_ERROR_FUNCTION_UNSUPPORTED,XR_ERROR_HANDLE_INVALID,XR_ERROR_INSTANCE_LOST,XR_ERROR_RUNTIME_FAILURE,XR_ERROR_SIZE_INSUFFICIENT,XR_ERROR_SYSTEM_INVALID,XR_ERROR_VALIDATION_FAILURE">
-            <proto><type>XrResult</type> <name>xrEnumerateSupportedTrackableTypesANDROID</name></proto>
-            <param><type>XrInstance</type> <name>instance</name></param>
-            <param><type>XrSystemId</type> <name>systemId</name></param>
-            <param optional="true"><type>uint32_t</type> <name>trackableTypeCapacityInput</name></param>
-            <param><type>uint32_t</type>* <name>trackableTypeCountOutput</name></param>
-            <param optional="true" len="trackableTypeCapacityInput"><type>XrTrackableTypeANDROID</type>* <name>trackableTypes</name></param>
-        </command>
-        <command successcodes="XR_SUCCESS" errorcodes="XR_ERROR_FUNCTION_UNSUPPORTED,XR_ERROR_HANDLE_INVALID,XR_ERROR_INSTANCE_LOST,XR_ERROR_RUNTIME_FAILURE,XR_ERROR_SIZE_INSUFFICIENT,XR_ERROR_SYSTEM_INVALID,XR_ERROR_VALIDATION_FAILURE">
-            <proto><type>XrResult</type> <name>xrEnumerateSupportedAnchorTrackableTypesANDROID</name></proto>
-            <param><type>XrInstance</type> <name>instance</name></param>
-            <param><type>XrSystemId</type> <name>systemId</name></param>
-            <param optional="true"><type>uint32_t</type> <name>trackableTypeCapacityInput</name></param>
-            <param><type>uint32_t</type>* <name>trackableTypeCountOutput</name></param>
-            <param optional="true" len="trackableTypeCapacityInput"><type>XrTrackableTypeANDROID</type>* <name>trackableTypes</name></param>
-        </command>
-        <command successcodes="XR_SUCCESS,XR_SESSION_LOSS_PENDING" errorcodes="XR_ERROR_FEATURE_UNSUPPORTED,XR_ERROR_FUNCTION_UNSUPPORTED,XR_ERROR_HANDLE_INVALID,XR_ERROR_INSTANCE_LOST,XR_ERROR_LIMIT_REACHED,XR_ERROR_OUT_OF_MEMORY,XR_ERROR_RUNTIME_FAILURE,XR_ERROR_SESSION_LOST,XR_ERROR_VALIDATION_FAILURE">
-            <proto><type>XrResult</type> <name>xrCreateTrackableTrackerANDROID</name></proto>
-            <param><type>XrSession</type> <name>session</name></param>
-            <param>const <type>XrTrackableTrackerCreateInfoANDROID</type>* <name>createInfo</name></param>
-            <param><type>XrTrackableTrackerANDROID</type>* <name>trackableTracker</name></param>
-        </command>
-        <command successcodes="XR_SUCCESS" errorcodes="XR_ERROR_FUNCTION_UNSUPPORTED,XR_ERROR_HANDLE_INVALID,XR_ERROR_RUNTIME_FAILURE">
-            <proto><type>XrResult</type> <name>xrDestroyTrackableTrackerANDROID</name></proto>
-            <param externsync="true_with_children"><type>XrTrackableTrackerANDROID</type> <name>trackableTracker</name></param>
-        </command>
-        <command successcodes="XR_SUCCESS,XR_SESSION_LOSS_PENDING" errorcodes="XR_ERROR_FUNCTION_UNSUPPORTED,XR_ERROR_HANDLE_INVALID,XR_ERROR_INSTANCE_LOST,XR_ERROR_RUNTIME_FAILURE,XR_ERROR_SESSION_LOST,XR_ERROR_SIZE_INSUFFICIENT,XR_ERROR_VALIDATION_FAILURE">
-            <proto><type>XrResult</type> <name>xrGetAllTrackablesANDROID</name></proto>
-            <param><type>XrTrackableTrackerANDROID</type> <name>trackableTracker</name></param>
-            <param optional="true"><type>uint32_t</type> <name>trackableCapacityInput</name></param>
-            <param><type>uint32_t</type>* <name>trackableCountOutput</name></param>
-            <param optional="true" len="trackableCapacityInput"><type>XrTrackableANDROID</type>* <name>trackables</name></param>
-        </command>
-        <command successcodes="XR_SUCCESS,XR_SESSION_LOSS_PENDING" errorcodes="XR_ERROR_FUNCTION_UNSUPPORTED,XR_ERROR_HANDLE_INVALID,XR_ERROR_INSTANCE_LOST,XR_ERROR_LIMIT_REACHED,XR_ERROR_MISMATCHING_TRACKABLE_TYPE_ANDROID,XR_ERROR_RUNTIME_FAILURE,XR_ERROR_SESSION_LOST,XR_ERROR_TIME_INVALID,XR_ERROR_VALIDATION_FAILURE">
-            <proto><type>XrResult</type> <name>xrGetTrackablePlaneANDROID</name></proto>
-            <param><type>XrTrackableTrackerANDROID</type> <name>trackableTracker</name></param>
-            <param>const <type>XrTrackableGetInfoANDROID</type>* <name>getInfo</name></param>
-            <param><type>XrTrackablePlaneANDROID</type>* <name>planeOutput</name></param>
-        </command>
-        <command successcodes="XR_SUCCESS,XR_SESSION_LOSS_PENDING" errorcodes="XR_ERROR_FUNCTION_UNSUPPORTED,XR_ERROR_HANDLE_INVALID,XR_ERROR_INSTANCE_LOST,XR_ERROR_LIMIT_REACHED,XR_ERROR_OUT_OF_MEMORY,XR_ERROR_POSE_INVALID,XR_ERROR_RUNTIME_FAILURE,XR_ERROR_SESSION_LOST,XR_ERROR_TIME_INVALID,XR_ERROR_TRACKABLE_TYPE_NOT_SUPPORTED_ANDROID,XR_ERROR_VALIDATION_FAILURE">
-            <proto><type>XrResult</type> <name>xrCreateAnchorSpaceANDROID</name></proto>
-            <param><type>XrSession</type> <name>session</name></param>
-            <param>const <type>XrAnchorSpaceCreateInfoANDROID</type>* <name>createInfo</name></param>
-            <param><type>XrSpace</type>* <name>anchorOutput</name></param>
         </command>
 
         <!-- XR_ANDROID_anchor_sharing_export -->
@@ -10890,7 +11226,7 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
             <param><type>XrEnvironmentDepthSwapchainMETA</type> <name>swapchain</name></param>
             <param><type>XrEnvironmentDepthSwapchainStateMETA</type>* <name>state</name></param>
         </command>
-        <command successcodes="XR_SUCCESS,XR_ENVIRONMENT_DEPTH_NOT_AVAILABLE_META,XR_SESSION_LOSS_PENDING" errorcodes="XR_ERROR_CALL_ORDER_INVALID,XR_ERROR_FUNCTION_UNSUPPORTED,XR_ERROR_HANDLE_INVALID,XR_ERROR_INSTANCE_LOST,XR_ERROR_RUNTIME_FAILURE,XR_ERROR_SESSION_LOST,XR_ERROR_TIME_INVALID,XR_ERROR_VALIDATION_FAILURE">
+        <command successcodes="XR_SUCCESS,XR_ENVIRONMENT_DEPTH_NOT_AVAILABLE_META,XR_SESSION_LOSS_PENDING" errorcodes="XR_ERROR_CALL_ORDER_INVALID,XR_ERROR_FUNCTION_UNSUPPORTED,XR_ERROR_HANDLE_INVALID,XR_ERROR_INSTANCE_LOST,XR_ERROR_LIMIT_REACHED,XR_ERROR_RUNTIME_FAILURE,XR_ERROR_SESSION_LOST,XR_ERROR_TIME_INVALID,XR_ERROR_VALIDATION_FAILURE">
             <proto><type>XrResult</type> <name>xrAcquireEnvironmentDepthImageMETA</name></proto>
             <param><type>XrEnvironmentDepthProviderMETA</type> <name>environmentDepthProvider</name></param>
             <param>const <type>XrEnvironmentDepthImageAcquireInfoMETA</type>* <name>acquireInfo</name></param>
@@ -11784,6 +12120,63 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
             <param><type>XrFacialSimulationModeBD</type>*<name>mode</name></param>
         </command>
 
+        <!-- XR_ANDROID_geospatial -->
+        <command successcodes="XR_SUCCESS,XR_SESSION_LOSS_PENDING" errorcodes="XR_ERROR_FUNCTION_UNSUPPORTED,XR_ERROR_HANDLE_INVALID,XR_ERROR_INSTANCE_LOST,XR_ERROR_LIMIT_REACHED,XR_ERROR_OUT_OF_MEMORY,XR_ERROR_PERMISSION_INSUFFICIENT,XR_ERROR_RUNTIME_FAILURE,XR_ERROR_SESSION_LOST,XR_ERROR_VALIDATION_FAILURE">
+            <proto><type>XrResult</type> <name>xrCreateGeospatialTrackerANDROID</name></proto>
+            <param><type>XrSession</type> <name>session</name></param>
+            <param>const <type>XrGeospatialTrackerCreateInfoANDROID</type>* <name>createInfo</name></param>
+            <param><type>XrGeospatialTrackerANDROID</type>* <name>geospatialTrackerOutput</name></param>
+        </command>
+        <command successcodes="XR_SUCCESS" errorcodes="XR_ERROR_CALL_ORDER_INVALID,XR_ERROR_FUNCTION_UNSUPPORTED,XR_ERROR_HANDLE_INVALID,XR_ERROR_RUNTIME_FAILURE">
+            <proto><type>XrResult</type> <name>xrDestroyGeospatialTrackerANDROID</name></proto>
+            <param externsync="true_with_children"><type>XrGeospatialTrackerANDROID</type> <name>geospatialTracker</name></param>
+        </command>
+        <command successcodes="XR_SUCCESS,XR_SESSION_LOSS_PENDING" errorcodes="XR_ERROR_FUNCTION_UNSUPPORTED,XR_ERROR_GEOSPATIAL_TRACKER_NOT_RUNNING_ANDROID,XR_ERROR_HANDLE_INVALID,XR_ERROR_INSTANCE_LOST,XR_ERROR_POSE_INVALID,XR_ERROR_RUNTIME_FAILURE,XR_ERROR_SESSION_LOST,XR_ERROR_TIME_INVALID,XR_ERROR_VALIDATION_FAILURE">
+            <proto><type>XrResult</type> <name>xrLocateGeospatialPoseFromPoseANDROID</name></proto>
+            <param><type>XrGeospatialTrackerANDROID</type> <name>geospatialTracker</name></param>
+            <param>const <type>XrGeospatialPoseFromPoseLocateInfoANDROID</type>* <name>locateInfo</name></param>
+            <param><type>XrGeospatialPoseResultANDROID</type>* <name>geospatialPoseResult</name></param>
+        </command>
+        <command successcodes="XR_SUCCESS,XR_SESSION_LOSS_PENDING" errorcodes="XR_ERROR_FUNCTION_UNSUPPORTED,XR_ERROR_GEOSPATIAL_COORDINATES_INVALID_ANDROID,XR_ERROR_GEOSPATIAL_TRACKER_NOT_RUNNING_ANDROID,XR_ERROR_HANDLE_INVALID,XR_ERROR_INSTANCE_LOST,XR_ERROR_POSE_INVALID,XR_ERROR_RUNTIME_FAILURE,XR_ERROR_SESSION_LOST,XR_ERROR_TIME_INVALID,XR_ERROR_VALIDATION_FAILURE">
+            <proto><type>XrResult</type> <name>xrLocateGeospatialPoseANDROID</name></proto>
+            <param><type>XrGeospatialTrackerANDROID</type> <name>geospatialTracker</name></param>
+            <param>const <type>XrGeospatialPoseLocateInfoANDROID</type>* <name>locateInfo</name></param>
+            <param><type>XrSpaceLocation</type>* <name>location</name></param>
+        </command>
+        <command successcodes="XR_SUCCESS,XR_SESSION_LOSS_PENDING" errorcodes="XR_ERROR_FUNCTION_UNSUPPORTED,XR_ERROR_GEOSPATIAL_COORDINATES_INVALID_ANDROID,XR_ERROR_HANDLE_INVALID,XR_ERROR_INSTANCE_LOST,XR_ERROR_RUNTIME_FAILURE,XR_ERROR_SESSION_LOST,XR_ERROR_VALIDATION_FAILURE">
+            <proto><type>XrResult</type> <name>xrCheckVpsAvailabilityAsyncANDROID</name></proto>
+            <param><type>XrSession</type> <name>session</name></param>
+            <param><type>double</type> <name>latitude</name></param>
+            <param><type>double</type> <name>longitude</name></param>
+            <param><type>XrFutureEXT</type>* <name>future</name></param>
+        </command>
+        <command successcodes="XR_SUCCESS,XR_SESSION_LOSS_PENDING" errorcodes="XR_ERROR_FUNCTION_UNSUPPORTED,XR_ERROR_FUTURE_INVALID_EXT,XR_ERROR_FUTURE_PENDING_EXT,XR_ERROR_HANDLE_INVALID,XR_ERROR_INSTANCE_LOST,XR_ERROR_RUNTIME_FAILURE,XR_ERROR_SESSION_LOST,XR_ERROR_VALIDATION_FAILURE">
+            <proto><type>XrResult</type> <name>xrCheckVpsAvailabilityCompleteANDROID</name></proto>
+            <param><type>XrSession</type> <name>session</name></param>
+            <param><type>XrFutureEXT</type> <name>future</name></param>
+            <param><type>XrVPSAvailabilityCheckCompletionANDROID</type>* <name>completion</name></param>
+        </command>
+
+        <!-- XR_ANDROID_geospatial_anchor -->
+        <command successcodes="XR_SUCCESS,XR_SESSION_LOSS_PENDING" errorcodes="XR_ERROR_FUNCTION_UNSUPPORTED,XR_ERROR_GEOSPATIAL_COORDINATES_INVALID_ANDROID,XR_ERROR_GEOSPATIAL_TRACKER_NOT_RUNNING_ANDROID,XR_ERROR_HANDLE_INVALID,XR_ERROR_INSTANCE_LOST,XR_ERROR_LIMIT_REACHED,XR_ERROR_OUT_OF_MEMORY,XR_ERROR_POSE_INVALID,XR_ERROR_RUNTIME_FAILURE,XR_ERROR_SESSION_LOST,XR_ERROR_VALIDATION_FAILURE">
+            <proto><type>XrResult</type> <name>xrCreateGeospatialAnchorANDROID</name></proto>
+            <param><type>XrSpatialContextEXT</type> <name>spatialContext</name></param>
+            <param>const <type>XrGeospatialAnchorCreateInfoANDROID</type>* <name>createInfo</name></param>
+            <param><type>XrSpatialEntityIdEXT</type>* <name>anchorEntityId</name></param>
+        </command>
+        <command successcodes="XR_SUCCESS,XR_SESSION_LOSS_PENDING" errorcodes="XR_ERROR_FUNCTION_UNSUPPORTED,XR_ERROR_GEOSPATIAL_COORDINATES_INVALID_ANDROID,XR_ERROR_GEOSPATIAL_TRACKER_NOT_RUNNING_ANDROID,XR_ERROR_HANDLE_INVALID,XR_ERROR_INSTANCE_LOST,XR_ERROR_LIMIT_REACHED,XR_ERROR_OUT_OF_MEMORY,XR_ERROR_POSE_INVALID,XR_ERROR_RUNTIME_FAILURE,XR_ERROR_SESSION_LOST,XR_ERROR_VALIDATION_FAILURE">
+            <proto><type>XrResult</type> <name>xrCreateSurfaceAnchorAsyncANDROID</name></proto>
+            <param><type>XrSpatialContextEXT</type> <name>spatialContext</name></param>
+            <param>const <type>XrSurfaceAnchorCreateInfoANDROID</type>* <name>createInfo</name></param>
+            <param><type>XrFutureEXT</type>* <name>future</name></param>
+        </command>
+        <command successcodes="XR_SUCCESS,XR_SESSION_LOSS_PENDING" errorcodes="XR_ERROR_FUNCTION_UNSUPPORTED,XR_ERROR_FUTURE_INVALID_EXT,XR_ERROR_FUTURE_PENDING_EXT,XR_ERROR_HANDLE_INVALID,XR_ERROR_INSTANCE_LOST,XR_ERROR_LIMIT_REACHED,XR_ERROR_OUT_OF_MEMORY,XR_ERROR_RUNTIME_FAILURE,XR_ERROR_SESSION_LOST,XR_ERROR_VALIDATION_FAILURE">
+            <proto><type>XrResult</type> <name>xrCreateSurfaceAnchorCompleteANDROID</name></proto>
+            <param><type>XrSpatialContextEXT</type> <name>spatialContext</name></param>
+            <param><type>XrFutureEXT</type> <name>future</name></param>
+            <param><type>XrSurfaceAnchorCreateCompletionANDROID</type>* <name>completion</name></param>
+        </command>
+
         <!-- XR_ANDROID_trackables_image -->
         <command successcodes="XR_SUCCESS,XR_SESSION_LOSS_PENDING" errorcodes="XR_ERROR_FEATURE_UNSUPPORTED,XR_ERROR_FUNCTION_UNSUPPORTED,XR_ERROR_HANDLE_INVALID,XR_ERROR_IMAGE_FORMAT_UNSUPPORTED_ANDROID,XR_ERROR_INSTANCE_LOST,XR_ERROR_LIMIT_REACHED,XR_ERROR_OUT_OF_MEMORY,XR_ERROR_RUNTIME_FAILURE,XR_ERROR_SESSION_LOST,XR_ERROR_VALIDATION_FAILURE">
             <proto><type>XrResult</type> <name>xrCreateTrackableImageDatabaseAsyncANDROID</name></proto>
@@ -11851,6 +12244,20 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
             <param><type>XrSpace</type>* <name>anchorSpace</name></param>
         </command>
 
+        <!--  XR_ANDROID_google_cloud_auth  -->
+        <command successcodes="XR_SUCCESS,XR_SESSION_LOSS_PENDING" errorcodes="XR_ERROR_FUNCTION_UNSUPPORTED,XR_ERROR_HANDLE_INVALID,XR_ERROR_INSTANCE_LOST,XR_ERROR_KEYLESS_AUTH_NOT_SETUP_ANDROID,XR_ERROR_RUNTIME_FAILURE,XR_ERROR_SESSION_LOST,XR_ERROR_VALIDATION_FAILURE">
+            <proto><type>XrResult</type> <name>xrSetGoogleCloudAuthAsyncANDROID</name></proto>
+            <param><type>XrSession</type> <name>session</name></param>
+            <param>const <type>XrGoogleCloudAuthInfoBaseHeaderANDROID</type>* <name>authInfo</name></param>
+            <param><type>XrFutureEXT</type>* <name>future</name></param>
+        </command>
+        <command successcodes="XR_SUCCESS,XR_SESSION_LOSS_PENDING" errorcodes="XR_ERROR_FUNCTION_UNSUPPORTED,XR_ERROR_FUTURE_INVALID_EXT,XR_ERROR_FUTURE_PENDING_EXT,XR_ERROR_HANDLE_INVALID,XR_ERROR_INSTANCE_LOST,XR_ERROR_RUNTIME_FAILURE,XR_ERROR_SESSION_LOST,XR_ERROR_VALIDATION_FAILURE">
+            <proto><type>XrResult</type> <name>xrSetGoogleCloudAuthCompleteANDROID</name></proto>
+            <param><type>XrSession</type> <name>session</name></param>
+            <param><type>XrFutureEXT</type> <name>future</name></param>
+            <param><type>XrFutureCompletionEXT</type>* <name>completion</name></param>
+        </command>
+
         <!-- XR_META_tile_properties_hint commands -->
         <command successcodes="XR_SUCCESS,XR_SESSION_LOSS_PENDING" errorcodes="XR_ERROR_FUNCTION_UNSUPPORTED,XR_ERROR_HANDLE_INVALID,XR_ERROR_INSTANCE_LOST,XR_ERROR_RUNTIME_FAILURE,XR_ERROR_SESSION_LOST,XR_ERROR_VALIDATION_FAILURE">
             <proto><type>XrResult</type> <name>xrSetTilePropertiesHintMETA</name></proto>
@@ -11901,6 +12308,13 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
             <param><type>XrHandGestureQCOM</type>* <name>handGesture</name></param>
         </command>
 
+        <!-- XR_META_hand_tracking_frequency -->
+        <command successcodes="XR_SUCCESS,XR_SESSION_LOSS_PENDING" errorcodes="XR_ERROR_FUNCTION_UNSUPPORTED,XR_ERROR_HANDLE_INVALID,XR_ERROR_INSTANCE_LOST,XR_ERROR_RUNTIME_FAILURE,XR_ERROR_SESSION_LOST,XR_ERROR_VALIDATION_FAILURE">
+            <proto><type>XrResult</type> <name>xrSetHandTrackingFrequencyHintMETA</name></proto>
+            <param><type>XrSession</type> <name>session</name></param>
+            <param><type>XrHandTrackingFrequencyHintMETA</type> <name>frequencyHint</name></param>
+        </command>
+
         <!-- XR_EXT_haptic_parametric -->
         <command successcodes="XR_SUCCESS,XR_SESSION_LOSS_PENDING" errorcodes="XR_ERROR_ACTIONSET_NOT_ATTACHED,XR_ERROR_ACTION_TYPE_MISMATCH,XR_ERROR_FEATURE_UNSUPPORTED,XR_ERROR_FUNCTION_UNSUPPORTED,XR_ERROR_HANDLE_INVALID,XR_ERROR_INSTANCE_LOST,XR_ERROR_PATH_INVALID,XR_ERROR_PATH_UNSUPPORTED,XR_ERROR_RUNTIME_FAILURE,XR_ERROR_SESSION_LOST,XR_ERROR_VALIDATION_FAILURE">
             <proto><type>XrResult</type> <name>xrHapticParametricGetPropertiesEXT</name></proto>
@@ -11908,6 +12322,64 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
             <param>const <type>XrHapticActionInfo</type>* <name>hapticActionInfo</name></param>
             <param><type>XrHapticParametricPropertiesEXT</type>* <name>parametricProperties</name></param>
         </command>
+
+        <!-- XR_SONY_swapchain_color_space -->
+        <command successcodes="XR_SUCCESS,XR_SESSION_LOSS_PENDING" errorcodes="XR_ERROR_FUNCTION_UNSUPPORTED,XR_ERROR_HANDLE_INVALID,XR_ERROR_INSTANCE_LOST,XR_ERROR_RUNTIME_FAILURE,XR_ERROR_SESSION_LOST,XR_ERROR_SIZE_INSUFFICIENT,XR_ERROR_SWAPCHAIN_FORMAT_UNSUPPORTED,XR_ERROR_VALIDATION_FAILURE">
+            <proto><type>XrResult</type> <name>xrEnumerateColorSpacesSONY</name></proto>
+            <param><type>XrSession</type> <name>session</name></param>
+            <param>const <type>XrColorSpacesEnumerateInfoSONY</type>* <name>enumerateInfo</name></param>
+            <param optional="true"><type>uint32_t</type> <name>colorSpaceCapacityInput</name></param>
+            <param><type>uint32_t</type>* <name>colorSpaceCountOutput</name></param>
+            <param optional="true" len="colorSpaceCapacityInput"><type>XrColorSpaceSONY</type>* <name>colorSpaces</name></param>
+        </command>
+
+        <!-- XR_ANDROID_trackables -->
+        <command successcodes="XR_SUCCESS" errorcodes="XR_ERROR_FUNCTION_UNSUPPORTED,XR_ERROR_HANDLE_INVALID,XR_ERROR_INSTANCE_LOST,XR_ERROR_RUNTIME_FAILURE,XR_ERROR_SIZE_INSUFFICIENT,XR_ERROR_SYSTEM_INVALID,XR_ERROR_VALIDATION_FAILURE">
+            <proto><type>XrResult</type> <name>xrEnumerateSupportedTrackableTypesANDROID</name></proto>
+            <param><type>XrInstance</type> <name>instance</name></param>
+            <param><type>XrSystemId</type> <name>systemId</name></param>
+            <param optional="true"><type>uint32_t</type> <name>trackableTypeCapacityInput</name></param>
+            <param><type>uint32_t</type>* <name>trackableTypeCountOutput</name></param>
+            <param optional="true" len="trackableTypeCapacityInput"><type>XrTrackableTypeANDROID</type>* <name>trackableTypes</name></param>
+        </command>
+        <command successcodes="XR_SUCCESS" errorcodes="XR_ERROR_FUNCTION_UNSUPPORTED,XR_ERROR_HANDLE_INVALID,XR_ERROR_INSTANCE_LOST,XR_ERROR_RUNTIME_FAILURE,XR_ERROR_SIZE_INSUFFICIENT,XR_ERROR_SYSTEM_INVALID,XR_ERROR_VALIDATION_FAILURE">
+            <proto><type>XrResult</type> <name>xrEnumerateSupportedAnchorTrackableTypesANDROID</name></proto>
+            <param><type>XrInstance</type> <name>instance</name></param>
+            <param><type>XrSystemId</type> <name>systemId</name></param>
+            <param optional="true"><type>uint32_t</type> <name>trackableTypeCapacityInput</name></param>
+            <param><type>uint32_t</type>* <name>trackableTypeCountOutput</name></param>
+            <param optional="true" len="trackableTypeCapacityInput"><type>XrTrackableTypeANDROID</type>* <name>trackableTypes</name></param>
+        </command>
+        <command successcodes="XR_SUCCESS,XR_SESSION_LOSS_PENDING" errorcodes="XR_ERROR_FEATURE_UNSUPPORTED,XR_ERROR_FUNCTION_UNSUPPORTED,XR_ERROR_HANDLE_INVALID,XR_ERROR_INSTANCE_LOST,XR_ERROR_LIMIT_REACHED,XR_ERROR_OUT_OF_MEMORY,XR_ERROR_RUNTIME_FAILURE,XR_ERROR_SESSION_LOST,XR_ERROR_VALIDATION_FAILURE">
+            <proto><type>XrResult</type> <name>xrCreateTrackableTrackerANDROID</name></proto>
+            <param><type>XrSession</type> <name>session</name></param>
+            <param>const <type>XrTrackableTrackerCreateInfoANDROID</type>* <name>createInfo</name></param>
+            <param><type>XrTrackableTrackerANDROID</type>* <name>trackableTracker</name></param>
+        </command>
+        <command successcodes="XR_SUCCESS" errorcodes="XR_ERROR_FUNCTION_UNSUPPORTED,XR_ERROR_HANDLE_INVALID,XR_ERROR_RUNTIME_FAILURE">
+            <proto><type>XrResult</type> <name>xrDestroyTrackableTrackerANDROID</name></proto>
+            <param externsync="true_with_children"><type>XrTrackableTrackerANDROID</type> <name>trackableTracker</name></param>
+        </command>
+        <command successcodes="XR_SUCCESS,XR_SESSION_LOSS_PENDING" errorcodes="XR_ERROR_FUNCTION_UNSUPPORTED,XR_ERROR_HANDLE_INVALID,XR_ERROR_INSTANCE_LOST,XR_ERROR_RUNTIME_FAILURE,XR_ERROR_SESSION_LOST,XR_ERROR_SIZE_INSUFFICIENT,XR_ERROR_VALIDATION_FAILURE">
+            <proto><type>XrResult</type> <name>xrGetAllTrackablesANDROID</name></proto>
+            <param><type>XrTrackableTrackerANDROID</type> <name>trackableTracker</name></param>
+            <param optional="true"><type>uint32_t</type> <name>trackableCapacityInput</name></param>
+            <param><type>uint32_t</type>* <name>trackableCountOutput</name></param>
+            <param optional="true" len="trackableCapacityInput"><type>XrTrackableANDROID</type>* <name>trackables</name></param>
+        </command>
+        <command successcodes="XR_SUCCESS,XR_SESSION_LOSS_PENDING" errorcodes="XR_ERROR_FUNCTION_UNSUPPORTED,XR_ERROR_HANDLE_INVALID,XR_ERROR_INSTANCE_LOST,XR_ERROR_LIMIT_REACHED,XR_ERROR_MISMATCHING_TRACKABLE_TYPE_ANDROID,XR_ERROR_RUNTIME_FAILURE,XR_ERROR_SESSION_LOST,XR_ERROR_TIME_INVALID,XR_ERROR_VALIDATION_FAILURE">
+            <proto><type>XrResult</type> <name>xrGetTrackablePlaneANDROID</name></proto>
+            <param><type>XrTrackableTrackerANDROID</type> <name>trackableTracker</name></param>
+            <param>const <type>XrTrackableGetInfoANDROID</type>* <name>getInfo</name></param>
+            <param><type>XrTrackablePlaneANDROID</type>* <name>planeOutput</name></param>
+        </command>
+        <command successcodes="XR_SUCCESS,XR_SESSION_LOSS_PENDING" errorcodes="XR_ERROR_FUNCTION_UNSUPPORTED,XR_ERROR_HANDLE_INVALID,XR_ERROR_INSTANCE_LOST,XR_ERROR_LIMIT_REACHED,XR_ERROR_OUT_OF_MEMORY,XR_ERROR_POSE_INVALID,XR_ERROR_RUNTIME_FAILURE,XR_ERROR_SESSION_LOST,XR_ERROR_TIME_INVALID,XR_ERROR_TRACKABLE_TYPE_NOT_SUPPORTED_ANDROID,XR_ERROR_VALIDATION_FAILURE">
+            <proto><type>XrResult</type> <name>xrCreateAnchorSpaceANDROID</name></proto>
+            <param><type>XrSession</type> <name>session</name></param>
+            <param>const <type>XrAnchorSpaceCreateInfoANDROID</type>* <name>createInfo</name></param>
+            <param><type>XrSpace</type>* <name>anchorOutput</name></param>
+        </command>
+
     </commands>
 
     <interaction_profiles>
@@ -12782,13 +13254,6 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
     </interaction_profiles>
 
     <!-- SECTION: OpenXR 1.0 API interface definitions -->
-    <!--
-        Note: Only explicitly specify types if they are not
-        referenced by a function or another type. (For example,
-        if they're expected to be in a next chain.)
-        Types referenced by functions are included automatically.
-    -->
-
     <feature api="openxr" name="XR_VERSION_1_0" number="1.0">
         <require comment="Header boilerplate">
             <type name="openxr_platform_defines"/>
@@ -12833,6 +13298,12 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
             <type name="XR_MAY_ALIAS"/>
             <type name="XR_DEFINE_HANDLE"/>
             <type name="XR_DEFINE_OPAQUE_64"/>
+
+            <type name="XR_DEFINE_ATOM"/>
+            <type name="XR_MAKE_VERSION"/>
+        </require>
+        <require comment="Result">
+            <type name="XrResult"/>
         </require>
         <require comment="Instance">
             <command name="xrGetInstanceProcAddr"/>
@@ -12844,6 +13315,18 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
             <command name="xrPollEvent"/>
             <command name="xrResultToString"/>
             <command name="xrStructureTypeToString"/>
+
+            <type    name="PFN_xrVoidFunction"/>
+            <type    name="XrApiLayerProperties"/>
+            <type    name="XrExtensionProperties"/>
+            <type    name="XrInstance"/>
+            <type    name="XrInstanceCreateInfo"/>
+            <type    name="XrInstanceCreateFlags"/>
+            <type    name="XrInstanceCreateFlagBits"/>
+            <type    name="XrApplicationInfo"/>
+            <type    name="XrInstanceProperties"/>
+            <type    name="XrEventDataBuffer"/>
+            <type    name="XrStructureType"/>
         </require>
         <require comment="Device">
             <command name="xrGetSystem"/>
@@ -12851,6 +13334,18 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
             <command name="xrEnumerateEnvironmentBlendModes"/>
             <command name="xrCreateSession"/>
             <command name="xrDestroySession"/>
+
+            <type    name="XrSystemId"/>
+            <type    name="XrFormFactor"/>
+            <type    name="XrSystemGetInfo"/>
+            <type    name="XrSystemProperties"/>
+            <type    name="XrSystemGraphicsProperties"/>
+            <type    name="XrSystemTrackingProperties"/>
+            <type    name="XrEnvironmentBlendMode"/>
+            <type    name="XrSession"/>
+            <type    name="XrSessionCreateInfo"/>
+            <type    name="XrSessionCreateFlags"/>
+            <type    name="XrSessionCreateFlagBits"/>
         </require>
         <require comment="Space">
             <command name="xrEnumerateReferenceSpaces"/>
@@ -12859,12 +13354,29 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
             <command name="xrCreateActionSpace"/>
             <command name="xrLocateSpace"/>
             <command name="xrDestroySpace"/>
+
+            <type    name="XrSpace"/>
+            <type    name="XrReferenceSpaceCreateInfo"/>
+            <type    name="XrReferenceSpaceType"/>
+            <type    name="XrActionSpaceCreateInfo"/>
+            <type    name="XrSpaceLocation"/>
+            <type    name="XrSpaceLocationFlags"/>
+            <type    name="XrSpaceLocationFlagBits"/>
             <type    name="XrSpaceVelocity"/>
+            <type    name="XrSpaceVelocityFlags"/>
+            <type    name="XrSpaceVelocityFlagBits"/>
+            <type    name="XrPosef"/>
+            <type    name="XrVector3f"/>
+            <type    name="XrQuaternionf"/>
         </require>
         <require comment="ViewConfigurations">
             <command name="xrEnumerateViewConfigurations"/>
             <command name="xrGetViewConfigurationProperties"/>
             <command name="xrEnumerateViewConfigurationViews"/>
+
+            <type    name="XrViewConfigurationType"/>
+            <type    name="XrViewConfigurationProperties"/>
+            <type    name="XrViewConfigurationView"/>
         </require>
         <require comment="Image">
             <command name="xrEnumerateSwapchainFormats"/>
@@ -12874,21 +13386,52 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
             <command name="xrAcquireSwapchainImage"/>
             <command name="xrWaitSwapchainImage"/>
             <command name="xrReleaseSwapchainImage"/>
+
+            <type    name="XrSwapchain"/>
+            <type    name="XrSwapchainCreateInfo"/>
+            <type    name="XrSwapchainCreateFlags"/>
+            <type    name="XrSwapchainCreateFlagBits"/>
+            <type    name="XrSwapchainUsageFlags"/>
+            <type    name="XrSwapchainUsageFlagBits"/>
+            <type    name="XrSwapchainImageBaseHeader"/>
+            <type    name="XrSwapchainImageAcquireInfo"/>
+            <type    name="XrSwapchainImageWaitInfo"/>
+            <type    name="XrDuration"/>
+            <type    name="XrSwapchainImageReleaseInfo"/>
         </require>
         <require comment="Session">
             <command name="xrBeginSession"/>
             <command name="xrEndSession"/>
             <command name="xrRequestExitSession"/>
+            <type    name="XrSessionBeginInfo"/>
         </require>
         <require comment="Display Timing">
             <command name="xrWaitFrame"/>
             <command name="xrBeginFrame"/>
             <command name="xrEndFrame"/>
             <command name="xrLocateViews"/>
+
+            <type    name="XrFrameState"/>
+            <type    name="XrFrameWaitInfo"/>
+            <type    name="XrFrameBeginInfo"/>
+            <type    name="XrFrameEndInfo"/>
+            <type    name="XrCompositionLayerBaseHeader"/>
+            <type    name="XrCompositionLayerFlags"/>
+            <type    name="XrCompositionLayerFlagBits"/>
+            <type    name="XrEyeVisibility"/>
+            <type    name="XrViewState"/>
+            <type    name="XrViewStateFlags"/>
+            <type    name="XrViewStateFlagBits"/>
+            <type    name="XrViewLocateInfo"/>
+            <type    name="XrTime"/>
+            <type    name="XrView"/>
+            <type    name="XrFovf"/>
         </require>
         <require comment="Semantic Paths">
             <command             name="xrStringToPath"/>
             <command             name="xrPathToString"/>
+
+            <type                name="XrPath"/>
 
             <interaction_profile name="/interaction_profiles/khr/simple_controller"/>
             <interaction_profile name="/interaction_profiles/google/daydream_controller"/>
@@ -12915,16 +13458,43 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
             <command name="xrSyncActions"/>
             <command name="xrEnumerateBoundSourcesForAction"/>
             <command name="xrGetInputSourceLocalizedName"/>
+
+            <type    name="XrActionSet"/>
+            <type    name="XrActionSetCreateInfo"/>
+            <type    name="XrAction"/>
+            <type    name="XrActionCreateInfo"/>
+            <type    name="XrActionType"/>
+            <type    name="XrInteractionProfileSuggestedBinding"/>
+            <type    name="XrActionSuggestedBinding"/>
+            <type    name="XrSessionActionSetsAttachInfo"/>
+            <type    name="XrInteractionProfileState"/>
+            <type    name="XrActionStateGetInfo"/>
+            <type    name="XrActionStateBoolean"/>
+            <type    name="XrActionStateFloat"/>
+            <type    name="XrActionStateVector2f"/>
+            <type    name="XrVector2f"/>
+            <type    name="XrActionStatePose"/>
+            <type    name="XrActionsSyncInfo"/>
+            <type    name="XrActiveActionSet"/>
+            <type    name="XrBoundSourcesForActionEnumerateInfo"/>
+            <type    name="XrInputSourceLocalizedNameGetInfo"/>
+            <type    name="XrInputSourceLocalizedNameFlags"/>
+            <type    name="XrInputSourceLocalizedNameFlagBits"/>
         </require>
         <require comment="Haptics">
             <command name="xrApplyHapticFeedback"/>
             <command name="xrStopHapticFeedback"/>
+
+            <type    name="XrHapticBaseHeader"/>
+            <type    name="XrHapticActionInfo"/>
         </require>
         <require comment="Types not directly used by the API">
             <!-- Include <type name="typename"/> here for e.g. structs that
                  are not parameter types of functions, but still need to be
                  defined in the API.
              -->
+            <type name="XrFlags64"/>
+            <type name="XrBool32"/>
 
             <!-- Utility types to handle polymorphism -->
             <type name="XrBaseInStructure"/>
@@ -12932,7 +13502,13 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
 
             <!-- Composition layer types used polymorphically by the core spec through XrCompositionLayerBaseHeader. -->
             <type name="XrCompositionLayerProjection"/>
+            <type name="XrCompositionLayerProjectionView"/>
             <type name="XrCompositionLayerQuad"/>
+
+            <type name="XrSwapchainSubImage"/>
+            <type name="XrRect2Di"/>
+            <type name="XrOffset2Di"/>
+            <type name="XrExtent2Di"/>
 
             <!-- Event data types used polymorphically by the core spec through XrEventDataBaseHeader -->
             <type name="XrEventDataBaseHeader"/>
@@ -12941,6 +13517,7 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
             <type name="XrEventDataSessionStateChanged"/>
             <type name="XrEventDataReferenceSpaceChangePending"/>
             <type name="XrEventDataInteractionProfileChanged"/>
+            <type name="XrSessionState"/>
 
             <!-- Haptic data type used polymorphically by the core spec via XrHapticBaseHeader -->
             <type name="XrHapticVibration"/>
@@ -12977,6 +13554,15 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
             <command name="xrCreateApiLayerInstance"/>
             <command name="xrNegotiateLoaderRuntimeInterface"/>
             <command name="xrNegotiateLoaderApiLayerInterface"/>
+
+            <type    name="PFN_xrGetInstanceProcAddr"/>
+            <type    name="PFN_xrCreateApiLayerInstance"/>
+            <type    name="XrLoaderInterfaceStructs"/>
+            <type    name="XrApiLayerCreateInfo"/>
+            <type    name="XrApiLayerNextInfo"/>
+            <type    name="XrNegotiateApiLayerRequest"/>
+            <type    name="XrNegotiateLoaderInfo"/>
+            <type    name="XrNegotiateRuntimeRequest"/>
         </require>
     </feature>
 
@@ -13589,8 +14175,13 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
             <type name="PFN_xrDebugUtilsMessengerCallbackEXT"/>
             <type name="XrDebugUtilsObjectNameInfoEXT"/>
             <type name="XrDebugUtilsLabelEXT"/>
+            <type name="XrDebugUtilsMessengerEXT"/>
             <type name="XrDebugUtilsMessengerCallbackDataEXT"/>
             <type name="XrDebugUtilsMessengerCreateInfoEXT"/>
+            <type name="XrDebugUtilsMessageTypeFlagsEXT"/>
+            <type name="XrDebugUtilsMessageTypeFlagBitsEXT"/>
+            <type name="XrDebugUtilsMessageSeverityFlagsEXT"/>
+            <type name="XrDebugUtilsMessageSeverityFlagBitsEXT"/>
             <command name="xrSetDebugUtilsObjectNameEXT"/>
             <command name="xrCreateDebugUtilsMessengerEXT"/>
             <command name="xrDestroyDebugUtilsMessengerEXT"/>
@@ -13769,6 +14360,10 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
             <enum offset="3" extends="XrStructureType" name="XR_TYPE_EVENT_DATA_MAIN_SESSION_VISIBILITY_CHANGED_EXTX"/>
             <type name="XrSessionCreateInfoOverlayEXTX"/>
             <type name="XrEventDataMainSessionVisibilityChangedEXTX"/>
+            <type name="XrOverlayMainSessionFlagsEXTX"/>
+            <type name="XrOverlayMainSessionFlagBitsEXTX"/>
+            <type name="XrOverlaySessionCreateFlagsEXTX"/>
+            <type name="XrOverlaySessionCreateFlagBitsEXTX"/>
         </require>
     </extension>
 
@@ -13823,8 +14418,11 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
             <enum value="2"                                  name="XR_MSFT_spatial_anchor_SPEC_VERSION"/>
             <enum value="&quot;XR_MSFT_spatial_anchor&quot;" name="XR_MSFT_SPATIAL_ANCHOR_EXTENSION_NAME"/>
 
-            <enum offset="0" extends="XrStructureType"       name="XR_TYPE_SPATIAL_ANCHOR_CREATE_INFO_MSFT"/>
-            <enum offset="1" extends="XrStructureType"       name="XR_TYPE_SPATIAL_ANCHOR_SPACE_CREATE_INFO_MSFT"/>
+            <type name="XrSpatialAnchorMSFT"/>
+            <type name="XrSpatialAnchorCreateInfoMSFT"/>
+            <type name="XrSpatialAnchorSpaceCreateInfoMSFT"/>
+            <enum offset="0" extends="XrStructureType" name="XR_TYPE_SPATIAL_ANCHOR_CREATE_INFO_MSFT"/>
+            <enum offset="1" extends="XrStructureType" name="XR_TYPE_SPATIAL_ANCHOR_SPACE_CREATE_INFO_MSFT"/>
             <command name="xrCreateSpatialAnchorMSFT"/>
             <command name="xrCreateSpatialAnchorSpaceMSFT"/>
             <command name="xrDestroySpatialAnchorMSFT"/>
@@ -13838,6 +14436,8 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
             <enum value="1"                                                name="XR_FB_composition_layer_image_layout_SPEC_VERSION"/>
             <enum value="&quot;XR_FB_composition_layer_image_layout&quot;" name="XR_FB_COMPOSITION_LAYER_IMAGE_LAYOUT_EXTENSION_NAME"/>
             <type name="XrCompositionLayerImageLayoutFB"/>
+            <type name="XrCompositionLayerImageLayoutFlagsFB"/>
+            <type name="XrCompositionLayerImageLayoutFlagBitsFB"/>
             <enum offset="0" extends="XrStructureType" name="XR_TYPE_COMPOSITION_LAYER_IMAGE_LAYOUT_FB"/>
         </require>
     </extension>
@@ -13848,6 +14448,8 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
             <enum value="&quot;XR_FB_composition_layer_alpha_blend&quot;" name="XR_FB_COMPOSITION_LAYER_ALPHA_BLEND_EXTENSION_NAME"/>
             <type name="XrBlendFactorFB"/>
             <type name="XrCompositionLayerAlphaBlendFB"/>
+            <type name="XrCompositionLayerSecureContentFlagsFB"/>
+            <type name="XrCompositionLayerSecureContentFlagBitsFB"/>
             <enum offset="1" extends="XrStructureType" name="XR_TYPE_COMPOSITION_LAYER_ALPHA_BLEND_FB"/>
         </require>
     </extension>
@@ -13906,6 +14508,7 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
             <enum value="2"                              name="XR_MNDX_egl_enable_SPEC_VERSION"/>
             <enum value="&quot;XR_MNDX_egl_enable&quot;" name="XR_MNDX_EGL_ENABLE_EXTENSION_NAME"/>
             <enum offset="4" extends="XrStructureType"   name="XR_TYPE_GRAPHICS_BINDING_EGL_MNDX"/>
+            <type name="PFN_xrEglGetProcAddressMNDX"/>
             <type name="XrGraphicsBindingEGLMNDX"/>
         </require>
     </extension>
@@ -13914,6 +14517,7 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
         <require>
             <enum value="2"                                        name="XR_MSFT_spatial_graph_bridge_SPEC_VERSION"/>
             <enum value="&quot;XR_MSFT_spatial_graph_bridge&quot;" name="XR_MSFT_SPATIAL_GRAPH_BRIDGE_EXTENSION_NAME"/>
+            <type name="XrSpatialGraphNodeBindingMSFT"/>
             <type name="XrSpatialGraphNodeTypeMSFT"/>
             <type name="XrSpatialGraphNodeSpaceCreateInfoMSFT"/>
             <type name="XrSpatialGraphStaticNodeBindingCreateInfoMSFT"/>
@@ -13966,6 +14570,7 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
             <type name="XrHandJointEXT"/>
             <type name="XrHandJointSetEXT"/>
 
+            <type name="XrHandTrackerEXT"/>
             <type name="XrSystemHandTrackingPropertiesEXT"/>
             <type name="XrHandTrackerCreateInfoEXT"/>
             <type name="XrHandJointsLocateInfoEXT"/>
@@ -14200,6 +14805,8 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
             <enum value="&quot;XR_FB_android_surface_swapchain_create&quot;" name="XR_FB_ANDROID_SURFACE_SWAPCHAIN_CREATE_EXTENSION_NAME"/>
 
             <type name="XrAndroidSurfaceSwapchainCreateInfoFB"/>
+            <type name="XrAndroidSurfaceSwapchainFlagsFB"/>
+            <type name="XrAndroidSurfaceSwapchainFlagBitsFB"/>
             <enum offset="0" extends="XrStructureType" name="XR_TYPE_ANDROID_SURFACE_SWAPCHAIN_CREATE_INFO_FB"/>
         </require>
     </extension>
@@ -14461,6 +15068,10 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
             <type name="XrVulkanInstanceCreateInfoKHR"/>
             <type name="XrVulkanDeviceCreateInfoKHR"/>
             <type name="XrGraphicsBindingVulkan2KHR"/>
+            <type name="XrVulkanInstanceCreateFlagsKHR"/>
+            <type name="XrVulkanInstanceCreateFlagBitsKHR"/>
+            <type name="XrVulkanDeviceCreateFlagsKHR"/>
+            <type name="XrVulkanDeviceCreateFlagBitsKHR"/>
             <type name="XrVulkanGraphicsDeviceGetInfoKHR"/>
             <type name="XrSwapchainImageVulkan2KHR"/>
             <type name="XrGraphicsRequirementsVulkan2KHR"/>
@@ -14569,6 +15180,8 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
             <enum value="2"                                       name="XR_MSFT_scene_understanding_SPEC_VERSION"/>
             <enum value="&quot;XR_MSFT_scene_understanding&quot;" name="XR_MSFT_SCENE_UNDERSTANDING_EXTENSION_NAME"/>
             <type name="XrUuidMSFT"/>
+            <type name="XrSceneMSFT"/>
+            <type name="XrSceneObserverMSFT"/>
             <type name="XrSceneObserverCreateInfoMSFT"/>
             <type name="XrSceneCreateInfoMSFT"/>
             <type name="XrNewSceneComputeInfoMSFT"/>
@@ -14745,6 +15358,7 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
             <enum value="3"                                  name="XR_HTC_facial_tracking_SPEC_VERSION"/>
             <enum value="&quot;XR_HTC_facial_tracking&quot;" name="XR_HTC_FACIAL_TRACKING_EXTENSION_NAME"/>
 
+            <type name="XrFacialTrackerHTC"/>
             <type name="XrSystemFacialTrackingPropertiesHTC"/>
             <type name="XrFacialExpressionsHTC"/>
             <type name="XrEyeExpressionHTC"/>
@@ -14768,7 +15382,6 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
             <enum extends="XrLipExpressionHTC" name="XR_LIP_EXPRESSION_MOUTH_SMILE_LEFT_HTC"  alias="XR_LIP_EXPRESSION_MOUTH_RAISER_LEFT_HTC"     comment="Backward-compatibility alias for deprecated name."/>
             <enum extends="XrLipExpressionHTC" name="XR_LIP_EXPRESSION_MOUTH_SAD_RIGHT_HTC"   alias="XR_LIP_EXPRESSION_MOUTH_STRETCHER_RIGHT_HTC" comment="Backward-compatibility alias for deprecated name."/>
             <enum extends="XrLipExpressionHTC" name="XR_LIP_EXPRESSION_MOUTH_SAD_LEFT_HTC"    alias="XR_LIP_EXPRESSION_MOUTH_STRETCHER_LEFT_HTC"  comment="Backward-compatibility alias for deprecated name."/>
-
         </require>
     </extension>
 
@@ -14871,6 +15484,8 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
             <enum value="&quot;XR_FB_hand_tracking_aim&quot;" name="XR_FB_HAND_TRACKING_AIM_EXTENSION_NAME"/>
 
             <type name="XrHandTrackingAimStateFB"/>
+            <type name="XrHandTrackingAimFlagsFB"/>
+            <type name="XrHandTrackingAimFlagBitsFB"/>
 
             <enum offset="1" extends="XrStructureType" name="XR_TYPE_HAND_TRACKING_AIM_STATE_FB"/>
         </require>
@@ -14943,9 +15558,14 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
             <enum offset="1" extends="XrStructureType" name="XR_TYPE_SWAPCHAIN_CREATE_INFO_FOVEATION_FB"/>
             <enum offset="2" extends="XrStructureType" name="XR_TYPE_SWAPCHAIN_STATE_FOVEATION_FB"/>
 
+            <type name="XrFoveationProfileFB"/>
             <type name="XrFoveationProfileCreateInfoFB"/>
             <type name="XrSwapchainCreateInfoFoveationFB"/>
+            <type name="XrSwapchainCreateFoveationFlagsFB"/>
+            <type name="XrSwapchainCreateFoveationFlagBitsFB"/>
             <type name="XrSwapchainStateFoveationFB"/>
+            <type name="XrSwapchainStateFoveationFlagsFB"/>
+            <type name="XrSwapchainStateFoveationFlagBitsFB"/>
 
             <command name="xrCreateFoveationProfileFB"/>
             <command name="xrDestroyFoveationProfileFB"/>
@@ -14974,6 +15594,10 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
             <type name="XrKeyboardTrackingDescriptionFB"/>
             <type name="XrKeyboardSpaceCreateInfoFB"/>
             <type name="XrKeyboardTrackingQueryFB"/>
+            <type name="XrKeyboardTrackingQueryFlagsFB"/>
+            <type name="XrKeyboardTrackingQueryFlagBitsFB"/>
+            <type name="XrKeyboardTrackingFlagsFB"/>
+            <type name="XrKeyboardTrackingFlagBitsFB"/>
 
             <enum value="128"                          name="XR_MAX_KEYBOARD_TRACKING_NAME_SIZE_FB"/>
 
@@ -14993,7 +15617,9 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
 
             <enum offset="1" extends="XrStructureType"    name="XR_TYPE_TRIANGLE_MESH_CREATE_INFO_FB"/>
 
+            <type name="XrTriangleMeshFB"/>
             <type name="XrTriangleMeshFlagsFB"/>
+            <type name="XrTriangleMeshFlagBitsFB"/>
             <type name="XrTriangleMeshCreateInfoFB"/>
             <type name="XrWindingOrderFB"/>
 
@@ -15054,6 +15680,17 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
             <type name="XrPassthroughBrightnessContrastSaturationFB"/>
             <type name="XrEventDataPassthroughStateChangedFB"/>
 
+            <type name="XrPassthroughFB"/>
+            <type name="XrPassthroughFlagsFB"/>
+            <type name="XrPassthroughFlagBitsFB"/>
+            <type name="XrPassthroughCapabilityFlagsFB"/>
+            <type name="XrPassthroughCapabilityFlagBitsFB"/>
+            <type name="XrGeometryInstanceFB"/>
+            <type name="XrPassthroughLayerFB"/>
+            <type name="XrPassthroughLayerPurposeFB"/>
+            <type name="XrPassthroughStateChangedFlagsFB"/>
+            <type name="XrPassthroughStateChangedFlagBitsFB"/>
+
             <command name="xrCreatePassthroughFB"/>
             <command name="xrDestroyPassthroughFB"/>
             <command name="xrPassthroughStartFB"/>
@@ -15081,6 +15718,8 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
             <type name="XrRenderModelKeyFB"/>
             <type name="XrSystemRenderModelPropertiesFB"/>
             <type name="XrRenderModelCapabilitiesRequestFB"/>
+            <type name="XrRenderModelFlagsFB"/>
+            <type name="XrRenderModelFlagBitsFB"/>
             <type name="XR_NULL_RENDER_MODEL_KEY_FB"/>
 
             <command name="xrEnumerateRenderModelPathsFB"/>
@@ -15285,6 +15924,8 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
             <enum value="1"                                name="XR_ML_frame_end_info_SPEC_VERSION"/>
             <enum value="&quot;XR_ML_frame_end_info&quot;" name="XR_ML_FRAME_END_INFO_EXTENSION_NAME"/>
             <type name="XrFrameEndInfoML"/>
+            <type name="XrFrameEndInfoFlagsML"/>
+            <type name="XrFrameEndInfoFlagBitsML"/>
             <enum offset="0" extends="XrStructureType" name="XR_TYPE_FRAME_END_INFO_ML"/>
         </require>
     </extension>
@@ -15294,6 +15935,8 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
             <enum value="1"                               name="XR_ML_global_dimmer_SPEC_VERSION"/>
             <enum value="&quot;XR_ML_global_dimmer&quot;" name="XR_ML_GLOBAL_DIMMER_EXTENSION_NAME"/>
             <type name="XrGlobalDimmerFrameEndInfoML"/>
+            <type name="XrGlobalDimmerFrameEndInfoFlagsML"/>
+            <type name="XrGlobalDimmerFrameEndInfoFlagBitsML"/>
             <enum offset="0" extends="XrStructureType" name="XR_TYPE_GLOBAL_DIMMER_FRAME_END_INFO_ML"/>
         </require>
     </extension>
@@ -15399,6 +16042,7 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
             <type name="XrLocalizationMapConfidenceML"/>
 
             <type name="XrLocalizationMapML"/>
+            <type name="XrExportedLocalizationMapML"/>
             <type name="XrEventDataLocalizationChangedML"/>
             <type name="XrLocalizationMapQueryInfoBaseHeaderML"/>
             <type name="XrMapLocalizationRequestInfoML"/>
@@ -15415,7 +16059,6 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
             <command name="xrCreateExportedLocalizationMapML"/>
             <command name="xrDestroyExportedLocalizationMapML"/>
             <command name="xrGetExportedLocalizationMapDataML"/>
-
         </require>
     </extension>
 
@@ -15867,6 +16510,8 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
             <enum offset="0" extends="XrStructureType" name="XR_TYPE_COMPOSITION_LAYER_SPACE_WARP_INFO_FB"/>
             <type name="XrSystemSpaceWarpPropertiesFB"/>
             <enum offset="1" extends="XrStructureType" name="XR_TYPE_SYSTEM_SPACE_WARP_PROPERTIES_FB"/>
+            <type name="XrCompositionLayerSpaceWarpInfoFlagsFB"/>
+            <type name="XrCompositionLayerSpaceWarpInfoFlagBitsFB"/>
         </require>
     </extension>
 
@@ -16096,6 +16741,10 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
             <enum value="1"                                             name="XR_ALMALENCE_digital_lens_control_SPEC_VERSION"/>
             <enum value="&quot;XR_ALMALENCE_digital_lens_control&quot;" name="XR_ALMALENCE_DIGITAL_LENS_CONTROL_EXTENSION_NAME"/>
 
+            <type name="XrDigitalLensControlALMALENCE"/>
+            <type name="XrDigitalLensControlFlagsALMALENCE"/>
+            <type name="XrDigitalLensControlFlagBitsALMALENCE"/>
+
             <command name="xrSetDigitalLensControlALMALENCE"/>
 
             <enum offset="0" extends="XrStructureType" name="XR_TYPE_DIGITAL_LENS_CONTROL_ALMALENCE"/>
@@ -16246,6 +16895,8 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
 
             <enum offset="0" extends="XrStructureType"                 name="XR_TYPE_COMPOSITION_LAYER_SETTINGS_FB"/>
             <type name="XrCompositionLayerSettingsFB"/>
+            <type name="XrCompositionLayerSettingsFlagsFB"/>
+            <type name="XrCompositionLayerSettingsFlagBitsFB"/>
         </require>
     </extension>
 
@@ -16288,6 +16939,7 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
             <enum value="&quot;XR_FB_haptic_pcm&quot;" name="XR_FB_HAPTIC_PCM_EXTENSION_NAME"/>
 
             <type name="XrHapticPcmVibrationFB"/>
+            <type name="XrDevicePcmSampleRateGetInfoFB"/>
             <type name="XrDevicePcmSampleRateStateFB"/>
             <type name="XR_MAX_HAPTIC_PCM_BUFFER_SIZE_FB"/>
 
@@ -16315,6 +16967,8 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
             <enum offset="1" extends="XrStructureType"       name="XR_TYPE_FRAME_SYNTHESIS_CONFIG_VIEW_EXT"/>
             <type name="XrFrameSynthesisInfoEXT"/>
             <type name="XrFrameSynthesisConfigViewEXT"/>
+            <type name="XrFrameSynthesisInfoFlagsEXT"/>
+            <type name="XrFrameSynthesisInfoFlagBitsEXT"/>
         </require>
     </extension>
 
@@ -16397,6 +17051,7 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
             <type name="XrVirtualKeyboardLocationTypeMETA"/>
             <type name="XrVirtualKeyboardInputSourceMETA"/>
 
+            <type name="XrVirtualKeyboardMETA"/>
             <type name="XrSystemVirtualKeyboardPropertiesMETA"/>
             <type name="XrVirtualKeyboardCreateInfoMETA"/>
             <type name="XrVirtualKeyboardSpaceCreateInfoMETA"/>
@@ -16406,6 +17061,8 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
             <type name="XrVirtualKeyboardModelAnimationStatesMETA"/>
             <type name="XrVirtualKeyboardTextureDataMETA"/>
             <type name="XrVirtualKeyboardInputInfoMETA"/>
+            <type name="XrVirtualKeyboardInputStateFlagsMETA"/>
+            <type name="XrVirtualKeyboardInputStateFlagBitsMETA"/>
             <type name="XrVirtualKeyboardTextContextChangeInfoMETA"/>
             <type name="XrEventDataVirtualKeyboardCommitTextMETA"/>
             <type name="XrEventDataVirtualKeyboardBackspaceMETA"/>
@@ -16499,6 +17156,8 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
             <type name="XrExternalCameraIntrinsicsOCULUS"/>
             <type name="XrExternalCameraExtrinsicsOCULUS"/>
             <type name="XrExternalCameraOCULUS"/>
+            <type name="XrExternalCameraStatusFlagsOCULUS"/>
+            <type name="XrExternalCameraStatusFlagBitsOCULUS"/>
 
             <command name="xrEnumerateExternalCamerasOCULUS"/>
         </require>
@@ -16553,6 +17212,8 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
 
             <type name="XrPerformanceMetricsStateMETA"/>
             <type name="XrPerformanceMetricsCounterMETA"/>
+            <type name="XrPerformanceMetricsCounterFlagsMETA"/>
+            <type name="XrPerformanceMetricsCounterFlagBitsMETA"/>
 
             <type name="XrPerformanceMetricsCounterUnitMETA"/>
 
@@ -16652,6 +17313,8 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
             <enum offset="1" extends="XrStructureType"          name="XR_TYPE_SPACE_USER_CREATE_INFO_FB"/>
             <enum offset="0" extends="XrObjectType"             name="XR_OBJECT_TYPE_SPACE_USER_FB"             comment="XrSpaceUserFB"/>
 
+            <type name="XrSpaceUserFB"/>
+            <type name="XrSpaceUserIdFB"/>
             <type name="XrSpaceUserCreateInfoFB"/>
 
             <command name="xrCreateSpaceUserFB"/>
@@ -16895,6 +17558,8 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
             <enum value="1"                                         name="XR_META_passthrough_color_lut_SPEC_VERSION"/>
             <enum value="&quot;XR_META_passthrough_color_lut&quot;" name="XR_META_PASSTHROUGH_COLOR_LUT_EXTENSION_NAME"/>
 
+            <type name="XrPassthroughColorLutMETA"/>
+            <type name="XrPassthroughColorLutChannelsMETA"/>
             <type name="XrPassthroughColorLutDataMETA"/>
             <type name="XrPassthroughColorLutCreateInfoMETA"/>
             <type name="XrPassthroughColorLutUpdateInfoMETA"/>
@@ -17444,12 +18109,17 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
 
     <extension name="XR_QCOM_tracking_optimization_settings" number="307" type="instance" supported="openxr">
         <require>
-            <enum value="1"                                                  name="XR_QCOM_tracking_optimization_settings_SPEC_VERSION"/>
+            <enum value="2"                                                  name="XR_QCOM_tracking_optimization_settings_SPEC_VERSION"/>
             <enum value="&quot;XR_QCOM_tracking_optimization_settings&quot;" name="XR_QCOM_TRACKING_OPTIMIZATION_SETTINGS_EXTENSION_NAME"/>
             <enum offset="0" dir="-" extends="XrResult"                      name="XR_ERROR_HINT_ALREADY_SET_QCOM"                        comment="Tracking optimization hint is already set for the domain."/>
 
             <type name="XrTrackingOptimizationSettingsDomainQCOM"/>
             <type name="XrTrackingOptimizationSettingsHintQCOM"/>
+
+            <enum extends="XrTrackingOptimizationSettingsHintQCOM" name="XR_TRACKING_OPTIMIZATION_SETTINGS_HINT_LONG_RANGE_PRIORIZATION_QCOM"  alias="XR_TRACKING_OPTIMIZATION_SETTINGS_HINT_LONG_RANGE_PRIORITIZATION_QCOM"  comment="Backward-compatibility alias containing typo."/>
+            <enum extends="XrTrackingOptimizationSettingsHintQCOM" name="XR_TRACKING_OPTIMIZATION_SETTINGS_HINT_CLOSE_RANGE_PRIORIZATION_QCOM" alias="XR_TRACKING_OPTIMIZATION_SETTINGS_HINT_CLOSE_RANGE_PRIORITIZATION_QCOM" comment="Backward-compatibility alias containing typo."/>
+            <enum extends="XrTrackingOptimizationSettingsHintQCOM" name="XR_TRACKING_OPTIMIZATION_SETTINGS_HINT_LOW_POWER_PRIORIZATION_QCOM"   alias="XR_TRACKING_OPTIMIZATION_SETTINGS_HINT_LOW_POWER_PRIORITIZATION_QCOM"   comment="Backward-compatibility alias containing typo."/>
+            <enum extends="XrTrackingOptimizationSettingsHintQCOM" name="XR_TRACKING_OPTIMIZATION_SETTINGS_HINT_HIGH_POWER_PRIORIZATION_QCOM"  alias="XR_TRACKING_OPTIMIZATION_SETTINGS_HINT_HIGH_POWER_PRIORITIZATION_QCOM"  comment="Backward-compatibility alias containing typo."/>
 
             <command name="xrSetTrackingOptimizationSettingsHintQCOM"/>
         </require>
@@ -17571,6 +18241,8 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
             <type name="XrFoveationConfigurationHTC"/>
             <type name="XrFoveationDynamicModeInfoHTC"/>
             <type name="XrFoveationCustomModeInfoHTC"/>
+            <type name="XrFoveationDynamicFlagsHTC"/>
+            <type name="XrFoveationDynamicFlagBitsHTC"/>
 
             <command name="xrApplyFoveationHTC"/>
         </require>
@@ -17606,12 +18278,14 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
             <type name="XrBodyJointSetHTC"/>
             <type name="XrBodyJointConfidenceHTC"/>
 
+            <type name="XrBodyTrackerHTC"/>
             <type name="XrSystemBodyTrackingPropertiesHTC"/>
             <type name="XrBodyTrackerCreateInfoHTC"/>
             <type name="XrBodyJointsLocateInfoHTC"/>
             <type name="XrBodyJointLocationsHTC"/>
             <type name="XrBodyJointLocationHTC"/>
             <type name="XrBodySkeletonHTC"/>
+            <type name="XrBodySkeletonJointHTC"/>
 
             <type name="XR_BODY_JOINT_COUNT_HTC"/>
 
@@ -18215,7 +18889,7 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
 
     <extension name="XR_BD_spatial_sensing" number="390" depends="XR_VERSION_1_0+XR_EXT_future" type="instance" supported="openxr">
         <require>
-            <enum value="1"                                     name="XR_BD_spatial_sensing_SPEC_VERSION"/>
+            <enum value="2"                                     name="XR_BD_spatial_sensing_SPEC_VERSION"/>
             <enum value="&quot;XR_BD_spatial_sensing&quot;"     name="XR_BD_SPATIAL_SENSING_EXTENSION_NAME"/>
 
             <enum offset="0"  dir="-" extends="XrResult"        name="XR_ERROR_SPATIAL_ENTITY_ID_INVALID_BD"                    comment="The spatial entity id is invalid."/>
@@ -18245,6 +18919,7 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
             <enum offset="19"         extends="XrStructureType" name="XR_TYPE_SPATIAL_ENTITY_STATE_BD"/>
             <enum offset="20"         extends="XrStructureType" name="XR_TYPE_SPATIAL_ENTITY_ANCHOR_CREATE_INFO_BD"/>
             <enum offset="21"         extends="XrStructureType" name="XR_TYPE_ANCHOR_SPACE_CREATE_INFO_BD"/>
+            <enum offset="22"         extends="XrStructureType" name="XR_TYPE_SPATIAL_ENTITY_COMPONENT_DATA_SPHERE_BD"/>
 
             <enum offset="0"          extends="XrObjectType"    name="XR_OBJECT_TYPE_SENSE_DATA_PROVIDER_BD"                    comment="XrSenseDataProviderBD"/>
             <enum offset="1"          extends="XrObjectType"    name="XR_OBJECT_TYPE_SENSE_DATA_SNAPSHOT_BD"                    comment="XrSenseDataSnapshotBD"/>
@@ -18269,6 +18944,7 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
             <type name="XrSpatialEntityComponentDataPolygonBD"/>
             <type name="XrSpatialEntityComponentDataBoundingBox3DBD"/>
             <type name="XrSpatialEntityComponentDataTriangleMeshBD"/>
+            <type name="XrSpatialEntityComponentDataSphereBD"/>
 
             <type name="XrSenseDataProviderCreateInfoBD"/>
             <type name="XrSenseDataProviderStartInfoBD"/>
@@ -18420,10 +19096,33 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
         </require>
     </extension>
 
-    <extension name="XR_BD_extension_396" number="396" type="instance" supported="disabled">
+    <extension name="XR_BD_body_tracking_auxiliary_metrics" number="396" type="instance" supported="openxr">
         <require>
-            <enum value="1"                               name="XR_BD_extension_396_SPEC_VERSION"/>
-            <enum value="&quot;XR_BD_extension_396&quot;" name="XR_BD_extension_396_EXTENSION_NAME"/>
+            <enum value="1"                                                 name="XR_BD_body_tracking_auxiliary_metrics_SPEC_VERSION"/>
+            <enum value="&quot;XR_BD_body_tracking_auxiliary_metrics&quot;" name="XR_BD_BODY_TRACKING_AUXILIARY_METRICS_EXTENSION_NAME"/>
+
+            <type name="XrBodyTrackingPostureBD"/>
+            <type name="XrBodyTrackingPostureDataBD"/>
+            <enum offset="1" extends="XrStructureType" name="XR_TYPE_BODY_TRACKING_POSTURE_DATA_BD"/>
+
+            <type name="XrBodyJointVelocityBD"/>
+            <type name="XrBodyJointVelocitiesBD"/>
+            <enum offset="2" extends="XrStructureType" name="XR_TYPE_BODY_JOINT_VELOCITIES_BD"/>
+
+            <type name="XrSpaceAccelerationFlagsBD"/>
+            <type name="XrSpaceAccelerationFlagBitsBD"/>
+            <type name="XrBodyJointAccelerationBD"/>
+            <type name="XrBodyJointAccelerationsBD"/>
+            <enum offset="3" extends="XrStructureType" name="XR_TYPE_BODY_JOINT_ACCELERATIONS_BD"/>
+
+            <type name="XrBodyTrackingStatusBD"/>
+            <type name="XrBodyTrackingMessageBD"/>
+
+            <type name="XrBodyTrackingStateBD"/>
+            <enum offset="4" extends="XrStructureType" name="XR_TYPE_BODY_TRACKING_STATE_BD"/>
+
+            <command name="xrStartBodyTrackingCalibrationAppBD"/>
+            <command name="xrGetBodyTrackingStateBD"/>
         </require>
     </extension>
 
@@ -18440,6 +19139,7 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
             <enum offset="0" extends="XrSpatialEntityComponentTypeBD" name="XR_SPATIAL_ENTITY_COMPONENT_TYPE_PLANE_ORIENTATION_BD"      comment="The plane orientation. Corresponds to component data structure slink:XrSpatialEntityComponentDataPlaneOrientationBD."/>
 
             <type name="XrSystemSpatialPlanePropertiesBD"/>
+            <type name="XrPlaneOrientationBD"/>
             <type name="XrSpatialEntityComponentDataPlaneOrientationBD"/>
             <type name="XrSenseDataFilterPlaneOrientationBD"/>
         </require>
@@ -18603,15 +19303,19 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
             <type name="XrSoundObstacleConfigBD"/>
             <type name="XrSoundObstacleMaterialConfigBD"/>
             <type name="XrAttenuationCurvePointBD"/>
+            <type name="XrAudioSampleRateBD"/>
             <type name="XrAudioBufferChannelLayoutBD"/>
             <type name="XrSoundObstacleMaterialTypeBD"/>
             <type name="XrSoundObjectDistanceAttenuationTypeBD"/>
             <type name="XrSoundObstacleFlagsBD"/>
+            <type name="XrSoundObstacleFlagBitsBD"/>
             <type name="XrSoundObjectFlagsBD"/>
+            <type name="XrSoundObjectFlagBitsBD"/>
             <type name="XrSoundFieldChannelMaskSurroundBD"/>
             <type name="XrSoundFieldChannelMaskAmbixBD"/>
             <type name="XrSoundFieldChannelMaskFumaBD"/>
             <type name="XrSoundFieldFlagsBD"/>
+            <type name="XrSoundFieldFlagBitsBD"/>
 
             <command name="xrEnumerateSupportedAudioSampleRateBD"/>
             <command name="xrQueryFramesPerBufferRangeBD"/>
@@ -18794,6 +19498,7 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
 
             <type name="XrSystemPlaneDetectionPropertiesEXT"/>
             <type name="XrPlaneDetectionCapabilityFlagsEXT"/>
+            <type name="XrPlaneDetectionCapabilityFlagBitsEXT"/>
             <type name="XrPlaneDetectorEXT"/>
             <type name="XrPlaneDetectorCreateInfoEXT"/>
             <type name="XrPlaneDetectorBeginInfoEXT"/>
@@ -18803,6 +19508,7 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
             <type name="XrPlaneDetectorLocationsEXT"/>
             <type name="XrPlaneDetectorPolygonBufferEXT"/>
             <type name="XrPlaneDetectorFlagsEXT"/>
+            <type name="XrPlaneDetectorFlagBitsEXT"/>
             <type name="XrPlaneDetectorSemanticTypeEXT"/>
             <type name="XrPlaneDetectorOrientationEXT"/>
             <type name="XrExtent3DfEXT"/>
@@ -19502,6 +20208,8 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
             <type name="XrFacialExpressionClientCreateInfoML"/>
             <type name="XrFacialExpressionBlendShapeGetInfoML"/>
             <type name="XrFacialExpressionBlendShapePropertiesML"/>
+            <type name="XrFacialExpressionBlendShapePropertiesFlagsML"/>
+            <type name="XrFacialExpressionBlendShapePropertiesFlagBitsML"/>
 
             <command name="xrCreateFacialExpressionClientML"/>
             <command name="xrDestroyFacialExpressionClientML"/>
@@ -21141,24 +21849,35 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
         </require>
     </extension>
 
-    <extension name="XR_META_extension_694" number="694" type="instance" supported="disabled">
+    <extension name="XR_META_hand_tracking_unextrapolated_poses" number="694" depends="XR_VERSION_1_0+XR_EXT_hand_tracking" type="instance" supported="openxr">
         <require>
-            <enum value="1"                                 name="XR_META_extension_694_SPEC_VERSION"/>
-            <enum value="&quot;XR_META_extension_694&quot;" name="XR_META_extension_694_EXTENSION_NAME"/>
+            <enum value="1"                                                      name="XR_META_hand_tracking_unextrapolated_poses_SPEC_VERSION"/>
+            <enum value="&quot;XR_META_hand_tracking_unextrapolated_poses&quot;" name="XR_META_HAND_TRACKING_UNEXTRAPOLATED_POSES_EXTENSION_NAME"/>
+
+            <enum offset="0" extends="XrStructureType"                           name="XR_TYPE_HAND_TRACKING_UNEXTRAPOLATED_POSES_REQUEST_META"/>
+            <enum offset="1" extends="XrStructureType"                           name="XR_TYPE_HAND_TRACKING_UNEXTRAPOLATED_POSES_META"/>
+
+            <type name="XrHandTrackingUnextrapolatedPosesRequestMETA"/>
+            <type name="XrHandTrackingUnextrapolatedPosesMETA"/>
         </require>
     </extension>
 
-    <extension name="XR_META_extension_695" number="695" type="instance" supported="disabled">
+    <extension name="XR_META_hand_tracking_frequency_hint" number="695" depends="XR_VERSION_1_0+XR_EXT_hand_tracking" type="instance" supported="openxr">
         <require>
-            <enum value="1"                                 name="XR_META_extension_695_SPEC_VERSION"/>
-            <enum value="&quot;XR_META_extension_695&quot;" name="XR_META_extension_695_EXTENSION_NAME"/>
+            <enum value="1"                                                name="XR_META_hand_tracking_frequency_hint_SPEC_VERSION"/>
+            <enum value="&quot;XR_META_hand_tracking_frequency_hint&quot;" name="XR_META_HAND_TRACKING_FREQUENCY_HINT_EXTENSION_NAME"/>
+
+            <type name="XrHandTrackingFrequencyHintMETA"/>
+            <command name="xrSetHandTrackingFrequencyHintMETA"/>
         </require>
     </extension>
 
-    <extension name="XR_META_extension_696" number="696" type="instance" supported="disabled">
+    <extension name="XR_META_hand_tracking_wide_motion_mode2" number="696" depends="XR_VERSION_1_0+XR_EXT_hand_tracking+XR_EXT_hand_tracking_data_source" type="instance" supported="openxr">
         <require>
-            <enum value="1"                                 name="XR_META_extension_696_SPEC_VERSION"/>
-            <enum value="&quot;XR_META_extension_696&quot;" name="XR_META_extension_696_EXTENSION_NAME"/>
+            <enum value="1"                                                   name="XR_META_hand_tracking_wide_motion_mode2_SPEC_VERSION"/>
+            <enum value="&quot;XR_META_hand_tracking_wide_motion_mode2&quot;" name="XR_META_HAND_TRACKING_WIDE_MOTION_MODE2_EXTENSION_NAME"/>
+
+            <enum offset="0" extends="XrHandTrackingDataSourceEXT"            name="XR_HAND_TRACKING_DATA_SOURCE_UNOBSTRUCTED_WIDE_MOTION_META" comment="This data source value indicates that the hand tracking system should use wide motion mode inference to provide hand poses when the hands are not directly visible to the tracking cameras"/>
         </require>
     </extension>
 
@@ -21958,24 +22677,54 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
         </require>
     </extension>
 
-    <extension name="XR_BD_extension_747" number="747" type="instance" supported="disabled">
+    <extension name="XR_BD_dynamic_object_tracking" number="747" depends="XR_BD_spatial_sensing" type="instance" supported="openxr">
         <require>
-            <enum value="1"                               name="XR_BD_extension_747_SPEC_VERSION"/>
-            <enum value="&quot;XR_BD_extension_747&quot;" name="XR_BD_EXTENSION_747_EXTENSION_NAME"/>
+            <enum value="1"                                           name="XR_BD_dynamic_object_tracking_SPEC_VERSION"/>
+            <enum value="&quot;XR_BD_dynamic_object_tracking&quot;"   name="XR_BD_DYNAMIC_OBJECT_TRACKING_EXTENSION_NAME"/>
+
+            <enum offset="0" extends="XrStructureType"                name="XR_TYPE_SYSTEM_DYNAMIC_OBJECT_TRACKING_PROPERTIES_BD"/>
+            <enum offset="1" extends="XrStructureType"                name="XR_TYPE_SENSE_DATA_PROVIDER_CREATE_INFO_DYNAMIC_OBJECT_BD"/>
+            <enum offset="2" extends="XrStructureType"                name="XR_TYPE_SPATIAL_ENTITY_COMPONENT_DATA_DYNAMIC_OBJECT_BD"/>
+            <enum offset="3" extends="XrStructureType"                name="XR_TYPE_DYNAMIC_OBJECT_DATA_BD"/>
+            <enum offset="4" extends="XrStructureType"                name="XR_TYPE_SENSE_DATA_FILTER_DYNAMIC_OBJECT_TYPE_BD"          comment="XrSenseDataFilterDynamicObjectTypeBD"/>
+
+            <enum offset="0" extends="XrSenseDataProviderTypeBD"      name="XR_SENSE_DATA_PROVIDER_TYPE_DYNAMIC_OBJECT_BD"             comment="Capture dynamic object data."/>
+
+            <enum offset="0" extends="XrSpatialEntityComponentTypeBD" name="XR_SPATIAL_ENTITY_COMPONENT_TYPE_DYNAMIC_OBJECT_BD"        comment="The dynamic object component. Corresponds to component data structure slink:XrSpatialEntityComponentDataDynamicObjectBD."/>
+
+            <type name="XrSystemDynamicObjectTrackingPropertiesBD"/>
+            <type name="XrSenseDataProviderCreateInfoDynamicObjectBD"/>
+            <type name="XrSpatialEntityComponentDataDynamicObjectBD"/>
+            <type name="XrDynamicObjectDataBD"/>
+            <type name="XrSenseDataFilterDynamicObjectTypeBD"/>
+            <type name="XrDynamicObjectTypeBD"/>
+
         </require>
     </extension>
 
-    <extension name="XR_BD_extension_748" number="748" type="instance" supported="disabled">
+    <extension name="XR_BD_dynamic_object_keyboard" number="748" depends="XR_BD_dynamic_object_tracking" type="instance" supported="openxr">
         <require>
-            <enum value="1"                               name="XR_BD_extension_748_SPEC_VERSION"/>
-            <enum value="&quot;XR_BD_extension_748&quot;" name="XR_BD_EXTENSION_748_EXTENSION_NAME"/>
+            <enum value="1"                                         name="XR_BD_dynamic_object_keyboard_SPEC_VERSION"/>
+            <enum value="&quot;XR_BD_dynamic_object_keyboard&quot;" name="XR_BD_DYNAMIC_OBJECT_KEYBOARD_EXTENSION_NAME"/>
+
+            <enum offset="0" extends="XrStructureType"              name="XR_TYPE_SYSTEM_DYNAMIC_OBJECT_KEYBOARD_PROPERTIES_BD"/>
+            <enum offset="0" extends="XrDynamicObjectTypeBD"        name="XR_DYNAMIC_OBJECT_TYPE_KEYBOARD_BD"                   comment="Represents a keyboard"/>
+
+            <type name="XrSystemDynamicObjectKeyboardPropertiesBD"/>
+
         </require>
     </extension>
 
-    <extension name="XR_BD_extension_749" number="749" type="instance" supported="disabled">
+    <extension name="XR_BD_dynamic_object_mouse" number="749" depends="XR_BD_dynamic_object_tracking" type="instance" supported="openxr">
         <require>
-            <enum value="1"                               name="XR_BD_extension_749_SPEC_VERSION"/>
-            <enum value="&quot;XR_BD_extension_749&quot;" name="XR_BD_EXTENSION_749_EXTENSION_NAME"/>
+            <enum value="1"                                      name="XR_BD_dynamic_object_mouse_SPEC_VERSION"/>
+            <enum value="&quot;XR_BD_dynamic_object_mouse&quot;" name="XR_BD_DYNAMIC_OBJECT_MOUSE_EXTENSION_NAME"/>
+
+            <enum offset="0" extends="XrStructureType"           name="XR_TYPE_SYSTEM_DYNAMIC_OBJECT_MOUSE_PROPERTIES_BD"/>
+            <enum offset="0" extends="XrDynamicObjectTypeBD"     name="XR_DYNAMIC_OBJECT_TYPE_MOUSE_BD"                   comment="Represents a mouse"/>
+
+            <type name="XrSystemDynamicObjectMousePropertiesBD"/>
+
         </require>
     </extension>
 
@@ -22063,10 +22812,21 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
         </require>
     </extension>
 
-    <extension name="XR_EXTX1_spatial_discovery_bounds" number="762" type="instance" supported="disabled">
+    <extension name="XR_ANDROID_spatial_discovery_bounds" number="762" type="instance" supported="openxr" depends="XR_EXT_spatial_entity">
         <require>
-            <enum value="1"                                             name="XR_EXTX1_spatial_discovery_bounds_SPEC_VERSION"/>
-            <enum value="&quot;XR_EXTX1_spatial_discovery_bounds&quot;" name="XR_EXTX1_SPATIAL_DISCOVERY_BOUNDS_EXTENSION_NAME"/>
+            <enum value="1"                                               name="XR_ANDROID_spatial_discovery_bounds_SPEC_VERSION"/>
+            <enum value="&quot;XR_ANDROID_spatial_discovery_bounds&quot;" name="XR_ANDROID_SPATIAL_DISCOVERY_BOUNDS_EXTENSION_NAME"/>
+
+            <enum offset="0" extends="XrSpatialCapabilityFeatureEXT"      name="XR_SPATIAL_CAPABILITY_FEATURE_SPHERE_BOUNDS_FILTER_ANDROID"  comment="The runtime supports slink:XrSpatialBoundsSpherefANDROID filter for slink:XrSpatialDiscoverySnapshotCreateInfoEXT; This does not require any configuration structure to be included during spatial context creation."/>
+            <enum offset="1" extends="XrSpatialCapabilityFeatureEXT"      name="XR_SPATIAL_CAPABILITY_FEATURE_BOX_BOUNDS_FILTER_ANDROID"     comment="The runtime supports slink:XrSpatialBoundsBoxfANDROID filter for slink:XrSpatialDiscoverySnapshotCreateInfoEXT; This does not require any configuration structure to be included during spatial context creation."/>
+            <enum offset="2" extends="XrSpatialCapabilityFeatureEXT"      name="XR_SPATIAL_CAPABILITY_FEATURE_FRUSTUM_BOUNDS_FILTER_ANDROID" comment="The runtime supports slink:XrSpatialBoundsFrustumfANDROID filter for slink:XrSpatialDiscoverySnapshotCreateInfoEXT; This does not require any configuration structure to be included during spatial context creation."/>
+
+            <type name="XrSpatialBoundsSpherefANDROID"/>
+            <enum offset="0" extends="XrStructureType" name="XR_TYPE_SPATIAL_BOUNDS_SPHEREF_ANDROID"/>
+            <type name="XrSpatialBoundsBoxfANDROID"/>
+            <enum offset="1" extends="XrStructureType" name="XR_TYPE_SPATIAL_BOUNDS_BOXF_ANDROID"/>
+            <type name="XrSpatialBoundsFrustumfANDROID"/>
+            <enum offset="2" extends="XrStructureType" name="XR_TYPE_SPATIAL_BOUNDS_FRUSTUMF_ANDROID"/>
         </require>
     </extension>
 
@@ -22229,10 +22989,19 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
         </require>
     </extension>
 
-    <extension name="XR_SONY_extension_777" number="777" type="instance" supported="disabled">
+    <extension name="XR_SONY_swapchain_color_space" number="777" type="instance" supported="openxr">
         <require>
-            <enum value="1"                                 name="XR_SONY_extension_777_SPEC_VERSION"/>
-            <enum value="&quot;XR_SONY_extension_777&quot;" name="XR_SONY_EXTENSION_777_EXTENSION_NAME"/>
+            <enum value="1"                                         name="XR_SONY_swapchain_color_space_SPEC_VERSION"/>
+            <enum value="&quot;XR_SONY_swapchain_color_space&quot;" name="XR_SONY_SWAPCHAIN_COLOR_SPACE_EXTENSION_NAME"/>
+
+            <enum offset="0" extends="XrStructureType"              name="XR_TYPE_COLOR_SPACES_ENUMERATE_INFO_SONY"/>
+            <enum offset="1" extends="XrStructureType"              name="XR_TYPE_SWAPCHAIN_CREATE_INFO_COLOR_SPACE_SONY"/>
+
+            <type name="XrColorSpaceSONY"/>
+            <type name="XrColorSpacesEnumerateInfoSONY"/>
+            <type name="XrSwapchainCreateInfoColorSpaceSONY"/>
+
+            <command name="xrEnumerateColorSpacesSONY"/>
         </require>
     </extension>
 
@@ -22353,10 +23122,28 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
         </require>
     </extension>
 
-    <extension name="XR_ANDROID_extension_788" number="788" type="instance" supported="disabled">
+    <extension name="XR_ANDROID_google_cloud_auth" number="788" type="instance" supported="openxr" depends="XR_EXT_future">
         <require>
-            <enum value="1"                                    name="XR_ANDROID_extension_788_SPEC_VERSION"/>
-            <enum value="&quot;XR_ANDROID_extension_788&quot;" name="XR_ANDROID_EXTENSION_788_EXTENSION_NAME"/>
+            <enum value="1"                                        name="XR_ANDROID_google_cloud_auth_SPEC_VERSION"/>
+            <enum value="&quot;XR_ANDROID_google_cloud_auth&quot;" name="XR_ANDROID_GOOGLE_CLOUD_AUTH_EXTENSION_NAME"/>
+
+            <enum offset="0" dir="-" extends="XrResult"            name="XR_ERROR_KEYLESS_AUTH_NOT_SETUP_ANDROID"/>
+            <enum offset="1" dir="-" extends="XrResult"            name="XR_ERROR_KEYLESS_AUTH_FAILED_ANDROID"/>
+
+            <type name="XrGoogleCloudAuthInfoBaseHeaderANDROID"/>
+            <type name="XrGoogleCloudAuthInfoApiKeyANDROID"/>
+            <type name="XrGoogleCloudAuthInfoTokenANDROID"/>
+            <type name="XrGoogleCloudAuthInfoKeylessANDROID"/>
+            <type name="XrGoogleCloudAuthErrorANDROID"/>
+            <type name="XrGoogleCloudAuthErrorResultANDROID"/>
+
+            <enum offset="0" extends="XrStructureType" name="XR_TYPE_GOOGLE_CLOUD_AUTH_INFO_API_KEY_ANDROID"/>
+            <enum offset="1" extends="XrStructureType" name="XR_TYPE_GOOGLE_CLOUD_AUTH_INFO_TOKEN_ANDROID"/>
+            <enum offset="2" extends="XrStructureType" name="XR_TYPE_GOOGLE_CLOUD_AUTH_INFO_KEYLESS_ANDROID"/>
+            <enum offset="3" extends="XrStructureType" name="XR_TYPE_GOOGLE_CLOUD_AUTH_ERROR_RESULT_ANDROID"/>
+
+            <command name="xrSetGoogleCloudAuthAsyncANDROID"/>
+            <command name="xrSetGoogleCloudAuthCompleteANDROID"/>
         </require>
     </extension>
 
@@ -22367,10 +23154,45 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
         </require>
     </extension>
 
-    <extension name="XR_ANDROID_extension_790" number="790" type="instance" supported="disabled">
+    <extension name="XR_ANDROID_geospatial" number="790" type="instance" supported="openxr" depends="XR_EXT_future">
         <require>
-            <enum value="1"                                    name="XR_ANDROID_extension_790_SPEC_VERSION"/>
-            <enum value="&quot;XR_ANDROID_extension_790&quot;" name="XR_ANDROID_EXTENSION_790_EXTENSION_NAME"/>
+            <enum value="1"                                    name="XR_ANDROID_geospatial_SPEC_VERSION"/>
+            <enum value="&quot;XR_ANDROID_geospatial&quot;"    name="XR_ANDROID_GEOSPATIAL_EXTENSION_NAME"/>
+
+            <enum offset="0"         extends="XrStructureType" name="XR_TYPE_SYSTEM_GEOSPATIAL_PROPERTIES_ANDROID"/>
+            <enum offset="1"         extends="XrStructureType" name="XR_TYPE_GEOSPATIAL_TRACKER_CREATE_INFO_ANDROID"/>
+            <enum offset="2"         extends="XrStructureType" name="XR_TYPE_EVENT_DATA_GEOSPATIAL_TRACKER_STATE_CHANGED_ANDROID"/>
+            <enum offset="3"         extends="XrStructureType" name="XR_TYPE_GEOSPATIAL_POSE_FROM_POSE_LOCATE_INFO_ANDROID"/>
+            <enum offset="4"         extends="XrStructureType" name="XR_TYPE_GEOSPATIAL_POSE_RESULT_ANDROID"/>
+            <enum offset="5"         extends="XrStructureType" name="XR_TYPE_GEOSPATIAL_POSE_LOCATE_INFO_ANDROID"/>
+            <enum offset="6"         extends="XrStructureType" name="XR_TYPE_VPS_AVAILABILITY_CHECK_COMPLETION_ANDROID"/>
+
+            <enum offset="0"         extends="XrObjectType"    name="XR_OBJECT_TYPE_GEOSPATIAL_TRACKER_ANDROID"                   comment="XrGeospatialTrackerANDROID"/>
+
+            <enum offset="0" dir="-" extends="XrResult"        name="XR_ERROR_GEOSPATIAL_TRACKER_NOT_RUNNING_ANDROID"/>
+            <enum offset="1" dir="-" extends="XrResult"        name="XR_ERROR_GEOSPATIAL_COORDINATES_INVALID_ANDROID"/>
+            <enum offset="2" dir="-" extends="XrResult"        name="XR_ERROR_GEOSPATIAL_CLOUD_AUTH_FAILED_ANDROID"/>
+
+            <type name="XrGeospatialPoseANDROID"/>
+            <type name="XrSystemGeospatialPropertiesANDROID"/>
+            <type name="XrGeospatialTrackerANDROID"/>
+            <type name="XrGeospatialTrackerStateANDROID"/>
+            <type name="XrGeospatialTrackerCreateInfoANDROID"/>
+            <type name="XrEventDataGeospatialTrackerStateChangedANDROID"/>
+            <type name="XrGeospatialPoseFlagsANDROID"/>
+            <type name="XrGeospatialPoseFlagBitsANDROID"/>
+            <type name="XrGeospatialPoseFromPoseLocateInfoANDROID"/>
+            <type name="XrGeospatialPoseResultANDROID"/>
+            <type name="XrGeospatialPoseLocateInfoANDROID"/>
+            <type name="XrVPSAvailabilityANDROID"/>
+            <type name="XrVPSAvailabilityCheckCompletionANDROID"/>
+
+            <command name="xrCreateGeospatialTrackerANDROID"/>
+            <command name="xrDestroyGeospatialTrackerANDROID"/>
+            <command name="xrLocateGeospatialPoseFromPoseANDROID"/>
+            <command name="xrLocateGeospatialPoseANDROID"/>
+            <command name="xrCheckVpsAvailabilityAsyncANDROID"/>
+            <command name="xrCheckVpsAvailabilityCompleteANDROID"/>
         </require>
     </extension>
 
@@ -22446,10 +23268,29 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
         </require>
     </extension>
 
-    <extension name="XR_ANDROID_extension_798" number="798" type="instance" supported="disabled">
+    <extension name="XR_ANDROID_geospatial_anchor" number="798" type="instance" supported="openxr" depends="XR_ANDROID_geospatial+XR_EXT_future+XR_EXT_spatial_entity+XR_EXT_spatial_anchor">
         <require>
-            <enum value="1"                                    name="XR_ANDROID_extension_798_SPEC_VERSION"/>
-            <enum value="&quot;XR_ANDROID_extension_798&quot;" name="XR_ANDROID_EXTENSION_798_EXTENSION_NAME"/>
+            <enum value="1"                                        name="XR_ANDROID_geospatial_anchor_SPEC_VERSION"/>
+            <enum value="&quot;XR_ANDROID_geospatial_anchor&quot;" name="XR_ANDROID_GEOSPATIAL_ANCHOR_EXTENSION_NAME"/>
+
+            <enum offset="0"         extends="XrStructureType"     name="XR_TYPE_GEOSPATIAL_ANCHOR_CREATE_INFO_ANDROID"/>
+            <enum offset="1"         extends="XrStructureType"     name="XR_TYPE_SURFACE_ANCHOR_CREATE_INFO_ANDROID"/>
+            <enum offset="2"         extends="XrStructureType"     name="XR_TYPE_SURFACE_ANCHOR_CREATE_COMPLETION_ANDROID"/>
+            <enum offset="3"         extends="XrStructureType"     name="XR_TYPE_SYSTEM_GEOSPATIAL_ANCHOR_PROPERTIES_ANDROID"/>
+            <enum offset="4"         extends="XrStructureType"     name="XR_TYPE_GEOSPATIAL_TRACKER_ANCHOR_TRACKING_INFO_ANDROID"/>
+
+            <enum offset="0" dir="-" extends="XrResult"            name="XR_ERROR_SURFACE_ANCHOR_LOCATION_UNSUPPORTED_ANDROID"/>
+
+            <type name="XrSystemGeospatialAnchorPropertiesANDROID"/>
+            <type name="XrGeospatialTrackerAnchorTrackingInfoANDROID"/>
+            <type name="XrGeospatialAnchorCreateInfoANDROID"/>
+            <type name="XrSurfaceAnchorTypeANDROID"/>
+            <type name="XrSurfaceAnchorCreateInfoANDROID"/>
+            <type name="XrSurfaceAnchorCreateCompletionANDROID"/>
+
+            <command name="xrCreateGeospatialAnchorANDROID"/>
+            <command name="xrCreateSurfaceAnchorAsyncANDROID"/>
+            <command name="xrCreateSurfaceAnchorCompleteANDROID"/>
         </require>
     </extension>
 
@@ -22744,6 +23585,7 @@ typedef XrResult (XRAPI_PTR *<name>PFN_xrCreateApiLayerInstance</name>)(
             <enum value="1"                                         name="XR_EXT_loader_init_properties_SPEC_VERSION"/>
             <enum value="&quot;XR_EXT_loader_init_properties&quot;" name="XR_EXT_LOADER_INIT_PROPERTIES_EXTENSION_NAME"/>
             <type name="XrLoaderInitInfoPropertiesEXT"/>
+            <type name="XrLoaderInitPropertyValueEXT"/>
             <enum offset="0" extends="XrStructureType" name="XR_TYPE_LOADER_INIT_INFO_PROPERTIES_EXT"/>
         </require>
     </extension>
