@@ -19,7 +19,7 @@ on:
 jobs:
   publish:
     if: github.event_name != 'schedule' || github.ref == 'refs/heads/main'
-    uses: EvergineTeam/evergine-standards/.github/workflows/binding-xml-cd.yml@v2
+    uses: EvergineTeam/Evergine.Bindings/.github/workflows/binding-xml-cd.yml@v1
     with:
       xml-url: "https://raw.githubusercontent.com/KhronosGroup/OpenXR-Docs/master/specification/registry/xr.xml"
       xml-path: "KhronosRegistry/xr.xml"

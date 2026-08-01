@@ -1,0 +1,26 @@
+# Binding manifest — see https://github.com/EvergineTeam/Evergine.Bindings
+# Schema: https://github.com/EvergineTeam/Evergine.Bindings/blob/main/binding.schema.json
+toolbox: 1.0.0
+
+package:
+  id: Evergine.Bindings.OpenXR
+  project: OpenXRGen/Evergine.Bindings.OpenXR/Evergine.Bindings.OpenXR.csproj
+  target-framework: net10.0
+  runtime-identifier: ""
+
+upstream:
+  kind: http-file
+  language: c
+  project: https://github.com/KhronosGroup/OpenXR-Docs
+  version-from: spec-attribute      # XR_CURRENT_API_VERSION inside xr.xml
+  sources:
+    # Note: OpenXR-Docs still uses `master` as its default branch, unlike Vulkan-Docs.
+    - url: https://raw.githubusercontent.com/KhronosGroup/OpenXR-Docs/master/specification/registry/xr.xml
+      path: KhronosRegistry/xr.xml
+      format: khronos-xml
+
+generator:
+  project: OpenXRGen/OpenXRGen/OpenXRGen.csproj
+  name: OpenXR
+  output:
+    - OpenXRGen/Evergine.Bindings.OpenXR/Generated
