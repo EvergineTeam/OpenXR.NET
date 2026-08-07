@@ -8,6 +8,7 @@
 		<Description>Low-level bindings for OpenXR used in Evergine</Description>
 		<RepositoryUrl>https://github.com/EvergineTeam/OpenXR.NET</RepositoryUrl>
 		<PackageIcon>icon.png</PackageIcon>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 	</PropertyGroup>
 
