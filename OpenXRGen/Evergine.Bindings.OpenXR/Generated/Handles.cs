@@ -257,21 +257,6 @@ namespace Evergine.Bindings.OpenXR
 		public override int GetHashCode() => Handle.GetHashCode();
 	}
 
-	public partial struct XrTrackableTrackerANDROID : IEquatable<XrTrackableTrackerANDROID>
-	{
-		public readonly IntPtr Handle;
-		public XrTrackableTrackerANDROID(IntPtr existingHandle) { Handle = existingHandle; }
-		public static XrTrackableTrackerANDROID Null => new XrTrackableTrackerANDROID(IntPtr.Zero);
-		public static implicit operator XrTrackableTrackerANDROID(IntPtr handle) => new XrTrackableTrackerANDROID(handle);
-		public static bool operator ==(XrTrackableTrackerANDROID left, XrTrackableTrackerANDROID right) => left.Handle == right.Handle;
-		public static bool operator !=(XrTrackableTrackerANDROID left, XrTrackableTrackerANDROID right) => left.Handle != right.Handle;
-		public static bool operator ==(XrTrackableTrackerANDROID left, IntPtr right) => left.Handle == right;
-		public static bool operator !=(XrTrackableTrackerANDROID left, IntPtr right) => left.Handle != right;
-		public bool Equals(XrTrackableTrackerANDROID h) => Handle == h.Handle;
-		public override bool Equals(object o) => o is XrTrackableTrackerANDROID h && Equals(h);
-		public override int GetHashCode() => Handle.GetHashCode();
-	}
-
 	public partial struct XrDeviceAnchorPersistenceANDROID : IEquatable<XrDeviceAnchorPersistenceANDROID>
 	{
 		public readonly IntPtr Handle;
@@ -329,6 +314,36 @@ namespace Evergine.Bindings.OpenXR
 		public static bool operator !=(XrSceneMeshSnapshotANDROID left, IntPtr right) => left.Handle != right;
 		public bool Equals(XrSceneMeshSnapshotANDROID h) => Handle == h.Handle;
 		public override bool Equals(object o) => o is XrSceneMeshSnapshotANDROID h && Equals(h);
+		public override int GetHashCode() => Handle.GetHashCode();
+	}
+
+	public partial struct XrEyeTrackerANDROID : IEquatable<XrEyeTrackerANDROID>
+	{
+		public readonly IntPtr Handle;
+		public XrEyeTrackerANDROID(IntPtr existingHandle) { Handle = existingHandle; }
+		public static XrEyeTrackerANDROID Null => new XrEyeTrackerANDROID(IntPtr.Zero);
+		public static implicit operator XrEyeTrackerANDROID(IntPtr handle) => new XrEyeTrackerANDROID(handle);
+		public static bool operator ==(XrEyeTrackerANDROID left, XrEyeTrackerANDROID right) => left.Handle == right.Handle;
+		public static bool operator !=(XrEyeTrackerANDROID left, XrEyeTrackerANDROID right) => left.Handle != right.Handle;
+		public static bool operator ==(XrEyeTrackerANDROID left, IntPtr right) => left.Handle == right;
+		public static bool operator !=(XrEyeTrackerANDROID left, IntPtr right) => left.Handle != right;
+		public bool Equals(XrEyeTrackerANDROID h) => Handle == h.Handle;
+		public override bool Equals(object o) => o is XrEyeTrackerANDROID h && Equals(h);
+		public override int GetHashCode() => Handle.GetHashCode();
+	}
+
+	public partial struct XrLightEstimatorANDROID : IEquatable<XrLightEstimatorANDROID>
+	{
+		public readonly IntPtr Handle;
+		public XrLightEstimatorANDROID(IntPtr existingHandle) { Handle = existingHandle; }
+		public static XrLightEstimatorANDROID Null => new XrLightEstimatorANDROID(IntPtr.Zero);
+		public static implicit operator XrLightEstimatorANDROID(IntPtr handle) => new XrLightEstimatorANDROID(handle);
+		public static bool operator ==(XrLightEstimatorANDROID left, XrLightEstimatorANDROID right) => left.Handle == right.Handle;
+		public static bool operator !=(XrLightEstimatorANDROID left, XrLightEstimatorANDROID right) => left.Handle != right.Handle;
+		public static bool operator ==(XrLightEstimatorANDROID left, IntPtr right) => left.Handle == right;
+		public static bool operator !=(XrLightEstimatorANDROID left, IntPtr right) => left.Handle != right;
+		public bool Equals(XrLightEstimatorANDROID h) => Handle == h.Handle;
+		public override bool Equals(object o) => o is XrLightEstimatorANDROID h && Equals(h);
 		public override int GetHashCode() => Handle.GetHashCode();
 	}
 
@@ -827,6 +842,21 @@ namespace Evergine.Bindings.OpenXR
 		public override int GetHashCode() => Handle.GetHashCode();
 	}
 
+	public partial struct XrGeospatialTrackerANDROID : IEquatable<XrGeospatialTrackerANDROID>
+	{
+		public readonly IntPtr Handle;
+		public XrGeospatialTrackerANDROID(IntPtr existingHandle) { Handle = existingHandle; }
+		public static XrGeospatialTrackerANDROID Null => new XrGeospatialTrackerANDROID(IntPtr.Zero);
+		public static implicit operator XrGeospatialTrackerANDROID(IntPtr handle) => new XrGeospatialTrackerANDROID(handle);
+		public static bool operator ==(XrGeospatialTrackerANDROID left, XrGeospatialTrackerANDROID right) => left.Handle == right.Handle;
+		public static bool operator !=(XrGeospatialTrackerANDROID left, XrGeospatialTrackerANDROID right) => left.Handle != right.Handle;
+		public static bool operator ==(XrGeospatialTrackerANDROID left, IntPtr right) => left.Handle == right;
+		public static bool operator !=(XrGeospatialTrackerANDROID left, IntPtr right) => left.Handle != right;
+		public bool Equals(XrGeospatialTrackerANDROID h) => Handle == h.Handle;
+		public override bool Equals(object o) => o is XrGeospatialTrackerANDROID h && Equals(h);
+		public override int GetHashCode() => Handle.GetHashCode();
+	}
+
 	public partial struct XrSpatialGraphNodeBindingMSFT : IEquatable<XrSpatialGraphNodeBindingMSFT>
 	{
 		public readonly IntPtr Handle;
@@ -899,6 +929,21 @@ namespace Evergine.Bindings.OpenXR
 		public static bool operator !=(XrTrackableImageDatabaseANDROID left, IntPtr right) => left.Handle != right;
 		public bool Equals(XrTrackableImageDatabaseANDROID h) => Handle == h.Handle;
 		public override bool Equals(object o) => o is XrTrackableImageDatabaseANDROID h && Equals(h);
+		public override int GetHashCode() => Handle.GetHashCode();
+	}
+
+	public partial struct XrTrackableTrackerANDROID : IEquatable<XrTrackableTrackerANDROID>
+	{
+		public readonly IntPtr Handle;
+		public XrTrackableTrackerANDROID(IntPtr existingHandle) { Handle = existingHandle; }
+		public static XrTrackableTrackerANDROID Null => new XrTrackableTrackerANDROID(IntPtr.Zero);
+		public static implicit operator XrTrackableTrackerANDROID(IntPtr handle) => new XrTrackableTrackerANDROID(handle);
+		public static bool operator ==(XrTrackableTrackerANDROID left, XrTrackableTrackerANDROID right) => left.Handle == right.Handle;
+		public static bool operator !=(XrTrackableTrackerANDROID left, XrTrackableTrackerANDROID right) => left.Handle != right.Handle;
+		public static bool operator ==(XrTrackableTrackerANDROID left, IntPtr right) => left.Handle == right;
+		public static bool operator !=(XrTrackableTrackerANDROID left, IntPtr right) => left.Handle != right;
+		public bool Equals(XrTrackableTrackerANDROID h) => Handle == h.Handle;
+		public override bool Equals(object o) => o is XrTrackableTrackerANDROID h && Equals(h);
 		public override int GetHashCode() => Handle.GetHashCode();
 	}
 
@@ -977,21 +1022,6 @@ namespace Evergine.Bindings.OpenXR
 		public override int GetHashCode() => Handle.GetHashCode();
 	}
 
-	public partial struct XrTrackableANDROID : IEquatable<XrTrackableANDROID>
-	{
-		public readonly ulong Handle;
-		public XrTrackableANDROID(ulong existingHandle) { Handle = existingHandle; }
-		public static XrTrackableANDROID Null => new XrTrackableANDROID(0);
-		public static implicit operator XrTrackableANDROID(ulong handle) => new XrTrackableANDROID(handle);
-		public static bool operator ==(XrTrackableANDROID left, XrTrackableANDROID right) => left.Handle == right.Handle;
-		public static bool operator !=(XrTrackableANDROID left, XrTrackableANDROID right) => left.Handle != right.Handle;
-		public static bool operator ==(XrTrackableANDROID left, ulong right) => left.Handle == right;
-		public static bool operator !=(XrTrackableANDROID left, ulong right) => left.Handle != right;
-		public bool Equals(XrTrackableANDROID h) => Handle == h.Handle;
-		public override bool Equals(object o) => o is XrTrackableANDROID h && Equals(h);
-		public override int GetHashCode() => Handle.GetHashCode();
-	}
-
 	public partial struct XrMarkerML : IEquatable<XrMarkerML>
 	{
 		public readonly ulong Handle;
@@ -1064,6 +1094,21 @@ namespace Evergine.Bindings.OpenXR
 		public static bool operator !=(XrSpatialEntityIdBD left, ulong right) => left.Handle != right;
 		public bool Equals(XrSpatialEntityIdBD h) => Handle == h.Handle;
 		public override bool Equals(object o) => o is XrSpatialEntityIdBD h && Equals(h);
+		public override int GetHashCode() => Handle.GetHashCode();
+	}
+
+	public partial struct XrTrackableANDROID : IEquatable<XrTrackableANDROID>
+	{
+		public readonly ulong Handle;
+		public XrTrackableANDROID(ulong existingHandle) { Handle = existingHandle; }
+		public static XrTrackableANDROID Null => new XrTrackableANDROID(0);
+		public static implicit operator XrTrackableANDROID(ulong handle) => new XrTrackableANDROID(handle);
+		public static bool operator ==(XrTrackableANDROID left, XrTrackableANDROID right) => left.Handle == right.Handle;
+		public static bool operator !=(XrTrackableANDROID left, XrTrackableANDROID right) => left.Handle != right.Handle;
+		public static bool operator ==(XrTrackableANDROID left, ulong right) => left.Handle == right;
+		public static bool operator !=(XrTrackableANDROID left, ulong right) => left.Handle != right;
+		public bool Equals(XrTrackableANDROID h) => Handle == h.Handle;
+		public override bool Equals(object o) => o is XrTrackableANDROID h && Equals(h);
 		public override int GetHashCode() => Handle.GetHashCode();
 	}
 

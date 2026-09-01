@@ -2130,6 +2130,18 @@ namespace Evergine.Bindings.OpenXR
 			=> xrCaptureSceneCompleteBD_ptr(provider, future, completion);
 
 		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrStartBodyTrackingCalibrationAppBDDelegate(XrSession session);
+		private static xrStartBodyTrackingCalibrationAppBDDelegate xrStartBodyTrackingCalibrationAppBD_ptr;
+		public static XrResult xrStartBodyTrackingCalibrationAppBD(XrSession session)
+			=> xrStartBodyTrackingCalibrationAppBD_ptr(session);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrGetBodyTrackingStateBDDelegate(XrSession session, XrBodyTrackingStateBD* state);
+		private static xrGetBodyTrackingStateBDDelegate xrGetBodyTrackingStateBD_ptr;
+		public static XrResult xrGetBodyTrackingStateBD(XrSession session, XrBodyTrackingStateBD* state)
+			=> xrGetBodyTrackingStateBD_ptr(session, state);
+
+		[UnmanagedFunctionPointer(CallConv)]
 		private delegate XrResult xrEnumerateSupportedAudioSampleRateBDDelegate(XrSession session, uint sampleRateCapacityInput, uint* sampleRateCountOutput, XrAudioSampleRateBD* sampleRates);
 		private static xrEnumerateSupportedAudioSampleRateBDDelegate xrEnumerateSupportedAudioSampleRateBD_ptr;
 		public static XrResult xrEnumerateSupportedAudioSampleRateBD(XrSession session, uint sampleRateCapacityInput, uint* sampleRateCountOutput, XrAudioSampleRateBD* sampleRates)
@@ -2326,6 +2338,30 @@ namespace Evergine.Bindings.OpenXR
 		private static xrCreateAnchorSpaceANDROIDDelegate xrCreateAnchorSpaceANDROID_ptr;
 		public static XrResult xrCreateAnchorSpaceANDROID(XrSession session, XrAnchorSpaceCreateInfoANDROID* createInfo, XrSpace* anchorOutput)
 			=> xrCreateAnchorSpaceANDROID_ptr(session, createInfo, anchorOutput);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrCreateEyeTrackerANDROIDDelegate(XrSession session, XrEyeTrackerCreateInfoANDROID* createInfo, XrEyeTrackerANDROID* eyeTracker);
+		private static xrCreateEyeTrackerANDROIDDelegate xrCreateEyeTrackerANDROID_ptr;
+		public static XrResult xrCreateEyeTrackerANDROID(XrSession session, XrEyeTrackerCreateInfoANDROID* createInfo, XrEyeTrackerANDROID* eyeTracker)
+			=> xrCreateEyeTrackerANDROID_ptr(session, createInfo, eyeTracker);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrDestroyEyeTrackerANDROIDDelegate(XrEyeTrackerANDROID eyeTracker);
+		private static xrDestroyEyeTrackerANDROIDDelegate xrDestroyEyeTrackerANDROID_ptr;
+		public static XrResult xrDestroyEyeTrackerANDROID(XrEyeTrackerANDROID eyeTracker)
+			=> xrDestroyEyeTrackerANDROID_ptr(eyeTracker);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrGetFineTrackingEyesInfoANDROIDDelegate(XrEyeTrackerANDROID eyeTracker, XrEyesGetInfoANDROID* getInfo, XrEyesANDROID* eyesOutput);
+		private static xrGetFineTrackingEyesInfoANDROIDDelegate xrGetFineTrackingEyesInfoANDROID_ptr;
+		public static XrResult xrGetFineTrackingEyesInfoANDROID(XrEyeTrackerANDROID eyeTracker, XrEyesGetInfoANDROID* getInfo, XrEyesANDROID* eyesOutput)
+			=> xrGetFineTrackingEyesInfoANDROID_ptr(eyeTracker, getInfo, eyesOutput);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrGetCoarseTrackingEyesInfoANDROIDDelegate(XrEyeTrackerANDROID eyeTracker, XrEyesGetInfoANDROID* getInfo, XrEyesANDROID* eyesOutput);
+		private static xrGetCoarseTrackingEyesInfoANDROIDDelegate xrGetCoarseTrackingEyesInfoANDROID_ptr;
+		public static XrResult xrGetCoarseTrackingEyesInfoANDROID(XrEyeTrackerANDROID eyeTracker, XrEyesGetInfoANDROID* getInfo, XrEyesANDROID* eyesOutput)
+			=> xrGetCoarseTrackingEyesInfoANDROID_ptr(eyeTracker, getInfo, eyesOutput);
 
 		[UnmanagedFunctionPointer(CallConv)]
 		private delegate XrResult xrEnumerateSupportedPersistenceAnchorTypesANDROIDDelegate(XrInstance instance, XrSystemId systemId, uint trackableTypeCapacityInput, uint* trackableTypeCountOutput, XrTrackableTypeANDROID* trackableTypes);
@@ -2556,6 +2592,12 @@ namespace Evergine.Bindings.OpenXR
 			=> xrGetFacialExpressionBlendShapePropertiesML_ptr(facialExpressionClient, blendShapeGetInfo, blendShapeCount, blendShapes);
 
 		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrRequestBoundaryVisibilityMETADelegate(XrSession session, XrBoundaryVisibilityMETA boundaryVisibility);
+		private static xrRequestBoundaryVisibilityMETADelegate xrRequestBoundaryVisibilityMETA_ptr;
+		public static XrResult xrRequestBoundaryVisibilityMETA(XrSession session, XrBoundaryVisibilityMETA boundaryVisibility)
+			=> xrRequestBoundaryVisibilityMETA_ptr(session, boundaryVisibility);
+
+		[UnmanagedFunctionPointer(CallConv)]
 		private delegate XrResult xrResumeSimultaneousHandsAndControllersTrackingMETADelegate(XrSession session, XrSimultaneousHandsAndControllersTrackingResumeInfoMETA* resumeInfo);
 		private static xrResumeSimultaneousHandsAndControllersTrackingMETADelegate xrResumeSimultaneousHandsAndControllersTrackingMETA_ptr;
 		public static XrResult xrResumeSimultaneousHandsAndControllersTrackingMETA(XrSession session, XrSimultaneousHandsAndControllersTrackingResumeInfoMETA* resumeInfo)
@@ -2566,6 +2608,18 @@ namespace Evergine.Bindings.OpenXR
 		private static xrPauseSimultaneousHandsAndControllersTrackingMETADelegate xrPauseSimultaneousHandsAndControllersTrackingMETA_ptr;
 		public static XrResult xrPauseSimultaneousHandsAndControllersTrackingMETA(XrSession session, XrSimultaneousHandsAndControllersTrackingPauseInfoMETA* pauseInfo)
 			=> xrPauseSimultaneousHandsAndControllersTrackingMETA_ptr(session, pauseInfo);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrGetSpaceRoomMeshMETADelegate(XrSpace space, XrSpaceRoomMeshGetInfoMETA* getInfo, XrRoomMeshMETA* roomMeshOutput);
+		private static xrGetSpaceRoomMeshMETADelegate xrGetSpaceRoomMeshMETA_ptr;
+		public static XrResult xrGetSpaceRoomMeshMETA(XrSpace space, XrSpaceRoomMeshGetInfoMETA* getInfo, XrRoomMeshMETA* roomMeshOutput)
+			=> xrGetSpaceRoomMeshMETA_ptr(space, getInfo, roomMeshOutput);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrGetSpaceRoomMeshFaceIndicesMETADelegate(XrSpace space, XrUuid* faceUuid, XrRoomMeshFaceIndicesMETA* roomMeshFaceIndicesOutput);
+		private static xrGetSpaceRoomMeshFaceIndicesMETADelegate xrGetSpaceRoomMeshFaceIndicesMETA_ptr;
+		public static XrResult xrGetSpaceRoomMeshFaceIndicesMETA(XrSpace space, XrUuid* faceUuid, XrRoomMeshFaceIndicesMETA* roomMeshFaceIndicesOutput)
+			=> xrGetSpaceRoomMeshFaceIndicesMETA_ptr(space, faceUuid, roomMeshFaceIndicesOutput);
 
 		[UnmanagedFunctionPointer(CallConv)]
 		private delegate XrResult xrStartColocationDiscoveryMETADelegate(XrSession session, XrColocationDiscoveryStartInfoMETA* info, XrAsyncRequestIdFB* discoveryRequestId);
@@ -2620,6 +2674,30 @@ namespace Evergine.Bindings.OpenXR
 		private static xrSetTilePropertiesHintMETADelegate xrSetTilePropertiesHintMETA_ptr;
 		public static XrResult xrSetTilePropertiesHintMETA(XrSession session, XrTilePropertiesHintMETA* properties)
 			=> xrSetTilePropertiesHintMETA_ptr(session, properties);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrSetHandTrackingFrequencyHintMETADelegate(XrSession session, XrHandTrackingFrequencyHintMETA frequencyHint);
+		private static xrSetHandTrackingFrequencyHintMETADelegate xrSetHandTrackingFrequencyHintMETA_ptr;
+		public static XrResult xrSetHandTrackingFrequencyHintMETA(XrSession session, XrHandTrackingFrequencyHintMETA frequencyHint)
+			=> xrSetHandTrackingFrequencyHintMETA_ptr(session, frequencyHint);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrCreateLightEstimatorANDROIDDelegate(XrSession session, XrLightEstimatorCreateInfoANDROID* createInfo, XrLightEstimatorANDROID* outHandle);
+		private static xrCreateLightEstimatorANDROIDDelegate xrCreateLightEstimatorANDROID_ptr;
+		public static XrResult xrCreateLightEstimatorANDROID(XrSession session, XrLightEstimatorCreateInfoANDROID* createInfo, XrLightEstimatorANDROID* outHandle)
+			=> xrCreateLightEstimatorANDROID_ptr(session, createInfo, outHandle);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrDestroyLightEstimatorANDROIDDelegate(XrLightEstimatorANDROID estimator);
+		private static xrDestroyLightEstimatorANDROIDDelegate xrDestroyLightEstimatorANDROID_ptr;
+		public static XrResult xrDestroyLightEstimatorANDROID(XrLightEstimatorANDROID estimator)
+			=> xrDestroyLightEstimatorANDROID_ptr(estimator);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrGetLightEstimateANDROIDDelegate(XrLightEstimatorANDROID estimator, XrLightEstimateGetInfoANDROID* input, XrLightEstimateANDROID* output);
+		private static xrGetLightEstimateANDROIDDelegate xrGetLightEstimateANDROID_ptr;
+		public static XrResult xrGetLightEstimateANDROID(XrLightEstimatorANDROID estimator, XrLightEstimateGetInfoANDROID* input, XrLightEstimateANDROID* output)
+			=> xrGetLightEstimateANDROID_ptr(estimator, input, output);
 
 		[UnmanagedFunctionPointer(CallConv)]
 		private delegate XrResult xrShareAnchorANDROIDDelegate(XrSession session, XrAnchorSharingInfoANDROID* sharingInfo, XrAnchorSharingTokenANDROID* anchorToken);
@@ -2844,6 +2922,12 @@ namespace Evergine.Bindings.OpenXR
 			=> xrGetSpatialBufferVector3fEXT_ptr(snapshot, info, bufferCapacityInput, bufferCountOutput, buffer);
 
 		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrGetStationaryReferenceSpaceGenerationIdEXTDelegate(XrSession session, XrStationaryReferenceSpaceGenerationIdGetInfoEXT* getInfo, XrStationaryReferenceSpaceGenerationIdResultEXT* generationIdResult);
+		private static xrGetStationaryReferenceSpaceGenerationIdEXTDelegate xrGetStationaryReferenceSpaceGenerationIdEXT_ptr;
+		public static XrResult xrGetStationaryReferenceSpaceGenerationIdEXT(XrSession session, XrStationaryReferenceSpaceGenerationIdGetInfoEXT* getInfo, XrStationaryReferenceSpaceGenerationIdResultEXT* generationIdResult)
+			=> xrGetStationaryReferenceSpaceGenerationIdEXT_ptr(session, getInfo, generationIdResult);
+
+		[UnmanagedFunctionPointer(CallConv)]
 		private delegate XrResult xrCreateSpatialAnchorEXTDelegate(XrSpatialContextEXT spatialContext, XrSpatialAnchorCreateInfoEXT* createInfo, XrSpatialEntityIdEXT* anchorEntityId, XrSpatialEntityEXT* anchorEntity);
 		private static xrCreateSpatialAnchorEXTDelegate xrCreateSpatialAnchorEXT_ptr;
 		public static XrResult xrCreateSpatialAnchorEXT(XrSpatialContextEXT spatialContext, XrSpatialAnchorCreateInfoEXT* createInfo, XrSpatialEntityIdEXT* anchorEntityId, XrSpatialEntityEXT* anchorEntity)
@@ -2872,6 +2956,18 @@ namespace Evergine.Bindings.OpenXR
 		private static xrDestroySpatialPersistenceContextEXTDelegate xrDestroySpatialPersistenceContextEXT_ptr;
 		public static XrResult xrDestroySpatialPersistenceContextEXT(XrSpatialPersistenceContextEXT persistenceContext)
 			=> xrDestroySpatialPersistenceContextEXT_ptr(persistenceContext);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrHapticParametricGetPropertiesEXTDelegate(XrSession session, XrHapticActionInfo* hapticActionInfo, XrHapticParametricPropertiesEXT* parametricProperties);
+		private static xrHapticParametricGetPropertiesEXTDelegate xrHapticParametricGetPropertiesEXT_ptr;
+		public static XrResult xrHapticParametricGetPropertiesEXT(XrSession session, XrHapticActionInfo* hapticActionInfo, XrHapticParametricPropertiesEXT* parametricProperties)
+			=> xrHapticParametricGetPropertiesEXT_ptr(session, hapticActionInfo, parametricProperties);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrEnumerateColorSpacesSONYDelegate(XrSession session, XrColorSpacesEnumerateInfoSONY* enumerateInfo, uint colorSpaceCapacityInput, uint* colorSpaceCountOutput, XrColorSpaceSONY* colorSpaces);
+		private static xrEnumerateColorSpacesSONYDelegate xrEnumerateColorSpacesSONY_ptr;
+		public static XrResult xrEnumerateColorSpacesSONY(XrSession session, XrColorSpacesEnumerateInfoSONY* enumerateInfo, uint colorSpaceCapacityInput, uint* colorSpaceCountOutput, XrColorSpaceSONY* colorSpaces)
+			=> xrEnumerateColorSpacesSONY_ptr(session, enumerateInfo, colorSpaceCapacityInput, colorSpaceCountOutput, colorSpaces);
 
 		[UnmanagedFunctionPointer(CallConv)]
 		private delegate XrResult xrPersistSpatialEntityAsyncEXTDelegate(XrSpatialPersistenceContextEXT persistenceContext, XrSpatialEntityPersistInfoEXT* persistInfo, ulong* future);
@@ -2904,6 +3000,54 @@ namespace Evergine.Bindings.OpenXR
 			=> xrCreateSpatialRaycastSnapshotANDROID_ptr(spatialContext, createInfo, snapshot);
 
 		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrSetGoogleCloudAuthAsyncANDROIDDelegate(XrSession session, XrGoogleCloudAuthInfoBaseHeaderANDROID* authInfo, ulong* future);
+		private static xrSetGoogleCloudAuthAsyncANDROIDDelegate xrSetGoogleCloudAuthAsyncANDROID_ptr;
+		public static XrResult xrSetGoogleCloudAuthAsyncANDROID(XrSession session, XrGoogleCloudAuthInfoBaseHeaderANDROID* authInfo, ulong* future)
+			=> xrSetGoogleCloudAuthAsyncANDROID_ptr(session, authInfo, future);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrSetGoogleCloudAuthCompleteANDROIDDelegate(XrSession session, ulong future, XrFutureCompletionEXT* completion);
+		private static xrSetGoogleCloudAuthCompleteANDROIDDelegate xrSetGoogleCloudAuthCompleteANDROID_ptr;
+		public static XrResult xrSetGoogleCloudAuthCompleteANDROID(XrSession session, ulong future, XrFutureCompletionEXT* completion)
+			=> xrSetGoogleCloudAuthCompleteANDROID_ptr(session, future, completion);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrCreateGeospatialTrackerANDROIDDelegate(XrSession session, XrGeospatialTrackerCreateInfoANDROID* createInfo, XrGeospatialTrackerANDROID* geospatialTrackerOutput);
+		private static xrCreateGeospatialTrackerANDROIDDelegate xrCreateGeospatialTrackerANDROID_ptr;
+		public static XrResult xrCreateGeospatialTrackerANDROID(XrSession session, XrGeospatialTrackerCreateInfoANDROID* createInfo, XrGeospatialTrackerANDROID* geospatialTrackerOutput)
+			=> xrCreateGeospatialTrackerANDROID_ptr(session, createInfo, geospatialTrackerOutput);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrDestroyGeospatialTrackerANDROIDDelegate(XrGeospatialTrackerANDROID geospatialTracker);
+		private static xrDestroyGeospatialTrackerANDROIDDelegate xrDestroyGeospatialTrackerANDROID_ptr;
+		public static XrResult xrDestroyGeospatialTrackerANDROID(XrGeospatialTrackerANDROID geospatialTracker)
+			=> xrDestroyGeospatialTrackerANDROID_ptr(geospatialTracker);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrLocateGeospatialPoseFromPoseANDROIDDelegate(XrGeospatialTrackerANDROID geospatialTracker, XrGeospatialPoseFromPoseLocateInfoANDROID* locateInfo, XrGeospatialPoseResultANDROID* geospatialPoseResult);
+		private static xrLocateGeospatialPoseFromPoseANDROIDDelegate xrLocateGeospatialPoseFromPoseANDROID_ptr;
+		public static XrResult xrLocateGeospatialPoseFromPoseANDROID(XrGeospatialTrackerANDROID geospatialTracker, XrGeospatialPoseFromPoseLocateInfoANDROID* locateInfo, XrGeospatialPoseResultANDROID* geospatialPoseResult)
+			=> xrLocateGeospatialPoseFromPoseANDROID_ptr(geospatialTracker, locateInfo, geospatialPoseResult);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrLocateGeospatialPoseANDROIDDelegate(XrGeospatialTrackerANDROID geospatialTracker, XrGeospatialPoseLocateInfoANDROID* locateInfo, XrSpaceLocation* location);
+		private static xrLocateGeospatialPoseANDROIDDelegate xrLocateGeospatialPoseANDROID_ptr;
+		public static XrResult xrLocateGeospatialPoseANDROID(XrGeospatialTrackerANDROID geospatialTracker, XrGeospatialPoseLocateInfoANDROID* locateInfo, XrSpaceLocation* location)
+			=> xrLocateGeospatialPoseANDROID_ptr(geospatialTracker, locateInfo, location);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrCheckVpsAvailabilityAsyncANDROIDDelegate(XrSession session, double latitude, double longitude, ulong* future);
+		private static xrCheckVpsAvailabilityAsyncANDROIDDelegate xrCheckVpsAvailabilityAsyncANDROID_ptr;
+		public static XrResult xrCheckVpsAvailabilityAsyncANDROID(XrSession session, double latitude, double longitude, ulong* future)
+			=> xrCheckVpsAvailabilityAsyncANDROID_ptr(session, latitude, longitude, future);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrCheckVpsAvailabilityCompleteANDROIDDelegate(XrSession session, ulong future, XrVPSAvailabilityCheckCompletionANDROID* completion);
+		private static xrCheckVpsAvailabilityCompleteANDROIDDelegate xrCheckVpsAvailabilityCompleteANDROID_ptr;
+		public static XrResult xrCheckVpsAvailabilityCompleteANDROID(XrSession session, ulong future, XrVPSAvailabilityCheckCompletionANDROID* completion)
+			=> xrCheckVpsAvailabilityCompleteANDROID_ptr(session, future, completion);
+
+		[UnmanagedFunctionPointer(CallConv)]
 		private delegate XrResult xrEnumerateSpatialAnchorAttachableComponentsANDROIDDelegate(XrInstance instance, XrSystemId systemId, uint attachableComponentCapacityInput, uint* attachableComponentCountOutput, XrSpatialComponentTypeEXT* attachableComponents);
 		private static xrEnumerateSpatialAnchorAttachableComponentsANDROIDDelegate xrEnumerateSpatialAnchorAttachableComponentsANDROID_ptr;
 		public static XrResult xrEnumerateSpatialAnchorAttachableComponentsANDROID(XrInstance instance, XrSystemId systemId, uint attachableComponentCapacityInput, uint* attachableComponentCountOutput, XrSpatialComponentTypeEXT* attachableComponents)
@@ -2920,6 +3064,24 @@ namespace Evergine.Bindings.OpenXR
 		private static xrCreateSpatialAnchorSpaceFromIdANDROIDDelegate xrCreateSpatialAnchorSpaceFromIdANDROID_ptr;
 		public static XrResult xrCreateSpatialAnchorSpaceFromIdANDROID(XrSession session, XrSpatialContextEXT spatialContext, XrSpatialAnchorSpaceFromIdCreateInfoANDROID* createInfo, XrSpace* anchorSpace)
 			=> xrCreateSpatialAnchorSpaceFromIdANDROID_ptr(session, spatialContext, createInfo, anchorSpace);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrCreateGeospatialAnchorANDROIDDelegate(XrSpatialContextEXT spatialContext, XrGeospatialAnchorCreateInfoANDROID* createInfo, XrSpatialEntityIdEXT* anchorEntityId);
+		private static xrCreateGeospatialAnchorANDROIDDelegate xrCreateGeospatialAnchorANDROID_ptr;
+		public static XrResult xrCreateGeospatialAnchorANDROID(XrSpatialContextEXT spatialContext, XrGeospatialAnchorCreateInfoANDROID* createInfo, XrSpatialEntityIdEXT* anchorEntityId)
+			=> xrCreateGeospatialAnchorANDROID_ptr(spatialContext, createInfo, anchorEntityId);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrCreateSurfaceAnchorAsyncANDROIDDelegate(XrSpatialContextEXT spatialContext, XrSurfaceAnchorCreateInfoANDROID* createInfo, ulong* future);
+		private static xrCreateSurfaceAnchorAsyncANDROIDDelegate xrCreateSurfaceAnchorAsyncANDROID_ptr;
+		public static XrResult xrCreateSurfaceAnchorAsyncANDROID(XrSpatialContextEXT spatialContext, XrSurfaceAnchorCreateInfoANDROID* createInfo, ulong* future)
+			=> xrCreateSurfaceAnchorAsyncANDROID_ptr(spatialContext, createInfo, future);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrCreateSurfaceAnchorCompleteANDROIDDelegate(XrSpatialContextEXT spatialContext, ulong future, XrSurfaceAnchorCreateCompletionANDROID* completion);
+		private static xrCreateSurfaceAnchorCompleteANDROIDDelegate xrCreateSurfaceAnchorCompleteANDROID_ptr;
+		public static XrResult xrCreateSurfaceAnchorCompleteANDROID(XrSpatialContextEXT spatialContext, ulong future, XrSurfaceAnchorCreateCompletionANDROID* completion)
+			=> xrCreateSurfaceAnchorCompleteANDROID_ptr(spatialContext, future, completion);
 
 		public static void LoadFunctionPointers(XrInstance instance = default)
 		{
@@ -3282,6 +3444,8 @@ namespace Evergine.Bindings.OpenXR
 			nativeLib.LoadFunction("xrDownloadSharedSpatialAnchorCompleteBD",  out xrDownloadSharedSpatialAnchorCompleteBD_ptr);
 			nativeLib.LoadFunction("xrCaptureSceneAsyncBD",  out xrCaptureSceneAsyncBD_ptr);
 			nativeLib.LoadFunction("xrCaptureSceneCompleteBD",  out xrCaptureSceneCompleteBD_ptr);
+			nativeLib.LoadFunction("xrStartBodyTrackingCalibrationAppBD",  out xrStartBodyTrackingCalibrationAppBD_ptr);
+			nativeLib.LoadFunction("xrGetBodyTrackingStateBD",  out xrGetBodyTrackingStateBD_ptr);
 			nativeLib.LoadFunction("xrEnumerateSupportedAudioSampleRateBD",  out xrEnumerateSupportedAudioSampleRateBD_ptr);
 			nativeLib.LoadFunction("xrQueryFramesPerBufferRangeBD",  out xrQueryFramesPerBufferRangeBD_ptr);
 			nativeLib.LoadFunction("xrCreateSpatialAudioRendererBD",  out xrCreateSpatialAudioRendererBD_ptr);
@@ -3315,6 +3479,10 @@ namespace Evergine.Bindings.OpenXR
 			nativeLib.LoadFunction("xrGetAllTrackablesANDROID",  out xrGetAllTrackablesANDROID_ptr);
 			nativeLib.LoadFunction("xrGetTrackablePlaneANDROID",  out xrGetTrackablePlaneANDROID_ptr);
 			nativeLib.LoadFunction("xrCreateAnchorSpaceANDROID",  out xrCreateAnchorSpaceANDROID_ptr);
+			nativeLib.LoadFunction("xrCreateEyeTrackerANDROID",  out xrCreateEyeTrackerANDROID_ptr);
+			nativeLib.LoadFunction("xrDestroyEyeTrackerANDROID",  out xrDestroyEyeTrackerANDROID_ptr);
+			nativeLib.LoadFunction("xrGetFineTrackingEyesInfoANDROID",  out xrGetFineTrackingEyesInfoANDROID_ptr);
+			nativeLib.LoadFunction("xrGetCoarseTrackingEyesInfoANDROID",  out xrGetCoarseTrackingEyesInfoANDROID_ptr);
 			nativeLib.LoadFunction("xrEnumerateSupportedPersistenceAnchorTypesANDROID",  out xrEnumerateSupportedPersistenceAnchorTypesANDROID_ptr);
 			nativeLib.LoadFunction("xrCreateDeviceAnchorPersistenceANDROID",  out xrCreateDeviceAnchorPersistenceANDROID_ptr);
 			nativeLib.LoadFunction("xrDestroyDeviceAnchorPersistenceANDROID",  out xrDestroyDeviceAnchorPersistenceANDROID_ptr);
@@ -3353,8 +3521,11 @@ namespace Evergine.Bindings.OpenXR
 			nativeLib.LoadFunction("xrCreateFacialExpressionClientML",  out xrCreateFacialExpressionClientML_ptr);
 			nativeLib.LoadFunction("xrDestroyFacialExpressionClientML",  out xrDestroyFacialExpressionClientML_ptr);
 			nativeLib.LoadFunction("xrGetFacialExpressionBlendShapePropertiesML",  out xrGetFacialExpressionBlendShapePropertiesML_ptr);
+			nativeLib.LoadFunction("xrRequestBoundaryVisibilityMETA",  out xrRequestBoundaryVisibilityMETA_ptr);
 			nativeLib.LoadFunction("xrResumeSimultaneousHandsAndControllersTrackingMETA",  out xrResumeSimultaneousHandsAndControllersTrackingMETA_ptr);
 			nativeLib.LoadFunction("xrPauseSimultaneousHandsAndControllersTrackingMETA",  out xrPauseSimultaneousHandsAndControllersTrackingMETA_ptr);
+			nativeLib.LoadFunction("xrGetSpaceRoomMeshMETA",  out xrGetSpaceRoomMeshMETA_ptr);
+			nativeLib.LoadFunction("xrGetSpaceRoomMeshFaceIndicesMETA",  out xrGetSpaceRoomMeshFaceIndicesMETA_ptr);
 			nativeLib.LoadFunction("xrStartColocationDiscoveryMETA",  out xrStartColocationDiscoveryMETA_ptr);
 			nativeLib.LoadFunction("xrStopColocationDiscoveryMETA",  out xrStopColocationDiscoveryMETA_ptr);
 			nativeLib.LoadFunction("xrStartColocationAdvertisementMETA",  out xrStartColocationAdvertisementMETA_ptr);
@@ -3364,6 +3535,10 @@ namespace Evergine.Bindings.OpenXR
 			nativeLib.LoadFunction("xrDestroyEnvironmentRaycasterMETA",  out xrDestroyEnvironmentRaycasterMETA_ptr);
 			nativeLib.LoadFunction("xrPerformEnvironmentRaycastMETA",  out xrPerformEnvironmentRaycastMETA_ptr);
 			nativeLib.LoadFunction("xrSetTilePropertiesHintMETA",  out xrSetTilePropertiesHintMETA_ptr);
+			nativeLib.LoadFunction("xrSetHandTrackingFrequencyHintMETA",  out xrSetHandTrackingFrequencyHintMETA_ptr);
+			nativeLib.LoadFunction("xrCreateLightEstimatorANDROID",  out xrCreateLightEstimatorANDROID_ptr);
+			nativeLib.LoadFunction("xrDestroyLightEstimatorANDROID",  out xrDestroyLightEstimatorANDROID_ptr);
+			nativeLib.LoadFunction("xrGetLightEstimateANDROID",  out xrGetLightEstimateANDROID_ptr);
 			nativeLib.LoadFunction("xrShareAnchorANDROID",  out xrShareAnchorANDROID_ptr);
 			nativeLib.LoadFunction("xrUnshareAnchorANDROID",  out xrUnshareAnchorANDROID_ptr);
 			nativeLib.LoadFunction("xrGetTrackableMarkerANDROID",  out xrGetTrackableMarkerANDROID_ptr);
@@ -3401,19 +3576,33 @@ namespace Evergine.Bindings.OpenXR
 			nativeLib.LoadFunction("xrGetSpatialBufferFloatEXT",  out xrGetSpatialBufferFloatEXT_ptr);
 			nativeLib.LoadFunction("xrGetSpatialBufferVector2fEXT",  out xrGetSpatialBufferVector2fEXT_ptr);
 			nativeLib.LoadFunction("xrGetSpatialBufferVector3fEXT",  out xrGetSpatialBufferVector3fEXT_ptr);
+			nativeLib.LoadFunction("xrGetStationaryReferenceSpaceGenerationIdEXT",  out xrGetStationaryReferenceSpaceGenerationIdEXT_ptr);
 			nativeLib.LoadFunction("xrCreateSpatialAnchorEXT",  out xrCreateSpatialAnchorEXT_ptr);
 			nativeLib.LoadFunction("xrEnumerateSpatialPersistenceScopesEXT",  out xrEnumerateSpatialPersistenceScopesEXT_ptr);
 			nativeLib.LoadFunction("xrCreateSpatialPersistenceContextAsyncEXT",  out xrCreateSpatialPersistenceContextAsyncEXT_ptr);
 			nativeLib.LoadFunction("xrCreateSpatialPersistenceContextCompleteEXT",  out xrCreateSpatialPersistenceContextCompleteEXT_ptr);
 			nativeLib.LoadFunction("xrDestroySpatialPersistenceContextEXT",  out xrDestroySpatialPersistenceContextEXT_ptr);
+			nativeLib.LoadFunction("xrHapticParametricGetPropertiesEXT",  out xrHapticParametricGetPropertiesEXT_ptr);
+			nativeLib.LoadFunction("xrEnumerateColorSpacesSONY",  out xrEnumerateColorSpacesSONY_ptr);
 			nativeLib.LoadFunction("xrPersistSpatialEntityAsyncEXT",  out xrPersistSpatialEntityAsyncEXT_ptr);
 			nativeLib.LoadFunction("xrPersistSpatialEntityCompleteEXT",  out xrPersistSpatialEntityCompleteEXT_ptr);
 			nativeLib.LoadFunction("xrUnpersistSpatialEntityAsyncEXT",  out xrUnpersistSpatialEntityAsyncEXT_ptr);
 			nativeLib.LoadFunction("xrUnpersistSpatialEntityCompleteEXT",  out xrUnpersistSpatialEntityCompleteEXT_ptr);
 			nativeLib.LoadFunction("xrCreateSpatialRaycastSnapshotANDROID",  out xrCreateSpatialRaycastSnapshotANDROID_ptr);
+			nativeLib.LoadFunction("xrSetGoogleCloudAuthAsyncANDROID",  out xrSetGoogleCloudAuthAsyncANDROID_ptr);
+			nativeLib.LoadFunction("xrSetGoogleCloudAuthCompleteANDROID",  out xrSetGoogleCloudAuthCompleteANDROID_ptr);
+			nativeLib.LoadFunction("xrCreateGeospatialTrackerANDROID",  out xrCreateGeospatialTrackerANDROID_ptr);
+			nativeLib.LoadFunction("xrDestroyGeospatialTrackerANDROID",  out xrDestroyGeospatialTrackerANDROID_ptr);
+			nativeLib.LoadFunction("xrLocateGeospatialPoseFromPoseANDROID",  out xrLocateGeospatialPoseFromPoseANDROID_ptr);
+			nativeLib.LoadFunction("xrLocateGeospatialPoseANDROID",  out xrLocateGeospatialPoseANDROID_ptr);
+			nativeLib.LoadFunction("xrCheckVpsAvailabilityAsyncANDROID",  out xrCheckVpsAvailabilityAsyncANDROID_ptr);
+			nativeLib.LoadFunction("xrCheckVpsAvailabilityCompleteANDROID",  out xrCheckVpsAvailabilityCompleteANDROID_ptr);
 			nativeLib.LoadFunction("xrEnumerateSpatialAnchorAttachableComponentsANDROID",  out xrEnumerateSpatialAnchorAttachableComponentsANDROID_ptr);
 			nativeLib.LoadFunction("xrCreateSpatialAnchorSpaceANDROID",  out xrCreateSpatialAnchorSpaceANDROID_ptr);
 			nativeLib.LoadFunction("xrCreateSpatialAnchorSpaceFromIdANDROID",  out xrCreateSpatialAnchorSpaceFromIdANDROID_ptr);
+			nativeLib.LoadFunction("xrCreateGeospatialAnchorANDROID",  out xrCreateGeospatialAnchorANDROID_ptr);
+			nativeLib.LoadFunction("xrCreateSurfaceAnchorAsyncANDROID",  out xrCreateSurfaceAnchorAsyncANDROID_ptr);
+			nativeLib.LoadFunction("xrCreateSurfaceAnchorCompleteANDROID",  out xrCreateSurfaceAnchorCompleteANDROID_ptr);
 		}
 	}
 }
