@@ -2142,6 +2142,24 @@ namespace Evergine.Bindings.OpenXR
 			=> xrGetBodyTrackingStateBD_ptr(session, state);
 
 		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrEnumerateEnvironmentTextureResolutionsBDDelegate(XrSession session, uint resolutionCapacityInput, uint* resolutionCountOutput, XrEnvironmentTextureResolutionBD* resolutions);
+		private static xrEnumerateEnvironmentTextureResolutionsBDDelegate xrEnumerateEnvironmentTextureResolutionsBD_ptr;
+		public static XrResult xrEnumerateEnvironmentTextureResolutionsBD(XrSession session, uint resolutionCapacityInput, uint* resolutionCountOutput, XrEnvironmentTextureResolutionBD* resolutions)
+			=> xrEnumerateEnvironmentTextureResolutionsBD_ptr(session, resolutionCapacityInput, resolutionCountOutput, resolutions);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrEnumerateEnvironmentTexturePixelFormatsBDDelegate(XrSession session, uint pixelFormatCapacityInput, uint* pixelFormatCountOutput, XrEnvironmentTexturePixelFormatBD* pixelFormats);
+		private static xrEnumerateEnvironmentTexturePixelFormatsBDDelegate xrEnumerateEnvironmentTexturePixelFormatsBD_ptr;
+		public static XrResult xrEnumerateEnvironmentTexturePixelFormatsBD(XrSession session, uint pixelFormatCapacityInput, uint* pixelFormatCountOutput, XrEnvironmentTexturePixelFormatBD* pixelFormats)
+			=> xrEnumerateEnvironmentTexturePixelFormatsBD_ptr(session, pixelFormatCapacityInput, pixelFormatCountOutput, pixelFormats);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrEnumerateEnvironmentTextureTransferTypesBDDelegate(XrSession session, uint transferTypeCapacityInput, uint* transferTypeCountOutput, XrEnvironmentTextureTransferTypeBD* transferTypes);
+		private static xrEnumerateEnvironmentTextureTransferTypesBDDelegate xrEnumerateEnvironmentTextureTransferTypesBD_ptr;
+		public static XrResult xrEnumerateEnvironmentTextureTransferTypesBD(XrSession session, uint transferTypeCapacityInput, uint* transferTypeCountOutput, XrEnvironmentTextureTransferTypeBD* transferTypes)
+			=> xrEnumerateEnvironmentTextureTransferTypesBD_ptr(session, transferTypeCapacityInput, transferTypeCountOutput, transferTypes);
+
+		[UnmanagedFunctionPointer(CallConv)]
 		private delegate XrResult xrEnumerateSupportedAudioSampleRateBDDelegate(XrSession session, uint sampleRateCapacityInput, uint* sampleRateCountOutput, XrAudioSampleRateBD* sampleRates);
 		private static xrEnumerateSupportedAudioSampleRateBDDelegate xrEnumerateSupportedAudioSampleRateBD_ptr;
 		public static XrResult xrEnumerateSupportedAudioSampleRateBD(XrSession session, uint sampleRateCapacityInput, uint* sampleRateCountOutput, XrAudioSampleRateBD* sampleRates)
@@ -2928,6 +2946,102 @@ namespace Evergine.Bindings.OpenXR
 			=> xrGetStationaryReferenceSpaceGenerationIdEXT_ptr(session, getInfo, generationIdResult);
 
 		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrEnumerateAvailableCamerasBDDelegate(XrInstance instance, XrAvailableCamerasEnumerateInfoBD* enumerateInfo, uint cameraCapacityInput, uint* cameraCountOutput, XrAvailableCameraBD* cameras);
+		private static xrEnumerateAvailableCamerasBDDelegate xrEnumerateAvailableCamerasBD_ptr;
+		public static XrResult xrEnumerateAvailableCamerasBD(XrInstance instance, XrAvailableCamerasEnumerateInfoBD* enumerateInfo, uint cameraCapacityInput, uint* cameraCountOutput, XrAvailableCameraBD* cameras)
+			=> xrEnumerateAvailableCamerasBD_ptr(instance, enumerateInfo, cameraCapacityInput, cameraCountOutput, cameras);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrEnumerateCameraPropertyTypesBDDelegate(XrInstance instance, XrCameraPropertyTypesEnumerateInfoBD* enumerateInfo, XrCameraPropertyTypesBD* propertyTypes);
+		private static xrEnumerateCameraPropertyTypesBDDelegate xrEnumerateCameraPropertyTypesBD_ptr;
+		public static XrResult xrEnumerateCameraPropertyTypesBD(XrInstance instance, XrCameraPropertyTypesEnumerateInfoBD* enumerateInfo, XrCameraPropertyTypesBD* propertyTypes)
+			=> xrEnumerateCameraPropertyTypesBD_ptr(instance, enumerateInfo, propertyTypes);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrGetCameraPropertiesBDDelegate(XrInstance instance, XrCameraPropertiesGetInfoBD* getInfo, XrCameraPropertiesBD* properties);
+		private static xrGetCameraPropertiesBDDelegate xrGetCameraPropertiesBD_ptr;
+		public static XrResult xrGetCameraPropertiesBD(XrInstance instance, XrCameraPropertiesGetInfoBD* getInfo, XrCameraPropertiesBD* properties)
+			=> xrGetCameraPropertiesBD_ptr(instance, getInfo, properties);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrEnumerateCameraCapabilityTypesBDDelegate(XrInstance instance, XrCameraCapabilityTypesEnumerateInfoBD* enumerateInfo, XrCameraCapabilityTypesBD* capabilityTypes);
+		private static xrEnumerateCameraCapabilityTypesBDDelegate xrEnumerateCameraCapabilityTypesBD_ptr;
+		public static XrResult xrEnumerateCameraCapabilityTypesBD(XrInstance instance, XrCameraCapabilityTypesEnumerateInfoBD* enumerateInfo, XrCameraCapabilityTypesBD* capabilityTypes)
+			=> xrEnumerateCameraCapabilityTypesBD_ptr(instance, enumerateInfo, capabilityTypes);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrGetCameraSupportedCapabilitiesBDDelegate(XrInstance instance, XrCameraSupportedCapabilitiesGetInfoBD* getInfo, XrCameraSupportedCapabilitiesBD* capabilities);
+		private static xrGetCameraSupportedCapabilitiesBDDelegate xrGetCameraSupportedCapabilitiesBD_ptr;
+		public static XrResult xrGetCameraSupportedCapabilitiesBD(XrInstance instance, XrCameraSupportedCapabilitiesGetInfoBD* getInfo, XrCameraSupportedCapabilitiesBD* capabilities)
+			=> xrGetCameraSupportedCapabilitiesBD_ptr(instance, getInfo, capabilities);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrCreateCameraDeviceAsyncBDDelegate(XrInstance instance, XrCameraDeviceCreateInfoBD* createInfo, ulong* future);
+		private static xrCreateCameraDeviceAsyncBDDelegate xrCreateCameraDeviceAsyncBD_ptr;
+		public static XrResult xrCreateCameraDeviceAsyncBD(XrInstance instance, XrCameraDeviceCreateInfoBD* createInfo, ulong* future)
+			=> xrCreateCameraDeviceAsyncBD_ptr(instance, createInfo, future);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrCreateCameraDeviceCompleteBDDelegate(XrInstance instance, ulong future, XrCreateCameraDeviceCompletionBD* completion);
+		private static xrCreateCameraDeviceCompleteBDDelegate xrCreateCameraDeviceCompleteBD_ptr;
+		public static XrResult xrCreateCameraDeviceCompleteBD(XrInstance instance, ulong future, XrCreateCameraDeviceCompletionBD* completion)
+			=> xrCreateCameraDeviceCompleteBD_ptr(instance, future, completion);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrDestroyCameraDeviceBDDelegate(XrCameraDeviceBD device);
+		private static xrDestroyCameraDeviceBDDelegate xrDestroyCameraDeviceBD_ptr;
+		public static XrResult xrDestroyCameraDeviceBD(XrCameraDeviceBD device)
+			=> xrDestroyCameraDeviceBD_ptr(device);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrCreateCameraCaptureSessionAsyncBDDelegate(XrSession session, XrCameraCaptureSessionCreateInfoBD* createInfo, ulong* future);
+		private static xrCreateCameraCaptureSessionAsyncBDDelegate xrCreateCameraCaptureSessionAsyncBD_ptr;
+		public static XrResult xrCreateCameraCaptureSessionAsyncBD(XrSession session, XrCameraCaptureSessionCreateInfoBD* createInfo, ulong* future)
+			=> xrCreateCameraCaptureSessionAsyncBD_ptr(session, createInfo, future);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrCreateCameraCaptureSessionCompleteBDDelegate(XrSession session, ulong future, XrCreateCameraCaptureSessionCompletionBD* completion);
+		private static xrCreateCameraCaptureSessionCompleteBDDelegate xrCreateCameraCaptureSessionCompleteBD_ptr;
+		public static XrResult xrCreateCameraCaptureSessionCompleteBD(XrSession session, ulong future, XrCreateCameraCaptureSessionCompletionBD* completion)
+			=> xrCreateCameraCaptureSessionCompleteBD_ptr(session, future, completion);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrDestroyCameraCaptureSessionBDDelegate(XrCameraCaptureSessionBD captureSession);
+		private static xrDestroyCameraCaptureSessionBDDelegate xrDestroyCameraCaptureSessionBD_ptr;
+		public static XrResult xrDestroyCameraCaptureSessionBD(XrCameraCaptureSessionBD captureSession)
+			=> xrDestroyCameraCaptureSessionBD_ptr(captureSession);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrBeginCameraCaptureBDDelegate(XrCameraCaptureSessionBD captureSession, XrCameraCaptureBeginInfoBD* beginInfo);
+		private static xrBeginCameraCaptureBDDelegate xrBeginCameraCaptureBD_ptr;
+		public static XrResult xrBeginCameraCaptureBD(XrCameraCaptureSessionBD captureSession, XrCameraCaptureBeginInfoBD* beginInfo)
+			=> xrBeginCameraCaptureBD_ptr(captureSession, beginInfo);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrEndCameraCaptureBDDelegate(XrCameraCaptureSessionBD captureSession);
+		private static xrEndCameraCaptureBDDelegate xrEndCameraCaptureBD_ptr;
+		public static XrResult xrEndCameraCaptureBD(XrCameraCaptureSessionBD captureSession)
+			=> xrEndCameraCaptureBD_ptr(captureSession);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrAcquireCameraImageBDDelegate(XrCameraCaptureSessionBD captureSession, XrCameraImageAcquireInfoBD* acquireInfo, XrCameraImageBD* image);
+		private static xrAcquireCameraImageBDDelegate xrAcquireCameraImageBD_ptr;
+		public static XrResult xrAcquireCameraImageBD(XrCameraCaptureSessionBD captureSession, XrCameraImageAcquireInfoBD* acquireInfo, XrCameraImageBD* image)
+			=> xrAcquireCameraImageBD_ptr(captureSession, acquireInfo, image);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrGetCameraImageDataBDDelegate(XrCameraCaptureSessionBD captureSession, XrCameraImageIdBD imageId, XrCameraImageDataBaseHeaderBD* imageData);
+		private static xrGetCameraImageDataBDDelegate xrGetCameraImageDataBD_ptr;
+		public static XrResult xrGetCameraImageDataBD(XrCameraCaptureSessionBD captureSession, XrCameraImageIdBD imageId, XrCameraImageDataBaseHeaderBD* imageData)
+			=> xrGetCameraImageDataBD_ptr(captureSession, imageId, imageData);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrReleaseCameraImageBDDelegate(XrCameraCaptureSessionBD captureSession, XrCameraImageIdBD imageId);
+		private static xrReleaseCameraImageBDDelegate xrReleaseCameraImageBD_ptr;
+		public static XrResult xrReleaseCameraImageBD(XrCameraCaptureSessionBD captureSession, XrCameraImageIdBD imageId)
+			=> xrReleaseCameraImageBD_ptr(captureSession, imageId);
+
+		[UnmanagedFunctionPointer(CallConv)]
 		private delegate XrResult xrCreateSpatialAnchorEXTDelegate(XrSpatialContextEXT spatialContext, XrSpatialAnchorCreateInfoEXT* createInfo, XrSpatialEntityIdEXT* anchorEntityId, XrSpatialEntityEXT* anchorEntity);
 		private static xrCreateSpatialAnchorEXTDelegate xrCreateSpatialAnchorEXT_ptr;
 		public static XrResult xrCreateSpatialAnchorEXT(XrSpatialContextEXT spatialContext, XrSpatialAnchorCreateInfoEXT* createInfo, XrSpatialEntityIdEXT* anchorEntityId, XrSpatialEntityEXT* anchorEntity)
@@ -2970,6 +3084,12 @@ namespace Evergine.Bindings.OpenXR
 			=> xrEnumerateColorSpacesSONY_ptr(session, enumerateInfo, colorSpaceCapacityInput, colorSpaceCountOutput, colorSpaces);
 
 		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrSetHdrMetadataSONYDelegate(XrSwapchain swapchain, XrHdrMetadataSONY* hdrMetadata);
+		private static xrSetHdrMetadataSONYDelegate xrSetHdrMetadataSONY_ptr;
+		public static XrResult xrSetHdrMetadataSONY(XrSwapchain swapchain, XrHdrMetadataSONY* hdrMetadata)
+			=> xrSetHdrMetadataSONY_ptr(swapchain, hdrMetadata);
+
+		[UnmanagedFunctionPointer(CallConv)]
 		private delegate XrResult xrPersistSpatialEntityAsyncEXTDelegate(XrSpatialPersistenceContextEXT persistenceContext, XrSpatialEntityPersistInfoEXT* persistInfo, ulong* future);
 		private static xrPersistSpatialEntityAsyncEXTDelegate xrPersistSpatialEntityAsyncEXT_ptr;
 		public static XrResult xrPersistSpatialEntityAsyncEXT(XrSpatialPersistenceContextEXT persistenceContext, XrSpatialEntityPersistInfoEXT* persistInfo, ulong* future)
@@ -2992,6 +3112,30 @@ namespace Evergine.Bindings.OpenXR
 		private static xrUnpersistSpatialEntityCompleteEXTDelegate xrUnpersistSpatialEntityCompleteEXT_ptr;
 		public static XrResult xrUnpersistSpatialEntityCompleteEXT(XrSpatialPersistenceContextEXT persistenceContext, ulong future, XrUnpersistSpatialEntityCompletionEXT* completion)
 			=> xrUnpersistSpatialEntityCompleteEXT_ptr(persistenceContext, future, completion);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrEnumerateSpatialReferenceImageFormatsEXTDelegate(XrInstance instance, XrSystemId systemId, XrSpatialCapabilityEXT capability, uint formatCapacityInput, uint* formatCountOutput, XrSpatialReferenceImageFormatEXT* formats);
+		private static xrEnumerateSpatialReferenceImageFormatsEXTDelegate xrEnumerateSpatialReferenceImageFormatsEXT_ptr;
+		public static XrResult xrEnumerateSpatialReferenceImageFormatsEXT(XrInstance instance, XrSystemId systemId, XrSpatialCapabilityEXT capability, uint formatCapacityInput, uint* formatCountOutput, XrSpatialReferenceImageFormatEXT* formats)
+			=> xrEnumerateSpatialReferenceImageFormatsEXT_ptr(instance, systemId, capability, formatCapacityInput, formatCountOutput, formats);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrCreateSpatialImageTrackingDatabaseAsyncEXTDelegate(XrSession session, XrSpatialImageTrackingDatabaseCreateInfoEXT* createInfo, ulong* future);
+		private static xrCreateSpatialImageTrackingDatabaseAsyncEXTDelegate xrCreateSpatialImageTrackingDatabaseAsyncEXT_ptr;
+		public static XrResult xrCreateSpatialImageTrackingDatabaseAsyncEXT(XrSession session, XrSpatialImageTrackingDatabaseCreateInfoEXT* createInfo, ulong* future)
+			=> xrCreateSpatialImageTrackingDatabaseAsyncEXT_ptr(session, createInfo, future);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrCreateSpatialImageTrackingDatabaseCompleteEXTDelegate(XrSession session, ulong future, XrCreateSpatialImageTrackingDatabaseCompletionEXT* completion);
+		private static xrCreateSpatialImageTrackingDatabaseCompleteEXTDelegate xrCreateSpatialImageTrackingDatabaseCompleteEXT_ptr;
+		public static XrResult xrCreateSpatialImageTrackingDatabaseCompleteEXT(XrSession session, ulong future, XrCreateSpatialImageTrackingDatabaseCompletionEXT* completion)
+			=> xrCreateSpatialImageTrackingDatabaseCompleteEXT_ptr(session, future, completion);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrDestroySpatialImageTrackingDatabaseEXTDelegate(XrSpatialImageTrackingDatabaseEXT database);
+		private static xrDestroySpatialImageTrackingDatabaseEXTDelegate xrDestroySpatialImageTrackingDatabaseEXT_ptr;
+		public static XrResult xrDestroySpatialImageTrackingDatabaseEXT(XrSpatialImageTrackingDatabaseEXT database)
+			=> xrDestroySpatialImageTrackingDatabaseEXT_ptr(database);
 
 		[UnmanagedFunctionPointer(CallConv)]
 		private delegate XrResult xrCreateSpatialRaycastSnapshotANDROIDDelegate(XrSpatialContextEXT spatialContext, XrSpatialRaycastSnapshotCreateInfoANDROID* createInfo, XrSpatialSnapshotEXT* snapshot);
@@ -3082,6 +3226,78 @@ namespace Evergine.Bindings.OpenXR
 		private static xrCreateSurfaceAnchorCompleteANDROIDDelegate xrCreateSurfaceAnchorCompleteANDROID_ptr;
 		public static XrResult xrCreateSurfaceAnchorCompleteANDROID(XrSpatialContextEXT spatialContext, ulong future, XrSurfaceAnchorCreateCompletionANDROID* completion)
 			=> xrCreateSurfaceAnchorCompleteANDROID_ptr(spatialContext, future, completion);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrCreateSpatialContainerEXTDelegate(XrSession session, XrSpatialContainerCreateInfoEXT* createInfo, XrSpatialContainerEXT* spatialContainer);
+		private static xrCreateSpatialContainerEXTDelegate xrCreateSpatialContainerEXT_ptr;
+		public static XrResult xrCreateSpatialContainerEXT(XrSession session, XrSpatialContainerCreateInfoEXT* createInfo, XrSpatialContainerEXT* spatialContainer)
+			=> xrCreateSpatialContainerEXT_ptr(session, createInfo, spatialContainer);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrDestroySpatialContainerEXTDelegate(XrSpatialContainerEXT spatialContainer);
+		private static xrDestroySpatialContainerEXTDelegate xrDestroySpatialContainerEXT_ptr;
+		public static XrResult xrDestroySpatialContainerEXT(XrSpatialContainerEXT spatialContainer)
+			=> xrDestroySpatialContainerEXT_ptr(spatialContainer);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrCreateSpatialContainerSpaceEXTDelegate(XrSession session, XrSpatialContainerSpaceCreateInfoEXT* createInfo, XrSpace* space);
+		private static xrCreateSpatialContainerSpaceEXTDelegate xrCreateSpatialContainerSpaceEXT_ptr;
+		public static XrResult xrCreateSpatialContainerSpaceEXT(XrSession session, XrSpatialContainerSpaceCreateInfoEXT* createInfo, XrSpace* space)
+			=> xrCreateSpatialContainerSpaceEXT_ptr(session, createInfo, space);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrRequestSpatialContainerVisibleEXTDelegate(XrSpatialContainerEXT spatialContainer, XrSpatialContainerVisibleRequestInfoEXT* info);
+		private static xrRequestSpatialContainerVisibleEXTDelegate xrRequestSpatialContainerVisibleEXT_ptr;
+		public static XrResult xrRequestSpatialContainerVisibleEXT(XrSpatialContainerEXT spatialContainer, XrSpatialContainerVisibleRequestInfoEXT* info)
+			=> xrRequestSpatialContainerVisibleEXT_ptr(spatialContainer, info);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrRequestSpatialContainerBoundsModeEXTDelegate(XrSpatialContainerEXT spatialContainer, XrSpatialContainerBoundsModeRequestInfoEXT* info);
+		private static xrRequestSpatialContainerBoundsModeEXTDelegate xrRequestSpatialContainerBoundsModeEXT_ptr;
+		public static XrResult xrRequestSpatialContainerBoundsModeEXT(XrSpatialContainerEXT spatialContainer, XrSpatialContainerBoundsModeRequestInfoEXT* info)
+			=> xrRequestSpatialContainerBoundsModeEXT_ptr(spatialContainer, info);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrGetSpatialContainerBoundsEXTDelegate(XrSpatialContainerEXT spatialContainer, XrSpatialContainerBoundsGetInfoEXT* getInfo, XrSpatialContainerBoundsEXT* bounds);
+		private static xrGetSpatialContainerBoundsEXTDelegate xrGetSpatialContainerBoundsEXT_ptr;
+		public static XrResult xrGetSpatialContainerBoundsEXT(XrSpatialContainerEXT spatialContainer, XrSpatialContainerBoundsGetInfoEXT* getInfo, XrSpatialContainerBoundsEXT* bounds)
+			=> xrGetSpatialContainerBoundsEXT_ptr(spatialContainer, getInfo, bounds);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrGetSpatialContainerStateEXTDelegate(XrSpatialContainerEXT spatialContainer, XrSpatialContainerStateGetInfoEXT* getInfo, XrSpatialContainerStateEXT* state);
+		private static xrGetSpatialContainerStateEXTDelegate xrGetSpatialContainerStateEXT_ptr;
+		public static XrResult xrGetSpatialContainerStateEXT(XrSpatialContainerEXT spatialContainer, XrSpatialContainerStateGetInfoEXT* getInfo, XrSpatialContainerStateEXT* state)
+			=> xrGetSpatialContainerStateEXT_ptr(spatialContainer, getInfo, state);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrEnumerateSupportedSpatialContainerGraphicsPresentationsEXTDelegate(XrInstance instance, XrSystemId systemId, uint graphicsPresentationCapacityInput, uint* graphicsPresentationCountOutput, XrSpatialContainerGraphicsPresentationEXT* graphicsPresentations);
+		private static xrEnumerateSupportedSpatialContainerGraphicsPresentationsEXTDelegate xrEnumerateSupportedSpatialContainerGraphicsPresentationsEXT_ptr;
+		public static XrResult xrEnumerateSupportedSpatialContainerGraphicsPresentationsEXT(XrInstance instance, XrSystemId systemId, uint graphicsPresentationCapacityInput, uint* graphicsPresentationCountOutput, XrSpatialContainerGraphicsPresentationEXT* graphicsPresentations)
+			=> xrEnumerateSupportedSpatialContainerGraphicsPresentationsEXT_ptr(instance, systemId, graphicsPresentationCapacityInput, graphicsPresentationCountOutput, graphicsPresentations);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrBeginSpatialContainerRenderingEXTDelegate(XrSession session, XrSpatialContainerBeginInfoEXT* beginInfo);
+		private static xrBeginSpatialContainerRenderingEXTDelegate xrBeginSpatialContainerRenderingEXT_ptr;
+		public static XrResult xrBeginSpatialContainerRenderingEXT(XrSession session, XrSpatialContainerBeginInfoEXT* beginInfo)
+			=> xrBeginSpatialContainerRenderingEXT_ptr(session, beginInfo);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrEndSpatialContainerRenderingEXTDelegate(XrSession session, XrSpatialContainerEndInfoEXT* endInfo);
+		private static xrEndSpatialContainerRenderingEXTDelegate xrEndSpatialContainerRenderingEXT_ptr;
+		public static XrResult xrEndSpatialContainerRenderingEXT(XrSession session, XrSpatialContainerEndInfoEXT* endInfo)
+			=> xrEndSpatialContainerRenderingEXT_ptr(session, endInfo);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrLocateSpatialContainerViewsEXTDelegate(XrSession session, XrSpatialContainerViewsLocateInfoEXT* locateInfo, uint viewStateCount, XrSpatialContainerViewStateEXT* viewStates, uint viewCount, XrView* views);
+		private static xrLocateSpatialContainerViewsEXTDelegate xrLocateSpatialContainerViewsEXT_ptr;
+		public static XrResult xrLocateSpatialContainerViewsEXT(XrSession session, XrSpatialContainerViewsLocateInfoEXT* locateInfo, uint viewStateCount, XrSpatialContainerViewStateEXT* viewStates, uint viewCount, XrView* views)
+			=> xrLocateSpatialContainerViewsEXT_ptr(session, locateInfo, viewStateCount, viewStates, viewCount, views);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrResultToString2KHRDelegate(XrInstance instance, XrResult value, byte buffer);
+		private static xrResultToString2KHRDelegate xrResultToString2KHR_ptr;
+		public static XrResult xrResultToString2KHR(XrInstance instance, XrResult value, byte buffer)
+			=> xrResultToString2KHR_ptr(instance, value, buffer);
 
 		public static void LoadFunctionPointers(XrInstance instance = default)
 		{
@@ -3446,6 +3662,9 @@ namespace Evergine.Bindings.OpenXR
 			nativeLib.LoadFunction("xrCaptureSceneCompleteBD",  out xrCaptureSceneCompleteBD_ptr);
 			nativeLib.LoadFunction("xrStartBodyTrackingCalibrationAppBD",  out xrStartBodyTrackingCalibrationAppBD_ptr);
 			nativeLib.LoadFunction("xrGetBodyTrackingStateBD",  out xrGetBodyTrackingStateBD_ptr);
+			nativeLib.LoadFunction("xrEnumerateEnvironmentTextureResolutionsBD",  out xrEnumerateEnvironmentTextureResolutionsBD_ptr);
+			nativeLib.LoadFunction("xrEnumerateEnvironmentTexturePixelFormatsBD",  out xrEnumerateEnvironmentTexturePixelFormatsBD_ptr);
+			nativeLib.LoadFunction("xrEnumerateEnvironmentTextureTransferTypesBD",  out xrEnumerateEnvironmentTextureTransferTypesBD_ptr);
 			nativeLib.LoadFunction("xrEnumerateSupportedAudioSampleRateBD",  out xrEnumerateSupportedAudioSampleRateBD_ptr);
 			nativeLib.LoadFunction("xrQueryFramesPerBufferRangeBD",  out xrQueryFramesPerBufferRangeBD_ptr);
 			nativeLib.LoadFunction("xrCreateSpatialAudioRendererBD",  out xrCreateSpatialAudioRendererBD_ptr);
@@ -3577,6 +3796,22 @@ namespace Evergine.Bindings.OpenXR
 			nativeLib.LoadFunction("xrGetSpatialBufferVector2fEXT",  out xrGetSpatialBufferVector2fEXT_ptr);
 			nativeLib.LoadFunction("xrGetSpatialBufferVector3fEXT",  out xrGetSpatialBufferVector3fEXT_ptr);
 			nativeLib.LoadFunction("xrGetStationaryReferenceSpaceGenerationIdEXT",  out xrGetStationaryReferenceSpaceGenerationIdEXT_ptr);
+			nativeLib.LoadFunction("xrEnumerateAvailableCamerasBD",  out xrEnumerateAvailableCamerasBD_ptr);
+			nativeLib.LoadFunction("xrEnumerateCameraPropertyTypesBD",  out xrEnumerateCameraPropertyTypesBD_ptr);
+			nativeLib.LoadFunction("xrGetCameraPropertiesBD",  out xrGetCameraPropertiesBD_ptr);
+			nativeLib.LoadFunction("xrEnumerateCameraCapabilityTypesBD",  out xrEnumerateCameraCapabilityTypesBD_ptr);
+			nativeLib.LoadFunction("xrGetCameraSupportedCapabilitiesBD",  out xrGetCameraSupportedCapabilitiesBD_ptr);
+			nativeLib.LoadFunction("xrCreateCameraDeviceAsyncBD",  out xrCreateCameraDeviceAsyncBD_ptr);
+			nativeLib.LoadFunction("xrCreateCameraDeviceCompleteBD",  out xrCreateCameraDeviceCompleteBD_ptr);
+			nativeLib.LoadFunction("xrDestroyCameraDeviceBD",  out xrDestroyCameraDeviceBD_ptr);
+			nativeLib.LoadFunction("xrCreateCameraCaptureSessionAsyncBD",  out xrCreateCameraCaptureSessionAsyncBD_ptr);
+			nativeLib.LoadFunction("xrCreateCameraCaptureSessionCompleteBD",  out xrCreateCameraCaptureSessionCompleteBD_ptr);
+			nativeLib.LoadFunction("xrDestroyCameraCaptureSessionBD",  out xrDestroyCameraCaptureSessionBD_ptr);
+			nativeLib.LoadFunction("xrBeginCameraCaptureBD",  out xrBeginCameraCaptureBD_ptr);
+			nativeLib.LoadFunction("xrEndCameraCaptureBD",  out xrEndCameraCaptureBD_ptr);
+			nativeLib.LoadFunction("xrAcquireCameraImageBD",  out xrAcquireCameraImageBD_ptr);
+			nativeLib.LoadFunction("xrGetCameraImageDataBD",  out xrGetCameraImageDataBD_ptr);
+			nativeLib.LoadFunction("xrReleaseCameraImageBD",  out xrReleaseCameraImageBD_ptr);
 			nativeLib.LoadFunction("xrCreateSpatialAnchorEXT",  out xrCreateSpatialAnchorEXT_ptr);
 			nativeLib.LoadFunction("xrEnumerateSpatialPersistenceScopesEXT",  out xrEnumerateSpatialPersistenceScopesEXT_ptr);
 			nativeLib.LoadFunction("xrCreateSpatialPersistenceContextAsyncEXT",  out xrCreateSpatialPersistenceContextAsyncEXT_ptr);
@@ -3584,10 +3819,15 @@ namespace Evergine.Bindings.OpenXR
 			nativeLib.LoadFunction("xrDestroySpatialPersistenceContextEXT",  out xrDestroySpatialPersistenceContextEXT_ptr);
 			nativeLib.LoadFunction("xrHapticParametricGetPropertiesEXT",  out xrHapticParametricGetPropertiesEXT_ptr);
 			nativeLib.LoadFunction("xrEnumerateColorSpacesSONY",  out xrEnumerateColorSpacesSONY_ptr);
+			nativeLib.LoadFunction("xrSetHdrMetadataSONY",  out xrSetHdrMetadataSONY_ptr);
 			nativeLib.LoadFunction("xrPersistSpatialEntityAsyncEXT",  out xrPersistSpatialEntityAsyncEXT_ptr);
 			nativeLib.LoadFunction("xrPersistSpatialEntityCompleteEXT",  out xrPersistSpatialEntityCompleteEXT_ptr);
 			nativeLib.LoadFunction("xrUnpersistSpatialEntityAsyncEXT",  out xrUnpersistSpatialEntityAsyncEXT_ptr);
 			nativeLib.LoadFunction("xrUnpersistSpatialEntityCompleteEXT",  out xrUnpersistSpatialEntityCompleteEXT_ptr);
+			nativeLib.LoadFunction("xrEnumerateSpatialReferenceImageFormatsEXT",  out xrEnumerateSpatialReferenceImageFormatsEXT_ptr);
+			nativeLib.LoadFunction("xrCreateSpatialImageTrackingDatabaseAsyncEXT",  out xrCreateSpatialImageTrackingDatabaseAsyncEXT_ptr);
+			nativeLib.LoadFunction("xrCreateSpatialImageTrackingDatabaseCompleteEXT",  out xrCreateSpatialImageTrackingDatabaseCompleteEXT_ptr);
+			nativeLib.LoadFunction("xrDestroySpatialImageTrackingDatabaseEXT",  out xrDestroySpatialImageTrackingDatabaseEXT_ptr);
 			nativeLib.LoadFunction("xrCreateSpatialRaycastSnapshotANDROID",  out xrCreateSpatialRaycastSnapshotANDROID_ptr);
 			nativeLib.LoadFunction("xrSetGoogleCloudAuthAsyncANDROID",  out xrSetGoogleCloudAuthAsyncANDROID_ptr);
 			nativeLib.LoadFunction("xrSetGoogleCloudAuthCompleteANDROID",  out xrSetGoogleCloudAuthCompleteANDROID_ptr);
@@ -3603,6 +3843,18 @@ namespace Evergine.Bindings.OpenXR
 			nativeLib.LoadFunction("xrCreateGeospatialAnchorANDROID",  out xrCreateGeospatialAnchorANDROID_ptr);
 			nativeLib.LoadFunction("xrCreateSurfaceAnchorAsyncANDROID",  out xrCreateSurfaceAnchorAsyncANDROID_ptr);
 			nativeLib.LoadFunction("xrCreateSurfaceAnchorCompleteANDROID",  out xrCreateSurfaceAnchorCompleteANDROID_ptr);
+			nativeLib.LoadFunction("xrCreateSpatialContainerEXT",  out xrCreateSpatialContainerEXT_ptr);
+			nativeLib.LoadFunction("xrDestroySpatialContainerEXT",  out xrDestroySpatialContainerEXT_ptr);
+			nativeLib.LoadFunction("xrCreateSpatialContainerSpaceEXT",  out xrCreateSpatialContainerSpaceEXT_ptr);
+			nativeLib.LoadFunction("xrRequestSpatialContainerVisibleEXT",  out xrRequestSpatialContainerVisibleEXT_ptr);
+			nativeLib.LoadFunction("xrRequestSpatialContainerBoundsModeEXT",  out xrRequestSpatialContainerBoundsModeEXT_ptr);
+			nativeLib.LoadFunction("xrGetSpatialContainerBoundsEXT",  out xrGetSpatialContainerBoundsEXT_ptr);
+			nativeLib.LoadFunction("xrGetSpatialContainerStateEXT",  out xrGetSpatialContainerStateEXT_ptr);
+			nativeLib.LoadFunction("xrEnumerateSupportedSpatialContainerGraphicsPresentationsEXT",  out xrEnumerateSupportedSpatialContainerGraphicsPresentationsEXT_ptr);
+			nativeLib.LoadFunction("xrBeginSpatialContainerRenderingEXT",  out xrBeginSpatialContainerRenderingEXT_ptr);
+			nativeLib.LoadFunction("xrEndSpatialContainerRenderingEXT",  out xrEndSpatialContainerRenderingEXT_ptr);
+			nativeLib.LoadFunction("xrLocateSpatialContainerViewsEXT",  out xrLocateSpatialContainerViewsEXT_ptr);
+			nativeLib.LoadFunction("xrResultToString2KHR",  out xrResultToString2KHR_ptr);
 		}
 	}
 }

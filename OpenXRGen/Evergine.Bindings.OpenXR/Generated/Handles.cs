@@ -857,6 +857,36 @@ namespace Evergine.Bindings.OpenXR
 		public override int GetHashCode() => Handle.GetHashCode();
 	}
 
+	public partial struct XrCameraDeviceBD : IEquatable<XrCameraDeviceBD>
+	{
+		public readonly IntPtr Handle;
+		public XrCameraDeviceBD(IntPtr existingHandle) { Handle = existingHandle; }
+		public static XrCameraDeviceBD Null => new XrCameraDeviceBD(IntPtr.Zero);
+		public static implicit operator XrCameraDeviceBD(IntPtr handle) => new XrCameraDeviceBD(handle);
+		public static bool operator ==(XrCameraDeviceBD left, XrCameraDeviceBD right) => left.Handle == right.Handle;
+		public static bool operator !=(XrCameraDeviceBD left, XrCameraDeviceBD right) => left.Handle != right.Handle;
+		public static bool operator ==(XrCameraDeviceBD left, IntPtr right) => left.Handle == right;
+		public static bool operator !=(XrCameraDeviceBD left, IntPtr right) => left.Handle != right;
+		public bool Equals(XrCameraDeviceBD h) => Handle == h.Handle;
+		public override bool Equals(object o) => o is XrCameraDeviceBD h && Equals(h);
+		public override int GetHashCode() => Handle.GetHashCode();
+	}
+
+	public partial struct XrCameraCaptureSessionBD : IEquatable<XrCameraCaptureSessionBD>
+	{
+		public readonly IntPtr Handle;
+		public XrCameraCaptureSessionBD(IntPtr existingHandle) { Handle = existingHandle; }
+		public static XrCameraCaptureSessionBD Null => new XrCameraCaptureSessionBD(IntPtr.Zero);
+		public static implicit operator XrCameraCaptureSessionBD(IntPtr handle) => new XrCameraCaptureSessionBD(handle);
+		public static bool operator ==(XrCameraCaptureSessionBD left, XrCameraCaptureSessionBD right) => left.Handle == right.Handle;
+		public static bool operator !=(XrCameraCaptureSessionBD left, XrCameraCaptureSessionBD right) => left.Handle != right.Handle;
+		public static bool operator ==(XrCameraCaptureSessionBD left, IntPtr right) => left.Handle == right;
+		public static bool operator !=(XrCameraCaptureSessionBD left, IntPtr right) => left.Handle != right;
+		public bool Equals(XrCameraCaptureSessionBD h) => Handle == h.Handle;
+		public override bool Equals(object o) => o is XrCameraCaptureSessionBD h && Equals(h);
+		public override int GetHashCode() => Handle.GetHashCode();
+	}
+
 	public partial struct XrSpatialGraphNodeBindingMSFT : IEquatable<XrSpatialGraphNodeBindingMSFT>
 	{
 		public readonly IntPtr Handle;
@@ -944,6 +974,36 @@ namespace Evergine.Bindings.OpenXR
 		public static bool operator !=(XrTrackableTrackerANDROID left, IntPtr right) => left.Handle != right;
 		public bool Equals(XrTrackableTrackerANDROID h) => Handle == h.Handle;
 		public override bool Equals(object o) => o is XrTrackableTrackerANDROID h && Equals(h);
+		public override int GetHashCode() => Handle.GetHashCode();
+	}
+
+	public partial struct XrSpatialContainerEXT : IEquatable<XrSpatialContainerEXT>
+	{
+		public readonly IntPtr Handle;
+		public XrSpatialContainerEXT(IntPtr existingHandle) { Handle = existingHandle; }
+		public static XrSpatialContainerEXT Null => new XrSpatialContainerEXT(IntPtr.Zero);
+		public static implicit operator XrSpatialContainerEXT(IntPtr handle) => new XrSpatialContainerEXT(handle);
+		public static bool operator ==(XrSpatialContainerEXT left, XrSpatialContainerEXT right) => left.Handle == right.Handle;
+		public static bool operator !=(XrSpatialContainerEXT left, XrSpatialContainerEXT right) => left.Handle != right.Handle;
+		public static bool operator ==(XrSpatialContainerEXT left, IntPtr right) => left.Handle == right;
+		public static bool operator !=(XrSpatialContainerEXT left, IntPtr right) => left.Handle != right;
+		public bool Equals(XrSpatialContainerEXT h) => Handle == h.Handle;
+		public override bool Equals(object o) => o is XrSpatialContainerEXT h && Equals(h);
+		public override int GetHashCode() => Handle.GetHashCode();
+	}
+
+	public partial struct XrSpatialImageTrackingDatabaseEXT : IEquatable<XrSpatialImageTrackingDatabaseEXT>
+	{
+		public readonly IntPtr Handle;
+		public XrSpatialImageTrackingDatabaseEXT(IntPtr existingHandle) { Handle = existingHandle; }
+		public static XrSpatialImageTrackingDatabaseEXT Null => new XrSpatialImageTrackingDatabaseEXT(IntPtr.Zero);
+		public static implicit operator XrSpatialImageTrackingDatabaseEXT(IntPtr handle) => new XrSpatialImageTrackingDatabaseEXT(handle);
+		public static bool operator ==(XrSpatialImageTrackingDatabaseEXT left, XrSpatialImageTrackingDatabaseEXT right) => left.Handle == right.Handle;
+		public static bool operator !=(XrSpatialImageTrackingDatabaseEXT left, XrSpatialImageTrackingDatabaseEXT right) => left.Handle != right.Handle;
+		public static bool operator ==(XrSpatialImageTrackingDatabaseEXT left, IntPtr right) => left.Handle == right;
+		public static bool operator !=(XrSpatialImageTrackingDatabaseEXT left, IntPtr right) => left.Handle != right;
+		public bool Equals(XrSpatialImageTrackingDatabaseEXT h) => Handle == h.Handle;
+		public override bool Equals(object o) => o is XrSpatialImageTrackingDatabaseEXT h && Equals(h);
 		public override int GetHashCode() => Handle.GetHashCode();
 	}
 
@@ -1094,6 +1154,36 @@ namespace Evergine.Bindings.OpenXR
 		public static bool operator !=(XrSpatialEntityIdBD left, ulong right) => left.Handle != right;
 		public bool Equals(XrSpatialEntityIdBD h) => Handle == h.Handle;
 		public override bool Equals(object o) => o is XrSpatialEntityIdBD h && Equals(h);
+		public override int GetHashCode() => Handle.GetHashCode();
+	}
+
+	public partial struct XrCameraIdBD : IEquatable<XrCameraIdBD>
+	{
+		public readonly ulong Handle;
+		public XrCameraIdBD(ulong existingHandle) { Handle = existingHandle; }
+		public static XrCameraIdBD Null => new XrCameraIdBD(0);
+		public static implicit operator XrCameraIdBD(ulong handle) => new XrCameraIdBD(handle);
+		public static bool operator ==(XrCameraIdBD left, XrCameraIdBD right) => left.Handle == right.Handle;
+		public static bool operator !=(XrCameraIdBD left, XrCameraIdBD right) => left.Handle != right.Handle;
+		public static bool operator ==(XrCameraIdBD left, ulong right) => left.Handle == right;
+		public static bool operator !=(XrCameraIdBD left, ulong right) => left.Handle != right;
+		public bool Equals(XrCameraIdBD h) => Handle == h.Handle;
+		public override bool Equals(object o) => o is XrCameraIdBD h && Equals(h);
+		public override int GetHashCode() => Handle.GetHashCode();
+	}
+
+	public partial struct XrCameraImageIdBD : IEquatable<XrCameraImageIdBD>
+	{
+		public readonly ulong Handle;
+		public XrCameraImageIdBD(ulong existingHandle) { Handle = existingHandle; }
+		public static XrCameraImageIdBD Null => new XrCameraImageIdBD(0);
+		public static implicit operator XrCameraImageIdBD(ulong handle) => new XrCameraImageIdBD(handle);
+		public static bool operator ==(XrCameraImageIdBD left, XrCameraImageIdBD right) => left.Handle == right.Handle;
+		public static bool operator !=(XrCameraImageIdBD left, XrCameraImageIdBD right) => left.Handle != right.Handle;
+		public static bool operator ==(XrCameraImageIdBD left, ulong right) => left.Handle == right;
+		public static bool operator !=(XrCameraImageIdBD left, ulong right) => left.Handle != right;
+		public bool Equals(XrCameraImageIdBD h) => Handle == h.Handle;
+		public override bool Equals(object o) => o is XrCameraImageIdBD h && Equals(h);
 		public override int GetHashCode() => Handle.GetHashCode();
 	}
 

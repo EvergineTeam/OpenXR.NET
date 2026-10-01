@@ -373,7 +373,7 @@ namespace Evergine.Bindings.OpenXR
 		public const string XR_BD_BODY_TRACKING_EXTENSION_NAME = "XR_BD_body_tracking";
 		public const uint XR_BD_facial_simulation_SPEC_VERSION = 1;
 		public const string XR_BD_FACIAL_SIMULATION_EXTENSION_NAME = "XR_BD_facial_simulation";
-		public const uint XR_BD_spatial_sensing_SPEC_VERSION = 2;
+		public const uint XR_BD_spatial_sensing_SPEC_VERSION = 3;
 		public const string XR_BD_SPATIAL_SENSING_EXTENSION_NAME = "XR_BD_spatial_sensing";
 		public const uint XR_BD_spatial_anchor_SPEC_VERSION = 2;
 		public const string XR_BD_SPATIAL_ANCHOR_EXTENSION_NAME = "XR_BD_spatial_anchor";
@@ -389,6 +389,8 @@ namespace Evergine.Bindings.OpenXR
 		public const string XR_BD_BODY_TRACKING_AUXILIARY_METRICS_EXTENSION_NAME = "XR_BD_body_tracking_auxiliary_metrics";
 		public const uint XR_BD_spatial_plane_SPEC_VERSION = 1;
 		public const string XR_BD_SPATIAL_PLANE_EXTENSION_NAME = "XR_BD_spatial_plane";
+		public const uint XR_BD_spatial_light_estimation_SPEC_VERSION = 1;
+		public const string XR_BD_SPATIAL_LIGHT_ESTIMATION_EXTENSION_NAME = "XR_BD_spatial_light_estimation";
 		public const uint XR_BD_ultra_controller_interaction_SPEC_VERSION = 1;
 		public const string XR_BD_ULTRA_CONTROLLER_INTERACTION_EXTENSION_NAME = "XR_BD_ultra_controller_interaction";
 		public const uint XR_BD_spatial_audio_rendering_SPEC_VERSION = 1;
@@ -505,6 +507,8 @@ namespace Evergine.Bindings.OpenXR
 		public const string XR_BD_DYNAMIC_OBJECT_KEYBOARD_EXTENSION_NAME = "XR_BD_dynamic_object_keyboard";
 		public const uint XR_BD_dynamic_object_mouse_SPEC_VERSION = 1;
 		public const string XR_BD_DYNAMIC_OBJECT_MOUSE_EXTENSION_NAME = "XR_BD_dynamic_object_mouse";
+		public const uint XR_BD_camera_image_SPEC_VERSION = 1;
+		public const string XR_BD_CAMERA_IMAGE_EXTENSION_NAME = "XR_BD_camera_image";
 		public const uint XR_ANDROID_spatial_discovery_bounds_SPEC_VERSION = 1;
 		public const string XR_ANDROID_SPATIAL_DISCOVERY_BOUNDS_EXTENSION_NAME = "XR_ANDROID_spatial_discovery_bounds";
 		public const uint XR_EXT_spatial_anchor_SPEC_VERSION = 1;
@@ -515,8 +519,12 @@ namespace Evergine.Bindings.OpenXR
 		public const string XR_EXT_HAPTIC_PARAMETRIC_EXTENSION_NAME = "XR_EXT_haptic_parametric";
 		public const uint XR_SONY_swapchain_color_space_SPEC_VERSION = 1;
 		public const string XR_SONY_SWAPCHAIN_COLOR_SPACE_EXTENSION_NAME = "XR_SONY_swapchain_color_space";
+		public const uint XR_SONY_hdr_metadata_SPEC_VERSION = 1;
+		public const string XR_SONY_HDR_METADATA_EXTENSION_NAME = "XR_SONY_hdr_metadata";
 		public const uint XR_EXT_spatial_persistence_operations_SPEC_VERSION = 1;
 		public const string XR_EXT_SPATIAL_PERSISTENCE_OPERATIONS_EXTENSION_NAME = "XR_EXT_spatial_persistence_operations";
+		public const uint XR_EXT_spatial_image_tracking_SPEC_VERSION = 1;
+		public const string XR_EXT_SPATIAL_IMAGE_TRACKING_EXTENSION_NAME = "XR_EXT_spatial_image_tracking";
 		public const uint XR_ANDROID_spatial_object_tracking_SPEC_VERSION = 2;
 		public const string XR_ANDROID_SPATIAL_OBJECT_TRACKING_EXTENSION_NAME = "XR_ANDROID_spatial_object_tracking";
 		public const uint XR_ANDROID_spatial_discovery_raycast_SPEC_VERSION = 1;
@@ -533,11 +541,18 @@ namespace Evergine.Bindings.OpenXR
 		public const string XR_ANDROID_SPATIAL_ANCHOR_SPACE_EXTENSION_NAME = "XR_ANDROID_spatial_anchor_space";
 		public const uint XR_ANDROID_geospatial_anchor_SPEC_VERSION = 1;
 		public const string XR_ANDROID_GEOSPATIAL_ANCHOR_EXTENSION_NAME = "XR_ANDROID_geospatial_anchor";
+		public const uint XR_EXT_spatial_container_SPEC_VERSION = 1;
+		public const string XR_EXT_SPATIAL_CONTAINER_EXTENSION_NAME = "XR_EXT_spatial_container";
+		public const uint XR_EXT_spatial_container_self_rendering_SPEC_VERSION = 1;
+		public const string XR_EXT_SPATIAL_CONTAINER_SELF_RENDERING_EXTENSION_NAME = "XR_EXT_spatial_container_self_rendering";
 		public const uint XR_EXT_interaction_profile_battery_state_display_SPEC_VERSION = 1;
 		public const string XR_EXT_INTERACTION_PROFILE_BATTERY_STATE_DISPLAY_EXTENSION_NAME = "XR_EXT_interaction_profile_battery_state_display";
 		public const uint XR_EXT_loader_init_properties_SPEC_VERSION = 1;
 		public const string XR_EXT_LOADER_INIT_PROPERTIES_EXTENSION_NAME = "XR_EXT_loader_init_properties";
 		public const uint XR_EXT_view_configuration_views_change_SPEC_VERSION = 1;
 		public const string XR_EXT_VIEW_CONFIGURATION_VIEWS_CHANGE_EXTENSION_NAME = "XR_EXT_view_configuration_views_change";
+		public const uint XR_KHR_extended_result_name_lengths_SPEC_VERSION = 1;
+		public const string XR_KHR_EXTENDED_RESULT_NAME_LENGTHS_EXTENSION_NAME = "XR_KHR_extended_result_name_lengths";
+		public const uint XR_MAX_RESULT_STRING_SIZE_EXTENDED_KHR = 256;
 	}
 }
