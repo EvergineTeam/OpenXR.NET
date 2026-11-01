@@ -3294,10 +3294,64 @@ namespace Evergine.Bindings.OpenXR
 			=> xrLocateSpatialContainerViewsEXT_ptr(session, locateInfo, viewStateCount, viewStates, viewCount, views);
 
 		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrEnumerateSpatialArchetypesEXTDelegate(XrSpatialSnapshotEXT snapshot, uint archetypeCapacityInput, uint* archetypeCountOutput, XrSpatialArchetypeIdEXT* archetypes);
+		private static xrEnumerateSpatialArchetypesEXTDelegate xrEnumerateSpatialArchetypesEXT_ptr;
+		public static XrResult xrEnumerateSpatialArchetypesEXT(XrSpatialSnapshotEXT snapshot, uint archetypeCapacityInput, uint* archetypeCountOutput, XrSpatialArchetypeIdEXT* archetypes)
+			=> xrEnumerateSpatialArchetypesEXT_ptr(snapshot, archetypeCapacityInput, archetypeCountOutput, archetypes);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrEnumerateSpatialArchetypeComponentTypesEXTDelegate(XrSpatialSnapshotEXT snapshot, XrSpatialArchetypeIdEXT archetype, uint componentTypeCapacityInput, uint* componentTypeCountOutput, XrSpatialComponentTypeEXT* componentTypes);
+		private static xrEnumerateSpatialArchetypeComponentTypesEXTDelegate xrEnumerateSpatialArchetypeComponentTypesEXT_ptr;
+		public static XrResult xrEnumerateSpatialArchetypeComponentTypesEXT(XrSpatialSnapshotEXT snapshot, XrSpatialArchetypeIdEXT archetype, uint componentTypeCapacityInput, uint* componentTypeCountOutput, XrSpatialComponentTypeEXT* componentTypes)
+			=> xrEnumerateSpatialArchetypeComponentTypesEXT_ptr(snapshot, archetype, componentTypeCapacityInput, componentTypeCountOutput, componentTypes);
+
+		[UnmanagedFunctionPointer(CallConv)]
 		private delegate XrResult xrResultToString2KHRDelegate(XrInstance instance, XrResult value, byte buffer);
 		private static xrResultToString2KHRDelegate xrResultToString2KHR_ptr;
 		public static XrResult xrResultToString2KHR(XrInstance instance, XrResult value, byte buffer)
 			=> xrResultToString2KHR_ptr(instance, value, buffer);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrEnumerateSwapchainFormats2EXTDelegate(XrSession session, XrSwapchainFormatsEnumerateInfoEXT* enumerateInfo, uint formatCapacityInput, uint* formatCountOutput, long* formats);
+		private static xrEnumerateSwapchainFormats2EXTDelegate xrEnumerateSwapchainFormats2EXT_ptr;
+		public static XrResult xrEnumerateSwapchainFormats2EXT(XrSession session, XrSwapchainFormatsEnumerateInfoEXT* enumerateInfo, uint formatCapacityInput, uint* formatCountOutput, long* formats)
+			=> xrEnumerateSwapchainFormats2EXT_ptr(session, enumerateInfo, formatCapacityInput, formatCountOutput, formats);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrCreateAppConsumedSwapchainEXTDelegate(XrSession session, XrAppConsumedSwapchainCreateInfoEXT* createInfo, XrAppConsumedSwapchainEXT* appConsumedSwapchain);
+		private static xrCreateAppConsumedSwapchainEXTDelegate xrCreateAppConsumedSwapchainEXT_ptr;
+		public static XrResult xrCreateAppConsumedSwapchainEXT(XrSession session, XrAppConsumedSwapchainCreateInfoEXT* createInfo, XrAppConsumedSwapchainEXT* appConsumedSwapchain)
+			=> xrCreateAppConsumedSwapchainEXT_ptr(session, createInfo, appConsumedSwapchain);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrDestroyAppConsumedSwapchainEXTDelegate(XrAppConsumedSwapchainEXT appConsumedSwapchain);
+		private static xrDestroyAppConsumedSwapchainEXTDelegate xrDestroyAppConsumedSwapchainEXT_ptr;
+		public static XrResult xrDestroyAppConsumedSwapchainEXT(XrAppConsumedSwapchainEXT appConsumedSwapchain)
+			=> xrDestroyAppConsumedSwapchainEXT_ptr(appConsumedSwapchain);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrGetAppConsumedSwapchainPropertiesEXTDelegate(XrAppConsumedSwapchainEXT appConsumedSwapchain, XrAppConsumedSwapchainPropertiesEXT* properties);
+		private static xrGetAppConsumedSwapchainPropertiesEXTDelegate xrGetAppConsumedSwapchainPropertiesEXT_ptr;
+		public static XrResult xrGetAppConsumedSwapchainPropertiesEXT(XrAppConsumedSwapchainEXT appConsumedSwapchain, XrAppConsumedSwapchainPropertiesEXT* properties)
+			=> xrGetAppConsumedSwapchainPropertiesEXT_ptr(appConsumedSwapchain, properties);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrEnumerateAppConsumedSwapchainImagesEXTDelegate(XrAppConsumedSwapchainEXT appConsumedSwapchain, uint imageCapacityInput, uint* imageCountOutput, XrSwapchainImageBaseHeader* images);
+		private static xrEnumerateAppConsumedSwapchainImagesEXTDelegate xrEnumerateAppConsumedSwapchainImagesEXT_ptr;
+		public static XrResult xrEnumerateAppConsumedSwapchainImagesEXT(XrAppConsumedSwapchainEXT appConsumedSwapchain, uint imageCapacityInput, uint* imageCountOutput, XrSwapchainImageBaseHeader* images)
+			=> xrEnumerateAppConsumedSwapchainImagesEXT_ptr(appConsumedSwapchain, imageCapacityInput, imageCountOutput, images);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrAcquireAppConsumedSwapchainImageEXTDelegate(XrAppConsumedSwapchainEXT appConsumedSwapchain, XrAppConsumedSwapchainImageAcquireInfoEXT* acquireInfo, XrAppConsumedSwapchainImageStateEXT* image);
+		private static xrAcquireAppConsumedSwapchainImageEXTDelegate xrAcquireAppConsumedSwapchainImageEXT_ptr;
+		public static XrResult xrAcquireAppConsumedSwapchainImageEXT(XrAppConsumedSwapchainEXT appConsumedSwapchain, XrAppConsumedSwapchainImageAcquireInfoEXT* acquireInfo, XrAppConsumedSwapchainImageStateEXT* image)
+			=> xrAcquireAppConsumedSwapchainImageEXT_ptr(appConsumedSwapchain, acquireInfo, image);
+
+		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrReleaseAppConsumedSwapchainImageEXTDelegate(XrAppConsumedSwapchainEXT appConsumedSwapchain, XrAppConsumedSwapchainImageReleaseInfoEXT* releaseInfo);
+		private static xrReleaseAppConsumedSwapchainImageEXTDelegate xrReleaseAppConsumedSwapchainImageEXT_ptr;
+		public static XrResult xrReleaseAppConsumedSwapchainImageEXT(XrAppConsumedSwapchainEXT appConsumedSwapchain, XrAppConsumedSwapchainImageReleaseInfoEXT* releaseInfo)
+			=> xrReleaseAppConsumedSwapchainImageEXT_ptr(appConsumedSwapchain, releaseInfo);
 
 		public static void LoadFunctionPointers(XrInstance instance = default)
 		{
@@ -3854,7 +3908,16 @@ namespace Evergine.Bindings.OpenXR
 			nativeLib.LoadFunction("xrBeginSpatialContainerRenderingEXT",  out xrBeginSpatialContainerRenderingEXT_ptr);
 			nativeLib.LoadFunction("xrEndSpatialContainerRenderingEXT",  out xrEndSpatialContainerRenderingEXT_ptr);
 			nativeLib.LoadFunction("xrLocateSpatialContainerViewsEXT",  out xrLocateSpatialContainerViewsEXT_ptr);
+			nativeLib.LoadFunction("xrEnumerateSpatialArchetypesEXT",  out xrEnumerateSpatialArchetypesEXT_ptr);
+			nativeLib.LoadFunction("xrEnumerateSpatialArchetypeComponentTypesEXT",  out xrEnumerateSpatialArchetypeComponentTypesEXT_ptr);
 			nativeLib.LoadFunction("xrResultToString2KHR",  out xrResultToString2KHR_ptr);
+			nativeLib.LoadFunction("xrEnumerateSwapchainFormats2EXT",  out xrEnumerateSwapchainFormats2EXT_ptr);
+			nativeLib.LoadFunction("xrCreateAppConsumedSwapchainEXT",  out xrCreateAppConsumedSwapchainEXT_ptr);
+			nativeLib.LoadFunction("xrDestroyAppConsumedSwapchainEXT",  out xrDestroyAppConsumedSwapchainEXT_ptr);
+			nativeLib.LoadFunction("xrGetAppConsumedSwapchainPropertiesEXT",  out xrGetAppConsumedSwapchainPropertiesEXT_ptr);
+			nativeLib.LoadFunction("xrEnumerateAppConsumedSwapchainImagesEXT",  out xrEnumerateAppConsumedSwapchainImagesEXT_ptr);
+			nativeLib.LoadFunction("xrAcquireAppConsumedSwapchainImageEXT",  out xrAcquireAppConsumedSwapchainImageEXT_ptr);
+			nativeLib.LoadFunction("xrReleaseAppConsumedSwapchainImageEXT",  out xrReleaseAppConsumedSwapchainImageEXT_ptr);
 		}
 	}
 }

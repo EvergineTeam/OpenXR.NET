@@ -977,6 +977,21 @@ namespace Evergine.Bindings.OpenXR
 		public override int GetHashCode() => Handle.GetHashCode();
 	}
 
+	public partial struct XrAppConsumedSwapchainEXT : IEquatable<XrAppConsumedSwapchainEXT>
+	{
+		public readonly IntPtr Handle;
+		public XrAppConsumedSwapchainEXT(IntPtr existingHandle) { Handle = existingHandle; }
+		public static XrAppConsumedSwapchainEXT Null => new XrAppConsumedSwapchainEXT(IntPtr.Zero);
+		public static implicit operator XrAppConsumedSwapchainEXT(IntPtr handle) => new XrAppConsumedSwapchainEXT(handle);
+		public static bool operator ==(XrAppConsumedSwapchainEXT left, XrAppConsumedSwapchainEXT right) => left.Handle == right.Handle;
+		public static bool operator !=(XrAppConsumedSwapchainEXT left, XrAppConsumedSwapchainEXT right) => left.Handle != right.Handle;
+		public static bool operator ==(XrAppConsumedSwapchainEXT left, IntPtr right) => left.Handle == right;
+		public static bool operator !=(XrAppConsumedSwapchainEXT left, IntPtr right) => left.Handle != right;
+		public bool Equals(XrAppConsumedSwapchainEXT h) => Handle == h.Handle;
+		public override bool Equals(object o) => o is XrAppConsumedSwapchainEXT h && Equals(h);
+		public override int GetHashCode() => Handle.GetHashCode();
+	}
+
 	public partial struct XrSpatialContainerEXT : IEquatable<XrSpatialContainerEXT>
 	{
 		public readonly IntPtr Handle;
@@ -1199,6 +1214,21 @@ namespace Evergine.Bindings.OpenXR
 		public static bool operator !=(XrTrackableANDROID left, ulong right) => left.Handle != right;
 		public bool Equals(XrTrackableANDROID h) => Handle == h.Handle;
 		public override bool Equals(object o) => o is XrTrackableANDROID h && Equals(h);
+		public override int GetHashCode() => Handle.GetHashCode();
+	}
+
+	public partial struct XrSpatialArchetypeIdEXT : IEquatable<XrSpatialArchetypeIdEXT>
+	{
+		public readonly ulong Handle;
+		public XrSpatialArchetypeIdEXT(ulong existingHandle) { Handle = existingHandle; }
+		public static XrSpatialArchetypeIdEXT Null => new XrSpatialArchetypeIdEXT(0);
+		public static implicit operator XrSpatialArchetypeIdEXT(ulong handle) => new XrSpatialArchetypeIdEXT(handle);
+		public static bool operator ==(XrSpatialArchetypeIdEXT left, XrSpatialArchetypeIdEXT right) => left.Handle == right.Handle;
+		public static bool operator !=(XrSpatialArchetypeIdEXT left, XrSpatialArchetypeIdEXT right) => left.Handle != right.Handle;
+		public static bool operator ==(XrSpatialArchetypeIdEXT left, ulong right) => left.Handle == right;
+		public static bool operator !=(XrSpatialArchetypeIdEXT left, ulong right) => left.Handle != right;
+		public bool Equals(XrSpatialArchetypeIdEXT h) => Handle == h.Handle;
+		public override bool Equals(object o) => o is XrSpatialArchetypeIdEXT h && Equals(h);
 		public override int GetHashCode() => Handle.GetHashCode();
 	}
 

@@ -11481,14 +11481,6 @@ namespace Evergine.Bindings.OpenXR
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct XrHandGestureQCOM
-	{
-		public XrHandGestureTypeQCOM gesture;
-		public float gestureRatio;
-		public float flipRatio;
-	}
-
-	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct XrHapticParametricPropertiesEXT
 	{
 		public XrStructureType type;
@@ -11991,6 +11983,62 @@ namespace Evergine.Bindings.OpenXR
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrAppConsumedSwapchainCreateInfoEXT
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrAppConsumedSwapchainKindEXT kind;
+		public ulong usageFlags;
+		public long format;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrAppConsumedSwapchainPropertiesEXT
+	{
+		public XrStructureType type;
+		public void* next;
+		public ulong usageFlags;
+		public long format;
+		public uint sampleCount;
+		public uint width;
+		public uint height;
+		public uint faceCount;
+		public uint arraySize;
+		public uint mipCount;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrAppConsumedSwapchainImageAcquireInfoEXT
+	{
+		public XrStructureType type;
+		public void* next;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrAppConsumedSwapchainImageStateEXT
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrBool32 ready;
+		public XrBool32 unchanged;
+		public uint imageIndex;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrAppConsumedSwapchainImageReleaseInfoEXT
+	{
+		public XrStructureType type;
+		public void* next;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSwapchainFormatsEnumerateInfoEXT
+	{
+		public XrStructureType type;
+		public void* next;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct XrSpatialContainerCreateInfoEXT
 	{
 		public XrStructureType type;
@@ -12211,6 +12259,14 @@ namespace Evergine.Bindings.OpenXR
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialFilterArchetypeEXT
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrSpatialArchetypeIdEXT archetype;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public unsafe partial struct XrSpatialReferenceImagePlaneEXT
 	{
 		public uint bufferSize;
@@ -12291,6 +12347,123 @@ namespace Evergine.Bindings.OpenXR
 		public void* next;
 		public XrResult futureResult;
 		public XrSpatialImageTrackingDatabaseEXT database;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialCapabilityConfigurationMeshTrackingEXT
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrSpatialCapabilityEXT capability;
+		public uint enabledComponentCount;
+		public XrSpatialComponentTypeEXT* enabledComponents;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialFeatureTrackWatertightMeshEXT
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrBool32 enableWatertightMeshTracking;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialComponentMesh3DNormalsListEXT
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint meshNormalsCount;
+		public XrSpatialBufferEXT* meshNormals;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialComponentMesh3DVertexSemanticLabelsListEXT
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint meshSemanticLabelsCount;
+		public XrSpatialBufferEXT* meshSemanticLabels;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialComponentMesh3DTriangleSemanticLabelsListEXT
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint meshSemanticLabelsCount;
+		public XrSpatialBufferEXT* meshSemanticLabels;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialCapabilityConfigurationObjectTrackingEXT
+	{
+		public XrStructureType type;
+		public void* next;
+		public XrSpatialCapabilityEXT capability;
+		public uint enabledComponentCount;
+		public XrSpatialComponentTypeEXT* enabledComponents;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialComponentObjectSemanticLabelListEXT
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint semanticLabelCount;
+		public XrSpatialObjectSemanticLabelEXT* semanticLabels;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialComponentKeyboardSemanticLabelListEXT
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint semanticLabelCount;
+		public XrSpatialKeyboardSemanticLabelEXT* semanticLabels;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialComponentMouseSemanticLabelListEXT
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint semanticLabelCount;
+		public XrSpatialMouseSemanticLabelEXT* semanticLabels;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialFeatureObjectSemanticLabelSubsetEXT
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint semanticLabelCount;
+		public XrSpatialObjectSemanticLabelEXT* semanticLabels;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialComponentPlaneSemanticLabel2ListEXT
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint semanticLabelCount;
+		public XrSpatialPlaneSemanticLabel2EXT* semanticLabels;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrSpatialFeaturePlaneSemanticLabel2SubsetEXT
+	{
+		public XrStructureType type;
+		public void* next;
+		public uint semanticLabelCount;
+		public XrSpatialPlaneSemanticLabel2EXT* semanticLabels;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct XrHandGestureQCOM
+	{
+		public XrHandGestureTypeQCOM gesture;
+		public float gestureRatio;
+		public float flipRatio;
 	}
 
 }
