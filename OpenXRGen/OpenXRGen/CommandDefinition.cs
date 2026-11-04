@@ -51,6 +51,19 @@ namespace OpenXRGen
             return command;
         }
 
+        // Alias commands share the signature of the aliased command, but the runtime exposes them with their own name.
+        public CommandDefinition CloneWithName(string name)
+        {
+            var command = (CommandDefinition)this.MemberwiseClone();
+            command.Prototype = new Proto
+            {
+                Name = name,
+                Type = this.Prototype.Type,
+            };
+
+            return command;
+        }
+
         public string GetParametersSignature(OpenXRSpecification spec, bool useTypes = true)
         {
             StringBuilder signature = new StringBuilder();

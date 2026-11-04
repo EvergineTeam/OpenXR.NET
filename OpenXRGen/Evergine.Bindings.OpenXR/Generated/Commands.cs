@@ -714,6 +714,12 @@ namespace Evergine.Bindings.OpenXR
 			=> xrGetVulkanGraphicsDevice2KHR_ptr(instance, getInfo, vulkanPhysicalDevice);
 
 		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrGetVulkanGraphicsRequirements2KHRDelegate(XrInstance instance, XrSystemId systemId, XrGraphicsRequirementsVulkanKHR* graphicsRequirements);
+		private static xrGetVulkanGraphicsRequirements2KHRDelegate xrGetVulkanGraphicsRequirements2KHR_ptr;
+		public static XrResult xrGetVulkanGraphicsRequirements2KHR(XrInstance instance, XrSystemId systemId, XrGraphicsRequirementsVulkanKHR* graphicsRequirements)
+			=> xrGetVulkanGraphicsRequirements2KHR_ptr(instance, systemId, graphicsRequirements);
+
+		[UnmanagedFunctionPointer(CallConv)]
 		private delegate XrResult xrEnumerateSceneComputeFeaturesMSFTDelegate(XrInstance instance, XrSystemId systemId, uint featureCapacityInput, uint* featureCountOutput, XrSceneComputeFeatureMSFT* features);
 		private static xrEnumerateSceneComputeFeaturesMSFTDelegate xrEnumerateSceneComputeFeaturesMSFT_ptr;
 		public static XrResult xrEnumerateSceneComputeFeaturesMSFT(XrInstance instance, XrSystemId systemId, uint featureCapacityInput, uint* featureCountOutput, XrSceneComputeFeatureMSFT* features)
@@ -2532,6 +2538,12 @@ namespace Evergine.Bindings.OpenXR
 			=> xrCancelFutureEXT_ptr(instance, cancelInfo);
 
 		[UnmanagedFunctionPointer(CallConv)]
+		private delegate XrResult xrLocateSpacesKHRDelegate(XrSession session, XrSpacesLocateInfo* locateInfo, XrSpaceLocations* spaceLocations);
+		private static xrLocateSpacesKHRDelegate xrLocateSpacesKHR_ptr;
+		public static XrResult xrLocateSpacesKHR(XrSession session, XrSpacesLocateInfo* locateInfo, XrSpaceLocations* spaceLocations)
+			=> xrLocateSpacesKHR_ptr(session, locateInfo, spaceLocations);
+
+		[UnmanagedFunctionPointer(CallConv)]
 		private delegate XrResult xrSetSystemNotificationsMLDelegate(XrInstance instance, XrSystemNotificationsSetInfoML* info);
 		private static xrSetSystemNotificationsMLDelegate xrSetSystemNotificationsML_ptr;
 		public static XrResult xrSetSystemNotificationsML(XrInstance instance, XrSystemNotificationsSetInfoML* info)
@@ -3478,6 +3490,7 @@ namespace Evergine.Bindings.OpenXR
 			nativeLib.LoadFunction("xrCreateVulkanInstanceKHR",  out xrCreateVulkanInstanceKHR_ptr);
 			nativeLib.LoadFunction("xrCreateVulkanDeviceKHR",  out xrCreateVulkanDeviceKHR_ptr);
 			nativeLib.LoadFunction("xrGetVulkanGraphicsDevice2KHR",  out xrGetVulkanGraphicsDevice2KHR_ptr);
+			nativeLib.LoadFunction("xrGetVulkanGraphicsRequirements2KHR",  out xrGetVulkanGraphicsRequirements2KHR_ptr);
 			nativeLib.LoadFunction("xrEnumerateSceneComputeFeaturesMSFT",  out xrEnumerateSceneComputeFeaturesMSFT_ptr);
 			nativeLib.LoadFunction("xrCreateSceneObserverMSFT",  out xrCreateSceneObserverMSFT_ptr);
 			nativeLib.LoadFunction("xrDestroySceneObserverMSFT",  out xrDestroySceneObserverMSFT_ptr);
@@ -3781,6 +3794,7 @@ namespace Evergine.Bindings.OpenXR
 			nativeLib.LoadFunction("xrGetTrackableObjectANDROID",  out xrGetTrackableObjectANDROID_ptr);
 			nativeLib.LoadFunction("xrPollFutureEXT",  out xrPollFutureEXT_ptr);
 			nativeLib.LoadFunction("xrCancelFutureEXT",  out xrCancelFutureEXT_ptr);
+			nativeLib.LoadFunction("xrLocateSpacesKHR",  out xrLocateSpacesKHR_ptr);
 			nativeLib.LoadFunction("xrSetSystemNotificationsML",  out xrSetSystemNotificationsML_ptr);
 			nativeLib.LoadFunction("xrCreateWorldMeshDetectorML",  out xrCreateWorldMeshDetectorML_ptr);
 			nativeLib.LoadFunction("xrDestroyWorldMeshDetectorML",  out xrDestroyWorldMeshDetectorML_ptr);

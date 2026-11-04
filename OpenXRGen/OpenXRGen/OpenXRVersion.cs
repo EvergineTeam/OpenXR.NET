@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -50,13 +50,7 @@ namespace OpenXRGen
                 // Add commands
                 foreach (var command in feature.Commands)
                 {
-                    string name = command;
-                    if (spec.Alias.TryGetValue(name, out string alias))
-                    {
-                        name = alias;
-                    }
-
-                    var commandDefinition = spec.Commands.Find(c => c.Prototype.Name == name);
+                    var commandDefinition = FindCommand(spec, command);
                     version.Commands.Add(commandDefinition);
                 }
 
@@ -114,23 +108,28 @@ namespace OpenXRGen
                 // Add commands
                 foreach (var command in extension.Commands)
                 {
-                    string name = command;
-                    if (spec.Alias.TryGetValue(name, out string alias))
-                    {
-                        name = alias;
-                    }
-
-                    var commandDefinition = spec.Commands.Find(c => c.Prototype.Name == name);
+                    var commandDefinition = FindCommand(spec, command);
 
                     if (commandDefinition == null)
                         continue;
 
-                    if(!version.Commands.Exists(c => c.Prototype.Name == name))
+                    if(!version.Commands.Exists(c => c.Prototype.Name == command))
                         version.Commands.Add(commandDefinition);
                 }
             }
 
             return version;
+        }
+
+        private static CommandDefinition FindCommand(OpenXRSpecification spec, string name)
+        {
+            if (spec.Alias.TryGetValue(name, out string alias))
+            {
+                // An alias is a different entry point, so it is generated with its own name and the aliased signature.
+                return spec.Commands.Find(c => c.Prototype.Name == alias)?.CloneWithName(name);
+            }
+
+            return spec.Commands.Find(c => c.Prototype.Name == name);
         }
     }
 }
