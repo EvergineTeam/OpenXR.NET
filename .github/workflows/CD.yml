@@ -24,7 +24,7 @@ on:
 jobs:
   cd:
     if: github.event_name != 'schedule' || github.ref_name == github.event.repository.default_branch
-    uses: EvergineTeam/Evergine.Bindings/.github/workflows/binding-xml-cd.yml@feat/nuget-trusted-publishing
+    uses: EvergineTeam/Evergine.Bindings/.github/workflows/binding-xml-cd.yml@v1
     with:
       xml-url: "https://raw.githubusercontent.com/KhronosGroup/OpenXR-Docs/master/specification/registry/xr.xml"
       xml-path: "KhronosRegistry/xr.xml"
